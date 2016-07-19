@@ -1,0 +1,47 @@
+﻿
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    @Styles.Render("~/Content/css/wecss")
+    @Scripts.Render("~/bundles/wejs")
+
+
+    <title>@Param.Default.SiteName</title>
+    <script>
+        var root = '@WebHelper.GetRootUrl()';
+        $.setSailConfig({ Root: root, ApiRoot: root + "Api/" });
+    </script>
+
+    @RenderSection("head", false)
+</head>
+
+<body class="body">
+    <header class="zqui-bar zqui-bar-nav banner"></header>
+    <nav class="zqui-bar zqui-bar-tab">
+        <a class="zqui-tab-item zqui-active" href="~/WeChat/index">
+            <i class="icon icon-home">
+            </i>
+            <span class="zqui-tab-label">活动首页</span>
+        </a>
+      
+        <a href="~/WeChat/input" class="zqui-tab-item">
+            <i class="icon icon-tuijian">
+            </i>
+            <span class="zqui-tab-label">我要推荐</span>
+        </a>
+
+    </nav>
+    <div class="zqui-content">
+        @RenderBody()
+    </div>
+
+
+
+</body>
+</html>

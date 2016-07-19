@@ -1,0 +1,47 @@
+﻿@helper HelperImg(string name)
+{
+    <div class=" box-item">
+        <a class="ShowModal"><img src="~/content/images/pic.jpg" style="height:@(name)rem;" /></a>
+        <a class="foot ShowModal">
+            陈礼云说，抢险队伍已经连续工作一周，朱同宝一直在第一线，带领群众排涝抢险。中心河段近日水位不断上涨，险情危及，朱同宝是在６日巡视了河堤一整夜后，７日早上６点多继续投入加固河堤的工作，过度劳累导致坠河。
+        </a>
+        <a class="info ShowModal">
+            <span>黄埠选项</span>
+            <span>三山开发区</span>
+        </a>
+        <div class="operate">
+            <a class="ShowModalMsg">
+                <i class="icon icon-dianzan text-info"></i>34888
+            </a>
+            <a><i class="icon icon-pinglun"></i>859</a>
+        </div>
+    </div>
+}
+@helper HelperImgModal()//图片操作
+{
+   <div id="x1" class="zqui-popup">
+        <div class="zqui-popup-buttons"><a class="btnClose text-info zqui-popup-button">设定为标题图片</a></div>
+        <div class="zqui-popup-buttons"><a class="btnClose text-danger zqui-popup-button">删除图片</a></div>
+    </div>
+    <div id="x2" class="zqui-popup">
+        <div class="zqui-popup-buttons"><a class="btnClose text-info zqui-popup-button">取消设定为标题图片</a></div>
+        <div class="zqui-popup-buttons"><a class="btnClose text-danger zqui-popup-button">删除图片</a></div>
+    </div>
+    <div class="zqui-popup-backdrop"></div>
+    <script>
+        $(function () {
+            $(".Show").click(function () {
+                $("#x1, .zqui-popup-backdrop").addClass("active");
+                $(".btnClose").click(function () {
+                    $("#x1, .zqui-popup-backdrop").removeClass("active");
+                })
+            })
+            $(".ShowIcon").click(function () {
+                $("#x2, .zqui-popup-backdrop").addClass("active");
+                $(".btnClose").click(function () {
+                    $("#x2, .zqui-popup-backdrop").removeClass("active");
+                })
+            })
+        })
+    </script>
+}

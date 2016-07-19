@@ -1,0 +1,17 @@
+
+@font-face {font-family: "icon";
+  src: url('../fonts/poetry.eot?t=1468392093'); /* IE9*/
+  src: url('../fonts/poetry.eot?t=1468392093#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/poetry.woff?t=1468392093') format('woff'), /* chrome, firefox */
+  url('../fonts/poetry.ttf?t=1468392093') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/poetry.svg?t=1468392093#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.icon-pinglun:before { content: "\e691"; }
+.icon-gerenzhongxin:before { content: "\e692"; }
+.icon-dianzan:before { content: "\e693"; }
+.icon-home:before { content: "\e694"; }
+.icon-paixing:before { content: "\e695"; }
+.icon-hongxinweidianzan:before { content: "\e696"; }
+.icon-hongxinyidianzan:before { content: "\e697"; }
+.icon-tuijian:before { content: "\e698"; }

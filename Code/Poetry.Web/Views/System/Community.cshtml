@@ -1,0 +1,121 @@
+﻿@using Poetry.Web
+
+@{
+    var user = this.SetPage("D6F07512-FE25-4941-A404-DAE23DA3D38B", "社区名单", "基础信息");
+}
+
+
+@section head{
+
+
+    <script type="text/x-jsrender" id="modalTmpl">
+
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                社区名称：<span>*</span>
+            </label>
+            <div class="col-md-10">
+                <input type="text" class="form-control validate[required]" id="Name" placeholder="请输入社区名称" />
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                社区状况：<span>*</span>
+            </label>
+            <div class="col-md-10">
+                <input type="text" class="form-control validate[required]" id="Describe"  placeholder="请输入社区的基本状况" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                所属县区：
+            </label>
+            <div class="col-md-10">
+                <select class="form-control validate[required] " id="County" data-prop="Id">
+                    @MyHelpers.RenderDict(CountyController.GetAll(), "", "请选择县区");
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                排序号：<span>*</span>
+            </label>
+            <div class="col-md-10">
+                <input type="text" data-defaultvalue="0" class="form-control validate[required,custom[pdecimal]]" id="OrderByNo" placeholder="请输入排序号" />
+                <span class="help-block text-warning">社区按照排序号由小到大排列</span>
+            </div>
+        </div>
+       
+    </script>
+
+    <script type="text/x-jsrender" id="listTmpl">
+        <tr>
+            <td>
+                <a class="btnEdit">
+                    {{>Name}}
+                </a>
+            </td>
+            <td>{{>County.Name}}</td>
+            <td>{{>Describe}}</td>
+    
+            <td>{{>OrderByNo}}</td>
+         
+            <td>
+                <a class="text-primary m_r_10 btnEdit" title="修改" data-toggle="tooltip"><i class="fa fa-edit fa-lg"></i></a>
+                <a class="text-danger btnRemove" title="删除" data-toggle="tooltip"><i class="fa fa-lg  fa-trash"></i></a>
+            </td>
+        </tr>
+    </script>
+    <script>
+        $(function () {
+            var tool = new Sail.RazorPage("", "Community", "Id");
+            tool.CreatePage({
+                titles: ["社区名称", "县区","社区状况","排序号", "操作"],
+                titleWidth: [0,0,120]
+            });
+            tool.Page.Query();
+        });
+    </script>
+}
+
+
+@Helper.PageList(
+
+    @<text>
+<div class="form-float" style="padding: 0;">
+
+    <div class="form-group">
+        <div class="form-element-control">
+            <input type="text" class="form-control" name="key" placeholder="过滤关键字" />
+        </div>
+    </div>
+   @* 添加描述 *@
+    <div class="form-group">
+        <div class="form-element-control">
+            <input type="text" class="form-control" name="describe" placeholder="过滤社区描述" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-element-control">
+            <select class="form-control" name="county">
+                @CountyController.GetAllKv().RenderOptions("全部县区", "");
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" id="btnQuery">
+            <i class="fa fa-search"></i>
+            过滤
+        </button>
+        <button id="btnReset" class="btn btn-secondary">清除条件</button>
+    </div>
+
+
+  
+    </div>
+    </text>)
+
+@Helper.PageDetail()

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.dis-flex {
+  display: flex;
+  flex-flow: row wrap; }
+
+.flex-auto {
+  flex: 1; }
+
+.nodata {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  color: #999; }
+
+.nodata:before {
+  content: "暂无数据"; }

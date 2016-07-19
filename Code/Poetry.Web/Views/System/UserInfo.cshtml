@@ -1,0 +1,54 @@
+﻿@using Poetry.Model
+@using Poetry.Web
+@{
+    var user = this.SetPage("E367B923-9CD7-411E-AD92-B4F67C942778", "管理员", "基础信息");
+}
+@section head{
+
+    <script type="text/x-jsrender" id="modalTmpl">
+
+        @Form.Input(new Element("登录名", "LoginId", "validate[required]") { Tips = $"默认密码: {Admin.DefaultPassword}" })
+        @Form.Input(new Element("姓名", "UserName", "validate[required]"))
+        @Form.Input(new Element("联系方式", "Phone", "validate[required,custom[mobile]]"))
+
+        @Form.Select(new Element("用户组", "Group", "validate[required]") { Data = new Dictionary<string, string> { ["prop"] = "RoleId" } }, GroupController.AllItem(), "请选择用户组")
+    </script>
+
+    <script type="text/x-jsrender" id="listTmpl">
+        <tr>
+            <td>
+                <a class="btnEdit">{{>LoginId}}</a>
+            </td>
+            <td>{{>UserName}}</td>
+            <td>{{>Phone}}</td>
+            <td>{{>Group.RoleName}}</td>
+
+
+            <td>
+                <a class="text-primary m_r_10 btnEdit" title="修改" data-toggle="tooltip"><i class="fa fa-edit fa-lg"></i></a>
+                <a class="text-warning m_r_10 btnAct" data-action="ResetPwd" title="重置密码" data-toggle="tooltip"><i class="fa fa-refresh fa-lg"></i> </a>
+                <a class="text-danger btnRemove" title="删除" data-toggle="tooltip"><i class="fa fa-lg  fa-trash"></i></a>
+            </td>
+        </tr>
+
+    </script>
+
+    <script> 
+        $(function () { 
+            var tool = new Sail.RazorPage("管理员", "Admin", "UserId").SetTitle("管理员管理");
+            tool.CreatePage({
+                titles: ["登录名", "操作员名称", "联系方式", "用户组", "操作"],
+                titleWidth: [0, 0, 0, 120]
+            });
+
+            tool.Page.Query();
+        });
+    </script>
+}
+
+@Helper.PageList(@<text>
+        @*@Form.RenderInfoStatusSearch("过滤县区单位名称")*@
+
+</text>)
+
+@Helper.PageDetail()

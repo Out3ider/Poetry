@@ -1,0 +1,543 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sail.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Sail.Web.BaseUploadController">
+            <summary>
+            默认的文件上传类
+            </summary>
+        </member>
+        <member name="P:Sail.Web.BaseUploadController.UploadRoot">
+            <summary>
+            上传文件默认路径，可以重写，默认是"~/uploads/yyyyMM/"
+            </summary>
+            <value>The upload root.</value>
+        </member>
+        <member name="M:Sail.Web.BaseUploadController.Uploaded(System.Net.Http.MultipartFileData,System.Web.HttpRequest)">
+            <summary>
+            上传结束后,此方法可以重写
+            var name = Guid.NewGuid().ToString("N");
+            var filex = new FileInfo(file.LocalFileName);
+            var ext = Path.GetExtension(file.Headers.ContentDisposition.FileName.Replace("\"", ""));
+            var filename = "{0}{1}".FormatWith(name, ext);
+            filex.Rename(filename);
+            return new
+            {
+                Name = name,
+                Path = UploadRoot + filename
+            };
+            </summary>
+        </member>
+        <member name="M:Sail.Web.BaseUploadController.UploadFile">
+            <summary>
+            文件上传主体内容
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Web.Common">
+            <summary>
+            通用类
+            </summary>
+        </member>
+        <member name="T:Sail.Web.Common.LoginStatus">
+            <summary>
+            登录状态
+            </summary>
+        </member>
+        <member name="F:Sail.Web.Common.LoginStatus.成功">
+            <summary>
+            成功登陆
+            </summary>
+        </member>
+        <member name="F:Sail.Web.Common.LoginStatus.用户不存在">
+            <summary>
+            用户不对
+            </summary>
+        </member>
+        <member name="F:Sail.Web.Common.LoginStatus.密码错误">
+            <summary>
+            密码错误
+            </summary>
+        </member>
+        <member name="T:Sail.Web.Common.LoginResult">
+            <summary>
+            登录返回结果
+            </summary>
+        </member>
+        <member name="P:Sail.Web.Common.LoginResult.Status">
+            <summary>
+            登录状态
+            </summary>
+        </member>
+        <member name="P:Sail.Web.Common.LoginResult.User">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="P:Sail.Web.Common.LoginResult.ErrorTimes">
+            <summary>
+            错误次数
+            </summary>
+        </member>
+        <member name="M:Sail.Web.Common.Login``1(Sail.Common.IDataContext,System.String,System.String)">
+            <summary>
+            用户登录
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db"></param>
+            <param name="loginId"></param>
+            <param name="pwd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Web.Common.ChangePwd``1(Sail.Common.IDataContext,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            修改密码
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db"></param>
+            <param name="loginId"></param>
+            <param name="oldPwd"></param>
+            <param name="newPwd"></param>
+            <param name="checkCurrentUser">如果为真，则检测是否当前已登录的用户，如果不是，则无法修改密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Web.Common.CheckPower(Sail.Common.IUser)">
+            <summary>
+            权限检测
+            </summary>
+            <param name="user"></param>
+        </member>
+        <member name="M:Sail.Web.CookiesHelper.GetCookieValue(System.Web.HttpContext,System.String)">
+            <summary>
+            读cookie值
+            </summary>
+            <param name="ctx"></param>
+            <param name="strName">名称</param>
+            <returns>cookie值</returns>
+        </member>
+        <member name="M:Sail.Web.CookiesHelper.WriteCookie(System.Web.HttpContext,System.String,System.String,System.Int32)">
+            <summary>
+            写cookie值
+            </summary>
+            <param name="ctx"></param>
+            <param name="strName">名称</param>
+            <param name="strValue">值</param>
+            <param name="expires">过期时间(天)</param>
+        </member>
+        <member name="M:Sail.Web.CookiesHelper.RemoveCookie(System.Web.HttpContext,System.String)">
+            <summary>
+            删除Cookie值
+            </summary>
+            <param name="ctx"></param>
+            <param name="strName">名称</param>
+        </member>
+        <member name="T:Sail.Web.EnumController">
+            <summary>
+            列举枚举的控制器
+            </summary>
+        </member>
+        <member name="M:Sail.Web.EnumController.GetEnum(System.String)">
+            <summary>
+            获取枚举列表，一般用于绑定枚举
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Web.ExportHelper">
+            <summary>
+            文件导出帮助类
+            </summary>
+        </member>
+        <member name="M:Sail.Web.ExportHelper.GenerateStreamFromString(System.String)">
+            <summary>
+            通过字符串生成文件流
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Web.ExportHelper.AppendColumn(System.Text.StringBuilder,System.Object)">
+            <summary>
+            添加单元格
+            </summary>
+            <param name="sb"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:Sail.Web.ExportHelper.ExportToExcel(System.String[],System.String,System.Action{System.Text.StringBuilder})">
+            <summary>
+            按照指定格式导出文件到excel
+            </summary>
+            <param name="titles">标题列表</param>
+            <param name="fileName">文件名（不含扩展名）</param>
+            <param name="act">组织表格体的方法</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Web.ExportHelper.ExportFile(System.String,System.String)">
+            <summary>
+            将文本导出为文件
+            </summary>
+            <param name="filename">文件名(含扩展名)</param>
+            <param name="content">文件内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Web.ExportHelper.Export``1(System.String,System.Func{System.Int32,System.Int32,Sail.Common.DataContext,Sail.Common.PageResult},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            导出
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <param name="expression"></param>
+            <param name="page"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Web.HMenuItem">
+            <summary>
+            Class HMenuItem.
+            </summary>
+        </member>
+        <member name="F:Sail.Web.HMenuItem.IsHasPower">
+            <summary>
+            The is has power
+            </summary>
+        </member>
+        <member name="F:Sail.Web.HMenuItem.Selected">
+            <summary>
+            The selected
+            </summary>
+        </member>
+        <member name="M:Sail.Web.HMenuItem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sail.Web.HMenuItem"/> class.
+            </summary>
+        </member>
+        <member name="P:Sail.Web.HMenuItem.IsSplit">
+            <summary>
+            Gets or sets a value indicating whether this instance is split.
+            </summary>
+            <value><c>true</c> if this instance is split; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Sail.Web.HMenuItem.ClassName">
+            <summary>
+            Gets or sets the name of the class.
+            </summary>
+            <value>The name of the class.</value>
+        </member>
+        <member name="P:Sail.Web.HMenuItem.ItemId">
+            <summary>
+            Gets or sets the item identifier.
+            </summary>
+            <value>The item identifier.</value>
+        </member>
+        <member name="P:Sail.Web.HMenuItem.ItemName">
+            <summary>
+            Gets or sets the name of the item.
+            </summary>
+            <value>The name of the item.</value>
+        </member>
+        <member name="P:Sail.Web.HMenuItem.Memo">
+            <summary>
+            Gets or sets the memo.
+            </summary>
+            <value>The memo.</value>
+        </member>
+        <member name="P:Sail.Web.HMenuItem.SubItems">
+            <summary>
+            Gets or sets the sub items.
+            </summary>
+            <value>The sub items.</value>
+        </member>
+        <member name="P:Sail.Web.HMenuItem.SubPower">
+            <summary>
+            Gets the sub power.
+            </summary>
+            <value>The sub power.</value>
+        </member>
+        <member name="P:Sail.Web.HMenuItem.Url">
+            <summary>
+            Gets or sets the URL.
+            </summary>
+            <value>The URL.</value>
+        </member>
+        <member name="M:Sail.Web.HMenuItem.Filter(System.Collections.Generic.List{Sail.Web.HMenuItem},System.String,Sail.Common.IPower)">
+            <summary>
+            Filters the specified list.
+            </summary>
+            <param name="list">The list.</param>
+            <param name="currentUrl">The current URL.</param>
+            <param name="user">The user.</param>
+        </member>
+        <member name="M:Sail.Web.HMenuItem.LoadMenus(System.String,System.Boolean)">
+            <summary>
+            读取菜单
+            </summary>
+            <param name="file">The file.</param>
+            <param name="isCheckPower">为flase则无视用户权限</param>
+            <returns>List&lt;HMenuItem&gt;.</returns>
+        </member>
+        <member name="M:Sail.Web.HMenuItem.LoadPowers(System.String,System.String)">
+            <summary>
+            读取所有的权限，除了权限id为[00000000-0000-0000-0000-000000000000]的
+            </summary>
+            <param name="Excepet">被排除的权限一般只有超级管理员才有，为系统保留权限</param>
+            <param name="file">The file.</param>
+            <returns>dynamic.</returns>
+        </member>
+        <member name="P:Sail.Web.HMenuItem.DefaultId">
+            <summary>
+            默认id
+            </summary>
+        </member>
+        <member name="T:Sail.Web.ISailSessionItem">
+            <summary>
+            session接口
+            </summary>
+        </member>
+        <member name="P:Sail.Web.ISailSessionItem.Item(System.String)">
+            <summary>
+            索引器
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Web.ISailSessionItem.UpdateTime">
+            <summary>
+            更新使用时间
+            </summary>
+        </member>
+        <member name="T:Sail.Web.PowerAttribute">
+            <summary>
+            标注方法权限的特性
+            </summary>
+        </member>
+        <member name="P:Sail.Web.PowerAttribute.Key">
+            <summary>
+            Gets or sets the key.
+            </summary>
+            <value>The key.</value>
+        </member>
+        <member name="P:Sail.Web.PowerAttribute.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:Sail.Web.SailHelper">
+            <summary>
+            注入到model层和service层的web层方法
+            </summary>
+        </member>
+        <member name="P:Sail.Web.SailHelper.HttpCurrent">
+            <summary>
+            Gets the HTTP current.
+            </summary>
+            <value>The HTTP current.</value>
+        </member>
+        <member name="M:Sail.Web.SailHelper.GetRealIp">
+            <summary>
+            获取ip
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="P:Sail.Web.SailHelper.CurrentAdmin">
+            <summary>
+            当前操作员
+            </summary>
+            <value>The current admin.</value>
+        </member>
+        <member name="P:Sail.Web.SailHelper.CurrentUser">
+            <summary>
+            当前用户
+            </summary>
+            <value>The current user.</value>
+        </member>
+        <member name="T:Sail.Web.SailSession">
+            <summary>
+            自定义session主线程
+            </summary>
+        </member>
+        <member name="P:Sail.Web.SailSession.Session">
+            <summary>
+            当前用户的session
+            </summary>
+        </member>
+        <member name="M:Sail.Web.SailSession.FindSession(System.String)">
+            <summary>
+            访问指定id的session (慎用)
+            </summary>
+            <param name="sessionId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Web.SailSessionItem">
+            <summary>
+            自定义session项
+            </summary>
+        </member>
+        <member name="P:Sail.Web.SailSessionItem.Token">
+            <summary>
+            令牌
+            </summary>
+        </member>
+        <member name="P:Sail.Web.SailSessionItem.TimeOut">
+            <summary>
+            超时时间
+            </summary>
+        </member>
+        <member name="P:Sail.Web.SailSessionItem.Ip">
+            <summary>
+            来源IP
+            </summary>
+        </member>
+        <member name="P:Sail.Web.SailSessionItem.Session">
+            <summary>
+            Session值
+            </summary>
+        </member>
+        <member name="M:Sail.Web.SailSessionItem.UpdateTime">
+            <summary>
+            更新session持续时间
+            </summary>
+        </member>
+        <member name="T:Sail.Web.WebApiConfig">
+            <summary>
+            webapi配置
+            </summary>
+        </member>
+        <member name="M:Sail.Web.WebApiConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            注册webapi路由
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="T:Sail.Web.WebClientHelper">
+            <summary>
+            web请求
+            </summary>
+        </member>
+        <member name="M:Sail.Web.WebClientHelper.PostHttp(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            获取Post到http的数据
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Web.WebClientHelper.GetHttp(System.String,System.Text.Encoding)">
+            <summary>
+            Gets the HTTP.
+            </summary>
+            <param name="tUrl">The t URL.</param>
+            <param name="code">The code.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:Sail.Web.WebHelper">
+            <summary>
+            Class WebHelper.
+            </summary>
+        </member>
+        <member name="M:Sail.Web.WebHelper.GetRootUrl">
+            <summary>
+            获取当前应用根目录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Web.WebHelper.GetStrParam(System.String)">
+            <summary>
+            获取string型参数,?xx=xx或者url重写的参数
+            </summary>
+            <param name="paramName">Name of the parameter.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="P:Sail.Web.WebHelper.CurrentPage">
+            <summary>
+            当前页面
+            </summary>
+            <value>The current page.</value>
+        </member>
+        <member name="P:Sail.Web.WebHelper.CurrentHandler">
+            <summary>
+            Gets the current handler.
+            </summary>
+            <value>The current handler.</value>
+        </member>
+        <member name="M:Sail.Web.WebHelper.GetIntParam(System.String)">
+            <summary>
+            获取int型参数，?xx=xx或者url重写的参数
+            </summary>
+            <param name="paramName">Name of the parameter.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Sail.Web.WebHelper.ResponseFile(System.String,System.String,System.String)">
+            <summary>
+            以指定的ContentType输出指定文件文件
+            </summary>
+            <param name="filepath">文件路径</param>
+            <param name="filename">输出的文件名</param>
+            <param name="filetype">将文件输出时设置的ContentType</param>
+        </member>
+        <member name="M:Sail.Web.WebHelper.GetRealIp">
+            <summary>
+            获取ip地址
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="P:Sail.Web.WebHelper.CurrentUser">
+            <summary>
+            当前用户
+            </summary>
+            <value>The current user.</value>
+        </member>
+        <member name="P:Sail.Web.WebHelper.CurrentAdmin">
+            <summary>
+            当前系统用户
+            </summary>
+            <value>The current admin.</value>
+        </member>
+        <member name="M:Sail.Web.WebHelper.EncodeToViewstatus(System.String)">
+            <summary>
+            编码到base64
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Web.WebHelper.CheckAdmin``1">
+            <summary>
+            检测是否管理员
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Web.WebHelper.CheckUser``1">
+            <summary>
+            检查用户是否登录
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="P:Sail.Web.WebHelper.RegisterContent">
+            <summary>
+            注册内容
+            </summary>
+        </member>
+        <member name="P:Sail.Web.WebHelper.SerialNumber">
+            <summary>
+            获取sn序列号
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Web.WebHelper.CheckKey(System.String,System.String)">
+            <summary>
+            检测是否为正确的注册号
+            </summary>
+            <param name="value">待检查的值</param>
+            <param name="sn">序列号</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Web.WebHelper.CheckRemote">
+            <summary>
+            检测远程服务器
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,4615 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sail.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Sail.Common.BaseController`1">
+            <summary>
+            Class BaseController.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Sail.Common.BaseController`1.MakeWhere(System.String)">
+            <summary>
+            创建默认where条件，可以被覆盖
+            </summary>
+            <param name="key">The key.</param>
+            <returns>Clip.</returns>
+        </member>
+        <member name="P:Sail.Common.BaseController`1.OrderBy">
+            <summary>
+            创建默认排序，默认为主键倒序,可以被覆盖
+            </summary>
+            <returns>Clip.</returns>
+        </member>
+        <member name="M:Sail.Common.BaseController`1.BeforeAction(Sail.Common.DataContext,Sail.Common.ControllerEvent,System.Object)">
+            <summary>
+            增删改查之前执行,可以被覆盖
+            </summary>
+            <param name="db">The database.</param>
+            <param name="e">The e.</param>
+            <param name="o">The o.</param>
+        </member>
+        <member name="M:Sail.Common.BaseController`1.AfterAction(Sail.Common.DataContext,Sail.Common.ControllerEvent,System.Object)">
+            <summary>
+            保存/删除之后的行为
+            </summary>
+            <param name="db">The database.</param>
+            <param name="e">The e.</param>
+            <param name="o">The o.</param>
+        </member>
+        <member name="M:Sail.Common.BaseController`1.Get(System.String)">
+            <summary>
+            根据id读取对象
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>AjaxResult.</returns>
+        </member>
+        <member name="M:Sail.Common.BaseController`1.GetList(System.Int32,System.Int32)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="pageSize">Size of the page.</param>
+            <returns>AjaxResult.</returns>
+        </member>
+        <member name="M:Sail.Common.BaseController`1.GetList(System.Int32,System.Int32,System.String)">
+            <summary>
+            根据key获取列表
+            </summary>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="pageSize">Size of the page.</param>
+            <param name="key">The key.</param>
+            <returns>AjaxResult.</returns>
+        </member>
+        <member name="M:Sail.Common.BaseController`1.Put(System.String,System.String)">
+            <summary>
+            保存对象
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="value">The value.</param>
+            <returns>AjaxResult.</returns>
+        </member>
+        <member name="M:Sail.Common.BaseController`1.Put(System.String)">
+            <summary>
+            新增对象
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.BaseController`1.Delete(System.String)">
+            <summary>
+            删除对象
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>AjaxResult.</returns>
+        </member>
+        <member name="T:Sail.Common.ControllerEvent">
+            <summary>
+            Enum ControllerEvent
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ControllerEvent.Get">
+            <summary>
+            获取单个对象
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ControllerEvent.GetList">
+            <summary>
+            获取列表对象
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ControllerEvent.Put">
+            <summary>
+            创建对象/修改对象
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ControllerEvent.Delete">
+            <summary>
+            删除对象
+            </summary>
+        </member>
+        <member name="T:Sail.Common.HandleHelper">
+            <summary>
+            Class HandleHelper.
+            </summary>
+        </member>
+        <member name="M:Sail.Common.HandleHelper.BuildDynamicGetter(System.Type,System.String)">
+            <summary>
+            Builds the dynamic getter.
+            </summary>
+            <param name="targetType">Type of the target.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns>Func&lt;System.Object, System.Object&gt;.</returns>
+        </member>
+        <member name="M:Sail.Common.HandleHelper.LoadModalByJson``1(Sail.Common.IDataContext,System.String,System.String)">
+            <summary>
+            Loads the modal by json.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="data">The data.</param>
+            <param name="id">The identifier.</param>
+            <returns>T.</returns>
+        </member>
+        <member name="M:Sail.Common.HandleHelper.LoadModalByJson``1(Sail.Common.IDataContext,System.String,``0)">
+            <summary>
+            Loads the modal by json.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="data"></param>
+            <param name="model">The model.</param>
+        </member>
+        <member name="M:Sail.Common.HandleHelper.TryAction(System.Action,System.String)">
+            <summary>
+            Tries the action.
+            </summary>
+            <param name="act">The act.</param>
+            <param name="message">The message.</param>
+            <returns>AjaxResult.</returns>
+        </member>
+        <member name="M:Sail.Common.HandleHelper.TryAction(System.Action{Sail.Common.DataContext},System.String)">
+            <summary>
+            Tries the action.
+            </summary>
+            <param name="act">The act.</param>
+            <param name="message">The message.</param>
+            <returns>AjaxResult.</returns>
+        </member>
+        <member name="M:Sail.Common.HandleHelper.TryAction(System.Func{System.Object},System.String)">
+            <summary>
+            Tries the action.
+            </summary>
+            <param name="act">The act.</param>
+            <param name="message">The message.</param>
+            <returns>AjaxResult.</returns>
+        </member>
+        <member name="M:Sail.Common.HandleHelper.TryAction(System.Func{Sail.Common.DataContext,System.Object},System.String)">
+            <summary>
+            Tries the action.
+            </summary>
+            <param name="act">The act.</param>
+            <param name="message">The message.</param>
+            <returns>AjaxResult.</returns>
+        </member>
+        <member name="T:Sail.Common.Member">
+            <summary>
+            用户基类
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Member.UserId">
+            <summary>
+            MemberId
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Member.LoginId">
+            <summary>
+            登录名
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Member.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Member.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Member.IsSuperAdmin">
+            <summary>
+            是否超级管理员
+            </summary>
+        </member>
+        <member name="M:Sail.Common.Member.IsHasPower(System.String)">
+            <summary>
+            是否有权限
+            </summary>
+            <param name="powerid"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Sail.Common.Member.Powers">
+            <summary>
+            需要自己实现读取权限的方法
+            </summary>
+        </member>
+        <member name="T:Sail.Common.Role">
+            <summary>
+            角色管理
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Role.RoleId">
+            <summary>
+            RoleId
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Role.RoleName">
+            <summary>
+            组名
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Role.Memo">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Role.Powers">
+            <summary>
+            功能权限
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Role.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Role.LastUpdateTime">
+            <summary>
+            最后操作时间
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Role.LastAdminId">
+            <summary>
+            最后操作人
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Role.IsDeleted">
+            <summary>
+            是否已删除
+            </summary>
+        </member>
+        <member name="T:Sail.Common.LazyCache`1">
+            <summary>
+            延迟加载缓存
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Sail.Common.LazyCache`1.Value">
+            <summary>
+            值
+            </summary>
+            <value>The value.</value>
+        </member>
+        <member name="P:Sail.Common.LazyCache`1.CacheName">
+            <summary>
+            缓存名
+            </summary>
+            <value>The name of the cache.</value>
+        </member>
+        <member name="P:Sail.Common.LazyCache`1.Init">
+            <summary>
+            初始化缓存的方法
+            </summary>
+            <value>The init.</value>
+        </member>
+        <member name="M:Sail.Common.LazyCache`1.#ctor(System.String,System.Func{`0})">
+            <summary>
+            构造
+            </summary>
+            <param name="name">The name.</param>
+            <param name="init">The init.</param>
+        </member>
+        <member name="M:Sail.Common.LazyCache`1.ClearCache">
+            <summary>
+            清理缓存
+            </summary>
+        </member>
+        <member name="T:Sail.Common.CacheHelper">
+            <summary>
+            缓存操作封装类
+            </summary>
+        </member>
+        <member name="M:Sail.Common.CacheHelper.GetCache(System.String)">
+            <summary>
+            获取当前应用程序指定CacheKey的Cache值
+            </summary>
+            <param name="cacheKey">键值</param>
+            <returns>返回缓存对象，如果不存在，则为空</returns>
+        </member>
+        <member name="M:Sail.Common.CacheHelper.GetCache``1(System.String,System.Func{``0})">
+            <summary>
+            获取缓存，如果没有缓存，则用act获取对象并缓存之
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="cacheKey">缓存关键字</param>
+            <param name="act">获取对象的事件</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.CacheHelper.SetCache(System.String,System.Object,System.Nullable{System.TimeSpan})">
+            <summary>
+            设置当前应用程序指定CacheKey的Cache值
+            </summary>
+            <param name="cacheKey">键值</param>
+            <param name="objObject">要缓存的对象</param>
+            <param name="slidingExpiration">可调过期时间</param>
+        </member>
+        <member name="M:Sail.Common.CacheHelper.RemoveCache(System.String)">
+            <summary>
+            清除cache
+            </summary>
+            <param name="cacheKey"></param>
+        </member>
+        <member name="T:Sail.Common.ConfigHelper">
+            <summary>
+            web.config操作类
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ConfigHelper.GetConfigString(System.String)">
+            <summary>
+            得到AppSettings中的配置字符串信息
+            </summary>
+            <param name="key">The key.</param>
+            <returns>System.String.</returns>
+            <exception cref="T:Sail.Common.SailCommonException">获取配置信息失败</exception>
+        </member>
+        <member name="M:Sail.Common.ConfigHelper.GetConfigBool(System.String)">
+            <summary>
+            得到AppSettings中的配置Bool信息
+            </summary>
+            <param name="key">The key.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Sail.Common.ConfigHelper.GetConfigDecimal(System.String)">
+            <summary>
+            得到AppSettings中的配置Decimal信息
+            </summary>
+            <param name="key">The key.</param>
+            <returns>System.Decimal.</returns>
+        </member>
+        <member name="M:Sail.Common.ConfigHelper.GetConfigInt(System.String)">
+            <summary>
+            得到AppSettings中的配置int信息
+            </summary>
+            <param name="key">The key.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="T:Sail.Common.DynamicJson">
+            <summary>
+            动态对象和json互相转换
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DynamicJson.Parse(System.String)">
+            <summary>from JsonSring to DynamicJson</summary>
+        </member>
+        <member name="M:Sail.Common.DynamicJson.Parse(System.String,System.Text.Encoding)">
+            <summary>from JsonSring to DynamicJson</summary>
+        </member>
+        <member name="M:Sail.Common.DynamicJson.Parse(System.IO.Stream)">
+            <summary>from JsonSringStream to DynamicJson</summary>
+        </member>
+        <member name="M:Sail.Common.DynamicJson.Parse(System.IO.Stream,System.Text.Encoding)">
+            <summary>from JsonSringStream to DynamicJson</summary>
+        </member>
+        <member name="M:Sail.Common.DynamicJson.Serialize(System.Object)">
+            <summary>create JsonSring from primitive or IEnumerable or Object({public property name:property value})</summary>
+        </member>
+        <member name="M:Sail.Common.DynamicJson.#ctor">
+            <summary>create blank JSObject</summary>
+        </member>
+        <member name="M:Sail.Common.DynamicJson.IsDefined(System.String)">
+            <summary>has property or not</summary>
+        </member>
+        <member name="M:Sail.Common.DynamicJson.IsDefined(System.Int32)">
+            <summary>has property or not</summary>
+        </member>
+        <member name="M:Sail.Common.DynamicJson.Delete(System.String)">
+            <summary>delete property</summary>
+        </member>
+        <member name="M:Sail.Common.DynamicJson.Delete(System.Int32)">
+            <summary>delete property</summary>
+        </member>
+        <member name="M:Sail.Common.DynamicJson.Deserialize``1">
+            <summary>mapping to Array or Class by Public PropertyName</summary>
+        </member>
+        <member name="M:Sail.Common.DynamicJson.ToString">
+            <summary>Serialize to JsonString</summary>
+        </member>
+        <member name="T:Sail.Common.JsonHelper">
+            <summary>
+            Json操作帮助类
+            </summary>
+        </member>
+        <member name="M:Sail.Common.JsonHelper.ToJson``1(``0)">
+            <summary>
+            对象转换成json
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="jsonObject">需要格式化的对象</param>
+            <returns>Json字符串</returns>
+        </member>
+        <member name="M:Sail.Common.JsonHelper.JsonToObj``1(System.String)">
+            <summary>
+            json字符串转换成对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json">要转换成对象的json字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.JsonHelper.JsonToObj(System.String,System.Type)">
+            <summary>
+            json转为对象
+            </summary>
+            <param name="json"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.SerialHelper.ReadXmlValue(System.Xml.XmlNode,System.String,System.Xml.XmlNamespaceManager)">
+            <summary>
+            从xml节点读取数据
+            </summary>
+            <param name="node"></param>
+            <param name="path"></param>
+            <param name="nsm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.SerialHelper.ToXml(System.Object)">
+            <summary>
+            转换对象成xml
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.SerialHelper.FromXml``1(System.String)">
+            <summary>
+            反序列化对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="xml"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.SerialHelper.FromXml(System.String,System.Type)">
+            <summary>
+            反序列化xml对象
+            </summary>
+            <param name="xml"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.DataCache`1">
+            <summary>
+            数据缓存
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Sail.Common.DataCache`1.Reload(Sail.Common.IDataContext)">
+            <summary>
+            重载缓存
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="P:Sail.Common.DataCache`1.Cache">
+            <summary>
+            缓存
+            </summary>
+        </member>
+        <member name="P:Sail.Common.DataCache`1.Data">
+            <summary>
+            返回列表
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DataCache`1.Find(System.Predicate{`0})">
+            <summary>
+            查找一个
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.DataCache`1.FindList(System.Predicate{`0})">
+            <summary>
+            查找一批
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.DataCache`1.Add(`0)">
+            <summary>
+            添加对象
+            </summary>
+            <param name="t"></param>
+        </member>
+        <member name="M:Sail.Common.DataCache`1.FindById(System.Object)">
+            <summary>
+            根据id查找
+            </summary>对象
+            <returns>The by identifier.</returns>
+            <param name="id">Identifier.</param>
+        </member>
+        <member name="M:Sail.Common.DataCache`1.GetPredict(System.Object)">
+            <summary>
+            创建表达式
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.DataCache`1.FindByIds(System.Object[])">
+            <summary>
+            根据多id查找列表
+            </summary>
+            <returns>The by identifiers.</returns>
+            <param name="id">Identifier.</param>
+        </member>
+        <member name="M:Sail.Common.DataCache`1.Remove(System.Object)">
+            <summary>
+            根据id移除
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:Sail.Common.DataCache`1.ReloadAll(Sail.Common.IDataContext)">
+            <summary>
+            重新加载所有可缓存表的缓存
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="T:Sail.Common.DataContext">
+            <summary>
+            Class DataContext
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DataContext.RunTran(System.Action{Sail.Common.IDataContext})">
+            <summary>
+            Runs the tran.
+            </summary>
+            <param name="act">The act.</param>
+        </member>
+        <member name="P:Sail.Common.DataContext.SailHelper">
+            <summary>
+            Gets the J unit helper.
+            </summary>
+            <value>The J unit helper.</value>
+        </member>
+        <member name="P:Sail.Common.DataContext.TimeOut">
+            <summary>
+            超时
+            </summary>
+            <value>The time out.</value>
+        </member>
+        <member name="P:Sail.Common.DataContext.ConnectionString">
+            <summary>
+            当前连接字符串
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Sail.Common.DataContext.Connection">
+            <summary>
+            Gets or sets the connection.
+            </summary>
+            <value>The connection.</value>
+        </member>
+        <member name="P:Sail.Common.DataContext.SqlDialect">
+            <summary>
+            返回Sql方言
+            </summary>
+            <value>The SQL dialect.</value>
+        </member>
+        <member name="M:Sail.Common.DataContext.TypeToDbType(System.Type)">
+            <summary>
+            获取Object的Dbtype
+            </summary>
+            <param name="t">The t.</param>
+            <returns>DbType.</returns>
+            <exception cref="T:Sail.Common.SailDbException"></exception>
+        </member>
+        <member name="M:Sail.Common.DataContext.#ctor">
+            <summary>
+            创建默认链接
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DataContext.#ctor(Sail.Common.JConntionstring,System.Int32)">
+            <summary>
+            指定连接字符串创建连接
+            </summary>
+            <param name="connection">The connection.</param>
+            <param name="timeOut">The time out.</param>
+        </member>
+        <member name="M:Sail.Common.DataContext.#ctor(System.String,System.String,System.Int32)">
+            <summary>
+            根据指定xml文件中的指定名称创建连接
+            </summary>
+            <param name="path">The path.</param>
+            <param name="name">The name.</param>
+            <param name="timeOut">The time out.</param>
+        </member>
+        <member name="M:Sail.Common.DataContext.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Sail.Common.DataContext.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:Sail.Common.DataContext.IsUserTran">
+            <summary>
+            Gets or sets a value indicating whether this instance is user tran.
+            </summary>
+            <value><c>true</c> if this instance is user tran; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Sail.Common.DataContext.CurrentTran">
+            <summary>
+            Gets or sets the current tran.
+            </summary>
+            <value>The current tran.</value>
+        </member>
+        <member name="M:Sail.Common.DataContext.BeginTran(System.Data.IsolationLevel)">
+            <summary>
+            创建事务并启用
+            </summary>
+            <param name="level">The level.</param>
+        </member>
+        <member name="M:Sail.Common.DataContext.BeginTransaction">
+            <summary>
+            Begins the transaction.
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DataContext.DisposeTran(System.Action{System.Data.Common.DbTransaction})">
+            <summary>
+            Disposes the tran.
+            </summary>
+            <param name="act">The act.</param>
+        </member>
+        <member name="M:Sail.Common.DataContext.Commit">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DataContext.Rollback">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DataContext.BuildParamCommand(System.String,System.Object[])">
+            <summary>
+            直接根据object生成command
+            </summary>
+            <param name="strSql">The STR SQL.</param>
+            <param name="parameterValues">The parameter values.</param>
+            <returns>DbCommand.</returns>
+            <exception cref="T:Sail.Common.SailDbException">sql语句不能为空</exception>
+        </member>
+        <member name="M:Sail.Common.DataContext.CreateNullParameter(System.Data.Common.DbCommand,System.Int32)">
+            <summary>
+            Creates the null parameter.
+            </summary>
+            <param name="dbCommand">The db command.</param>
+            <param name="i">The i.</param>
+            <returns>DbParameter.</returns>
+        </member>
+        <member name="M:Sail.Common.DataContext.GetDataset(System.Data.Common.DbCommand)">
+            <summary>
+            Gets the dataset.
+            </summary>
+            <param name="dbCommand">The db command.</param>
+            <returns>DataSet.</returns>
+        </member>
+        <member name="M:Sail.Common.DataContext.ExecuteSql(System.String,System.Object[])">
+            <summary>
+            执行sql语句
+            </summary>
+            <param name="sql">The SQL.</param>
+            <param name="param">The param.</param>
+            <returns>System.Int32.</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Sail.Common.DataContext.ExecuteSql(System.Collections.Generic.IList{System.String},System.Object[])">
+            <summary>
+            Executes the SQL.
+            </summary>
+            <param name="sql">The SQL.</param>
+            <param name="param">The parameter.</param>
+        </member>
+        <member name="M:Sail.Common.DataContext.ExecuteSql(Sail.Common.SqlStatement)">
+            <summary>
+            根据SqlStatement执行sql语句
+            </summary>
+            <param name="sql">The SQL.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Sail.Common.DataContext.GetSingle(Sail.Common.SqlStatement)">
+            <summary>
+            获取单一记录
+            </summary>
+            <param name="sql">The SQL.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:Sail.Common.DataContext.GetSingle(System.String,System.Object[])">
+            <summary>
+            获取单一记录
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.DataContext.GetDataset(System.String,System.Object[])">
+            <summary>
+            用原生sql获取DataSet
+            </summary>
+            <param name="sql">The SQL.</param>
+            <param name="param">The param.</param>
+            <returns>DataSet.</returns>
+        </member>
+        <member name="M:Sail.Common.DataContext.GetDataset(Sail.Common.SqlStatement)">
+            <summary>
+            根据SqlStatement获取dataset
+            </summary>
+            <param name="sql">The SQL.</param>
+            <returns>DataSet.</returns>
+        </member>
+        <member name="M:Sail.Common.DataContext.GetInt(Sail.Common.SqlStatement)">
+            <summary>
+            取返回第一行第一列的int
+            </summary>
+            <param name="sql">The SQL.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Sail.Common.DataContext.CreateOrUpdate(Sail.Common.HTableAttribute,System.Collections.Generic.IList{Sail.Common.DbSchema})">
+            <summary>
+            创建或者更新表
+            </summary>
+            <param name="table">The table.</param>
+            <param name="tableList"></param>
+            <exception cref="T:Sail.Common.SailDbException"></exception>
+        </member>
+        <member name="M:Sail.Common.DataContext.CreateDbIfNotExist(System.String)">
+            <summary>
+            创建数据库
+            </summary>
+            <param name="dbName">Name of the database.</param>
+            <exception cref="T:Sail.Common.SailDbException">创建数据库或更新库结构失败</exception>
+        </member>
+        <member name="M:Sail.Common.DataContext.CreateSchema(System.String)">
+            <summary>
+            创建数据库架构(仅适用于sqlserver，其他数据库执行无任何效果，但是也不报错)
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="T:Sail.Common.DbContextExtensions">
+            <summary>
+            数据库操作的扩展方法
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.LoadValue(Sail.Common.IModel,Sail.Common.HColumnAttribute)">
+            <summary>
+            Loads the value.
+            </summary>
+            <param name="model">The model.</param>
+            <param name="hc">The hc.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.CheckUniquenese(Sail.Common.IDataContext,Sail.Common.IModel)">
+            <summary>
+            Checks the uniquenese.
+            </summary>
+            <param name="db">The database.</param>
+            <param name="model">The model.</param>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.CheckNullable(Sail.Common.IModel,Sail.Common.HTableAttribute)">
+            <summary>
+            Checks the nullable.
+            </summary>
+            <param name="model">The model.</param>
+            <param name="currentTableInfo">The current table information.</param>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.AsList``1(System.Data.DataTable,Sail.Common.IDataContext)">
+            <summary>
+            把datatable转换成Ilist对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="dataTable">The dt.</param>
+            <param name="db">The database.</param>
+            <returns>IList&lt;T&gt;.</returns>
+            <exception cref="T:System.ArgumentNullException">Datatable不能为空</exception>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.AsEntity``1(System.Data.DataRow,Sail.Common.IDataContext)">
+            <summary>
+            把datarow转换成实体
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="dr">The dr.</param>
+            <param name="db">The database.</param>
+            <returns>T.</returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetSelect(Sail.Common.HTableAttribute,System.Type,Sail.Common.ISqlDialect)">
+            <summary>
+            获取select语句
+            </summary>
+            <param name="table">The table.</param>
+            <param name="type">The type.</param>
+            <param name="sqlDialect"></param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetTableName(Sail.Common.HTableAttribute,System.Type)">
+            <summary>
+            获取表名
+            </summary>
+            <param name="table">The table.</param>
+            <param name="type">The type.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetPageDatatableByCustom(Sail.Common.IDataContext,System.Int32,System.Int32,Sail.Common.SqlStatement)">
+            <summary>
+            Gets the page datatable by custom.
+            </summary>
+            <param name="db">The database.</param>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="pageSize">Size of the page.</param>
+            <param name="sql">The SQL.</param>
+            <returns>DataTable.</returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetPageList``1(Sail.Common.IDataContext,System.Int32,System.Int32,Sail.Common.Clip,Sail.Common.Clip)">
+            <summary>
+            分页获取数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="pageSize">Size of the page.</param>
+            <param name="where">The where.</param>
+            <param name="orderby">The orderby.</param>
+            <returns>PageResult.</returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetPageList``1(Sail.Common.IDataContext,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{Sail.Common.Field},System.String,Sail.Common.Clip,Sail.Common.Clip)">
+            <summary>
+            自定义分页语句，支持join等方法
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="pageSize">Size of the page.</param>
+            <param name="fields">The fields.</param>
+            <param name="tableName">Name of the table.</param>
+            <param name="where">The where.</param>
+            <param name="orderby">The orderby.</param>
+            <returns>PageResult.</returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetList``1(Sail.Common.IDataContext,Sail.Common.Clip,Sail.Common.Clip)">
+            <summary>
+            获取列表
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="where">The where.</param>
+            <param name="orderby">The orderby.</param>
+            <returns>IList&lt;T&gt;.</returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetList``1(Sail.Common.IDataContext,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String)">
+            <summary>
+            获取列表
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db"></param>
+            <param name="expWhere"></param>
+            <param name="orderby"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetModel``1(Sail.Common.IDataContext,Sail.Common.Clip)">
+            <summary>
+            获取实体
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="where">The where.</param>
+            <returns>T.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">where;必须指定条件</exception>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetModel``1(Sail.Common.IDataContext,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String)">
+            <summary>
+            获取实体
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db"></param>
+            <param name="exp"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetModelById``1(Sail.Common.IDataContext,System.Object)">
+            <summary>
+            Gets the model by identifier.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="id">The identifier.</param>
+            <returns>T.</returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetCount``1(Sail.Common.IDataContext,Sail.Common.Clip)">
+            <summary>
+            Gets the count.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="where">The where.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetCount``1(Sail.Common.IDataContext,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db"></param>
+            <param name="exp"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.GetListByIds``1(Sail.Common.IDataContext,System.Object[])">
+            <summary>
+            Gets the list by ids.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="param">The parameter.</param>
+            <returns>IList&lt;T&gt;.</returns>
+        </member>
+        <member name="P:Sail.Common.DbContextExtensions.NoneGuid">
+            <summary>
+            默认为空的guid
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.Save``1(Sail.Common.IDataContext,``0,System.Action{Sail.Common.IDataContext,``0},System.Action{Sail.Common.IDataContext,``0})">
+            <summary>
+            保存或修改实体对象，id＝0时插入，非0时更新
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="model">The model.</param>
+            <param name="act"></param>
+            <param name="afterAct"></param>
+            <returns>entity保存之后的实体对象</returns>
+            <exception cref="T:System.ArgumentException">不能保存或修改一个空的实体对象</exception>
+            <exception cref="T:Sail.Common.SailCommonException">
+            既非自增长主键，也非guid主键,无法保存
+            or
+            用户名不可修改
+            </exception>
+            <exception cref="T:System.ArgumentException">不能保存或修改一个空的实体对象</exception>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.Save``1(Sail.Common.IDataContext,``0)">
+            <summary>
+            保存
+            </summary>
+            <param name="db"></param>
+            <param name="model"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.Insert``1(Sail.Common.IDataContext,``0)">
+            <summary>
+            插入实体
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="model">The model.</param>
+            <returns>``0.</returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.Update``1(Sail.Common.IDataContext,``0)">
+            <summary>
+            更新实体
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="model">The model.</param>
+            <returns>``0.</returns>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.Update``1(Sail.Common.IDataContext,Sail.Common.Clip,Sail.Common.Clip)">
+            <summary>
+            更新指定字段
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="update">The update.</param>
+            <param name="where">The where.</param>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.Delete``1(Sail.Common.IDataContext,Sail.Common.Clip)">
+            <summary>
+            指定where条件，删除表记录
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="where">The where.</param>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.DeleteById``1(Sail.Common.IDataContext,System.Object)">
+            <summary>
+            Deletes the by identifier.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="db">The database.</param>
+            <param name="id">The identifier.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">id不能为空</exception>
+        </member>
+        <member name="M:Sail.Common.DbContextExtensions.Query(Sail.Common.SqlStatement,Sail.Common.IDataContext)">
+            <summary>
+            获取datarow
+            </summary>
+            <param name="sql"></param>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.EnumDescAttribute">
+            <summary>
+            枚举标注
+            </summary>
+        </member>
+        <member name="P:Sail.Common.EnumDescAttribute.Code">
+            <summary>
+            枚举注释类型
+            </summary>
+        </member>
+        <member name="P:Sail.Common.EnumDescAttribute.Name">
+            <summary>
+            枚举注释值
+            </summary>
+        </member>
+        <member name="T:Sail.Common.DbSchema">
+            <summary>
+            库结构
+            </summary>
+        </member>
+        <member name="P:Sail.Common.DbSchema.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="P:Sail.Common.DbSchema.SchemaName">
+            <summary>
+            架构名
+            </summary>
+        </member>
+        <member name="T:Sail.Common.ISqlDialect">
+            <summary>
+            sql方言接口
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ISqlDialect.GetPagedSql(System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Gets the paged SQL.
+            </summary>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="pageSize">Size of the page.</param>
+            <param name="strSql">The string SQL.</param>
+            <param name="where">The where.</param>
+            <param name="orderby">The orderby.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.ISqlDialect.GetIdentitySql">
+            <summary>
+            Gets the identity SQL.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.ISqlDialect.GetDbSchemas(Sail.Common.IDataContext)">
+            <summary>
+            Gets the name of the tables.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.ISqlDialect.GetColumns(Sail.Common.IDataContext,System.String,System.String)">
+            <summary>
+            Gets the columns.
+            </summary>
+            <param name="db"></param>
+            <param name="schemaName"></param>
+            <param name="tableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ISqlDialect.CreateTable(Sail.Common.HTableAttribute)">
+            <summary>
+            Creates the table.
+            </summary>
+            <param name="table">The table.</param>
+            <returns>IList&lt;System.String&gt;.</returns>
+        </member>
+        <member name="M:Sail.Common.ISqlDialect.GetDbNames">
+            <summary>
+            Gets the database names.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="P:Sail.Common.ISqlDialect.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:System.String"/> at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.ISqlDialect.GetInsertedColumns(Sail.Common.HTableAttribute)">
+            <summary>
+            Gets the inserted columns.
+            </summary>
+            <param name="table">The table.</param>
+            <returns>List&lt;HColumnAttribute&gt;.</returns>
+        </member>
+        <member name="M:Sail.Common.ISqlDialect.Warp(System.String)">
+            <summary>
+            用特定的标签包装表名或列名
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ISqlDialect.CreateSchema(System.String)">
+            <summary>
+            创建架构，目前仅sqlserver有效
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.JConntionstring">
+            <summary>
+            自定义的连接字符串
+            </summary>
+        </member>
+        <member name="P:Sail.Common.JConntionstring.Factory">
+            <summary>
+            工厂
+            </summary>
+        </member>
+        <member name="P:Sail.Common.JConntionstring.SqlDialect">
+            <summary>
+            sql方言
+            </summary>
+        </member>
+        <member name="P:Sail.Common.JConntionstring.ConnectionString">
+            <summary>
+            连接字符串
+            </summary>
+        </member>
+        <member name="P:Sail.Common.JConntionstring.ProviderName">
+            <summary>
+            Provider名称
+            </summary>
+        </member>
+        <member name="M:Sail.Common.JConntionstring.CreateConnection">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.JConntionstring.#ctor(System.String,System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="name"></param>
+            <param name="path"></param>
+        </member>
+        <member name="M:Sail.Common.JConntionstring.RemoveDatabaseString">
+            <summary>
+            连接字符串移除数据库名称
+            </summary>
+        </member>
+        <member name="M:Sail.Common.JConntionstring.AddDatabaseString(System.String)">
+            <summary>
+            连接字符串加上数据库名称
+            </summary>
+            <param name="dbName"></param>
+        </member>
+        <member name="M:Sail.Common.JConntionstring.Load(System.String,System.String)">
+            <summary>
+            读取连接字符串
+            </summary>
+            <param name="strKey"></param>
+            <param name="path"></param>
+        </member>
+        <member name="M:Sail.Common.JConntionstring.Save(System.String,System.String)">
+            <summary>
+            保存连接字符串
+            </summary>
+            <param name="strKey"></param>
+            <param name="path"></param>
+        </member>
+        <member name="T:Sail.Common.KeyType">
+            <summary>
+            字段类型
+            </summary>
+        </member>
+        <member name="F:Sail.Common.KeyType.Guid">
+            <summary>
+            GUID
+            </summary>
+        </member>
+        <member name="T:Sail.Common.RelationType">
+            <summary>
+            关联类型
+            </summary>
+        </member>
+        <member name="F:Sail.Common.RelationType.None">
+            <summary>
+            无需关联
+            </summary>
+        </member>
+        <member name="F:Sail.Common.RelationType.OneToOneModel">
+            <summary>
+            一对一实体
+            </summary>
+        </member>
+        <member name="F:Sail.Common.RelationType.OneToOneObject">
+            <summary>
+            一对一对象
+            </summary>
+        </member>
+        <member name="F:Sail.Common.RelationType.OneToManyModel">
+            <summary>
+            一对多实体
+            </summary>
+        </member>
+        <member name="T:Sail.Common.StatementType">
+            <summary>
+            sql语句类型
+            </summary>
+        </member>
+        <member name="F:Sail.Common.StatementType.Insert">
+            <summary>
+            The insert
+            </summary>
+        </member>
+        <member name="F:Sail.Common.StatementType.Update">
+            <summary>
+            The update
+            </summary>
+        </member>
+        <member name="F:Sail.Common.StatementType.Delete">
+            <summary>
+            The delete
+            </summary>
+        </member>
+        <member name="F:Sail.Common.StatementType.Select">
+            <summary>
+            The select
+            </summary>
+        </member>
+        <member name="F:Sail.Common.StatementType.Other">
+            <summary>
+            The other
+            </summary>
+        </member>
+        <member name="T:Sail.Common.SqlStatement">
+            <summary>
+            sql语句对象化
+            </summary>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.#ctor(Sail.Common.StatementType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sail.Common.SqlStatement" /> class.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.PageIndex">
+            <summary>
+            当前页
+            </summary>
+            <value>The index of the page.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.PageSize">
+            <summary>
+            每页行数
+            </summary>
+            <value>The size of the page.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.IsPaged">
+            <summary>
+            是否分页
+            </summary>
+            <value><c>true</c> if this instance is paged; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.Type">
+            <summary>
+            语句类型
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.Fields">
+            <summary>
+            涉及字段（insert和select用）
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.InsertClip">
+            <summary>
+            要插入的字段
+            </summary>
+            <value>The insert clip.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.UpdateClip">
+            <summary>
+            要更新的字段
+            </summary>
+            <value>The update clip.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.WhereClip">
+            <summary>
+            条件
+            </summary>
+            <value>The where clip.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.OrderByClip">
+            <summary>
+            排序
+            </summary>
+            <value>The order by clip.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.GroupByClip">
+            <summary>
+            分组
+            </summary>
+            <value>The group by clip.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.Table">
+            <summary>
+            表名
+            </summary>
+            <value>The table.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.Alias">
+            <summary>
+            别名
+            </summary>
+            <value>The alias.</value>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.Select(Sail.Common.Field[])">
+            <summary>
+            生成一个select语句
+            </summary>
+            <param name="f">要显示的字段</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.Count">
+            <summary>
+            生成一个count语句
+            </summary>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.Update(System.String)">
+            <summary>
+            生成一个update语句
+            </summary>
+            <param name="table">要更新的表名</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.InsertInto(System.String)">
+            <summary>
+            生成一个insert语句
+            </summary>
+            <param name="table">待插入的表名</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.Delete(System.String)">
+            <summary>
+            生成一个delete语句
+            </summary>
+            <param name="table">要删除的表名</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.Insert(Sail.Common.Field,System.Object)">
+            <summary>
+            插入
+            </summary>
+            <param name="field">字段</param>
+            <param name="value">值</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.Set(Sail.Common.Field,System.Object)">
+            <summary>
+            更新
+            </summary>
+            <param name="field">字段</param>
+            <param name="value">值</param>
+            <returns>SqlStatement.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">参数必须是基础数据类型/日期时间或枚举！</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">参数必须是基础数据类型/日期时间或枚举！</exception>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.SetUpdate(Sail.Common.Clip)">
+            <summary>
+            Sets the update.
+            </summary>
+            <param name="set">The set.</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.OrderBy(Sail.Common.Clip)">
+            <summary>
+            排序
+            </summary>
+            <param name="orderby">The orderby.</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.GroupBy(Sail.Common.Clip)">
+            <summary>
+            分组
+            </summary>
+            <param name="groupby">The groupby.</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.Where(Sail.Common.Clip)">
+            <summary>
+            where条件
+            </summary>
+            <param name="where">The where.</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.From(System.String)">
+            <summary>
+            从xx表select，仅用于select
+            </summary>
+            <param name="table">表名</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.As(System.String)">
+            <summary>
+            别名
+            </summary>
+            <param name="alias">别名，仅用于select</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.TableName">
+            <summary>
+            表名，如果有别名，则表名as别名
+            </summary>
+            <value>The name of the table.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.IsIndentity">
+            <summary>
+            是否有自增长id，仅在insert语句中有效
+            </summary>
+            <value><c>true</c> if this instance is indentity; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Sail.Common.SqlStatement.SqlDialect">
+            <summary>
+            sql方言接口
+            </summary>
+            <value>The SQL dialect.</value>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.SetIndentity(Sail.Common.ISqlDialect)">
+            <summary>
+            Sets the indentity.
+            </summary>
+            <param name="dialect">The dialect.</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.SetPage(Sail.Common.ISqlDialect,System.Int32,System.Int32)">
+            <summary>
+            设置为分页语句
+            </summary>
+            <param name="dialect">sql方言接口</param>
+            <param name="pageIndex">当前页</param>
+            <param name="pageSize">每页行数</param>
+            <returns>SqlStatement.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.ToString">
+            <summary>
+            sql语句的字符串模式
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.ToPageString">
+            <summary>
+            select语句的分页模式
+            </summary>
+            <returns>System.String.</returns>
+            <exception cref="T:Sail.Common.SailDbException">不是select语句，不能分页</exception>
+        </member>
+        <member name="M:Sail.Common.SqlStatement.GetObjectParameters">
+            <summary>
+            返回语句中所有的参数
+            </summary>
+            <returns>System.Object[][].</returns>
+        </member>
+        <member name="M:Sail.Common.ClipHelper.DateBetween(System.String,System.String,System.String,System.String)">
+            <summary>
+            日期在于xx与yy之间
+            </summary>
+            <param name="field"></param>
+            <param name="startDay"></param>
+            <param name="endDay"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ClipHelper.ToField(System.String,System.String)">
+            <summary>
+            字符串转换成字段
+            </summary>
+            <param name="field"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ClipHelper.ToGroupClip(System.String)">
+            <summary>
+            设为分组条件
+            </summary>
+            <param name="field"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Sail.Common.ClipHelper.IsDeleted">
+            <summary>
+            已删除字段
+            </summary>
+        </member>
+        <member name="T:Sail.Common.ClipType">
+            <summary>
+            条件种类
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ClipType.WhereClip">
+            <summary>
+            where条件
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ClipType.OrderByClip">
+            <summary>
+            orderby条件
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ClipType.UpdateClip">
+            <summary>
+            更新条件
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ClipType.InsertClip">
+            <summary>
+             插入条件
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ClipType.GroupByClip">
+            <summary>
+            分组条件
+            </summary>
+        </member>
+        <member name="T:Sail.Common.DEncrypt">
+            <summary>
+            Encrypt 的摘要说明。
+            LiTianPing
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DEncrypt.Sha256(System.String)">
+            <summary>
+            SHA256函数
+            </summary>
+            /// <param name="str">原始字符串</param>
+            <returns>SHA256结果</returns>
+        </member>
+        <member name="M:Sail.Common.DEncrypt.Encrypt(System.String,System.String)">
+            <summary>
+            使用给定密钥字符串加密string
+            </summary>
+            <param name="original">原始文字</param>
+            <param name="key">密钥</param>
+            <returns>密文</returns>
+        </member>
+        <member name="M:Sail.Common.DEncrypt.Decrypt(System.String,System.String)">
+            <summary>
+            使用给定密钥字符串解密string,返回指定编码方式明文
+            </summary>
+            <param name="encrypted">密文</param>
+            <param name="key">密钥</param>
+            <returns>明文</returns>
+        </member>
+        <member name="M:Sail.Common.DEncrypt.MakeMd5(System.Byte[])">
+            <summary>
+            生成MD5摘要
+            </summary>
+            <param name="original">数据源</param>
+            <returns>摘要</returns>
+        </member>
+        <member name="M:Sail.Common.DEncrypt.EncryptByte(System.Byte[],System.Byte[])">
+            <summary>
+            使用给定密钥加密
+            </summary>
+            <param name="original">明文</param>
+            <param name="key">密钥</param>
+            <returns>密文</returns>
+        </member>
+        <member name="M:Sail.Common.DEncrypt.DecryptByte(System.Byte[],System.Byte[])">
+            <summary>
+            使用给定密钥解密数据
+            </summary>
+            <param name="encrypted">密文</param>
+            <param name="key">密钥</param>
+            <returns>明文</returns>
+        </member>
+        <member name="T:Sail.Common.CommonEqualityComparer`2">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TV"></typeparam>
+        </member>
+        <member name="M:Sail.Common.CommonEqualityComparer`2.#ctor(System.Func{`0,`1})">
+            <summary>
+            
+            </summary>
+            <param name="keySelector"></param>
+        </member>
+        <member name="M:Sail.Common.CommonEqualityComparer`2.Equals(`0,`0)">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.CommonEqualityComparer`2.GetHashCode(`0)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.EnumExtension">
+            <summary>
+            获取枚举的标注
+            </summary>
+        </member>
+        <member name="M:Sail.Common.EnumExtension.ToEmun``1(System.String)">
+            <summary>
+            字符串转换成枚举
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="str">The s.</param>
+            <returns>``0.</returns>
+        </member>
+        <member name="M:Sail.Common.EnumExtension.GetDescription(System.Enum)">
+            <summary>
+            获取备注名称
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.EnumExtension.GetEnumDesc(System.Enum,System.String)">
+            <summary>
+            获取指定code的标注名称
+            </summary>
+            <param name="obj"></param>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.EnumExtension.ToInt(System.Enum)">
+            <summary>
+            获取枚举的int值
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.EnumExtension.GetEnumItems(System.Type,System.Boolean)">
+            <summary>
+            获取枚举列表
+            </summary>
+            <param name="enumType"></param>
+            <param name="useDescription"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.Clip">
+            <summary>
+            sql语句段
+            </summary>
+        </member>
+        <member name="F:Sail.Common.Clip.All">
+            <summary>
+            全部
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Clip.ClipString">
+            <summary>
+            clip字符串
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Clip.ClipType">
+            <summary>
+             clip类型
+            </summary>
+        </member>
+        <member name="F:Sail.Common.Clip.Plist">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Clip.Parameters">
+            <summary>
+            返回参数列表
+            </summary>
+        </member>
+        <member name="M:Sail.Common.Clip.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.Check(Sail.Common.Clip,Sail.Common.Clip)">
+            <summary>
+            检查类型
+            </summary>
+            <param name="leftClip"></param>
+            <param name="rightClip"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.op_BitwiseAnd(Sail.Common.Clip,Sail.Common.Clip)">
+            <summary>
+            与
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.ClearPrefix(System.String)">
+            <summary>
+            移除前缀
+            </summary>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.op_BitwiseOr(Sail.Common.Clip,Sail.Common.Clip)">
+            <summary>
+            或者
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.op_LogicalNot(Sail.Common.Clip)">
+            <summary>
+            非
+            </summary>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.op_False(Sail.Common.Clip)">
+             <summary>
+            
+             </summary>
+             <param name="right"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.op_True(Sail.Common.Clip)">
+             <summary>
+            
+             </summary>
+             <param name="right"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.Bracket">
+            <summary>
+            添加括号
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.Builde(System.Func{System.Boolean},System.Func{Sail.Common.Clip,Sail.Common.Clip})">
+            <summary>
+            如果条件满足，则执行对whereclip的操作
+            </summary>
+            <param name="predicate">条件</param>
+            <param name="act">操作</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.GetObjectParameters">
+            <summary>
+            输出参数值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.ToFormatsString(System.Int32)">
+            <summary>
+            输出参数化查询代码
+            </summary>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.Where``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String)">
+            <summary>
+            转换lambda表达式到clip
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="exp"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Clip.OrderBy``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String)">
+            <summary>
+            转换lambda表达式到clip
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="exp"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.DatabaseScheme">
+            <summary>
+            数据库结构
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DatabaseScheme.InitDatabase(Sail.Common.JConntionstring,System.Predicate{Sail.Common.HTableAttribute})">
+            <summary>
+            初始化数据库结构(可以在global里面执行)
+            </summary>
+        </member>
+        <member name="P:Sail.Common.DatabaseScheme.TableInfos">
+            <summary>
+            元数据集
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DatabaseScheme.GetHTable(System.Type)">
+            <summary>
+            获取实体类的表信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Sail.Common.DatabaseScheme.ModelInterface">
+            <summary>
+            IModel接口的名字
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DatabaseScheme.GetColumns(System.Type)">
+            <summary>
+            获取全部字段列表信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.DataHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DataHelper.MakeUniqueKey(System.String)">
+            <summary>
+            生成随机数，作为参数变量名
+            </summary>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.MyDbParams">
+            <summary>
+            执行SQL语句或存储过程的参数
+            </summary>
+        </member>
+        <member name="P:Sail.Common.MyDbParams.DbType">
+            <summary>
+            数据库字段类型
+            </summary>
+        </member>
+        <member name="P:Sail.Common.MyDbParams.Direction">
+            <summary>
+            参数性质
+            </summary>
+        </member>
+        <member name="P:Sail.Common.MyDbParams.IsNullable">
+            <summary>
+            是否可为空
+            </summary>
+        </member>
+        <member name="P:Sail.Common.MyDbParams.ParameterName">
+            <summary>
+            参数名称
+            </summary>
+        </member>
+        <member name="P:Sail.Common.MyDbParams.Size">
+            <summary>
+            参数字节大小
+            </summary>
+        </member>
+        <member name="P:Sail.Common.MyDbParams.Value">
+            <summary>
+            参数值
+            </summary>
+        </member>
+        <member name="M:Sail.Common.MyDbParams.#ctor(System.String,System.Object)">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:Sail.Common.Field">
+            <summary>
+            字段映射
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Field.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Field.Name">
+            <summary>
+            字段名
+            </summary>
+        </member>
+        <member name="F:Sail.Common.Field.Count">
+            <summary>
+            计算count用字段
+            </summary>
+        </member>
+        <member name="M:Sail.Common.Field.#ctor(System.String,System.String)">
+            <summary>
+            指定字段名称构造
+            </summary>
+            <param name="fieldName">字段名</param>
+            <param name="prefix">前缀</param>
+        </member>
+        <member name="P:Sail.Common.Field.IsIdentity">
+            <summary>
+            是否自增长
+            </summary>
+        </member>
+        <member name="M:Sail.Common.Field.ToString">
+            <summary>
+            输出字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Sail.Common.Field.Asc">
+            <summary>
+            顺序
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Field.Desc">
+            <summary>
+            倒序
+            </summary>
+        </member>
+        <member name="M:Sail.Common.Field.op_Equality(Sail.Common.Field,System.Object)">
+            <summary>
+            全等
+            </summary>
+            <param name="field"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.op_Inequality(Sail.Common.Field,System.Object)">
+            <summary>
+            不等
+            </summary>
+            <param name="field"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.op_GreaterThan(Sail.Common.Field,System.Object)">
+            <summary>
+            大于
+            </summary>
+            <param name="field"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.op_GreaterThanOrEqual(Sail.Common.Field,System.Object)">
+            <summary>
+            大于等于
+            </summary>
+            <param name="field"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.op_LessThan(Sail.Common.Field,System.Object)">
+            <summary>
+            小于
+            </summary>
+            <param name="field"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.op_LessThanOrEqual(Sail.Common.Field,System.Object)">
+            <summary>
+            小于等于
+            </summary>
+            <param name="field"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.Contains(System.String)">
+            <summary>
+            指定value进行模糊查询
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.Like(System.String)">
+            <summary>
+            指定value进行Like查询，若想模糊查找，可使用%
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.StartsWith(System.String)">
+            <summary>
+            以xx开始
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.Between(System.Object,System.Object)">
+            <summary>
+            进行Between操作
+            </summary>
+            <param name="leftValue"></param>
+            <param name="rightValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.In(System.Object[])">
+            <summary>
+            进行in操作
+            </summary>
+            <param name="values"></param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.NotIn(System.Object[])">
+            <summary>
+            非in操作
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.IsTrue">
+            <summary>
+            返回单字段的bool操作，用于SQLite
+            </summary>
+        </member>
+        <member name="M:Sail.Common.Field.CreateWhereClip(Sail.Common.Field,System.String,System.Object,Sail.Common.ClipType)">
+            <summary>
+            创建一个参数方式的WhereClip
+            </summary>
+            <param name="field">字段名</param>
+            <param name="join">连接符</param>
+            <param name="value">值</param>
+            <param name="type">Clip类型</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.Field.Set(System.Object)">
+            <summary>
+            设置为
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.HColumnAttribute">
+            <summary>
+            数据列
+            </summary>
+        </member>
+        <member name="M:Sail.Common.HColumnAttribute.GetRelationValueType(System.Type)">
+            <summary>
+            根据关系类型确定对象类型
+            </summary>
+            <param name="propertyType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.HColumnAttribute.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.IsPrimary">
+            <summary>
+            是否主键
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.Property">
+            <summary>
+            属性名称
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.IsIdentity">
+            <summary>
+            是否自增型
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.IsNullable">
+            <summary>
+            可为空
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.ColumnName">
+            <summary>
+            列名
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.IsUniqueness">
+            <summary>
+            是否唯一
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.IsNotNeedUniqueness">
+            <summary>
+            是否此字段不同时允许重复
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.IsReadonly">
+            <summary>
+            是否只读
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.Length">
+            <summary>
+            长度
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.Precision">
+            <summary>
+            精度
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.Remark">
+            <summary>
+            中文说明
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.ValueType">
+            <summary>
+            值类型（主要是关联值会产生变化）
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.RealType">
+            <summary>
+            真实属性的类型
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.DbType">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.IsIndexKey">
+            <summary>
+            是否索引键
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.RelationType">
+            <summary>
+            关系
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HColumnAttribute.IsGuid">
+            <summary>
+            是否为guid,设为ture的，默认长度为36
+            </summary>
+        </member>
+        <member name="M:Sail.Common.HColumnAttribute.GetLengthString">
+            <summary>
+            获取sql字段长度的字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.HColumnAttribute.GetDbType(Sail.Common.ISqlDialect)">
+            <summary>
+            获取数据库字段类型
+            </summary>
+            <param name="sqlDialect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.HColumnAttribute.GetColumnSql(System.String,Sail.Common.ISqlDialect)">
+            <summary>
+            Gets the column SQL.
+            </summary>
+            <param name="stsql">The STSQL.</param>
+            <param name="sqlDialect">The SQL dialect.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:Sail.Common.HTableAttribute">
+            <summary>
+            表
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HTableAttribute.ViewType">
+            <summary>
+            视图对应类型
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HTableAttribute.FullTableName">
+            <summary>
+            完整表名
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HTableAttribute.Schema">
+            <summary>
+            架构
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HTableAttribute.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HTableAttribute.EntityName">
+            <summary>
+            实体类名
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HTableAttribute.Remark">
+            <summary>
+            中文说明
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HTableAttribute.IsCached">
+            <summary>
+            是否有全局缓存
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HTableAttribute.EntityType">
+            <summary>
+            实体类
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HTableAttribute.PrimaryKey">
+            <summary>
+            主键集合
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HTableAttribute.Columns">
+            <summary>
+            字段集合
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HTableAttribute.IsIntegerPk">
+            <summary>
+            是否整型自增主键
+            </summary>
+        </member>
+        <member name="P:Sail.Common.HTableAttribute.IsGuidPk">
+            <summary>
+            是否guid型主键
+            </summary>
+            <value><c>true</c> if this instance is unique identifier pk; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Sail.Common.HTableAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sail.Common.HTableAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:Sail.Common.HTableAttribute.GetPkField(System.String)">
+            <summary>
+            找到主键字段
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.HTableAttribute.HasField(System.String)">
+            <summary>
+            是否含有指定名称字段
+            </summary>
+            <param name="fieldname">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.HTableAttribute.SetField(Sail.Common.IModel,System.String,System.Object)">
+            <summary>
+            设置指定实体的值(若存在)
+            </summary>
+            <param name="fieldname">字段名</param>
+            <param name="model"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Sail.Common.HTableAttribute.GetModel``1(System.Data.DataRow,Sail.Common.IDataContext,System.String)">
+            <summary>
+            根据datarow获取实体
+            </summary>
+            <param name="dr"></param>
+            <param name="db"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.HTableAttribute.UpdateTable(System.Collections.Generic.List{Sail.Common.HColumnAttribute},Sail.Common.ISqlDialect)">
+            <summary>
+            更新表结构
+            </summary>
+            <param name="dbColumns"></param>
+            <param name="dialect"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.IDataContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sail.Common.CollectionExtensions">
+            <summary>
+            Class CollectionExtensions
+            </summary>
+        </member>
+        <member name="M:Sail.Common.CollectionExtensions.AddUnique``1(System.Collections.Generic.ICollection{``0},``0)">
+            <summary>
+            Adds the unique.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection">The collection.</param>
+            <param name="value">The value.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Sail.Common.CollectionExtensions.AddRangeUnique``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds the range unique.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection">The collection.</param>
+            <param name="values">The values.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Sail.Common.CollectionExtensions.RemoveAll``1(System.Collections.Generic.ICollection{``0},System.Predicate{``0})">
+            <summary>
+            Removes all.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection">The collection.</param>
+            <param name="predicate">The predicate.</param>
+            <exception cref="T:System.ArgumentNullException">collection</exception>
+        </member>
+        <member name="T:Sail.Common.ComparableExtensions">
+            <summary>
+            Class ComparableExtensions
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ComparableExtensions.IsBetween``1(``0,``0,``0,System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Determines whether the specified value is between.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value">The value.</param>
+            <param name="minValue">The min value.</param>
+            <param name="maxValue">The max value.</param>
+            <param name="comparer">The comparer.</param>
+            <returns><c>true</c> if the specified value is between; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Sail.Common.ComparableExtensions.IsBetween``1(System.IComparable{``0},``0,``0,System.Boolean,System.Boolean)">
+            <summary>
+            是否介于……之间
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="t">继承了IComparable的实体</param>
+            <param name="lowerBound">小值</param>
+            <param name="upperBound">大值</param>
+            <param name="includeLowerBound">是否包含小值，默认否</param>
+            <param name="includeUpperBound">是否包含大值，默认否</param>
+            <returns><c>true</c> if the specified t is between; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">被比较的对象不能为空啊</exception>
+        </member>
+        <member name="M:Sail.Common.ComparableExtensions.Restrict``1(``0,``0,``0)">
+            <summary>
+            将对象的值限定在区域内
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="t">The t.</param>
+            <param name="min">The min.</param>
+            <param name="max">The max.</param>
+            <returns>``0.</returns>
+        </member>
+        <member name="T:Sail.Common.DateTimeExtensions">
+            <summary>
+            Class DateTimeExtensions
+            </summary>
+        </member>
+        <member name="F:Sail.Common.DateTimeExtensions.Date1970">
+            <summary>
+            The date1970
+            </summary>
+        </member>
+        <member name="P:Sail.Common.DateTimeExtensions.UtcOffset">
+            <summary>
+            Gets the UTC offset.
+            </summary>
+            <value>The UTC offset.</value>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.CalculateAge(System.DateTime)">
+            <summary>
+            计算截止到当前日期的年龄
+            </summary>
+            <param name="dateOfBirth">The date of birth.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.CalculateAge(System.DateTime,System.DateTime)">
+            <summary>
+            计算年龄
+            </summary>
+            <param name="dateOfBirth">The date of birth.</param>
+            <param name="referenceDate">The reference date.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetCountDaysOfMonth(System.DateTime)">
+            <summary>
+            获取一个月的总天数
+            </summary>
+            <param name="date">The date.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetFirstDayOfMonth(System.DateTime)">
+            <summary>
+            获取月头第一天
+            </summary>
+            <param name="date">The date.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetFirstDayOfMonth(System.DateTime,System.DayOfWeek)">
+            <summary>
+            获取指定月的第一个周几
+            </summary>
+            <param name="date">The date.</param>
+            <param name="dayOfWeek">The day of week.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetLastDayOfMonth(System.DateTime)">
+            <summary>
+            获取一个月的最后一天
+            </summary>
+            <param name="date">The date.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetLastDayOfMonth(System.DateTime,System.DayOfWeek)">
+            <summary>
+            获取指定月的最后一个星期几
+            </summary>
+            <param name="date">The date.</param>
+            <param name="dayOfWeek">The day of week.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.IsToday(System.DateTime)">
+            <summary>
+            判断是否当天
+            </summary>
+            <param name="dt">The dt.</param>
+            <returns><c>true</c> if the specified dt is today; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.SetTime(System.DateTime,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            对日期设置时间（时、分、秒、毫秒）
+            </summary>
+            <param name="date">The date.</param>
+            <param name="hours">小时</param>
+            <param name="minutes">分钟</param>
+            <param name="seconds">秒</param>
+            <param name="ms">毫秒</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.SetTime(System.DateTime,System.TimeSpan)">
+            <summary>
+            对时间设置时间间隔
+            </summary>
+            <param name="date">The date.</param>
+            <param name="time">The time.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.ToDateTimeOffset(System.DateTime)">
+            <summary>
+            To the date time offset.
+            </summary>
+            <param name="localDateTime">The local date time.</param>
+            <returns>DateTimeOffset.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.ToDateTimeOffset(System.DateTime,System.TimeZoneInfo)">
+            <summary>
+            To the date time offset.
+            </summary>
+            <param name="localDateTime">The local date time.</param>
+            <param name="localTimeZone">The local time zone.</param>
+            <returns>DateTimeOffset.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetFirstDayOfWeek(System.DateTime)">
+            <summary>
+            Gets the first day of week.
+            </summary>
+            <param name="date">The date.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetFirstDayOfWeek(System.DateTime,System.Globalization.CultureInfo)">
+            <summary>
+            Gets the first day of week.
+            </summary>
+            <param name="date">The date.</param>
+            <param name="cultureInfo">The culture info.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetLastDayOfWeek(System.DateTime)">
+            <summary>
+            Gets the last day of week.
+            </summary>
+            <param name="date">The date.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetLastDayOfWeek(System.DateTime,System.Globalization.CultureInfo)">
+            <summary>
+            Gets the last day of week.
+            </summary>
+            <param name="date">The date.</param>
+            <param name="cultureInfo">The culture info.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetWeeksWeekday(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Gets the weeks weekday.
+            </summary>
+            <param name="date">The date.</param>
+            <param name="weekday">The weekday.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetWeeksWeekday(System.DateTime,System.DayOfWeek,System.Globalization.CultureInfo)">
+            <summary>
+            Gets the weeks weekday.
+            </summary>
+            <param name="date">The date.</param>
+            <param name="weekday">The weekday.</param>
+            <param name="cultureInfo">The culture info.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetNextWeekday(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Gets the next weekday.
+            </summary>
+            <param name="date">The date.</param>
+            <param name="weekday">The weekday.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.GetPreviousWeekday(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Gets the previous weekday.
+            </summary>
+            <param name="date">The date.</param>
+            <param name="weekday">The weekday.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.WeekOfYear(System.DateTime)">
+            <summary>
+            返回该日期是一年中第几周
+            </summary>
+            <param name="dt">The dt.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.DateOfWeek(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            返回某年第几周星期几的日期
+            </summary>
+            <param name="dyear">The dyear.</param>
+            <param name="dweek">The dweek.</param>
+            <param name="dweekday">The dweekday.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.ToString(System.Nullable{System.DateTime},System.String)">
+            <summary>
+            日期转换到字符
+            </summary>
+            <param name="date">The date.</param>
+            <param name="fmt">The FMT.</param>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.ToDateString(System.DateTime)">
+            <summary>
+            转换为日期字符串(yyyy-MM-dd)
+            </summary>
+            <param name="dt">The dt.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.ToDateString(System.Nullable{System.DateTime})">
+            <summary>
+            转换为日期字符串(yyyy-MM-dd)
+            </summary>
+            <param name="dt">The dt.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.ToDateTime(System.DateTime)">
+            <summary>
+            转换为日期+时间
+            </summary>
+            <param name="dt">The dt.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.DateTimeExtensions.ToDateTime(System.Nullable{System.DateTime})">
+            <summary>
+            转换为日期+时间
+            </summary>
+            <param name="dt">The dt.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:Sail.Common.DictionaryExtesions">
+            <summary>
+            Class DictionaryExtensions
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DictionaryExtesions.Sort``2(System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            Sorts the specified dictionary.
+            </summary>
+            <typeparam name="TKey">The type of the T key.</typeparam>
+            <typeparam name="TValue">The type of the T value.</typeparam>
+            <param name="dictionary">The dictionary.</param>
+            <returns>IDictionary{``0``1}.</returns>
+            <exception cref="T:System.ArgumentNullException">dictionary</exception>
+        </member>
+        <member name="M:Sail.Common.DictionaryExtesions.ForEach``2(System.Collections.Generic.IDictionary{``0,``1},System.Action{System.Collections.Generic.KeyValuePair{``0,``1}})">
+            <summary>
+            给字典加上循环方法
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="dictionary"></param>
+            <param name="act"></param>
+        </member>
+        <member name="M:Sail.Common.DictionaryExtesions.Sort``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Sorts the specified dictionary.
+            </summary>
+            <typeparam name="TKey">The type of the T key.</typeparam>
+            <typeparam name="TValue">The type of the T value.</typeparam>
+            <param name="dictionary">The dictionary.</param>
+            <param name="comparer">The comparer.</param>
+            <returns>IDictionary{``0``1}.</returns>
+            <exception cref="T:System.ArgumentNullException">dictionary</exception>
+        </member>
+        <member name="M:Sail.Common.DictionaryExtesions.SortByValue``2(System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            Sorts the by value.
+            </summary>
+            <typeparam name="TKey">The type of the T key.</typeparam>
+            <typeparam name="TValue">The type of the T value.</typeparam>
+            <param name="dictionary">The dictionary.</param>
+            <returns>IDictionary{``0``1}.</returns>
+        </member>
+        <member name="M:Sail.Common.DictionaryExtesions.Invert``2(System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            Inverts the specified dictionary.
+            </summary>
+            <typeparam name="TKey">The type of the T key.</typeparam>
+            <typeparam name="TValue">The type of the T value.</typeparam>
+            <param name="dictionary">The dictionary.</param>
+            <returns>IDictionary{``1``0}.</returns>
+            <exception cref="T:System.ArgumentNullException">dictionary</exception>
+        </member>
+        <member name="M:Sail.Common.DictionaryExtesions.ToHashTable``2(System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            To the hash table.
+            </summary>
+            <typeparam name="TKey">The type of the T key.</typeparam>
+            <typeparam name="TValue">The type of the T value.</typeparam>
+            <param name="dictionary">The dictionary.</param>
+            <returns>Hashtable.</returns>
+        </member>
+        <member name="T:Sail.Common.DirectoryInfoExtensions">
+            <summary>
+            Class DirectoryInfoExtensions
+            </summary>
+        </member>
+        <member name="M:Sail.Common.DirectoryInfoExtensions.FindFilesRecursive(System.IO.DirectoryInfo,System.String,System.Collections.Generic.List{System.IO.FileInfo})">
+            <summary>
+            Finds the files recursive.
+            </summary>
+            <param name="directory">The directory.</param>
+            <param name="pattern">The pattern.</param>
+            <param name="foundFiles">The found files.</param>
+        </member>
+        <member name="M:Sail.Common.DirectoryInfoExtensions.FindFilesRecursive(System.IO.DirectoryInfo,System.Func{System.IO.FileInfo,System.Boolean},System.Collections.Generic.List{System.IO.FileInfo})">
+            <summary>
+            Finds the files recursive.
+            </summary>
+            <param name="directory">The directory.</param>
+            <param name="predicate">The predicate.</param>
+            <param name="foundFiles">The found files.</param>
+        </member>
+        <member name="M:Sail.Common.DirectoryInfoExtensions.GetFiles(System.IO.DirectoryInfo,System.String[])">
+            <summary>
+            Gets the files.
+            </summary>
+            <param name="directory">The directory.</param>
+            <param name="patterns">The patterns.</param>
+            <returns>FileInfo[][].</returns>
+        </member>
+        <member name="M:Sail.Common.DirectoryInfoExtensions.FindFiles(System.IO.DirectoryInfo,System.String)">
+            <summary>
+            Finds the files recursive.
+            </summary>
+            <param name="directory">The directory.</param>
+            <param name="pattern">The pattern.</param>
+            <returns>FileInfo[][].</returns>
+        </member>
+        <member name="M:Sail.Common.DirectoryInfoExtensions.FindFiles(System.IO.DirectoryInfo,System.Func{System.IO.FileInfo,System.Boolean})">
+            <summary>
+            Finds the files recursive.
+            </summary>
+            <param name="directory">The directory.</param>
+            <param name="predicate">The predicate.</param>
+            <returns>List{FileInfo}.</returns>
+        </member>
+        <member name="T:Sail.Common.EnumerableExtensions">
+            <summary>
+            Class EnumerableExtensions
+            </summary>
+        </member>
+        <member name="M:Sail.Common.EnumerableExtensions.Find``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            查找一个对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list">The list.</param>
+            <param name="predicate">The predicate.</param>
+            <returns>``0.</returns>
+        </member>
+        <member name="M:Sail.Common.EnumerableExtensions.FindList``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            查找一批对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list">The list.</param>
+            <param name="predicate">The predicate.</param>
+            <returns>List{``0}.</returns>
+        </member>
+        <member name="M:Sail.Common.EnumerableExtensions.Distinct``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            去重
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TV"></typeparam>
+            <param name="source"></param>
+            <param name="keySelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.EnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{System.Int32,``0})">
+            <summary>
+            带索引的foreach
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="act"></param>
+        </member>
+        <member name="M:Sail.Common.EnumerableExtensions.RemoveAll``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            Removes all.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The source.</param>
+            <param name="predicate">The predicate.</param>
+            <returns>IEnumerable{``0}.</returns>
+        </member>
+        <member name="T:Sail.Common.FileHelper">
+            <summary>
+            Class FileInfoExtensions
+            </summary>
+        </member>
+        <member name="M:Sail.Common.FileHelper.GetCpuId">
+            <summary>
+            取CPU编号
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.GetHardDiskId">
+            <summary>
+            取第一块硬盘编号
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.GetHDid">
+              <summary>
+              获取硬盘型号
+              </summary>
+              <returns> string </returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.GetNetCardMac">
+            <summary>
+            获取网卡MAC地址
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.GetPortNames">
+            <summary>
+            串口函数(方法需调用注册表,串口编程所用类)
+            </summary>
+            <returns>返回此计算机串口数组</returns>
+            使用命名空间：
+            using System.Security;
+            using System.Security.Permissions;
+        </member>
+        <member name="M:Sail.Common.FileHelper.ReadTextFile(System.String)">
+            <summary>
+            读取文本文件，按照utf8格式
+            </summary>
+            <param name="fileName">Name of the file.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.ReadTextFile(System.String,System.Text.Encoding)">
+            <summary>
+            ReadTextFile
+            </summary>
+            <param name="fileName">文件路径</param>
+            <param name="encoding">编码</param>
+            <returns>文本内容</returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.WriteTextFile(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            写入文本到指定文件，按照utf8格式
+            </summary>
+            <param name="fileName">Name of the file.</param>
+            <param name="text">The text.</param>
+            <param name="isAppend">if set to <c>true</c> [is append].</param>
+            <param name="isCreateDir">if set to <c>true</c> [is create dir].</param>
+        </member>
+        <member name="M:Sail.Common.FileHelper.WriteTextFile(System.String,System.String,System.Text.Encoding,System.Boolean,System.Boolean)">
+            <summary>
+            WriteTextFile
+            </summary>
+            <param name="fileName">文件路径</param>
+            <param name="text">文本内容</param>
+            <param name="encoding">编码</param>
+            <param name="isAppend">是否添加到文本后面</param>
+            <param name="isCreateDir">是否创建目录</param>
+        </member>
+        <member name="M:Sail.Common.FileHelper.ReadExcel(System.String,System.String)">
+            <summary>
+            读取excel单元表
+            </summary>
+            <param name="filename">The filename.</param>
+            <param name="table">The tablename.</param>
+            <returns>DataSet.</returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.ReadAccess(System.String,System.String)">
+            <summary>
+            读取access文件
+            </summary>
+            <param name="filename"></param>
+            <param name="tablename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.Rename(System.IO.FileInfo,System.String)">
+            <summary>
+            Renames the specified file.
+            </summary>
+            <param name="file">The file.</param>
+            <param name="newName">The new name.</param>
+            <returns>FileInfo.</returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.RenameFileWithoutExtension(System.IO.FileInfo,System.String)">
+            <summary>
+            Renames the file without extension.
+            </summary>
+            <param name="file">The file.</param>
+            <param name="newName">The new name.</param>
+            <returns>FileInfo.</returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.ChangeExtension(System.IO.FileInfo,System.String)">
+            <summary>
+            Changes the extension.
+            </summary>
+            <param name="file">The file.</param>
+            <param name="newExtension">The new extension.</param>
+            <returns>FileInfo.</returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.CopyFile(System.String,System.String,System.Boolean)">
+            <summary>
+            拷贝文件
+            </summary>
+            <param name="sourceFileName">源文件名</param>
+            <param name="destFileName">目标文件名</param>
+            <param name="overwrite">当目标文件存在时是否覆盖</param>
+            <returns>操作是否成功</returns>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+        </member>
+        <member name="M:Sail.Common.FileHelper.CopyFilesDirs(System.String,System.String)">
+            <summary>
+            拷贝文件夹
+            </summary>
+            <param name="source">The source.</param>
+            <param name="dest">The dest.</param>
+        </member>
+        <member name="M:Sail.Common.FileHelper.FileExists(System.String)">
+            <summary>
+            返回文件是否存在
+            </summary>
+            <param name="filename">文件名</param>
+            <returns>是否存在</returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.CreateDir(System.String)">
+            <summary>
+            创建文件夹
+            </summary>
+            <param name="dirName">Name of the dir.</param>
+        </member>
+        <member name="M:Sail.Common.FileHelper.DeleteFile(System.String)">
+            <summary>
+            删除文件
+            </summary>
+            <param name="filePath">文件的物理地址</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.DeleteDir(System.String)">
+            <summary>
+            删除文件夹
+            </summary>
+            <param name="dirPath">文件夹名称</param>
+            <returns>删除是否成功</returns>
+        </member>
+        <member name="M:Sail.Common.FileHelper.GetRandomFileName(System.String)">
+            <summary>
+            获取随机的上传文件名称
+            </summary>
+            <param name="srcFileName">源文件名</param>
+            <returns>生成的随机文件名</returns>
+        </member>
+        <member name="T:Sail.Common.IntExtensions">
+            <summary>
+            Class IntExtensions
+            </summary>
+        </member>
+        <member name="M:Sail.Common.IntExtensions.Times(System.Int32,System.Action)">
+            <summary>
+            Timeses the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:Sail.Common.IntExtensions.Times(System.Int32,System.Action{System.Int32})">
+            <summary>
+            Timeses the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:Sail.Common.IntExtensions.IsEven(System.Int32)">
+            <summary>
+            Determines whether the specified value is even.
+            </summary>
+            <param name="value">The value.</param>
+            <returns><c>true</c> if the specified value is even; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Sail.Common.IntExtensions.IsOdd(System.Int32)">
+            <summary>
+            Determines whether the specified value is odd.
+            </summary>
+            <param name="value">The value.</param>
+            <returns><c>true</c> if the specified value is odd; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Sail.Common.ListExtensions">
+            <summary>
+            Class ListExtensions
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ListExtensions.IndexOf``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Indexes the of.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list">The list.</param>
+            <param name="comparison">The comparison.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="T:Sail.Common.ModuleCast">
+            <summary>
+            对象转换法
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ModuleCast.GetCast(System.Type,System.Type)">
+            <summary>
+            获取要转换的当前转换类实例
+            </summary>
+            <param name="sourceType">要转换的源类型</param>
+            <param name="targetType">目标类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ModuleCast.#ctor(System.Type,System.Type)">
+            <summary>
+            以两个要转换的类型作为构造函数，构造一个对应的转换类
+            </summary>
+            <param name="sourceType"></param>
+            <param name="targetType"></param>
+        </member>
+        <member name="M:Sail.Common.ModuleCast.Cast(System.Object,System.Object,System.String[])">
+            <summary>
+            将源类型的属性值转换给目标类型同名的属性，排除要过滤的属性名称
+            </summary>
+            <param name="source"></param>
+            <param name="target"></param>
+            <param name="filter">要过滤的属性名称</param>
+        </member>
+        <member name="T:Sail.Common.ModuleCast.CastProperty">
+            <summary>
+            转换属性对象
+            </summary>
+        </member>
+        <member name="T:Sail.Common.ModuleCast.PropertyAccessorHandler">
+            <summary>
+            属性访问器
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ModuleCast.PropertyAccessorHandler.#ctor(System.Reflection.PropertyInfo)">
+            <summary>
+            
+            </summary>
+            <param name="propInfo"></param>
+        </member>
+        <member name="P:Sail.Common.ModuleCast.PropertyAccessorHandler.PropertyName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sail.Common.ModuleCast.PropertyAccessorHandler.Getter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sail.Common.ModuleCast.PropertyAccessorHandler.Setter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sail.Common.ObjectExtensions">
+            <summary>
+            对象扩展
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ObjectExtensions.IsNull(System.Object)">
+            <summary>
+            检测对象是否为空，为空返回true
+            </summary>
+            <param name="data">The data.</param>
+            <returns><c>true</c> if the specified data is null; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Sail.Common.ObjectExtensions.IsNotNull(System.Object)">
+            <summary>
+            检查对象是否不为空，为空返回false
+            </summary>
+            <param name="data">The data.</param>
+            <returns><c>true</c> if [is not null] [the specified data]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Sail.Common.ObjectExtensions.ConvertTo``1(System.Object)">
+            <summary>
+            转换为指定类型
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ObjectExtensions.ConvertTo``1(System.Object,``0)">
+            <summary>
+            转换为指定类型
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ObjectExtensions.InvokeMethod``1(System.Object,System.String,System.Object[])">
+            <summary>
+            动态调用方法
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="methodName"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ObjectExtensions.CastTo``1(System.Object)">
+            <summary>
+            转为指定类型
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ObjectExtensions.AsString(System.Object)">
+            <summary>
+            转为字符串
+            </summary>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ObjectExtensions.AsString(System.Object,System.IFormatProvider)">
+            <summary>
+            转为字符串
+            </summary>
+            <param name="target"></param>
+            <param name="formatProvider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ObjectExtensions.ToDynamic(System.Object)">
+            <summary>
+            把对象转换成动态对象
+            </summary>
+            <param name="obj">要转换的对象</param>
+            <returns>转换成功后返回一个dynamic对象，可以动态给他添加属性</returns>
+        </member>
+        <member name="M:Sail.Common.ObjectExtensions.DynamicCast(System.Object,System.Type)">
+            <summary>
+            动态转换
+            </summary>
+            <param name="obj"></param>
+            <param name="targetType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ObjectExtensions.Clone``1(``0)">
+            <summary>
+            生成对象的clone
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ObjectExtensions.CopyTo``1(System.Object,``0,System.String[])">
+            <summary>
+            把对象值复制给另一个对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="target"></param>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.StreamExtensions">
+            <summary>
+            Class StreamExtensions
+            </summary>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.GetReader(System.IO.Stream)">
+            <summary>
+            Gets the reader.
+            </summary>
+            <param name="stream">The stream.</param>
+            <returns>StreamReader.</returns>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.GetReader(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Gets the reader.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="encoding">The encoding.</param>
+            <returns>StreamReader.</returns>
+            <exception cref="T:System.InvalidOperationException">Stream does not support reading.</exception>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.GetWriter(System.IO.Stream)">
+            <summary>
+            Gets the writer.
+            </summary>
+            <param name="stream">The stream.</param>
+            <returns>StreamWriter.</returns>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.GetWriter(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Gets the writer.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="encoding">The encoding.</param>
+            <returns>StreamWriter.</returns>
+            <exception cref="T:System.InvalidOperationException">Stream does not support writing.</exception>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.ReadToEnd(System.IO.Stream)">
+            <summary>
+            Reads to end.
+            </summary>
+            <param name="stream">The stream.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.ReadToEnd(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Reads to end.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="encoding">The encoding.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.SeekToBegin(System.IO.Stream)">
+            <summary>
+            Seeks to begin.
+            </summary>
+            <param name="stream">The stream.</param>
+            <returns>Stream.</returns>
+            <exception cref="T:System.InvalidOperationException">Stream does not support seeking.</exception>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.SeekToEnd(System.IO.Stream)">
+            <summary>
+            Seeks to end.
+            </summary>
+            <param name="stream">The stream.</param>
+            <returns>Stream.</returns>
+            <exception cref="T:System.InvalidOperationException">Stream does not support seeking.</exception>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.CopyTo(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Copies to.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="targetStream">The target stream.</param>
+            <returns>Stream.</returns>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.CopyTo(System.IO.Stream,System.IO.Stream,System.Int32)">
+            <summary>
+            Copies to.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="targetStream">The target stream.</param>
+            <param name="bufferSize">Size of the buffer.</param>
+            <returns>Stream.</returns>
+            <exception cref="T:System.InvalidOperationException">Source stream does not support reading.</exception>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.CopyToMemory(System.IO.Stream)">
+            <summary>
+            Copies to memory.
+            </summary>
+            <param name="stream">The stream.</param>
+            <returns>MemoryStream.</returns>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.ReadAllBytes(System.IO.Stream)">
+            <summary>
+            Reads all bytes.
+            </summary>
+            <param name="stream">The stream.</param>
+            <returns>System.Byte[][].</returns>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.ReadFixedBuffersize(System.IO.Stream,System.Int32)">
+            <summary>
+            Reads the fixed buffersize.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="bufsize">The bufsize.</param>
+            <returns>System.Byte[][].</returns>
+        </member>
+        <member name="M:Sail.Common.StreamExtensions.Write(System.IO.Stream,System.Byte[])">
+            <summary>
+            Writes the specified stream.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="bytes">The bytes.</param>
+        </member>
+        <member name="T:Sail.Common.StringExtensions">
+            <summary>
+            Class StringExtensions
+            </summary>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToStream(System.String)">
+            <summary>
+            To the stream.
+            </summary>
+            <param name="s">The s.</param>
+            <returns>Stream.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToInt(System.Collections.Generic.List{System.String})">
+            <summary>
+            把字符串list转换成int类型的object的list，为了数据库操作传参用
+            </summary>
+            <param name="stringList">The string list.</param>
+            <returns>List{System.Object}.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToBytes(System.String,System.Text.Encoding)">
+            <summary>
+            使用指定字符集将String转换为Bytes
+            </summary>
+            <param name="text">The text.</param>
+            <param name="encoding">编码集</param>
+            <returns>System.Byte[].</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToString(System.Byte[],System.Text.Encoding)">
+            <summary>
+            使用指定字符集将byte[]转换成string
+            </summary>
+            <param name="bytes">The bytes.</param>
+            <param name="encoding">编码集</param>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.JoinToString``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            把可列举的对象拼成一个逗号分隔的字符串
+            </summary>
+            <param name="intList">The int list.</param>
+            <param name="splitChar">The split char.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.SplitInt(System.String)">
+            <summary>
+            把字符串用逗号分割的，弄成一个int数组,空字符串和0会被忽略
+            </summary>
+            <param name="str">The STR.</param>
+            <returns>System.Int32[][].</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToQuotes(System.String,System.String)">
+            <summary>
+            将字符串用符号包起来，如str转换成"str"
+            </summary>
+            <param name="str">字符串</param>
+            <param name="quotes">符号，默认是引号</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.IsEncrypt(System.String)">
+            <summary>
+            判断是否为base64字符串
+            </summary>
+            <param name="str">The STR.</param>
+            <returns><c>true</c> if the specified STR is encrypt; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.DeleteLastChar(System.String,System.String)">
+            <summary>
+            如果是以某字符结尾的，则删除,否则返回字符串本身
+            </summary>
+            <param name="str">The STR.</param>
+            <param name="ch">The ch.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToDouble(System.String,System.Double)">
+            <summary>
+            字符串转Double
+            </summary>
+            <param name="str">The STR.</param>
+            <param name="defaultValue">缺省值，默认为0.00</param>
+            <returns>System.Double.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToDecimal(System.String,System.Decimal)">
+            <summary>
+            转换为Decimal
+            </summary>
+            <param name="str">The STR.</param>
+            <param name="defaultValue">缺省值</param>
+            <returns>System.Decimal.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToLong(System.String,System.Int64)">
+            <summary>
+            转换为long
+            </summary>
+            <param name="str">The STR.</param>
+            <param name="defaultValue">缺省值</param>
+            <returns>System.Int64.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToInt(System.String,System.Int32)">
+            <summary>
+            字符串转Int
+            </summary>
+            <param name="str">The STR.</param>
+            <param name="defaultValue">缺省值</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToBoolean(System.String)">
+            <summary>
+            字符串转Bool
+            </summary>
+            <param name="str">The STR.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToDateTime(System.String)">
+            <summary>
+            字符串转日期可为空
+            </summary>
+            <param name="str">The STR.</param>
+            <returns>System.Nullable{DateTime}.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToDate(System.String,System.DateTime)">
+            <summary>
+            字符串转日期型
+            </summary>
+            <param name="str">The STR.</param>
+            <param name="defaultValue">缺省值</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToDate(System.String)">
+            <summary>
+            字符转换成DateTime类
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.IsChinese(System.Char)">
+            <summary>
+            是否为汉字
+            </summary>
+            <param name="chr">The CHR.</param>
+            <returns><c>true</c> if the specified CHR is chinese; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.GetByteLength(System.String)">
+            <summary>
+            获取字符串的字节长度
+            </summary>
+            <param name="str">The STR.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.SubStringByByte(System.String,System.Int32,System.Int32)">
+            <summary>
+            中英文混合字符串截取指定长度,startidx从0开始
+            </summary>
+            <param name="str">The STR.</param>
+            <param name="len">The len.</param>
+            <param name="startidx">The startidx.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.GetPyCode(System.String)">
+            <summary>
+            获取拼音首字母
+            </summary>
+            <param name="cnStr">The cn STR.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.GetFullPy(System.String)">
+            <summary>
+            获取拼音
+            </summary>
+            <param name="cn">The cn.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.RemoveHtmlTag(System.String)">
+            <summary>
+            删除HTML代码
+            </summary>
+            <param name="value">The value.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.FullFileName(System.String)">
+            <summary>
+            根据～/开头的相对路径返回绝对路径
+            </summary>
+            <param name="path">The path.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.FormatWith(System.String,System.Object[])">
+            <summary>
+            Formats the specified STR.
+            </summary>
+            <param name="str">The STR.</param>
+            <param name="objects">The objects.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.Remove(System.String,System.String[])">
+            <summary>
+            Removes the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="strings">The strings.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToBase64(System.String)">
+            <summary>
+            Encodes the base64.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.ToBase64(System.String,System.Text.Encoding)">
+            <summary>
+            Encodes the base64.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="encoding">The encoding.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.FromBase64(System.String)">
+            <summary>
+            Decodes the base64.
+            </summary>
+            <param name="encodedValue">The encoded value.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Sail.Common.StringExtensions.FromBase64(System.String,System.Text.Encoding)">
+            <summary>
+            Decodes the base64.
+            </summary>
+            <param name="encodedValue">The encoded value.</param>
+            <param name="encoding">The encoding.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:Sail.Common.TypeExtensions">
+            <summary>
+            Class TypeExtensions
+            </summary>
+        </member>
+        <member name="M:Sail.Common.TypeExtensions.CreateInstance(System.Type,System.Object[])">
+            <summary>
+            Creates the instance.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="constructorParameters">The constructor parameters.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:Sail.Common.TypeExtensions.CreateInstance``1(System.Type,System.Object[])">
+            <summary>
+            Creates the instance.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="type">The type.</param>
+            <param name="constructorParameters">The constructor parameters.</param>
+            <returns>``0.</returns>
+        </member>
+        <member name="M:Sail.Common.TypeExtensions.CreateGenericTypeInstance``1(System.Type,System.Type[])">
+            <summary>
+            Creates the generic type instance.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="genericType">Type of the generic.</param>
+            <param name="typeArguments">The type arguments.</param>
+            <returns>``0.</returns>
+        </member>
+        <member name="M:Sail.Common.TypeExtensions.IsBaseType(System.Type,System.Type)">
+            <summary>
+            Determines whether [is base type] [the specified type].
+            </summary>
+            <param name="type">The type.</param>
+            <param name="checkingType">Type of the checking.</param>
+            <returns><c>true</c> if [is base type] [the specified type]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Sail.Common.TypeExtensions.IsSubclassOfRawGeneric(System.Type,System.Type)">
+            <summary>
+            Determines whether [is subclass of raw generic] [the specified generic].
+            </summary>
+            <param name="generic">The generic.</param>
+            <param name="toCheck">To check.</param>
+            <returns><c>true</c> if [is subclass of raw generic] [the specified generic]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Sail.Common.TypeExtensions.Change(System.Object,System.Type)">
+            <summary>
+            类型转换
+            </summary>
+            <param name="value"></param>
+            <param name="conversionType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.TypeExtensions.ChangeType(System.Object,System.Type)">
+            <summary>
+            数据类型转换
+            </summary>
+            <param name="value"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.TypeExtensions.IsBaseType(System.Type)">
+            <summary>
+            判断是否为值类型/字符串/枚举
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.TypeExtensions.IsGenericList(System.Type)">
+            <summary>
+            是否泛型list
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:Sail.Common.AjaxResult">
+            <summary>
+            ajax返回结果
+            </summary>
+        </member>
+        <member name="P:Sail.Common.AjaxResult.IsSuccess">
+            <summary>
+            是否成功
+            </summary>
+        </member>
+        <member name="P:Sail.Common.AjaxResult.Msg">
+            <summary>
+            信息
+            </summary>
+        </member>
+        <member name="P:Sail.Common.AjaxResult.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:Sail.Common.AjaxResult.Exception">
+            <summary>
+            异常
+            </summary>
+        </member>
+        <member name="T:Sail.Common.BaseConfig`1">
+            <summary>
+            配置类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Sail.Common.BaseConfig`1.Default">
+            <summary>
+            默认配置
+            </summary>
+        </member>
+        <member name="M:Sail.Common.BaseConfig`1.Config(`0)">
+            <summary>
+            设置默认配置
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="T:Sail.Common.IPower">
+            <summary>
+            权限接口
+            </summary>
+        </member>
+        <member name="M:Sail.Common.IPower.IsHasPower(System.String)">
+            <summary>
+            是否有指定的权限
+            </summary>
+            <param name="powerName">Name of the power.</param>
+            <returns><c>true</c> if [is has power] [the specified power name]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="P:Sail.Common.IPower.IsSuperAdmin">
+            <summary>
+            是否超级管理员
+            </summary>
+        </member>
+        <member name="T:Sail.Common.ISail">
+            <summary>
+            SailHelper接口
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ISail.GetRealIp">
+            <summary>
+            获取ip
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Sail.Common.ISail.CurrentAdmin">
+            <summary>
+            当前管理员用户
+            </summary>
+        </member>
+        <member name="P:Sail.Common.ISail.CurrentUser">
+            <summary>
+            当前用户
+            </summary>
+        </member>
+        <member name="P:Sail.Common.ISail.HttpCurrent">
+            <summary>
+            当前上下文
+            </summary>
+        </member>
+        <member name="T:Sail.Common.ImageExtension">
+            <summary>
+            图像帮助类
+            </summary>
+        </member>
+        <member name="T:Sail.Common.ImageExtension.ThumbnailMode">
+            <summary>
+            缩略图模式
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ImageExtension.ThumbnailMode.HightAndWidth">
+            <summary>
+            指定高宽缩放（可能变形）
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ImageExtension.ThumbnailMode.Width">
+            <summary>
+            指定宽，高按比例
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ImageExtension.ThumbnailMode.Height">
+            <summary>
+            指定高，宽按比例
+            </summary>
+        </member>
+        <member name="F:Sail.Common.ImageExtension.ThumbnailMode.Cut">
+            <summary>
+            指定高宽裁减（不变形）
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ImageExtension.MakeThumbnail(System.String,System.String,System.Int32,System.Int32,Sail.Common.ImageExtension.ThumbnailMode)">
+            <summary>
+            生成缩略图
+            </summary>
+            <param name="originalImagePath">源图路径（物理路径）</param>
+            <param name="thumbnailPath">缩略图路径（物理路径）</param>
+            <param name="width">缩略图宽度</param>
+            <param name="height">缩略图高度</param>
+            <param name="mode">生成缩略图的方式</param>
+        </member>
+        <member name="M:Sail.Common.ImageExtension.MakeImage(System.Drawing.Image,System.Func{System.Int32,System.Int32,System.Drawing.Color})">
+            <summary>
+            根据老图片生成新图片
+            </summary>
+            <param name="oldImg">原始图片</param>
+            <param name="bmpFunc">对原始图片的操作</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ImageExtension.ResizeImage(System.Drawing.Bitmap,System.Int32,System.Int32)">
+            <summary>
+            拉伸图片
+            </summary>
+            <param name="myBmp">原始图片</param>
+            <param name="newW">新的宽度</param>
+            <param name="newH">新的高度</param>
+        </member>
+        <member name="T:Sail.Common.ITimestamp">
+            <summary>
+            时间戳
+            </summary>
+        </member>
+        <member name="P:Sail.Common.ITimestamp.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Sail.Common.ITimestamp.LastUpdateTime">
+            <summary>
+            最后更新时间
+            </summary>
+        </member>
+        <member name="T:Sail.Common.IModel">
+            <summary>
+            数据实体接口
+            </summary>
+        </member>
+        <member name="T:Sail.Common.ModalProvider`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Sail.Common.ModalProvider`1.CreateQuery(System.Linq.Expressions.Expression)">
+            <summary>
+            
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ModalProvider`1.CreateQuery``1(System.Linq.Expressions.Expression)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TElement"></typeparam>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ModalProvider`1.Execute(System.Linq.Expressions.Expression)">
+            <summary>
+            
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ModalProvider`1.Execute``1(System.Linq.Expressions.Expression)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.IUser">
+            <summary>
+            用户接口
+            </summary>
+        </member>
+        <member name="P:Sail.Common.IUser.UserId">
+            <summary>
+            用户id
+            </summary>
+            <value>The user identifier.</value>
+        </member>
+        <member name="P:Sail.Common.IUser.LoginId">
+            <summary>
+            登录Id
+            </summary>
+            <value>The login identifier.</value>
+        </member>
+        <member name="P:Sail.Common.IUser.UserName">
+            <summary>
+            用户名
+            </summary>
+            <value>The name of the user.</value>
+        </member>
+        <member name="P:Sail.Common.IUser.Password">
+            <summary>
+            用户密码
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="T:Sail.Common.ModelExtension">
+            <summary>
+            实体扩展类
+            </summary>
+            <summary>
+            获取实体主键值
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ModelExtension.GetModelId(Sail.Common.IModel)">
+            <summary>
+            获取Id
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ModelExtension.IsNew(Sail.Common.IModel)">
+            <summary>
+            是否新增实体
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ModelExtension.GetPrimaryKey(Sail.Common.IModel)">
+            <summary>
+            获取主键
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ModelExtension.GetPrimaryKeyName(Sail.Common.IModel)">
+            <summary>
+            获取主键名称
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.ObjectFactory">
+            <summary>
+            创建对象的工厂
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ObjectFactory.#cctor">
+            <summary>
+            构造读取xml
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ObjectFactory.Register(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            注册对象
+            </summary>
+            <param name="name">名称</param>
+            <param name="classname">类名</param>
+            <param name="typename"></param>
+            <param name="isSigletion">是否单例</param>
+        </member>
+        <member name="M:Sail.Common.ObjectFactory.GetContent(System.String,System.Object[])">
+            <summary>
+            获取实例
+            </summary>
+            <param name="name">对象名</param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ObjectFactory.GetContent``1(System.String,System.Object[])">
+            <summary>
+            根据类型获取
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ObjectFactory.SetContent``1(System.Object)">
+            <summary>
+            设置对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+        </member>
+        <member name="M:Sail.Common.ObjectFactory.ContentIsExits(System.String)">
+            <summary>
+            对象是否存在
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ObjectFactory.ContentIsExits``1(System.String)">
+            <summary>
+            指定类型的对象是否存在
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.ObjectContent">
+            <summary>
+            对象内容
+            </summary>
+        </member>
+        <member name="P:Sail.Common.ObjectContent.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Sail.Common.ObjectContent.ObjectClass">
+            <summary>
+            注入的实体类型
+            </summary>
+        </member>
+        <member name="P:Sail.Common.ObjectContent.Type">
+            <summary>
+            被注入的类型
+            </summary>
+        </member>
+        <member name="P:Sail.Common.ObjectContent.DefaultObject">
+            <summary>
+            默认对象
+            </summary> 
+        </member>
+        <member name="P:Sail.Common.ObjectContent.IsSigleton">
+            <summary>
+            是否单例
+            </summary>
+        </member>
+        <member name="P:Sail.Common.PageNumber.PageIndex">
+            <summary>
+            当前页数
+            </summary>
+        </member>
+        <member name="P:Sail.Common.PageNumber.PageSize">
+            <summary>
+            每页行数
+            </summary>
+        </member>
+        <member name="P:Sail.Common.PageNumber.Count">
+            <summary>
+            记录总数
+            </summary>
+        </member>
+        <member name="P:Sail.Common.PageNumber.PageCount">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="P:Sail.Common.PageNumber.StartIndex">
+            <summary>
+            第一个显示的页数
+            </summary>
+        </member>
+        <member name="P:Sail.Common.PageNumber.EndIndex">
+            <summary>
+            最后一个显示的页数
+            </summary>
+        </member>
+        <member name="T:Sail.Common.SailCommonException">
+            <summary>
+            框架层异常
+            </summary>
+        </member>
+        <member name="T:Sail.Common.ExpandableQuery`1">
+            <summary>
+            An IQueryable wrapper that allows us to visit the query's expression tree just before LINQ to SQL gets to it.
+            This is based on the excellent work of Tomas Petricek: http://tomasp.net/blog/linq-expand.aspx
+            </summary>
+        </member>
+        <member name="T:Sail.Common.ExpressionExpander">
+            <summary>
+            Custom expresssion visitor for ExpandableQuery. This expands calls to Expression.Compile() and
+            collapses captured lambda references in subqueries which LINQ to SQL can't otherwise handle.
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ExpressionExpander.VisitInvocation(System.Linq.Expressions.InvocationExpression)">
+            <summary>
+            Flatten calls to Invoke so that Entity Framework can understand it. Calls to Invoke are generated
+            by PredicateBuilder.
+            </summary>
+        </member>
+        <member name="T:Sail.Common.ExpressionVisitor">
+            <summary>
+            This comes from Matt Warren's sample:
+            http://blogs.msdn.com/mattwar/archive/2007/07/31/linq-building-an-iqueryable-provider-part-ii.aspx
+            </summary>
+        </member>
+        <member name="T:Sail.Common.Extensions">
+            <summary>Refer to http://www.albahari.com/nutshell/linqkit.html and
+            http://tomasp.net/blog/linq-expand.aspx for more information.</summary>
+        </member>
+        <member name="T:Sail.Common.Linq">
+            <summary>
+            Another good idea by Tomas Petricek.
+            See http://tomasp.net/blog/dynamic-linq-queries.aspx for information on how it's used.
+            </summary>
+        </member>
+        <member name="T:Sail.Common.OrmHelper">
+            <summary>
+            高大上的lambada解析
+            </summary>
+        </member>
+        <member name="M:Sail.Common.OrmHelper.Like(System.Object,System.String)">
+            <summary>
+            ORM表达式用Like，其他地方请不要使用
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.OrmHelper.StartsLike(System.Object,System.String)">
+            <summary>
+            orm表达式专用，其他地方请不要使用
+            </summary>
+            <param name="obj"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.OrmHelper.In(System.Object,System.Object[])">
+            <summary>
+            ORM表达式用In,其他地方请不要用
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="arrarys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.OrmHelper.NotIn(System.Object,System.Object[])">
+            <summary>
+            ORM表达式用NotIn，其他地方请不要用
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="arrays"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.OrmHelper.Between(System.Object,System.Object,System.Object)">
+            <summary>
+            ORM表达式专用Between，其他地方请不要用
+            </summary>
+            <param name="obj"></param>
+            <param name="startWith"></param>
+            <param name="endWith"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.OrmHelper.Asc(System.Object)">
+            <summary>
+             ORM表达式专用，其他地方请不要用
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.OrmHelper.Desc(System.Object)">
+            <summary>
+             ORM表达式专用，其他地方请不要用
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.OrmHelper.GetArgs(System.Linq.Expressions.MethodCallExpression,System.Int32)">
+            <summary>
+            获取方法表达式的第0个参数的值
+            </summary>
+            <param name="methodcall"></param>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.OrmHelper.ToClip(System.Linq.Expressions.Expression,System.String)">
+            <summary>
+            表达式转换成sql语句
+            </summary>
+            <param name="exp"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.PredicateBuilder">
+            <summary>
+            See http://www.albahari.com/expressions for information and examples.
+            </summary>
+        </member>
+        <member name="T:Sail.Common.PageResult">
+            <summary>
+            分页返回数据
+            </summary>
+        </member>
+        <member name="P:Sail.Common.PageResult.Count">
+            <summary>
+            记录集总数
+            </summary>
+        </member>
+        <member name="P:Sail.Common.PageResult.Data">
+            <summary>
+            当前页数据值(datasource)
+            </summary>
+        </member>
+        <member name="T:Sail.Common.Power">
+            <summary>
+            用户权限
+            </summary>
+            <remarks>用户权限</remarks>
+        </member>
+        <member name="P:Sail.Common.Power.Key">
+            <summary>
+            权限关键字
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Power.Name">
+            <summary>
+            权限名称
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Power.SubPowers">
+            <summary>
+            子权限列表
+            </summary>
+        </member>
+        <member name="T:Sail.Common.Power.SubPower">
+            <summary>
+            子权限
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Power.SubPower.Key">
+            <summary>
+            关键字
+            </summary>
+        </member>
+        <member name="P:Sail.Common.Power.SubPower.Name">
+            <summary>
+            权限名称
+            </summary>
+        </member>
+        <member name="T:Sail.Common.ReflectionExtensions">
+            <summary>
+            反射帮助类
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetAttributes``1(System.Reflection.PropertyInfo)">
+            <summary>
+            批量获取自定义标注
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="property"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetAttribute``1(System.Reflection.PropertyInfo)">
+            <summary>
+            获取指定的自定义标注
+            </summary>
+            <param name="property"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="P:Sail.Common.ReflectionExtensions.XmlPath">
+            <summary>
+            xml文档目录
+            </summary>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetXmlElement(System.Type)">
+            <summary>
+            获取相应的xml文件
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetSummary(System.Type)">
+            <summary>
+            获取类别的xml注释
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetSummary(System.Reflection.PropertyInfo)">
+            <summary>
+            获取xml注释
+            </summary>
+            <param name="pi"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetProperty(System.Object,System.String)">
+            <summary>
+            获取对象属性的描述
+            </summary>
+            <param name="data"></param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetServiceMethod(System.String)">
+            <summary>
+            获取扩展方法
+            </summary>
+            <param name="methodName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetProperties(System.Object)">
+            <summary>
+            获取实例的所有属性
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetProperties(System.Type)">
+            <summary>
+            获取类型的所有属性
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetMethod(System.Object,System.String)">
+            <summary>
+             查找方法
+            </summary>
+            <param name="data"></param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetMethods(System.Object)">
+            <summary>
+            获取实例的所有方法
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetMethods(System.Type)">
+            <summary>
+            获取类型的所有方法
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.GetValue(System.Object,System.String)">
+            <summary>
+            获取对象属性，或者属性的属性，用.分割
+            </summary>
+            <param name="data"></param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.SetValue(System.Object,System.String,System.Object)">
+            <summary>
+            设置对象的属性值
+            </summary>
+            <param name="data">对象</param>
+            <param name="propertyName">属性名</param>
+            <param name="value">传入的值</param>
+        </member>
+        <member name="M:Sail.Common.ReflectionExtensions.InvokeMethod(System.Object,System.String,System.Object[])">
+            <summary>
+            执行方法
+            </summary>
+            <param name="obj">实例</param>
+            <param name="method">方法名</param>
+            <param name="param">参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sail.Common.RegexExtensions">
+            <summary>
+            正则表达式扩展方法
+            </summary>
+        </member>
+        <member name="M:Sail.Common.RegexExtensions.IsMatch(System.String,System.String,System.Text.RegularExpressions.RegexOptions)">
+            <summary>
+            验证输入字符串是否与模式字符串匹配，匹配返回true
+            </summary>
+            <param name="input">输入的字符串</param>
+            <param name="pattern">模式字符串</param>
+            <param name="options">筛选条件,比如是否忽略大小写</param>
+        </member>
+        <member name="M:Sail.Common.RegexExtensions.GetMatchValue(System.String,System.String,System.String,System.Text.RegularExpressions.RegexOptions)">
+            <summary>
+            获取匹配的值
+            </summary>
+            <param name="input">输入字符串</param>
+            <param name="pattern">模式字符串</param>
+            <param name="resultPattern">结果模式字符串,范例："$1"用来获取第一个( )内的值</param>
+            <param name="options">筛选条件,比如是否忽略大小写</param>
+        </member>
+        <member name="M:Sail.Common.RegexExtensions.GetMatchValue(System.String,System.String)">
+            <summary>
+            获取匹配的值
+            </summary>
+            <param name="input">输入字符串</param>
+            <param name="pattern">模式字符串</param>
+        </member>
+        <member name="T:Sail.Common.SailDbException">
+            <summary>
+            数据访问层异常
+            </summary>
+        </member>
+        <member name="T:Sail.Common.SailDbNullFieldException">
+            <summary>
+            字段值为空异常
+            </summary>
+        </member>
+        <member name="T:Sail.Common.SailDbOutLengthException">
+            <summary>
+            字段值为空异常
+            </summary>
+        </member>
+        <member name="T:Sail.Common.SailDbUniquenessException">
+            <summary>
+            唯一字段重复异常
+            </summary>
+        </member>
+        <member name="T:Sail.Common.SailNotLoginException">
+            <summary>
+            未登录异常
+            </summary>
+        </member>
+        <member name="T:Sail.Common.Validator`1">
+            <summary>
+            验证类……
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Sail.Common.Validator`1.Validate(System.Predicate{`0},System.String)">
+            <summary>
+            根据表达式验证，如果表达式不成立，就添加错误信息
+            </summary>
+            <param name="predicate">表达式</param>
+            <param name="errorMessage">错误信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Data.SqlClient.SqlDialect">
+            <summary>
+            实现sql2005及以上的分页
+            </summary>
+        </member>
+        <member name="M:System.Data.SqlClient.SqlDialect.#ctor">
+            <summary>
+            sql方言构造方法
+            </summary>
+        </member>
+        <member name="M:System.Data.SqlClient.SqlDialect.CreateTable(Sail.Common.HTableAttribute)">
+            <summary>
+            创建表
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.SqlClient.SqlDialect.GetInsertedColumns(Sail.Common.HTableAttribute)">
+            <summary>
+            获取可插入的列
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.SqlClient.SqlDialect.GetColumns(Sail.Common.IDataContext,System.String,System.String)">
+            <summary>
+            获取所有列属性,根据sql返回结果
+            </summary>
+            <param name="db"></param>
+            <param name="schemaName"></param>
+            <param name="tableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.SqlClient.SqlDialect.GetDbSchemas(Sail.Common.IDataContext)">
+            <summary>
+            获取数据库中所有表名
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.SqlClient.SqlDialect.GetIdentitySql">
+            <summary>
+            获取最后的自增长
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.SqlClient.SqlDialect.GetPagedSql(System.Int32,System.Int32,System.String,System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="pageIndex"></param>
+             <param name="pageSize"></param>
+             <param name="strSql"></param>
+             <param name="where"></param>
+             <param name="orderby"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.SqlClient.SqlDialect.GetDbNames">
+            <summary>
+            获取所有数据库名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.SqlClient.SqlDialect.Warp(System.String)">
+            <summary>
+            包装表名或列名
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.SqlClient.SqlDialect.CreateSchema(System.String)">
+            <summary>
+            创建架构的脚本
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MySql.Data.MySqlClient.SqlDialect">
+            <summary>
+            mysql方言
+            </summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.SqlDialect.CreateSchema(System.String)">
+            <summary>
+            创建架构(mysql 根本不支持)
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.SqlDialect.Warp(System.String)">
+            <summary>
+            包装表名或列名
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="P:MySql.Data.MySqlClient.SqlDialect.Sail#Common#ISqlDialect#Item(System.String)">
+            <summary>
+            Gets the <see cref="T:System.String"/> at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>System.String.</returns>
+            <exception cref="T:Sail.Common.SailDbException">语法错误</exception>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.SqlDialect.GetInsertedColumns(Sail.Common.HTableAttribute)">
+            <summary>
+            Gets the inserted columns.
+            </summary>
+            <param name="table">The table.</param>
+            <returns>List&lt;HColumnAttribute&gt;.</returns>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.SqlDialect.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.SqlDialect.GetPagedSql(System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            获取分页语言的方法
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="strSql"></param>
+            <param name="where"></param>
+            <param name="orderby"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.SqlDialect.GetColumns(Sail.Common.IDataContext,System.String,System.String)">
+            <summary>
+            根据表中字段所对应的字段信息
+            </summary>
+            <param name="db"></param>
+            <param name="schemaName"></param>
+            <param name="tableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.SqlDialect.CreateTable(Sail.Common.HTableAttribute)">
+            <summary>
+            创建表
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.SqlDialect.GetDbNames">
+            <summary>
+            获取数据库名
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.SqlDialect.GetIdentitySql">
+            <summary>
+            获取子增长id的方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MySql.Data.MySqlClient.SqlDialect.GetDbSchemas(Sail.Common.IDataContext)">
+            <summary>
+            显示数据库中的所有表名
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Oracle.DataAccess.Client.SqlDialect">
+            <summary>
+            实现oracle的语句
+            </summary>
+        </member>
+        <member name="M:Oracle.DataAccess.Client.SqlDialect.CreateSchema(System.String)">
+            <summary>
+            创建架构(oracle 根本不支持)
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Oracle.DataAccess.Client.SqlDialect.Warp(System.String)">
+            <summary>
+            包装表名或列名
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Oracle.DataAccess.Client.SqlDialect.SeqTmpl">
+            <summary>
+            默认序列名称为seq_表名_字段名
+            </summary>
+        </member>
+        <member name="P:Oracle.DataAccess.Client.SqlDialect.Sail#Common#ISqlDialect#Item(System.String)">
+            <summary>
+            获取相应的数据类型
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Oracle.DataAccess.Client.SqlDialect.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Oracle.DataAccess.Client.SqlDialect.CreateTable(Sail.Common.HTableAttribute)">
+            <summary>
+            生成创建表的语句
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Oracle.DataAccess.Client.SqlDialect.GetInsertedColumns(Sail.Common.HTableAttribute)">
+            <summary>
+            获取插入影响的字段
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Oracle.DataAccess.Client.SqlDialect.GetColumns(Sail.Common.IDataContext,System.String,System.String)">
+            <summary>
+            根据表中字段所对应的字段信息
+            </summary>
+            <param name="db"></param>
+            <param name="schemaName"></param>
+            <param name="tableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Oracle.DataAccess.Client.SqlDialect.GetColumns(System.String)">
+            <summary>
+            获取列属性
+            </summary>
+            <param name="tablename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Oracle.DataAccess.Client.SqlDialect.GetDbSchemas(Sail.Common.IDataContext)">
+            <summary>
+            获取数据库中所有表名
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Oracle.DataAccess.Client.SqlDialect.GetIdentitySql">
+            <summary>
+            获取自增长
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Oracle.DataAccess.Client.SqlDialect.GetPagedSql(System.Int32,System.Int32,System.String,System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="pageIndex"></param>
+             <param name="pageSize"></param>
+             <param name="strSql"></param>
+             <param name="where"></param>
+             <param name="orderby"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Oracle.DataAccess.Client.SqlDialect.GetDbNames">
+            <summary>
+            获取所有数据库名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NPinyin.Pinyin.GetInitials(System.String)">
+            <summary>
+            取中文文本的拼音首字母
+            </summary>
+            <param name="text">编码为UTF8的文本</param>
+            <returns>返回中文对应的拼音首字母</returns>
+        </member>
+        <member name="M:NPinyin.Pinyin.GetInitials(System.String,System.Text.Encoding)">
+            <summary>
+            取中文文本的拼音首字母
+            </summary>
+            <param name="text">文本</param>
+            <param name="encoding">源文本的编码</param>
+            <returns>返回encoding编码类型中文对应的拼音首字母</returns>
+        </member>
+        <member name="M:NPinyin.Pinyin.GetPinyin(System.String)">
+            <summary>
+            取中文文本的拼音
+            </summary>
+            <param name="text">编码为UTF8的文本</param>
+            <returns>返回中文文本的拼音</returns>
+        </member>
+        <member name="M:NPinyin.Pinyin.GetPinyin(System.String,System.Text.Encoding)">
+            <summary>
+            取中文文本的拼音
+            </summary>
+            <param name="text">编码为UTF8的文本</param>
+            <param name="encoding">源文本的编码</param>
+            <returns>返回encoding编码类型的中文文本的拼音</returns>
+        </member>
+        <member name="M:NPinyin.Pinyin.GetChineseText(System.String)">
+            <summary>
+            取和拼音相同的汉字列表
+            </summary>
+            <param name="pinyin">编码为UTF8的拼音</param>
+            <returns>取拼音相同的汉字列表，如拼音“ai”将会返回“唉爱……”等</returns>
+        </member>
+        <member name="M:NPinyin.Pinyin.GetChineseText(System.String,System.Text.Encoding)">
+            <summary>
+            取和拼音相同的汉字列表，编码同参数encoding
+            </summary>
+            <param name="pinyin">编码为encoding的拼音</param>
+            <param name="encoding">编码</param>
+            <returns>返回编码为encoding的拼音为pinyin的汉字列表，如拼音“ai”将会返回“唉爱……”等</returns>
+        </member>
+        <member name="M:NPinyin.Pinyin.GetPinyin(System.Char)">
+            <summary>
+            返回单个字符的汉字拼音
+            </summary>
+            <param name="ch">编码为UTF8的中文字符</param>
+            <returns>ch对应的拼音</returns>
+        </member>
+        <member name="M:NPinyin.Pinyin.GetPinyin(System.Char,System.Text.Encoding)">
+            <summary>
+            返回单个字符的汉字拼音
+            </summary>
+            <param name="ch">编码为encoding的中文字符</param>
+            <param name="encoding"></param>
+            <returns>编码为encoding的ch对应的拼音</returns>
+        </member>
+        <member name="M:NPinyin.Pinyin.ConvertEncoding(System.String,System.Text.Encoding,System.Text.Encoding)">
+            <summary>
+            转换编码 
+            </summary>
+            <param name="text">文本</param>
+            <param name="srcEncoding">源编码</param>
+            <param name="dstEncoding">目标编码</param>
+            <returns>目标编码文本</returns>
+        </member>
+        <member name="M:NPinyin.Pinyin.GetHashIndex(System.Char)">
+            <summary>
+            取文本索引值
+            </summary>
+            <param name="ch">字符</param>
+            <returns>文本索引值</returns>
+        </member>
+    </members>
+</doc>

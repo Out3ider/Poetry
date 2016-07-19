@@ -1,0 +1,522 @@
+﻿/*UI框架修改*/
+a {
+    color: #0275d8;
+}
+
+.zqui-bar .icon {
+    font-size: 1rem;
+}
+
+.zqui-btn {
+    position: static;
+}
+
+.zqui-bar-tab, .zqui-bar-tab .zqui-tab-item {
+    height: 1.8rem;
+}
+
+.zqui-table-view-cell .zqui-cell-label {
+    width: 4rem;
+}
+/*.clearfix {
+	clear: both;
+}*/
+
+.clearfix:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0;
+}
+/*弹框*/
+.zqui-modal-header{
+line-height:2rem;
+}
+.zqui-modal-header ~ .zqui-modal-body {
+            padding-top: 2rem;
+        }
+/*loading*/
+.spinner {
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    font-size: 5px;
+    clear: both;
+    padding-top: 5px;
+}
+
+    .spinner > div {
+        background-color: #c01920;
+        height: 100%;
+        width: 4px;
+        display: inline-block;
+        -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+        animation: stretchdelay 1.2s infinite ease-in-out;
+    }
+
+    .spinner .rect2 {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+    }
+
+    .spinner .rect3 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+
+    .spinner .rect4 {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+    }
+
+    .spinner .rect5 {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+    }
+
+@-webkit-keyframes stretchdelay {
+    0%, 40%, 100% {
+        -webkit-transform: scaleY(0.4);
+    }
+
+    20% {
+        -webkit-transform: scaleY(1.0);
+    }
+}
+
+@keyframes stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }
+
+    20% {
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
+}
+
+/*瀑布流结束*/
+.content-over {
+    text-align: center;
+    clear: both;
+    width: 100%;
+    height: 2rem;
+    line-height: 2rem;
+    color: #999;
+    font-size: 0.5rem;
+}
+
+    .content-over:before {
+        content: "内容已全部加载";
+    }
+/*结构*/
+.zqui-bar-nav {
+    height: 2rem !important;
+    top: 0;
+    -webkit-box-shadow: 0 1px 6px #CCC;
+    box-shadow: 0 1px 6px #CCC;
+    text-align: center;
+    line-height: 2rem;
+}
+
+.banner {
+    width: 100%;
+    height: 2rem;
+    background: url("../images/banner.jpg") no-repeat;
+    background-size: 100% 100%;
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+    text-indent: -10000px;
+    overflow: hidden;
+}
+
+.zqui-bar-tab ~ .zqui-content {
+    padding-bottom: 2.5rem;
+}
+
+.zqui-bar-nav ~ .zqui-content {
+    padding-top: 2rem !important;
+}
+
+.zqui-filter {
+    top: 2rem;
+}
+
+.zqui-tab-wrapper {
+    top: 2rem;
+}
+
+    .zqui-tab-wrapper .zqui-table-view {
+        margin-top: 0;
+    }
+
+.zqui-filter-content {
+    padding-top: 2.2rem;
+}
+
+.zqui-filter-item.active {
+    line-height: 1.9rem;
+    color: #c01920 !important;
+    border-bottom: .1rem solid #c01920 !important;
+}
+
+.zqui-filter-bar .zqui-filter-item {
+    border-right: 1px solid #d0d0d0;
+}
+
+    .zqui-filter-bar .zqui-filter-item:last-child {
+        border: none;
+    }
+
+.zqui-content {
+    background-color: #efeff4;
+    -webkit-overflow-scrolling: touch;
+}
+
+    .zqui-content:before {
+        display: table;
+        content: " ";
+    }
+
+    .zqui-content:after {
+        display: table;
+        content: "";
+        clear: both;
+        box-sizing: border-box;
+    }
+
+.zqui-popup-buttons:first-child .zqui-popup-button {
+    border-bottom: 1px solid #ddd;
+}
+
+.zqui-popup-button {
+    border-radius: 0 !important;
+}
+/*内容*/
+.box {
+    float: left;
+    width: 16rem;
+    height: auto;
+    padding-bottom: .5rem;
+}
+
+    .box a {
+        display: block;
+    }
+
+.boxleft {
+    float: left;
+    width: 8.25rem;
+    height: auto;
+    padding-left: .5rem;
+}
+
+.boxright {
+    float: right;
+    width: 7.75rem;
+    height: auto;
+}
+
+.box-item {
+    display: block;
+    float: left;
+    width: 7.25rem;
+    margin-top: .5rem;
+    height: auto;
+    border-radius: .2rem;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+
+    .box-item img {
+        width: 100%;
+        height: auto;
+        line-height: normal;
+        border-radius: .2rem .2rem 0 0;
+    }
+
+    .box-item .foot {
+        color: #666;
+        font-size: .6rem;
+        display: block;
+        padding: 0 .5rem;
+        margin: .5rem 0;
+        /*max-height: 1.6rem;*/
+        line-height: .8rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        white-space: normal !important;
+        word-wrap: break-word;
+    }
+
+    .box-item .info {
+        font-size: .5rem;
+        line-height: .6rem;
+        padding: .1rem .5rem;
+        color: #999;
+        box-sizing: border-box;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        border-radius: 0 0 .2rem .2rem;
+    }
+
+        .box-item .info span {
+            max-width: 48%;
+            line-height: .8rem;
+        }
+
+    .box-item .operate {
+        font-size: .5rem;
+        line-height: .6rem;
+        padding: .3rem .5rem;
+        color: #999;
+        border-top: 1px solid #F2F2F2;
+        box-sizing: border-box;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: row wrap;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        border-radius: 0 0 .2rem .2rem;
+    }
+
+        .box-item .operate a {
+            color: #999;
+            padding:.2rem;
+            font-size: .5rem;
+            line-height: .8rem;
+            text-align: center;
+        }
+
+            .box-item .operate a i {
+                margin-right: 1px;
+            }
+
+/*查看信息*/
+.zqui-panel-card {
+    width: 100%;
+    padding: .5rem;
+    margin-bottom: .75rem;
+    background: #fff;
+}
+
+    .zqui-panel-card p {
+        width: 100%;
+    }
+
+        .zqui-panel-card p img {
+            width: 100%;
+        }
+
+    .zqui-panel-card .zqui-info {
+        padding-top: .5rem;
+        border-top: 1px dashed #ddd;
+    }
+
+        .zqui-panel-card .zqui-info p {
+            margin-bottom: .25rem;
+        }
+
+    .zqui-panel-card .operate {
+        font-size: 0.6rem;
+        line-height: .6rem;
+        padding: .5rem 0;
+        color: #999;
+        border-top: 1px solid #F2F2F2;
+        box-sizing: border-box;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: row wrap;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    .zqui-panel-card .write {
+        text-align: right;
+    }
+/*获取验证码*/
+.getCode {
+    position: absolute;
+    left: 11.5rem;
+    width: 4.5rem;
+    top: 0;
+    line-height: 2.3rem;
+    background: #eee;
+    color: #333;
+    border: 0;
+    border-left: 1px solid #dcdcdc;
+}
+
+/*评论*/
+.comment {
+}
+
+    .comment .tips-line {
+        border-top: 1px dotted #e1e1e1;
+        line-height: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 0;
+        min-height: 24px;
+        text-align: center;
+    }
+
+        .comment .tips-line .tips {
+            position: relative;
+            top: -12px;
+            padding-left: 16px;
+            padding-right: 16px;
+            background-color: #FFFFFF;
+        }
+
+.panel-talk {
+    height: auto;
+    font-size: 0.7rem;
+    background: #fff;
+}
+
+    .panel-talk .panel-title {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 0.5rem 0;
+        padding-bottom: 0.1rem;
+    }
+
+        .panel-talk .panel-title a {
+            display: block;
+            float: left;
+        }
+
+        .panel-talk .panel-title .name {
+            display: inline-block;
+            float: left;
+            width: 100%;
+            color: #999;
+        }
+
+            .panel-talk .panel-title .name span {
+                display: inline-block;
+                margin-top: 0.125rem;
+                font-size: 0.6rem;
+                margin-right: 0.5rem;
+                float: left;
+            }
+
+                .panel-talk .panel-title .name span.time {
+                    float: right;
+                    font-size: 0.5rem;
+                    margin-right: 0;
+                }
+
+    .panel-talk span.talk-info {
+        float: right;
+        font-size: 0.5rem;
+        line-height: 1rem;
+        color: #999;
+    }
+
+    .panel-talk .panel-title .name p {
+        padding-top: 0.5rem;
+        font-size: 0.7rem;
+    }
+
+    .panel-talk .panel-title .top-up {
+        float: right;
+        min-width: 2.5rem;
+        height: 2.5rem;
+        /*color: #4cc160;
+	line-height: 2.5rem;*/
+        text-align: center;
+    }
+
+    .panel-talk .panel-title .head-pic {
+        width: 1rem;
+        height: 1rem;
+        color: #fff;
+        border-radius: 50%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+        .panel-talk .panel-title .head-pic img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+    .panel-talk .panel-body {
+        padding-bottom: 0.5rem;
+    }
+
+        .panel-talk .panel-body textarea {
+            display: block;
+            width: 14.5rem;
+            margin-left: 1rem;
+            min-height: 3rem;
+            background-color: #fff;
+            border: 1px solid #ebebeb;
+            -webkit-border-radius: .01rem;
+            border-radius: .01rem;
+            padding: .06rem;
+            -webkit-box-sizing: border-box;
+            -webkit-appearance: none;
+            font-size: .7rem;
+            color: #888;
+            float: left;
+        }
+
+        .panel-talk .panel-body a.btn {
+            float: right;
+            padding: .5rem;
+            margin-top: .5rem;
+            margin-right: .5rem;
+            line-height: 1.5px;
+            clear: both;
+            font-size: 14px;
+            color: #515151;
+            border: 1px solid #e5e5e5;
+            background: #eee;
+            border-radius: 2px;
+        }
+
+        .panel-talk .panel-body .panel-talk-contents {
+            width: 100%;
+            line-height: 1rem;
+            font-size: .6rem;
+            color: #333;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ObjectContents>
+  <Object Name="Sail" IsSigleton="true">
+    <Type>
+      <![CDATA[Sail.Web.SailHelper,Sail.Web]]>
+    </Type>
+    <MapTo>
+      <![CDATA[Sail.Common.ISail,Sail.Common]]>
+    </MapTo>
+  </Object>
+
+  <Object Name="DbContnet" IsSigleton="true">
+    <Type>
+      <![CDATA[Sail.Common.DataContext,Sail.Common]]>
+    </Type>
+    <MapTo>
+      <![CDATA[Sail.Common.IDataContext,Sail.Common]]>
+    </MapTo>
+  </Object>
+</ObjectContents>

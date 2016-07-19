@@ -1,0 +1,98 @@
+﻿<ul class="zqui-table-view">
+    <li class="zqui-table-view-divider">党员信息填写</li>
+    <li class="zqui-table-view-cell zqui-dis-flex">
+        <div class="zqui-cell-hd">
+            <label class="zqui-cell-label">党员姓名</label>
+        </div>
+        <div class="zqui-cell-bd zqui-flex-1">
+            <input class="zqui-input" type="text" placeholder="请输入姓名">
+        </div>
+    </li>
+    <li class="zqui-table-view-cell zqui-dis-flex zqui-cell-select  zqui-elect-after">
+        <div class="zqui-cell-hd">
+            <label class="zqui-cell-label">所属县区</label>
+        </div>
+        <div class="zqui-cell-bd zqui-flex-1">
+            <select class="zqui-select">
+                <option value="1">芜湖县</option>
+                <option value="2">镜湖区</option>
+                <option value="3">鸠江区</option>
+            </select>
+        </div>
+    </li>
+    <li class="zqui-table-view-cell zqui-table-float">
+        <div class="zqui-cell-hd">
+            <label class="zqui-cell-label">基层党组织</label>
+        </div>
+        <div class="zqui-cell-bd">
+            <textarea class="zqui-textarea" placeholder="中国共产党繁昌县代冲果品有限公司支部委员会" rows="3"></textarea>
+        </div>
+    </li>
+    <li class="zqui-table-view-cell zqui-dis-flex">
+        <div class="zqui-cell-hd">
+            <label class="zqui-cell-label">推荐人姓名</label>
+        </div>
+        <div class="zqui-cell-bd zqui-flex-1">
+            <input class="zqui-input" type="text" placeholder="请输入姓名">
+        </div>
+    </li>
+    <li class="zqui-table-view-cell zqui-dis-flex">
+        <div class="zqui-cell-hd">
+            <label class="zqui-cell-label">拍摄日期</label>
+        </div>
+        <div class="zqui-cell-bd zqui-flex-1">
+            <input class="zqui-input" type="date" placeholder="">
+        </div>
+    </li>
+    <li class="zqui-table-view-divider">上传党员图片</li>
+    <li class="zqui-table-view-cell zqui-dis-flex">
+        <div class="zqui-uploader">
+            <div class="zqui-uploader-hd  zqui-dis-flex">
+                <div class="zqui-cell-bd zqui-flex-1">点击照片可设置标题图片或删除</div>
+                <div class="zqui-cell-ft">
+                    0/2
+                </div>
+            </div>
+            <div class="zqui-uploader-bd">
+                <ul class="zqui-uploader-files">
+                    <li class="zqui-uploader-file zqui-uploader-status">
+                        <img class="Show" src="/Content/images/pic.jpg" />
+                        <div class="ShowIcon zqui-uploader-status-content text-primary">
+                            <i class="icon icon-ok-sign"></i>
+                        </div>
+                    </li>
+                    <li class="zqui-uploader-file zqui-uploader-status">
+                        <img class="Show" src="/Content/images/pic.jpg" />
+                        <div class="zqui-uploader-status-content">50%</div>
+                    </li>
+                    <li class="zqui-uploader-file">
+                        <img class="Show" src="/Content/images/pic.jpg">
+                    </li>
+                    <li class="zqui-uploader-file">
+                        <img class="Show" src="/Content/images/pic.jpg">
+                    </li>
+                    <li class="zqui-uploader-file">
+                        <img class="Show" src="/Content/images/pic.jpg">
+                    </li>
+                    <li class="zqui-uploader-file">
+                        <img class="Show" src="/Content/images/pic.jpg">
+                    </li>
+                </ul>
+                <div class="zqui-uploader-input-wrp">
+                    <input class="zqui-uploader-input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="zqui-table-view-divider">填写党员事迹</li>
+    <li class="zqui-table-view-cell">
+        <div class="zqui-cell-bd zqui-flex-1">
+            <textarea class="zqui-textarea" placeholder="请输入内容" rows="3"></textarea>
+            <div class="zqui-textarea-counter"><span>0</span>/200</div>
+        </div>
+    </li>
+</ul>
+<div class="zqui-content-padded">
+    <a href="~/html/msg.cshtml" class="zqui-btn zqui-btn-block zqui-btn-primary">提交推荐</a>
+</div>
+@Helper.HelperImgModal()

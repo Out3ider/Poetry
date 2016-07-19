@@ -1,0 +1,913 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Poetry.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Poetry.Web.AdminController">
+            <summary>
+            超级管理员
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.AdminController.BeforeAction(Sail.Common.DataContext,Sail.Common.ControllerEvent,System.Object)">
+            <summary>
+            操作前
+            </summary>
+            <param name="db"></param>
+            <param name="e"></param>
+            <param name="o"></param> 
+        </member>
+        <member name="M:Poetry.Web.AdminController.Login(System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.AdminController.Logout">
+            <summary>
+            退出登录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.AdminController.LoadMenu">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.AdminController.CheckLogin">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.AdminController.ResetPwd(System.String)">
+            <summary>
+            重置密码
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Web.CommentController">
+            <summary>
+            评论事迹
+            </summary>
+        </member>
+        <member name="T:Poetry.Web.GroupController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Poetry.Web.WxUserController">
+            <summary>
+            微信注册用户
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.WxUserController.Login(System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.WxUserController.Logout">
+            <summary>
+            退出登录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.WxUserController.ForgetPwdCode(System.String)">
+            <summary>
+            忘记密码验证码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.WxUserController.RegCode(System.String)">
+            <summary>
+            注册校验码
+            </summary>
+            <param name="mobile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.WxUserController.ResetPwd(System.String)">
+            <summary>
+            重置密码
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.WxUserController.ForgetPwd(System.String)">
+            <summary>
+            忘记密码
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Web.CountyController">
+            <summary>
+            县区控制器
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.IconController.RotateFlip(System.String)">
+            <summary>
+            根据exif信息旋转图片
+            </summary>
+            <param name="fileName">图片物理路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.IconController.Uploaded(System.Net.Http.MultipartFileData,System.Web.HttpRequest)">
+            <summary>
+            上传图片
+            </summary>
+            <param name="file"></param>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.HumanName.GetName">
+            <summary>
+            获取随机姓名
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Poetry.Web.MemberNewsController.OrderBy">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.MemberNewsController.GetList(System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="key"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.MemberNewsController.CheckPass(System.String)">
+            <summary>
+            审核通过
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.MemberNewsController.Publish(System.String)">
+            <summary>
+            发布
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.MemberNewsController.UnPublish(System.String)">
+            <summary>
+            取消发布
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.MemberNewsController.ActToNews(System.String,System.Action{Poetry.Model.News})">
+            <summary>
+            对某实体操作
+            </summary>
+            <param name="id"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Web.ParamController">
+            <summary>
+            系统参数控制器
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.ParamController.Get">
+            <summary>
+            获取系统参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.ParamController.Save(System.String)">
+            <summary>
+            保存系统参数
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Web.RouteConfig">
+            <summary>
+            MVC注册路由
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.RouteConfig.RegisterRoutes(System.Web.Routing.RouteCollection)">
+            <summary>
+            注册路由
+            </summary>
+            <param name="routes"></param>
+        </member>
+        <member name="T:Poetry.Web.Code.SqlHelper">
+            <summary>
+            帮助类
+            </summary>
+        </member>
+        <member name="T:Poetry.Web.Controller.BaseControll">
+            <summary>
+            基类控制器
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.Controller.BaseControll.HandleUnknownAction(System.String)">
+            <summary>
+            无名控制器
+            </summary>
+            <param name="actionName"></param>
+        </member>
+        <member name="T:Poetry.Web.Controller.WeChatController">
+            <summary>
+            微信端控制器
+            </summary>
+        </member>
+        <member name="T:Poetry.Web.Utility.GovSms">
+            <summary>
+            政府短信平台
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.Utility.GovSms.BuildeParam(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            
+            </summary>
+            <param name="dict"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Utility.GovSms.SendSms(System.String,System.String)">
+            <summary>
+            短信发送
+            </summary>
+            <param name="content"></param>
+            <param name="mobilePhones"></param>
+        </member>
+        <member name="T:Poetry.Web.Utility.VerifyCode">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Utility.VerifyCode.VerifyCodes">
+            <summary>
+            验证码缓存
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Utility.VerifyCode.VerifyCategory">
+            <summary>
+            验证码类型
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.Utility.VerifyCode.Init(System.Type)">
+            <summary>
+            初始化验证码
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Poetry.Web.Utility.VerifyCode.GetVerifycodes(System.String,System.Int32)">
+            <summary>
+            获取验证码
+            </summary>
+            <param name="mobile"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Poetry.Web.Utility.VerifyCode.TimeOut">
+            <summary>
+            超时(分钟)
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Utility.VerifyCode.SendTimeOut">
+            <summary>
+            发送超时(分钟) 就是每n分钟最多发送一次
+            </summary>
+        </member>
+        <member name="F:Poetry.Web.Utility.VerifyCode.codeLength">
+            <summary>
+            长度4位
+            </summary>
+        </member>
+        <member name="F:Poetry.Web.Utility.VerifyCode.textArray">
+            <summary>
+            验证码内容元素
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Utility.VerifyCode.Code">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Utility.VerifyCode.Type">
+            <summary>
+            验证码类型
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Utility.VerifyCode.Mobile">
+            <summary>
+            请求的手机号，防止获取验证码后，手机号不匹配
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Utility.VerifyCode.StartTime">
+            <summary>
+            启动时间
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Utility.VerifyCode.LastSendTime">
+            <summary>
+            上次发送时间
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Utility.VerifyCode.IsTimeout">
+            <summary>
+            是否超时
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Utility.VerifyCode.MinutesAgo">
+            <summary>
+            多少分钟前生成的验证码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Poetry.Web.Utility.VerifyCode.SendMinutesAgo">
+            <summary>
+            多少分钟前发送
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Utility.VerifyCode.#ctor(System.String,System.Int32)">
+            <summary>
+            初始化验证码
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.Utility.VerifyCode.CheckCode(System.String,System.Int32,System.String)">
+            <summary>
+            校验验证码，如果成功则重置验证码
+            </summary>
+            <param name="mobile"></param>
+            <param name="type"></param>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Utility.VerifyCode.PushSms(Sail.Common.IDataContext)">
+            <summary>
+            发送短信
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:Poetry.Web.PageHelper.ToDictionary(System.Data.DataTable)">
+            <summary>
+            datable转换动态数据集
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Poetry.Web.PageHelper.ItemId">
+            <summary>
+            菜单id
+            </summary>
+        </member>
+        <member name="F:Poetry.Web.PageHelper.PageTitle">
+            <summary>
+            页面标题
+            </summary>
+        </member>
+        <member name="F:Poetry.Web.PageHelper.PageTips">
+            <summary>
+            页面副标题
+            </summary>
+        </member>
+        <member name="F:Poetry.Web.PageHelper.CurrentUser">
+            <summary>
+            当前登录用户
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.PageHelper.SetPage(System.Web.WebPages.WebPageBase,System.String,System.String,System.String)">
+            <summary>
+            设定页面菜单、标题什么的
+            </summary>
+            <param name="page"></param>
+            <param name="itemId"></param>
+            <param name="title"></param>
+            <param name="tips"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.PageHelper.RenderOptions(System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)">
+            <summary>
+            输出select的options
+            </summary>
+            <param name="items"></param>
+            <param name="defaultText"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.PageHelper.RenderEnum(System.Type,System.String,System.String)">
+            <summary>
+            输出枚举到options
+            </summary>
+            <param name="type"></param>
+            <param name="defaultText"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.PageHelper.EnumList(System.Type)">
+            <summary>
+            生成枚举的列表数据
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.PageHelper.NumberTo(System.Int32,System.Int32)">
+            <summary>
+            生成数字
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.PageHelper.ExportToCsv(System.String[],System.String,System.Action{System.Text.StringBuilder})">
+            <summary>
+            导出csv
+            </summary>
+            <param name="titles"></param>
+            <param name="fileName"></param>
+            <param name="act"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.ContentController.GetList(System.Int32,System.Int32)">
+            <summary>
+            获取优秀事迹列表
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.ContentController.Like(System.String)">
+            <summary>
+            用户赞
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.ContentController.Comment(System.String,System.String)">
+            <summary>
+            评论
+            </summary>
+            <param name="id"></param>
+            <param name="conent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Global.Application_Start(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Poetry.Web.Global.InitData">
+            <summary>
+            初始化数据
+            </summary>
+        </member>
+        <member name="T:Poetry.Model.FormAttribute">
+            <summary>
+            表单属性
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.FormAttribute.Label">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.FormAttribute.Tips">
+            <summary>
+            提示文字
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.FormAttribute.IsRequired">
+            <summary>
+            是否必填
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.FormAttribute.IsReadOnly">
+            <summary>
+            是否只读
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.FormAttribute.CustomValidate">
+            <summary>
+            自定义验证
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.FormAttribute.Class">
+            <summary>
+            样式
+            </summary>
+        </member>
+        <member name="T:Poetry.Model.ModelDataAttribute">
+            <summary>
+            附加data属性，可以存在多个
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.ModelDataAttribute.Key">
+            <summary>
+            data-名称
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.ModelDataAttribute.Value">
+            <summary>
+            data-值
+            </summary>
+        </member>
+        <member name="T:Poetry.Model.OrgType">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="T:Poetry.Model.Admin">
+            <summary>
+            系统管理员
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Admin.Type">
+            <summary>
+            用户类型
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Admin.County">
+            <summary>
+            关联县区
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Admin.Memo">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Admin.Phone">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Admin.Icon">
+            <summary>
+            用户头像
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Admin.OrgName">
+            <summary>
+            所在单位或居住地
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.Admin.ResetPassword(Sail.Common.IDataContext)">
+            <summary>
+            重置密码为默认密码
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:Poetry.Model.Admin.SearchUser(Sail.Common.IDataContext,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            搜索用户
+            </summary>
+            <param name="db"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="countyId"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Model.County">
+            <summary>
+            县区
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.DictBase.Name">
+            <summary>
+            县区名称
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.DictBase.OrderByNo">
+            <summary>
+            排序号
+            </summary>
+        </member>
+        <member name="T:Poetry.Model.IDict">
+            <summary>
+            字典类接口
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.Icon">
+            <summary>
+            标题图片
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.PartyMember">
+            <summary>
+            党员姓名
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.NewsDate">
+            <summary>
+            发生时间
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.Referral">
+            <summary>
+            引用
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.Images">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.News.GetImages">
+            <summary>
+            图片列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Poetry.Model.News.County">
+            <summary>
+            县区id
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.Organization">
+            <summary>
+            基层党组织
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.IsChecked">
+            <summary>
+            是否审核
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.Liked">
+            <summary>
+            点赞
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.Views">
+            <summary>
+            查看次数
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.IsPublish">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.Comments">
+            <summary>
+            评论数
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.News.Content">
+            <summary>
+            事迹内容
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.News.MakeWhere(System.Int32,System.Int32,System.String)">
+            <summary>
+            where条件
+            </summary>
+            <param name="year"></param>
+            <param name="month"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Model.News.GetComments(Sail.Common.DataContext)">
+            <summary>
+            获取评论
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Model.NewsComment">
+            <summary>
+            事迹评论
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.NewsComment.NewsId">
+            <summary>
+            关联的新闻Id
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.NewsComment.Content">
+            <summary>
+            回答内容
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.NewsComment.IsChecked">
+            <summary>
+            是否审核通过
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.NewsComment.UpdateNews(Sail.Common.IDataContext)">
+            <summary>
+            更新新闻的评论数
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="T:Poetry.Model.NewsType">
+            <summary>
+            新闻类型
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.NewsType.IsDisabled">
+            <summary>
+            是否禁用
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Param.ParamId">
+            <summary>
+            参数id
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Param.Host">
+            <summary>
+            域名
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Param.SiteName">
+            <summary>
+            网站名称
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Param.AppId">
+            <summary>
+            app id
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Param.Secret">
+            <summary>
+            app secret
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Param.SmsServer">
+            <summary>
+            短信平台地址
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Param.SmsPort">
+            <summary>
+            短信服务端口
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Param.IsCommentNeedCheck">
+            <summary>
+            评论无需审核
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Param.IsAutoPublish">
+            <summary>
+            审核后自动发布
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.Param.Get(Sail.Common.IDataContext)">
+            <summary>
+            获取系统参数
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Model.UserLike">
+            <summary>
+            用户赞记录
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserLike.NewsId">
+            <summary>
+            优秀事迹id
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserLike.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserLike.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:Poetry.Model.UserType">
+            <summary>
+            用户类型
+            </summary>
+        </member>
+        <member name="T:System.Web.WebPages.Element">
+            <summary>
+            创建表单必备
+            </summary>
+        </member>
+        <member name="P:System.Web.WebPages.Element.Label">
+            <summary>
+            标签内容
+            </summary>
+        </member>
+        <member name="P:System.Web.WebPages.Element.Id">
+            <summary>
+            控件id
+            </summary>
+        </member>
+        <member name="P:System.Web.WebPages.Element.Tips">
+            <summary>
+            提示信息
+            </summary>
+        </member>
+        <member name="P:System.Web.WebPages.Element.ValidateCustom">
+            <summary>
+            自定义验证
+            </summary>
+        </member>
+        <member name="P:System.Web.WebPages.Element.IsReadOnly">
+            <summary>
+            是否只读
+            </summary>
+        </member>
+        <member name="P:System.Web.WebPages.Element.IsRequired">
+            <summary>
+            是否必填
+            </summary>
+        </member>
+        <member name="P:System.Web.WebPages.Element.Class">
+            <summary>
+            css类
+            </summary>
+        </member>
+        <member name="P:System.Web.WebPages.Element.Data">
+            <summary>
+            data参数
+            </summary>
+        </member>
+        <member name="M:System.Web.WebPages.Element.RenderData">
+            <summary>
+            输出data-*=*
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Web.WebPages.Element.RenderId">
+            <summary>
+            输出id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Web.WebPages.Element.RenderClass(System.String)">
+            <summary>
+            输出class
+            </summary>
+            <param name="isControl"></param>
+            <param name="controlClass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Web.WebPages.Element.Attr(System.String)">
+            <summary>
+            输出全部属性
+            </summary>
+            <param name="isControl"></param>
+            <param name="controllCalss"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Web.WebPages.Element.RenderPlaceholder">
+            <summary>
+            输出placeholder
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Web.WebPages.Element.#ctor">
+            <summary>
+            构造
+            </summary>
+        </member>
+        <member name="M:System.Web.WebPages.Element.#ctor(System.String,System.String)">
+            <summary>
+            构造
+            </summary>
+        </member>
+        <member name="M:System.Web.WebPages.Element.#ctor(System.String,System.String,System.String)">
+            <summary>
+            构造
+            </summary>
+        </member>
+        <member name="M:System.Web.WebPages.Element.#ctor(System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            构造
+            </summary>
+        </member>
+        <member name="M:System.Web.WebPages.Element.Create``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.String)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TModel"></typeparam>
+            <param name="expression"></param>
+            <param name="customlabel"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

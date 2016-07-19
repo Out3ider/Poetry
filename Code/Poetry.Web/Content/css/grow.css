@@ -1,0 +1,31 @@
+﻿.bootstrap-growl {
+    display: block;
+    position: fixed;
+    -webkit-transform: translateZ(80);
+    width: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    line-height: 1.5rem !important;
+    text-align: center !important;
+    color: #fff !important;
+    z-index: 99999 !important;
+    margin: 0 !important;
+}
+
+.bootstrap-growl .close {
+    display: none;
+}
+
+.alert-danger {
+    color: #fff !important;
+    background-color: #e49c1d;
+    /*background-color: #E64340;*/
+}
+
+.alert-info {
+    background-color: #025fbe;
+}
+
+.alert-success {
+    background-color: #04be02;
+}

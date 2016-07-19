@@ -1,0 +1,281 @@
+﻿@using Poetry.Web
+@using Sail.Common
+@using Sail.Web
+@{
+
+    if (WebHelper.CurrentUser == null)
+    {
+        Response.Redirect("login");
+    }
+}
+@section head{
+
+    <script src="~/Scripts/uploadify/jquery.uploadifive.js"></script>
+    <style>
+        .uploadifive-queue { display: none; }
+        .has-error textarea { border: solid 1px red; }
+    </style>
+}
+
+<div class="">
+    <ul class="zqui-table-view">
+        <li class="zqui-table-view-divider">党员信息填写</li>
+        <li class="zqui-table-view-cell zqui-dis-flex">
+            <div class="zqui-cell-hd">
+                <label class="zqui-cell-label">党员姓名</label>
+            </div>
+            <div class="zqui-cell-bd zqui-flex-1">
+                <input class="zqui-input validate[required]" type="text" id="PartyMember" placeholder="请输入党员姓名" />
+
+            </div>
+        </li>
+        <li class="zqui-table-view-cell zqui-dis-flex zqui-cell-select  zqui-elect-after">
+            <div class="zqui-cell-hd">
+                <label class="zqui-cell-label">所属县区</label>
+            </div>
+            <div class="zqui-cell-bd zqui-flex-1">
+                <select class="zqui-select validate[required] " id="County" data-prop="Id">
+                    @MyHelpers.RenderDict(CountyController.GetAll(), "", "请选择县区");
+                </select>
+
+            </div>
+        </li>
+        <li class="zqui-table-view-cell zqui-dis-flex zqui-cell-select  zqui-elect-after">
+            <div class="zqui-cell-hd">
+                <label class="zqui-cell-label">所属类型</label>
+            </div>
+            <div class="zqui-cell-bd zqui-flex-1">
+                <select class="zqui-select validate[required] " id="Type" data-prop="Id">
+                    @MyHelpers.RenderEnum(typeof(Poetry.Model.OrgType).GetEnumItems(), "", "请选择类型");
+                </select>
+
+            </div>
+        </li>
+        <li class="zqui-table-view-cell zqui-table-float">
+            <div class="zqui-cell-hd">
+                <label class="zqui-cell-label">基层党组织</label>
+            </div>
+            <div class="zqui-cell-bd">
+                <textarea type="text" rows="3" id="Organization" class="zqui-textarea validate[required] " placeholder="请输入基层党组织名称"></textarea>
+
+            </div>
+        </li>
+        @*<li class="zqui-table-view-cell zqui-dis-flex">
+                <div class="zqui-cell-hd">
+                    <label class="zqui-cell-label">推荐人姓名</label>
+                </div>
+                <div class="zqui-cell-bd zqui-flex-1">
+                    <input class="zqui-input" type="text" placeholder="请输入姓名">
+                </div>
+            </li>*@
+        <li class="zqui-table-view-cell zqui-dis-flex">
+            <div class="zqui-cell-hd">
+                <label class="zqui-cell-label">拍摄日期</label>
+            </div>
+            <div class="zqui-cell-bd zqui-flex-1">
+                <input class="zqui-input" type="date" name="NewsDate" placeholder="拍摄日期">
+            </div>
+        </li>
+        <li class="zqui-table-view-divider">上传党员图片</li>
+        <li class="zqui-table-view-cell zqui-dis-flex">
+            <div class="zqui-uploader">
+                <div class="zqui-uploader-hd  zqui-dis-flex">
+                    <div class="zqui-cell-bd zqui-flex-1">点击照片可设置标题图片或删除</div>
+                    <div class="zqui-cell-ft">
+                        @*0/2*@
+                    </div>
+                </div>
+                <div class="zqui-uploader-bd">
+                    <ul class="zqui-uploader-files" id="img">
+                        @*<li class="zqui-uploader-file zqui-uploader-status">
+                                <img class="Show" src="/Content/images/pic.jpg">
+                                <div class="ShowIcon zqui-uploader-status-content text-primary">
+                                    <i class="icon icon-ok-sign"></i>
+                                </div>
+                            </li>
+                            <li class="zqui-uploader-file zqui-uploader-status">
+                                <img class="Show" src="/Content/images/pic.jpg">
+                                <div class="zqui-uploader-status-content">50%</div>
+                            </li>
+                            <li class="zqui-uploader-file">
+                                <img class="Show" src="/Content/images/pic.jpg">
+                            </li>
+                            <li class="zqui-uploader-file">
+                                <img class="Show" src="/Content/images/pic.jpg">
+                            </li>
+                            <li class="zqui-uploader-file">
+                                <img class="Show" src="/Content/images/pic.jpg">
+                            </li>
+                            <li class="zqui-uploader-file">
+                                <img class="Show" src="/Content/images/pic.jpg">
+                            </li>*@
+                    </ul>
+                    <div class="zqui-uploader-input-wrp">
+
+                        <a class="zqui_uploader_input" id="selectImage"></a>
+
+                        @*<input class="zqui-uploader-input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">*@
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="zqui-table-view-divider">填写党员事迹</li>
+        <li class="zqui-table-view-cell">
+            <div class="zqui-cell-bd zqui-flex-1">
+                <div>
+                    <textarea class="zqui-textarea validate[required]" placeholder="请输入内容" rows="3" name="Content" maxlength="200"></textarea>
+                </div>
+                @*<div class="zqui-textarea-counter"><span>0</span>/200</div>*@
+            </div>
+        </li>
+
+
+    </ul>
+    <div class="zqui-content-padded">
+        <button id="btnSave" class="zqui-btn zqui-btn-block zqui-btn-primary">提交推荐</button>
+    </div>
+</div>
+
+
+<div class="zqui-popup">
+    <div class="zqui-popup-buttons"><a class="text-info zqui-popup-button" id="btnSetDefault">设定为标题图片</a></div>
+    <div class="zqui-popup-buttons"><a class="text-danger zqui-popup-button" id="btnDelete">删除图片</a></div>
+    <div class="zqui-popup-buttons"> <a class="btnClose text-info zqui-popup-button">取消</a> </div>
+</div>
+<div class="zqui-popup-backdrop"></div>
+
+
+
+<script type="text/js-render" id="tipsTmpl">
+    <div class="zqui-msg">
+        <div class="zqui-icon-area zqui-primary">
+            <i class="icon icon-ok-sign"></i>
+        </div>
+        <div class="zqui-text-area">
+            <h2 class="zqui-msg-title">推荐成功！</h2>
+            <p class="zqui-msg-desc">系统管理员会对您推荐的事迹进行审核，审核通过后即可展示。</p>
+        </div>
+        <div class="zqui-opr-area">
+            <p class="zqui-btn-area">
+                <a href="index" class="zqui-btn zqui-btn-block">返回首页</a> 
+            </p>
+        </div> 
+    </div>
+</script>
+
+
+<script>
+    $(function () {
+        $(".btnClose").click(function () { $(".zqui-popup, .zqui-popup-backdrop").hide(); });
+
+        $("#actionSheet_wrap").insertAfter(".footer");
+        $("#actionsheet_cancel").click(function (parameters) {
+            $("#actionSheet_wrap").hide();
+        });
+
+        var maxLength = 4;
+
+        var titletmpl = '<div class="ShowIcon zqui-uploader-status-content text-primary"><i class="icon icon-ok-sign"></i></div>';
+        function reBind() {
+            var length = $("#img .upImage").length;
+            $(".zqui_cell_ft").text(length + "/" + maxLength);
+            $("#selectImage").parent().parent().Display(length < maxLength);
+
+
+            if ($(".upImage .zqui-uploader-status").length == 0) {
+                var img = $("#img .upImage:eq(0)");
+                img.addClass("zqui-uploader-status");
+                $(titletmpl).appendTo(img);
+
+            }
+        }
+
+        $("#selectImage").uploadifive(
+            {
+                height: "77",
+                width: "77",
+                multi: false,
+                uploadScript: "@WebHelper.GetRootUrl()api/Icon/UploadFile",
+                buttonText: "",
+                onUploadComplete: function (file, data, res) {
+                    var result = JSON.parse(data);
+                    console.log(result);
+                    var filename = result.Data.FilePath;//.substr(1);
+                    var image = $('<li class="zqui-uploader-file upImage">' +
+                        '<img class="Show" src="' + filename + '">' +
+                        '</li>');
+                    $("#img").append(image);
+                    image.data("mediaid", filename);
+                    reBind();
+                }
+            }
+        );
+
+        var $pop = $(".zqui-popup");
+        var $popdrop = $(".zqui-popup-backdrop");
+
+        $("#img").on("click", ".upImage", function () {
+            $pop.show().data("img", $(this));
+            $popdrop.show();
+        });
+
+        $("#btnDelete").on("click", function () {
+            if (confirm("确认要删除该图片？")) {
+                $pop.data("img").remove();
+                reBind();
+                $pop.hide();
+                $popdrop.hide();
+            }
+        });
+
+        $("#btnSetDefault").on("click", function () {
+            if (confirm("确认要设为默认图片？")) {
+                $("#img .upImage").each(function (i, o) {
+                    $(o).removeClass("zqui_uploader_status");
+                    $(o).find(".ShowIcon").remove();
+                });
+                var img = $pop.data("img");
+                img.addClass("zqui-uploader-status");
+                $(titletmpl).appendTo(img);
+                $pop.hide();
+                $popdrop.hide();
+            }
+        });
+
+        $("#btnSave").click(function () {
+
+            if (!$(".zqui-content").CheckValidation()) return;
+            var data = $(".zqui-content").GetJson();
+            var $imgs = $("#img .upImage");
+            if (!data.NewsDate) {
+                ShowError("拍摄日期必须填写");
+                return;
+                //$("input[name=NewsDate]").closed(".zqui-cell-bd")
+            }
+            if ($imgs.length == 0) {
+                ShowError("请至少上传一张照片");
+                return;
+            }
+            data.Images = "";
+            $imgs.each(function () {
+                var img = $(this).data("mediaid");
+                if (img) data.Images += img + ",";
+            });
+            data.Icon = $("#img .zqui-uploader-status").data("mediaid");
+            $(this).prop("disabled", true);
+            var btn = $(this);
+            var api = new Sail.ApiHelper("WeChatNews");
+            $.Put(api.GetApi("Put"), { "": JSON.stringify(data) }, function (result) {
+                if (!result.IsSuccess) btn.prop("disabled", false);
+
+                MsgBox.Action(result, function() {
+                    $(".zqui-content").html($("#tipsTmpl").html());
+                    
+                });
+                
+            });
+
+        });
+
+    });
+</script> 

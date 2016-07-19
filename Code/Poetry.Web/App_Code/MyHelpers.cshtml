@@ -1,0 +1,99 @@
+﻿@using Poetry.Model
+@using Poetry.Web
+@using Sail.Web
+@using Sail.Common
+@helper RenderFoot(string name, string ver)
+{
+    <div class="page-footer">
+        <div class="page-footer-inner">
+            @name V @ver &nbsp;&copy; <a href="http://www.whzqkj.com/">智擎科技</a>
+        </div>
+    </div>
+}
+@helper IeChck()
+{
+    <!--[if lt IE 10]>
+         <div style=" position: fixed;top: 0px;left: 0px;height:100%;width:100%;background: #000;z-index:10000">
+        <div style="height: 100%;margin: auto;position: relative;width: 1000px;padding-top: 150px;z-index:10001">
+            <div style=" padding-top:40px;background-color:#fff;">
+                <h2 style="text-align:center;font-size:24px;font-weight:bold;">很抱歉！您使用的浏览器版本过低，无法使用我们的系统，请升级后再试！</h2>
+                <p style="text-align:center;font-size:18px;margin-top:40px;">建议使用以下浏览器或浏览版本的极速模式使用</p>
+                <div style="width:1000px;padding:0 60px;">
+                    <a href="http://chrome.360.cn/index.html" style="float:left;padding:40px;text-align:center;text-decoration:none;">
+                        <span><img src="/Content/images/360.png" style="width:140px;height:140px;padding:5px;" /></span>
+                        <p style="width:140px;text-align:center;margin-top:10px;">360极速浏览器</p>
+                        <p style="width:140px;text-align:center;margin-top:10px;color:red;">（强烈推荐）</p>
+                    </a>
+                    <a href="http://se.360.cn/index.html" style="float:left;padding:40px;text-align:center;text-decoration:none;">
+                        <span><img src="/Content/images/360anquan.jpg" style="width:140px;height:140px;padding:5px;" /></span>
+                        <p style="width:140px;text-align:center;margin-top:10px;">360安全浏览器</p>
+                    </a>
+                    <a href="http://www.firefox.com.cn/" style="float:left;padding:40px;text-align:center;text-decoration:none;">
+                        <span><img src="/Content/images/huohu.jpg" style="width:140px;height:140px" /></span>
+                        <p style="width:140px;text-align:center;margin-top:10px;">火狐浏览器</p>
+                    </a>
+
+                    <a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" style="float:left;padding:40px;text-decoration:none;">
+                        <span><img src="/Content/images/ie.jpg" style="width:140px;height:140px" /></span>
+                        <p style="width:140px;text-align:center;margin-top:10px;">IE10+浏览器</p>
+
+                    </a>
+                </div>
+                <div class="clearfix"></div>
+                <p style="text-align:center;font-size:18px;margin-bottom:40px;">如果您当前已使用360极速或360安全浏览器仍然能看到本页，可能由于未打开极速模式？</p>
+                <p style="text-align:center;padding-bottom:40px;"><a href="http://se.360.cn/v6/help/help5.html" style="text-decoration:none;">如何打开极速模式?</a></p>
+            </div>
+        </div>
+    </div>
+    <![endif]-->
+}
+
+@helper Root(string url)
+{
+    @Html.Raw(WebHelper.GetRootUrl() + url)
+}
+
+@helper RenderDict(IEnumerable<DictBase> list, string defaultValue = "", string defaultText = "")
+{
+if (defaultText.IsNotNull())
+{
+        <option value="@defaultValue">@defaultText</option>
+}
+if (list != null)
+{
+    foreach (var obj in list)
+    {
+            <option value="@obj.Id">@obj.Name</option>
+    }
+}
+}
+
+
+@helper RenderList(IEnumerable<KeyValuePair<string, string>> list, string defaultValue = "", string defaultText = "")
+{
+if (defaultText.IsNotNull())
+{
+        <option value="@defaultValue">@defaultText</option>
+}
+foreach (var obj in list)
+{
+        <option value="@obj.Key">@obj.Value</option>
+}
+}
+
+
+
+@helper RenderEnum(IEnumerable<KeyValuePair<int, string>> list, string defaultValue = "", string defaultText = "")
+{
+if (defaultText.IsNotNull())
+{
+        <option value="@defaultValue">@defaultText</option>
+}
+foreach (var obj in list)
+{
+        <option value="@obj.Key">@obj.Value</option>
+}
+}
+
+
+

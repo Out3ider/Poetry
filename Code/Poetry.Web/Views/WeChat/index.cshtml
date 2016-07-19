@@ -1,0 +1,310 @@
+﻿
+
+<script type="text/js-render" id="listTmpl">
+    <div data-id="{{>Id}}" class="box-item">
+        <img src="{{Pre:Icon}}" />
+        <div class="foot">
+            {{>Content}}
+        </div>
+        <div class="info">
+            <span>{{>PartyMember}}</span>
+            <span>{{>Name}}</span>
+        </div>
+        <div class="operate">
+            <a class="btnLike">
+
+                <i class="icon {{if isLike}} icon-hongxinyidianzan {{else}}icon-hongxinweidianzan {{/if}} text-danger"></i>
+                <span>{{>Liked}}</span>
+            </a>
+            <span>
+                <i class="icon icon-pinglun"></i>
+                <span>{{>Comments}}</span>
+            </span>
+        </div>
+    </div>
+</script>
+
+<script type="text/js-render" id="modalTmpl">
+    <div class="zqui-panel-card">
+        {{for ImageList}}
+        <p>
+            <img src="{{MidPre:#data}}">
+        </p>
+        {{/for}}
+        <p>
+            <b>事迹：</b>
+            {{>Content}}
+        </p>
+        <div class="zqui-info">
+            <p class="zqui-h6">发生时间<span class="zqui-rt">{{ToDate:NewsDate}}</span></p>
+            <p class="zqui-h6">所属县区<span class="zqui-rt">{{>County.Name}}</span></p>
+            <p class="zqui-h6">基层党组织<span class="zqui-rt">{{>Organization}}</span></p>
+            <p class="zqui-h6">党员姓名<span class="zqui-rt">{{>PartyMember}}</span></p>
+            {{if Referral}}
+            <p class="zqui-h6">推荐人<span class="zqui-rt">{{>Referral}}</span></p>
+            {{/if}}
+        </div>
+        <div class="operate">
+            <span>
+                阅读量：<span>
+                    {{>Views}}
+                </span>
+            </span>
+            <a class="btnLike">
+                <i class="icon  {{if isLike}} icon-hongxinyidianzan {{else}}icon-hongxinweidianzan {{/if}} text-danger"></i>
+                <span>{{>Liked}}</span>
+            </a>
+        </div>
+        <div class="comment" id="Pinglun">
+            <div class="tips-line">
+                <span class="tips">评论</span>
+            </div>
+            <div class="write"><a class="btnComment" href="#Pinglun">写评论</a></div>
+            <div id="divComment" style="display:none">
+                <ul class="zqui-table-view">
+                    <li class="zqui-table-view-cell">
+                        <div class="zqui-cell-bd zqui-flex-1">
+                            <textarea class="zqui-textarea" placeholder="请输入评论" name="Content" rows="3"></textarea>
+                            <div class="zqui-textarea-counter">
+                                @*<span>0</span>/200*@
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <button id="btnSubmit" class="zqui-btn zqui-btn-block zqui-btn-primary">提交评论</button>
+            </div>
+
+            {{for Comments tmpl="#commentListTmpl"}}
+
+            {{/for}}
+        </div>
+    </div>
+</script>
+
+<script type="text/x-jsrender" id="commentListTmpl">
+    <div class="panel-talk ">
+        <div class="panel-title clearfix">
+            <div class="name ">
+                <span>{{>CreaterName}}</span><span class="time">{{ToDateTime:CreateTime}}</span>
+            </div>
+        </div>
+        <div class="panel-body clearfix">
+            <div class="panel-talk-contents">
+                <p>{{>Content}}</p>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<div class="zqui-tab-wrapper" style="top: 2rem;">
+    <div class="zqui-table-view">
+        <div class="zqui-table-view-cell zqui-dis-flex zqui-cell-select  zqui-elect-after">
+            <div class="zqui-cell-hd">
+                <label class="zqui-cell-label">选择县区</label>
+            </div>
+            <div class="zqui-cell-bd zqui-flex-1">
+                <select class="zqui-select" id="CountyId">
+                    @(CountyController.GetAllKv().RenderOptions("请选择县区", "0"))
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="zqui-tab-content">
+    <div class="zqui-filter">
+        <div class="zqui-filter-bar">
+            <a class="zqui-filter-item active" data-sort="CreateTime">
+                按发布时间
+            </a>
+            <a class="zqui-filter-item" data-sort="Liked">
+                按点赞数
+            </a>
+        </div>
+    </div>
+    <div class="zqui-filter-content">
+
+        <div class="zqui-tab-pane">
+
+
+            <div class="box">
+                <div class="boxleft">
+                </div>
+                <div class="boxright">
+                </div>
+                <div class="spinner" style="display: none">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="zqui-modal" id="divDetail">
+    <div class="zqui-modal-mask"></div>
+    <div class="zqui-modal-dialog zqui-modal-lg">
+        <header class="zqui-modal-header banner"></header>
+        <div class="zqui-modal-footer">
+            <a class="btnClose zqui-modal-btn">
+                返回首页
+            </a>
+        </div>
+        <div class="zqui-modal-body">
+        </div>
+    </div>
+</div>
+
+<div class="zqui-modal" id="divLogin">
+    <div class="zqui-modal-mask" style="z-index: 30"></div>
+    <div class="zqui-modal-dialog zqui-modal-sm" style="z-index: 31">
+        <div class="zqui-modal-header">
+            登录用户账户
+            <a class="btnClose  zqui-header-clear">×</a>
+        </div>
+        <div class="zqui-modal-body">
+            @WeForm.LoginForm()
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+    $(function () {
+        $("#divDetail,#divLogin").appendTo("body");
+        $.views.converters({ 
+            Pre: function(str) {
+                if (!str ||str.indexOf("/demoPic/") > 0) return str;
+                var index = str.lastIndexOf("/");
+                if(index <0) return str;
+                return str.substr(0, index) + "/Pre" + str.substr(index);
+            },
+            MidPre: function(str) {
+                if (!str ||str.indexOf("/demoPic/") > 0) return str;
+                var index = str.lastIndexOf("/");
+                if(index <0) return str;
+                return str.substr(0, index) + "/MediumPre" + str.substr(index);
+            }
+        });
+
+        var api = new Sail.ApiHelper("Content");
+        var loginApi = new Sail.ApiHelper("wxuser");
+
+        var isLogined = @(((WebHelper.CurrentUser as Admin) != null).ToString().ToLower());
+
+
+        var wf = new WaterFall({
+            api: function () { return api.GetApi("Query") } ,
+            getPostKey:function() { return {countyId:$("#CountyId").val(),sort: $(".zqui-filter .zqui-filter-item.active").data("sort")};}
+        });
+
+        wf.on(".box-item img,.box-item .foot", function (data,o) {
+            data = $(o).closest(".box-item").data();
+            $.get(api.GetApi("Get"), { id: data.id }, function (result) {
+                $("#divDetail .zqui-modal-body").html($.templates("#modalTmpl").render(result.Data));
+                $("#divDetail").addClass("active").data("data", result.Data);
+                $("#divDetail .zqui-modal-body").scrollTop(0);
+            });
+        });
+
+
+        wf.on(".btnLike", function(data, o) {
+            data = $(o).closest(".box-item").data();
+            ActOrLogin(function() { like(o, data.id); });
+            return false;
+        });
+
+
+        $("#divLogin").on("click", ".btnClose", function () {
+            $("#divLogin").removeClass("active");
+        });
+
+
+        $("#divDetail").on("click", ".btnClose", function() { $("#divDetail").removeClass("active"); })
+            .on("click", ".btnLike", function() {
+                var item = $(this);
+                var data = $("#divDetail").data("data");
+                ActOrLogin(function() { like(item, data.Id); });
+            })
+            .on("click", ".btnComment", function() {
+                ActOrLogin(function() {
+                    $("#divDetail").find("#divComment").toggle();
+                    $("#divDetail #divComment textarea").focus();
+                });
+
+            })
+            .on("click", "#btnSubmit", function() {
+                var item = $(this);
+                var data = $("#divDetail").data("data");
+                var content = $("#divDetail #divComment textarea").val();
+                if (!content) {
+                    ShowError("评论不能为空");
+                    return false;
+                }
+
+                item.prop("disabled", true);
+                $.post(api.GetApi("comment/") + data.Id, { "": content }, function(result) {
+                    item.prop("disabled", false);
+                    ShowMessage(result,"", function() {
+                        $("#divDetail #divComment textarea").val("");
+                        $("#divDetail").find("#divComment").hide();
+                        if (result.Data.IsChecked) {
+                            $($.templates("#commentListTmpl").render(result.Data)).insertAfter("#divComment");
+                            ShowSuccess("评论添加成功");
+                        }
+                        else {
+                            ShowSuccess("评论添加成功，请等待管理员审核");
+                        }
+                    });
+                });
+            });
+
+
+        function like($item, id) {
+            var $this = $($item);
+            $.post(api.GetApi("like"), { "": id }, function (result) {
+                ShowMessage(result, "已点赞", function () {
+                    $this.find("i").removeClass("icon-hongxinweidianzan").addClass("icon-hongxinyidianzan")
+                    $this.find("span").text(result.Data);
+                });
+            });
+        }
+
+
+        function ActOrLogin(act) {
+            var $this = $("#divLogin");
+            console.log(isLogined)
+            if (!isLogined) $this.addClass("active");
+            else if (act && typeof act == "function") act();
+
+            $this.off("click", "#btnLogin").on("click", "#btnLogin", function () {
+                $.post(loginApi.GetApi("login"), { "": JSON.stringify($this.GetJson()) }, function (result) {
+                    ShowMessage(result, "登录成功", function () {
+                        isLogined = true;
+                        $this.removeClass("active");
+                        if (act && typeof act == "function") act();
+                    });
+                });
+            });
+        }
+
+        $("#CountyId").change(function() {
+            wf.Query(1);
+        });
+        $(".zqui-filter").on("click", ".zqui-filter-item", function() {
+            var $this = $(this);
+            if ($this.hasClass("active")) return;
+            $(".zqui-filter .zqui-filter-item.active ").removeClass("active");
+            $this.addClass("active");
+            wf.Query(1);
+        });
+    })
+</script>

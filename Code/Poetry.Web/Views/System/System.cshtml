@@ -1,0 +1,83 @@
+﻿@using Poetry.Model
+@using Poetry.Web
+@{
+
+    var user = this.SetPage("68E7ABB0-86F7-4701-A3D7-3C86760EB42C", "参数设置", "系统管理");
+
+}
+
+
+@section head{
+
+    <script>
+        $(function () {
+            var api = new Sail.ApiHelper("Param");
+            $.get(api.GetApi("get"), function (result) {
+                $.ItemBinder("#divDetail").SetObject(result.Data);
+            });
+
+            $("#btnSave").click(function () {
+                if (!$("#divDetail").CheckValidation()) return false;
+                var data = $("#divDetail").GetJson();
+                $.Put(api.GetApi("save"), { "": JSON.stringify(data) }, function (result) {
+                    ShowMessage(result);
+                });
+            })
+        });
+    </script>
+}
+
+
+<div id="divDetail">
+    <div class="portlet light bordered ">
+
+        <div class="portlet-title">
+            <div class="caption">
+
+                <span class="caption-subject bold uppercase font-green"></span>
+                <span class="bold   margin-right-10 font-green">@(PageData[PageHelper.PageTitle])</span>
+            </div>
+        </div>
+        <div class="portlet-body  row">
+            <div class=" col-sm-12 mainForm dashed-border-right">
+                <div class="tabbable tabbable-tabdrop">
+
+                    <div class="tab-content baseInfo">
+                        <div class="tab-pane active">
+                            <div class="portlet light">
+                                <div class="portlet-body">
+                                    <div class="form-horizontal form-body">
+                                        @Form.Input(Element.Create<Param>(x => x.Host))
+                                        @Form.Input(Element.Create<Param>(x => x.SiteName))
+                                        @Form.Input(Element.Create<Param>(x => x.SmsServer))
+                                        @Form.Input(Element.Create<Param>(x => x.SmsPort))
+                                        @Form.CheckBox(Element.Create<Param>(x => x.IsCommentNeedCheck))
+                                        @Form.CheckBox(Element.Create<Param>(x => x.IsAutoPublish))
+                                    </div>
+                                    <div class="form-actions">
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-5">
+                                                <button class="btn btn-primary" id="btnSave"> 保存 </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane otherInfo">
+                            <div class="portlet light">
+                                <div class="portlet-body">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+

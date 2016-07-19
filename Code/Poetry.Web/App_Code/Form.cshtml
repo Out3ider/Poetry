@@ -1,0 +1,217 @@
+﻿@using Poetry.Web
+@using Sail.Common
+ 
+
+
+
+@helper RenderInfoStatusSearch(string title)
+{
+    <div class="form-float" style="padding: 0;">
+
+        <div class="form-group">
+            <div class="form-element-control">
+                <input type="text" class="form-control" id="key" placeholder="@title">
+            </div>
+        </div>
+        <div class="form-group">
+            <button id="btnQuery" class="btn btn-primary">过滤</button>
+            <button id="btnReset" class="btn btn-secondary">清除条件</button>
+        </div>
+    </div>
+}
+
+
+
+@helper RenderGroup(Element element, Func<object, HelperResult> act, bool isMulti = false)
+{
+    <div class='form-group '>
+        <label class='control-label'>
+            @if (element.IsRequired)
+            {
+                <abbr class='form-required' title='必填'>*</abbr>
+            }
+            @element.Label :
+        </label>
+        <div class="@(isMulti?"form-element-control-flex":"form-element-control")">
+            @act.Invoke(null)
+            <span class="help-block">@element.Tips</span>
+        </div>
+    </div>
+}
+
+@helper Renderformtext(Element element, Func<object, HelperResult> act)
+{
+    <div class='form-group form-text'>
+        <label class='control-label'>
+            @element.Label :
+        </label>
+        <div class="form-element-control">
+            @act.Invoke(null)
+        </div>
+    </div>
+}
+
+
+@* 输出文本框 *@
+@helper Input(Element element)
+{
+    @RenderGroup(element, @<text>
+        <input type="text" @element.Attr() />
+    </text>)
+}
+
+@helper  TextArea(Element element)
+{
+    @RenderGroup(element, @<text>
+        <textarea rows="5" @element.Attr()></textarea>
+    </text>)
+}
+
+@helper ViewTmpl(Element element)
+{
+    @Renderformtext(element, @<text>
+        @if (element?.Class?.IndexOf("date") == 0)
+        {
+            @:{{ToDate:@element.Id}}
+
+        }
+        else
+        {
+            @:{{:@element.Id}}
+        }
+    </text>)
+}
+
+
+ 
+ 
+
+
+@* 输出密码 *@
+@helper Password(Element element)
+{
+    @RenderGroup(element, @<text>
+        <input type="password" @element.Attr() />
+    </text>)
+}
+
+
+@* 输出复选框 *@
+@helper CheckBox(Element element)
+{
+element.Data["valuetype"] = "bool";
+    @RenderGroup(element, @<text>
+
+        <div class="checkbox-inline">
+            <div class="checkbox">
+                <input type="checkbox" @element.Attr("") />
+                <label for="@element.Id">
+                    <span class="inc"></span>
+                    <span class="check"></span>
+                    <span class="box"></span>@element.Label
+                </label>
+            </div>
+        </div>
+    </text>)
+}
+
+
+
+@* 输出复选框集合 *@
+@helper CheckList(Element element, IList<KeyValuePair<string, string>> items)
+{
+    @RenderGroup(element, @<text>
+        <div class="checkbox-inline">
+            @foreach (var eitem in items)
+            {
+                <div class="checkbox">
+                    <input type="checkbox" id="@element.Id@eitem.Key" data-value="@eitem.Key"
+                           name="@element.Id" class="@element.Class" data-name="@eitem.Value">
+                    <label for="@element.Id@eitem.Key">
+                        <span class="inc"></span>
+                        <span class="check"></span>
+                        <span class="box"></span>@eitem.Value
+                    </label>
+                </div>
+            }
+        </div>
+    </text>)
+}
+
+ 
+ 
+
+
+@helper TimesSelect()
+{
+    <div class="form-group">
+        <div class="input-group">
+
+            <input type="text" id="dayStart" class="date form-control" placeholder="开始日期" />
+            <span class="input-group-addon">至</span>
+            <input type="text" id="dayEnd" class="date form-control" placeholder="结束日期" />
+            <div class="input-group-btn  ">
+                <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dateSwitch" role="menu" data-start="#dayStart" data-end="#dayEnd">
+                    <li><a class="today">今日</a></li>
+                    <li><a class="thisWeek">本周</a></li>
+                    <li><a class="thisMonth">本月</a></li>
+                    <li class="divider"></li>
+                    <li><a class="preDay">上一天</a></li>
+                    <li><a class="nextDay">下一天</a></li>
+                    <li class="divider"></li>
+                    <li><a class="preWeek">上一周</a></li>
+                    <li><a class="nextWeek">下一周</a></li>
+                    <li class="divider"></li>
+                    <li><a class="preMonth">上一月</a></li>
+                    <li><a class="nextMonth">下一月</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+}
+
+
+
+
+
+
+@* 输出选择器 *@
+@helper Select(Element element, IList<KeyValuePair<string, string>> items, string defaultText = "", string defaultValue = "", string prop = "")
+        {
+
+element.Data["text"] = "Value";
+element.Data["value"] = "Key";
+if (!string.IsNullOrEmpty(prop)) { element.Data["prop"] = prop; }
+if (!string.IsNullOrEmpty(defaultValue)) { element.Data["defaultvalue"] = defaultValue; }
+if (!string.IsNullOrEmpty(defaultText)) { element.Data["defaulttext"] = defaultText; }
+    @RenderGroup(element, @<text>
+            <select @element.Attr()>
+
+                @items.RenderOptions(defaultText, defaultValue)
+            </select>
+    </text>)
+}
+
+
+
+
+@*输出查看字段*@
+@helper ViewTag(Element element, string formClass = "")
+{
+    <div class='form-group form-text @formClass'>
+        <label class='control-label'>
+            @element.Label :
+        </label>
+        <div class="form-element-control">
+            <span name="@element.Id" class="prop @element.Class" @element.RenderData()></span>
+            &nbsp;
+            @if (!string.IsNullOrEmpty(element.Tips))
+            {     <span class="help-block">@element.Tips</span>}
+        </div>
+    </div>
+}
+

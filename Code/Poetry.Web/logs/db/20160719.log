@@ -1,0 +1,336 @@
+﻿## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /SELECT  sys.schemas.name AS schemas  ,t.name
+## 2016-07-19 01:06:11 |					FROM    sys.objects t 
+## 2016-07-19 01:06:11 |					INNER JOIN sys.schemas ON t.schema_id = sys.schemas.schema_id
+## 2016-07-19 01:06:11 \					where t.type='u'
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /select a.name,
+## 2016-07-19 01:06:11 |						c.is_primary_key ,
+## 2016-07-19 01:06:11 |						a.is_Identity ,
+## 2016-07-19 01:06:11 |						a.is_nullable ,
+## 2016-07-19 01:06:11 |						t.name as type,
+## 2016-07-19 01:06:11 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-19 01:06:11 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-19 01:06:11 |						e.name as schemaName,
+## 2016-07-19 01:06:11 |						d.name as tablename
+## 2016-07-19 01:06:11 |						from sys.columns a 
+## 2016-07-19 01:06:11 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-19 01:06:11 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-19 01:06:11 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-19 01:06:11 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-19 01:06:11 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-19 01:06:11 \						where d.name = 'T_Community' and e.name = 'dbo'
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /select a.name,
+## 2016-07-19 01:06:11 |						c.is_primary_key ,
+## 2016-07-19 01:06:11 |						a.is_Identity ,
+## 2016-07-19 01:06:11 |						a.is_nullable ,
+## 2016-07-19 01:06:11 |						t.name as type,
+## 2016-07-19 01:06:11 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-19 01:06:11 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-19 01:06:11 |						e.name as schemaName,
+## 2016-07-19 01:06:11 |						d.name as tablename
+## 2016-07-19 01:06:11 |						from sys.columns a 
+## 2016-07-19 01:06:11 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-19 01:06:11 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-19 01:06:11 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-19 01:06:11 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-19 01:06:11 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-19 01:06:11 \						where d.name = 'T_NewsComment' and e.name = 'dbo'
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /select a.name,
+## 2016-07-19 01:06:11 |						c.is_primary_key ,
+## 2016-07-19 01:06:11 |						a.is_Identity ,
+## 2016-07-19 01:06:11 |						a.is_nullable ,
+## 2016-07-19 01:06:11 |						t.name as type,
+## 2016-07-19 01:06:11 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-19 01:06:11 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-19 01:06:11 |						e.name as schemaName,
+## 2016-07-19 01:06:11 |						d.name as tablename
+## 2016-07-19 01:06:11 |						from sys.columns a 
+## 2016-07-19 01:06:11 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-19 01:06:11 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-19 01:06:11 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-19 01:06:11 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-19 01:06:11 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-19 01:06:11 \						where d.name = 'T_Admin' and e.name = 'dbo'
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /alter table T_Admin
+## 2016-07-19 01:06:11 | Alter column WxOpenId nvarchar(200) null  
+## 2016-07-19 01:06:11 \ 
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /alter table T_Admin
+## 2016-07-19 01:06:11 | Alter column WxName nvarchar(50) null  
+## 2016-07-19 01:06:11 \ 
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /alter table T_Admin
+## 2016-07-19 01:06:11 | Alter column OrgCounts int null  
+## 2016-07-19 01:06:11 \ 
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /alter table T_Admin
+## 2016-07-19 01:06:11 | Alter column ApplyOrgId uniqueidentifier null  
+## 2016-07-19 01:06:11 \ 
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /alter table T_Admin
+## 2016-07-19 01:06:11 | Alter column IsChecked bit null  
+## 2016-07-19 01:06:11 \ 
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /select a.name,
+## 2016-07-19 01:06:11 |						c.is_primary_key ,
+## 2016-07-19 01:06:11 |						a.is_Identity ,
+## 2016-07-19 01:06:11 |						a.is_nullable ,
+## 2016-07-19 01:06:11 |						t.name as type,
+## 2016-07-19 01:06:11 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-19 01:06:11 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-19 01:06:11 |						e.name as schemaName,
+## 2016-07-19 01:06:11 |						d.name as tablename
+## 2016-07-19 01:06:11 |						from sys.columns a 
+## 2016-07-19 01:06:11 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-19 01:06:11 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-19 01:06:11 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-19 01:06:11 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-19 01:06:11 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-19 01:06:11 \						where d.name = 'T_County' and e.name = 'dbo'
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /alter table T_County
+## 2016-07-19 01:06:11 | Alter column Size decimal(14,2) null  
+## 2016-07-19 01:06:11 \ 
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /select a.name,
+## 2016-07-19 01:06:11 |						c.is_primary_key ,
+## 2016-07-19 01:06:11 |						a.is_Identity ,
+## 2016-07-19 01:06:11 |						a.is_nullable ,
+## 2016-07-19 01:06:11 |						t.name as type,
+## 2016-07-19 01:06:11 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-19 01:06:11 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-19 01:06:11 |						e.name as schemaName,
+## 2016-07-19 01:06:11 |						d.name as tablename
+## 2016-07-19 01:06:11 |						from sys.columns a 
+## 2016-07-19 01:06:11 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-19 01:06:11 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-19 01:06:11 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-19 01:06:11 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-19 01:06:11 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-19 01:06:11 \						where d.name = 'T_Group' and e.name = 'dbo'
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /select a.name,
+## 2016-07-19 01:06:11 |						c.is_primary_key ,
+## 2016-07-19 01:06:11 |						a.is_Identity ,
+## 2016-07-19 01:06:11 |						a.is_nullable ,
+## 2016-07-19 01:06:11 |						t.name as type,
+## 2016-07-19 01:06:11 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-19 01:06:11 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-19 01:06:11 |						e.name as schemaName,
+## 2016-07-19 01:06:11 |						d.name as tablename
+## 2016-07-19 01:06:11 |						from sys.columns a 
+## 2016-07-19 01:06:11 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-19 01:06:11 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-19 01:06:11 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-19 01:06:11 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-19 01:06:11 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-19 01:06:11 \						where d.name = 'T_News' and e.name = 'dbo'
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /select a.name,
+## 2016-07-19 01:06:11 |						c.is_primary_key ,
+## 2016-07-19 01:06:11 |						a.is_Identity ,
+## 2016-07-19 01:06:11 |						a.is_nullable ,
+## 2016-07-19 01:06:11 |						t.name as type,
+## 2016-07-19 01:06:11 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-19 01:06:11 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-19 01:06:11 |						e.name as schemaName,
+## 2016-07-19 01:06:11 |						d.name as tablename
+## 2016-07-19 01:06:11 |						from sys.columns a 
+## 2016-07-19 01:06:11 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-19 01:06:11 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-19 01:06:11 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-19 01:06:11 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-19 01:06:11 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-19 01:06:11 \						where d.name = 'T_NewsType' and e.name = 'dbo'
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /select a.name,
+## 2016-07-19 01:06:11 |						c.is_primary_key ,
+## 2016-07-19 01:06:11 |						a.is_Identity ,
+## 2016-07-19 01:06:11 |						a.is_nullable ,
+## 2016-07-19 01:06:11 |						t.name as type,
+## 2016-07-19 01:06:11 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-19 01:06:11 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-19 01:06:11 |						e.name as schemaName,
+## 2016-07-19 01:06:11 |						d.name as tablename
+## 2016-07-19 01:06:11 |						from sys.columns a 
+## 2016-07-19 01:06:11 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-19 01:06:11 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-19 01:06:11 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-19 01:06:11 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-19 01:06:11 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-19 01:06:11 \						where d.name = 'T_Param' and e.name = 'dbo'
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:11  /***********记录sql语句********/
+## 2016-07-19 01:06:11 /select a.name,
+## 2016-07-19 01:06:11 |						c.is_primary_key ,
+## 2016-07-19 01:06:11 |						a.is_Identity ,
+## 2016-07-19 01:06:11 |						a.is_nullable ,
+## 2016-07-19 01:06:11 |						t.name as type,
+## 2016-07-19 01:06:11 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-19 01:06:11 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-19 01:06:11 |						e.name as schemaName,
+## 2016-07-19 01:06:11 |						d.name as tablename
+## 2016-07-19 01:06:11 |						from sys.columns a 
+## 2016-07-19 01:06:11 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-19 01:06:11 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-19 01:06:11 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-19 01:06:11 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-19 01:06:11 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-19 01:06:11 \						where d.name = 'T_UserLike' and e.name = 'dbo'
+## 2016-07-19 01:06:11  /********************************/
+## 2016-07-19 01:06:12  /***********记录sql语句********/
+## 2016-07-19 01:06:12  select count(1) from T_County as t
+## 2016-07-19 01:06:12  /********************************/
+## 2016-07-19 01:06:12  /***********记录sql语句********/
+## 2016-07-19 01:06:12  select count(1) from T_Admin as t
+## 2016-07-19 01:06:12  /********************************/
+## 2016-07-19 01:06:12  /***********记录sql语句********/
+## 2016-07-19 01:06:12  select count(1) from T_Param as t
+## 2016-07-19 01:06:12  /********************************/
+## 2016-07-19 01:06:12  /***********记录sql语句********/
+## 2016-07-19 01:06:12  参数0：00000000-0000-0000-0000-000000000000
+## 2016-07-19 01:06:12  select t.* from T_Param t where t.ParamId <> @p0
+## 2016-07-19 01:06:12  /********************************/
+## 2016-07-19 01:06:12  /***********记录sql语句********/
+## 2016-07-19 01:06:12  select t.* from T_County t
+## 2016-07-19 01:06:12  /********************************/
+## 2016-07-19 01:06:13  /***********记录sql语句********/
+## 2016-07-19 01:06:13  参数0：admin
+## 2016-07-19 01:06:13  select t.* , C_Group.RoleId as C_Group_RoleId , C_Group.RoleName as C_Group_RoleName , C_Group.Memo as C_Group_Memo , C_Group.Powers as C_Group_Powers , C_Group.CreateTime as C_Group_CreateTime , C_Group.LastUpdateTime as C_Group_LastUpdateTime , C_Group.LastAdminId as C_Group_LastAdminId , C_Group.IsDeleted as C_Group_IsDeleted , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_Group C_Group on t.C_Group = C_Group.RoleId  left join T_County County on t.County = County.Id  where t.LoginId = @p0
+## 2016-07-19 01:06:13  /********************************/
+## 2016-07-19 01:06:13  /***********记录sql语句********/
+## 2016-07-19 01:06:13  select t.* from T_County t
+## 2016-07-19 01:06:13  /********************************/
+## 2016-07-19 01:06:14  /***********记录sql语句********/
+## 2016-07-19 01:06:14 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Community t left join T_County County on t.County = County.Id )  select * from (select ROW_NUMBER()  Over( order by t.OrderByNo asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-19 01:06:14 \                    where rnuserdpage between 1 and 10 
+## 2016-07-19 01:06:14  /********************************/
+## 2016-07-19 01:06:14  /***********记录sql语句********/
+## 2016-07-19 01:06:14  select count(1) from T_Community t left join T_County County on t.County = County.Id 
+## 2016-07-19 01:06:14  /********************************/
+## 2016-07-19 01:06:34  /***********记录sql语句********/
+## 2016-07-19 01:06:34  参数0：1
+## 2016-07-19 01:06:34  select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Community t left join T_County County on t.County = County.Id  where t.Id = @p0
+## 2016-07-19 01:06:34  /********************************/
+## 2016-07-19 01:06:34  /***********记录sql语句********/
+## 2016-07-19 01:06:34  参数0：3
+## 2016-07-19 01:06:34  select t.* from T_County t where t.Id = @p0
+## 2016-07-19 01:06:34  /********************************/
+## 2016-07-19 01:06:34  /***********记录sql语句********/
+## 2016-07-19 01:06:34  参数0：四褐山街道办
+## 2016-07-19 01:06:34  参数1：1
+## 2016-07-19 01:06:34  select count(1) from T_Community  t where t.Name = @p0 and t.Id <> @p1
+## 2016-07-19 01:06:34  /********************************/
+## 2016-07-19 01:06:34  /***********记录sql语句********/
+## 2016-07-19 01:06:34  参数0：3
+## 2016-07-19 01:06:34  参数1：良好
+## 2016-07-19 01:06:34  参数2：四褐山街道办
+## 2016-07-19 01:06:34  参数3：1
+## 2016-07-19 01:06:34  参数4：1
+## 2016-07-19 01:06:34  update T_Community set County = @p0 , Describe = @p1 , Name = @p2 , OrderByNo = @p3 where Id = @p4
+## 2016-07-19 01:06:34  /********************************/
+## 2016-07-19 01:06:34  /***********记录sql语句********/
+## 2016-07-19 01:06:34 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Community t left join T_County County on t.County = County.Id )  select * from (select ROW_NUMBER()  Over( order by t.OrderByNo asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-19 01:06:34 \                    where rnuserdpage between 1 and 10 
+## 2016-07-19 01:06:34  /********************************/
+## 2016-07-19 01:06:34  /***********记录sql语句********/
+## 2016-07-19 01:06:34  select count(1) from T_Community t left join T_County County on t.County = County.Id 
+## 2016-07-19 01:06:34  /********************************/
+## 2016-07-19 01:07:00  /***********记录sql语句********/
+## 2016-07-19 01:07:00  参数0：3
+## 2016-07-19 01:07:00  select t.* from T_County t where t.Id = @p0
+## 2016-07-19 01:07:00  /********************************/
+## 2016-07-19 01:07:00  /***********记录sql语句********/
+## 2016-07-19 01:07:00  参数0：湾里镇街道办
+## 2016-07-19 01:07:00  参数1：0
+## 2016-07-19 01:07:00  select count(1) from T_Community  t where t.Name = @p0 and t.Id <> @p1
+## 2016-07-19 01:07:00  /********************************/
+## 2016-07-19 01:07:00  /***********记录sql语句********/
+## 2016-07-19 01:07:00  参数0：3
+## 2016-07-19 01:07:00  参数1：良好
+## 2016-07-19 01:07:00  参数2：湾里镇街道办
+## 2016-07-19 01:07:00  参数3：2
+## 2016-07-19 01:07:00  insert into T_Community (County,Describe,Name,OrderByNo ) values ( @p0 , @p1 , @p2 , @p3 )  select   @@identity   as   lastid 
+## 2016-07-19 01:07:00  /********************************/
+## 2016-07-19 01:07:00  /***********记录sql语句********/
+## 2016-07-19 01:07:00 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Community t left join T_County County on t.County = County.Id )  select * from (select ROW_NUMBER()  Over( order by t.OrderByNo asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-19 01:07:00 \                    where rnuserdpage between 1 and 10 
+## 2016-07-19 01:07:00  /********************************/
+## 2016-07-19 01:07:00  /***********记录sql语句********/
+## 2016-07-19 01:07:00  select count(1) from T_Community t left join T_County County on t.County = County.Id 
+## 2016-07-19 01:07:00  /********************************/
+## 2016-07-19 01:07:05  /***********记录sql语句********/
+## 2016-07-19 01:07:05  参数0：1
+## 2016-07-19 01:07:05  select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Community t left join T_County County on t.County = County.Id  where t.Id = @p0
+## 2016-07-19 01:07:05  /********************************/
+## 2016-07-19 01:07:05  /***********记录sql语句********/
+## 2016-07-19 01:07:05  参数0：3
+## 2016-07-19 01:07:05  select t.* from T_County t where t.Id = @p0
+## 2016-07-19 01:07:05  /********************************/
+## 2016-07-19 01:07:05  /***********记录sql语句********/
+## 2016-07-19 01:07:05  参数0：四褐山街道办
+## 2016-07-19 01:07:05  参数1：1
+## 2016-07-19 01:07:05  select count(1) from T_Community  t where t.Name = @p0 and t.Id <> @p1
+## 2016-07-19 01:07:05  /********************************/
+## 2016-07-19 01:07:05  /***********记录sql语句********/
+## 2016-07-19 01:07:05  参数0：3
+## 2016-07-19 01:07:05  参数1：优秀
+## 2016-07-19 01:07:05  参数2：四褐山街道办
+## 2016-07-19 01:07:05  参数3：1
+## 2016-07-19 01:07:05  参数4：1
+## 2016-07-19 01:07:05  update T_Community set County = @p0 , Describe = @p1 , Name = @p2 , OrderByNo = @p3 where Id = @p4
+## 2016-07-19 01:07:05  /********************************/
+## 2016-07-19 01:07:05  /***********记录sql语句********/
+## 2016-07-19 01:07:05 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Community t left join T_County County on t.County = County.Id )  select * from (select ROW_NUMBER()  Over( order by t.OrderByNo asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-19 01:07:05 \                    where rnuserdpage between 1 and 10 
+## 2016-07-19 01:07:05  /********************************/
+## 2016-07-19 01:07:05  /***********记录sql语句********/
+## 2016-07-19 01:07:05  select count(1) from T_Community t left join T_County County on t.County = County.Id 
+## 2016-07-19 01:07:05  /********************************/
+## 2016-07-19 01:07:17  /***********记录sql语句********/
+## 2016-07-19 01:07:17  参数0：%四褐山%
+## 2016-07-19 01:07:17 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Community t left join T_County County on t.County = County.Id  where (t.Name like @p0))  select * from (select ROW_NUMBER()  Over( order by t.OrderByNo asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-19 01:07:17 \                    where rnuserdpage between 1 and 10 
+## 2016-07-19 01:07:17  /********************************/
+## 2016-07-19 01:07:17  /***********记录sql语句********/
+## 2016-07-19 01:07:17  参数0：%四褐山%
+## 2016-07-19 01:07:17  select count(1) from T_Community t left join T_County County on t.County = County.Id  where (t.Name like @p0)
+## 2016-07-19 01:07:17  /********************************/
+## 2016-07-19 01:07:21  /***********记录sql语句********/
+## 2016-07-19 01:07:21 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Community t left join T_County County on t.County = County.Id )  select * from (select ROW_NUMBER()  Over( order by t.OrderByNo asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-19 01:07:21 \                    where rnuserdpage between 1 and 10 
+## 2016-07-19 01:07:21  /********************************/
+## 2016-07-19 01:07:21  /***********记录sql语句********/
+## 2016-07-19 01:07:21  select count(1) from T_Community t left join T_County County on t.County = County.Id 
+## 2016-07-19 01:07:21  /********************************/
+## 2016-07-19 01:07:24  /***********记录sql语句********/
+## 2016-07-19 01:07:24  select t.* from T_County t
+## 2016-07-19 01:07:24  /********************************/
+## 2016-07-19 01:07:24  /***********记录sql语句********/
+## 2016-07-19 01:07:24  select t.* from T_County t
+## 2016-07-19 01:07:24  /********************************/
+## 2016-07-19 01:07:24  /***********记录sql语句********/
+## 2016-07-19 01:07:24 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Community t left join T_County County on t.County = County.Id )  select * from (select ROW_NUMBER()  Over( order by t.OrderByNo asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-19 01:07:24 \                    where rnuserdpage between 1 and 10 
+## 2016-07-19 01:07:24  /********************************/
+## 2016-07-19 01:07:24  /***********记录sql语句********/
+## 2016-07-19 01:07:24  select count(1) from T_Community t left join T_County County on t.County = County.Id 
+## 2016-07-19 01:07:24  /********************************/

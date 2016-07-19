@@ -1,0 +1,51 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <system.web>
+    <globalization fileEncoding="utf-8"/>
+    <customErrors mode="Off">
+      <error statusCode="404" redirect="/404.html" />
+    </customErrors>
+  </system.web>
+  <system.data>
+    <!--
+		<DbProviderFactories>
+      <remove invariant="MySql.Data.MySqlClient"></remove>
+      <add name="MySQL Data Provider" invariant="MySql.Data.MySqlClient" description=".Net Framework Data Provider for MySQL" type="MySql.Data.MySqlClient.MySqlClientFactory, MySql.Data,Culture=neutral, PublicKeyToken=c5687fc88969c44d"/>
+    </DbProviderFactories>
+		-->
+  </system.data>
+  <appSettings>
+    <!--
+     //注明要自动生成表的Model程序集
+    <add  key="IModel" value="Sail.Model"/>
+    <add  key="SessionTimeOut" value="30"/>
+    -->
+  </appSettings>
+  <system.webServer>
+    <httpErrors errorMode="Custom" >
+      <remove statusCode="404" subStatusCode="-1" />
+      <error statusCode="404" prefixLanguageFilePath="" path="/404.html" responseMode="ExecuteURL" /> 
+    </httpErrors>
+
+    <staticContent>
+      <remove fileExtension=".woff" />
+      <mimeMap fileExtension=".woff" mimeType="font/x-font-woff" />
+      <remove fileExtension=".woff2" />
+      <mimeMap fileExtension=".woff2" mimeType="font/x-font-woff2" />
+    </staticContent>
+    <validation validateIntegratedModeConfiguration="false"/>
+
+    <modules  >
+      <remove name="WebDAVModule" />
+      <remove name="UrlRoutingModule-4.0" />
+      <add name="UrlRoutingModule-4.0" type="System.Web.Routing.UrlRoutingModule" preCondition="" />
+    </modules>
+    <handlers>
+      <remove name="ExtensionlessUrlHandler-Integrated-4.0" />
+      <remove name="OPTIONSVerbHandler" />
+      <remove name="TRACEVerbHandler" />
+      <remove name="WebDAV" />
+      <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0" />
+    </handlers>
+  </system.webServer>
+</configuration>

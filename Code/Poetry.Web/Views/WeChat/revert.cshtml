@@ -1,0 +1,90 @@
+﻿@using Poetry.Web
+
+
+<div style="margin-top:1rem;">
+    <div id="myForm">
+        <ul class="zqui-table-view">
+
+
+            @WeForm.RenderGroup(new Element("手机号", ""), @<text>
+                <input class="zqui-input validate[required,custom[mobile]]" id="Phone" type="text" placeholder="请输入手机号" />
+
+                <button class="zqui-getcode" id="btnGetCode">
+                    获取验证码
+                </button>
+
+            </text> )
+            @WeForm.Input(new Element("验证码", "Code", "validate[required]") { IsRequired = true })
+
+            @WeForm.Password(new Element("密码", "Password", "validate[required]"))
+            @WeForm.Password(new Element("确认密码", "NewPwd", "validate[required,confirm[Password]]"))
+        </ul>
+        <div class="zqui-content-padded">
+            <button id="btnSave" class="zqui-btn zqui-btn-block zqui-btn-primary">重置密码</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    var api = new Sail.ApiHelper("WxUser");
+
+    function DisableBtn60(btn, timeout) {
+        if (!timeout) timeout = 60;
+        var wait = timeout;
+        var text = $(btn).text();
+        time();
+        function time() {
+            if (wait == 0) {
+                $(btn).prop('disabled', false).text(text);
+                wait = timeout;
+                $("#Phone").attr("readonly", false);
+            } else {
+                $(btn).prop("disabled", true).text("重新获取(" + wait + "s)");
+                wait--;
+                setTimeout(function () {
+                    time();
+                }, 1000);
+            };
+        }
+    }
+
+    $("#btnGetCode").click(function () {
+        if (!$("#Phone").parent().CheckValidation()) {
+            ShowError("请先填写手机号");
+            return;
+        }
+        $.get(api.GetApi("ForgetPwdCode"), { mobile: $("#Phone").val() }, function (result) {
+            if (result.IsSuccess) {
+                ShowSuccess("验证码已发送,请查看手机短信");
+                DisableBtn60($("#btnGetCode"));
+                $("#Phone").attr("readonly", true);
+            }
+            else {
+                ShowError(result.Msg);
+                $("#Phone").attr("readonly", false);
+            }
+        });
+    });
+
+
+    $("#btnSave").click(function () {
+        var $form = $("#myForm");
+        if (!$form.CheckValidation()) return false;
+        var data = $form.GetJson();
+        var $btn = $(this);
+        $btn.prop("disabled", true);
+        $.post(api.GetApi("ForgetPwd"), { "": JSON.stringify(data) }, function (result) {
+            if (result.IsSuccess) {
+                ShowSuccess("密码重置成功，3秒后跳转到登录页面");
+                setTimeout(function () {
+                    window.location.href = "login";
+                }, 3000);
+            } else {
+                $btn.prop("disabled", false);
+                ShowError(result.Msg);
+            }
+        });
+    });
+</script>

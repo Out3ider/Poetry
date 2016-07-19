@@ -1,0 +1,68 @@
+﻿@using Poetry.Web
+
+@{
+    var user = this.SetPage("373837AF-8383-4C57-93EF-1B2D48489BD6", "县区名单", "基础信息");
+}
+@section head{
+
+
+    <script type="text/x-jsrender" id="modalTmpl">
+
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                县区名称：<span>*</span>
+            </label>
+            <div class="col-md-10">
+                <input type="text" class="form-control validate[required]" id="Name" placeholder="请输入县区名称" />
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                排序号：<span>*</span>
+            </label>
+            <div class="col-md-10">
+                <input type="text" data-defaultvalue="0" class="form-control validate[required,custom[pdecimal]]" id="OrderByNo" placeholder="请输入排序号" />
+                <span class="help-block text-warning">县区按照排序号由小到大排列</span>
+            </div>
+        </div>
+      
+    </script>
+
+    <script type="text/x-jsrender" id="listTmpl">
+        <tr>
+            <td>
+                <a class="btnEdit">
+                    {{>Name}}
+                </a>
+            </td>
+
+            <td>{{>OrderByNo}}</td>
+            
+            <td>
+                <a class="text-primary m_r_10 btnEdit" title="修改" data-toggle="tooltip"><i class="fa fa-edit fa-lg"></i></a>
+                <a class="text-danger btnRemove" title="删除" data-toggle="tooltip"><i class="fa fa-lg  fa-trash"></i></a>
+            </td>
+        </tr>
+    </script>
+    <script>
+        $(function () {
+            var tool = new Sail.RazorPage("", "County", "Id");
+            tool.CreatePage({
+                titles: ["县区名称", "排序号", "操作"],
+                titleWidth: [0,0,120]
+            });
+            tool.Page.Query();
+        });
+    </script>
+}
+
+
+@Helper.PageList(
+    
+    @<text>
+        @Form.RenderInfoStatusSearch("过滤县区单位名称")
+</text>)
+
+@Helper.PageDetail()

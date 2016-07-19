@@ -1,0 +1,134 @@
+﻿
+@{
+    this.SetPage("072BA852-0539-4017-80EA-226ACB2780CD", "注册用户", "基本信息");
+}
+@section head{
+
+    <script type="text/x-jsrender" id="modalTmpl">
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                手机号码：<span>*</span>
+            </label>
+            <div class="col-md-10">
+                <input type="text" class="form-control validate[required]" id="LoginId" placeholder="请输入手机号码" />
+                <span class="text-danger">默认密码: @Admin.DefaultPassword</span>
+                <div class="form-control-focus">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                操作员姓名：<span>*</span>
+            </label>
+            <div class="col-md-10">
+                <input type="text" class="form-control validate[required]" id="UserName" placeholder="操作员姓名" />
+                <div class="form-control-focus">
+                </div>
+            </div>
+        </div>
+         
+
+
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                所属县区：<span>*</span>
+            </label>
+            <div class="col-md-10">
+                <select class="form-control validate[required]" data-target="#Subdistrict" id="County" data-prop="Id">
+                    @MyHelpers.RenderDict(CountyController.GetAll())
+                </select>
+            </div>
+        </div> 
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                所属单位或住址<span>*</span>：
+            </label>
+            <div class="col-md-10">
+                <input type="text" class="form-control validate[required]" id="OrgName" placeholder="所属单位或住址" />
+                <div class="form-control-focus">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                备注：
+            </label>
+            <div class="col-md-10">
+                <textarea class="form-control" id="Memo" maxlength="500" rows="6"></textarea>
+                <div class="form-control-focus">
+                </div>
+            </div>
+        </div> 
+
+    </script>
+    <script type="text/x-jsrender" id="listTmpl">
+        <tr>
+            <td>
+                <a class="btnEdit">
+                    {{>LoginId}}
+                </a>
+            </td>
+            <td>{{>UserName}}</td>
+
+
+            <td>{{>Phone}}</td>
+            <td>{{>County.Name}}</td>
+            <td>{{>OrgName}}</td>
+            <td>{{>Memo}}</td>
+            <td>
+                <a class="text-primary m_r_10 btnEdit" title="修改" data-toggle="tooltip"><i class="fa fa-edit fa-lg"></i></a>
+                <a class="text-warning m_r_10 btnReset" title="重置密码" data-toggle="tooltip"><i class="fa fa-refresh fa-lg"></i> </a>
+                <a class="text-danger btnRemove" title="删除" data-toggle="tooltip"><i class="fa fa-lg  fa-trash"></i></a>
+            </td>
+        </tr>
+    </script>
+    <script>
+
+        $(function () {
+            $("#btnAdd").remove();
+            var tool = new Sail.RazorPage("", "WxUser", "UserId");
+
+            tool.CreatePage({
+                titles: ["手机号", "操作员姓名", "联系方式", "所属县区", "所属机构", "备注", "操作"],
+                titleWidth: [0, 0, 0, 0, 0, 0, 120],
+                events: [
+                    {
+                        handle: ".btnReset",
+                        act: function (data, page, obj) {
+                            if (!confirm("确定要重置该用户的密码么")) return;
+                            $.post(tool.GetApi("ResetPwd"), { "": tool.GetDataId(data) }, function (result) { ShowMessage(result, "密码已重置为默认密码:123456"); });
+                        }
+                    }
+                ]
+            });
+            tool.Page.Query();
+        });
+    </script>
+}
+
+
+@Helper.PageList(@<text>
+        <div class="form-float" style="padding: 0;"> 
+            <div class="form-group">
+                <div class="form-element-control">
+                    <input type="text" class="form-control" id="key" placeholder="过滤登录名/姓名" />
+                </div> 
+            </div> 
+            <div class="form-group">
+                <button class="btn btn-primary" id="btnQuery">
+                    <i class="fa fa-search"></i>
+                    过滤
+                </button>
+                <button id="btnReset" class="btn btn-secondary">清除条件</button>
+            </div>
+        </div> 
+</text>)
+
+@Helper.PageDetail()
+
+

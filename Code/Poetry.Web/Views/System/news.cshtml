@@ -1,0 +1,327 @@
+﻿@using Poetry.Web
+@using Sail.Common
+@using Sail.Web
+@{
+    var user = this.SetPage("4B3DAA3F-7B2C-4C3F-8D94-B195021540E3", "优秀事迹", "系统管理");
+}
+
+@section head{
+
+    <script src="~/Scripts/uploadify/jquery.uploadify-3.2.js"></script>
+    <script src="~/Scripts/datepicker/WdatePicker.js"></script>
+    <script type="text/x-jsrender" id="modalTmpl">
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                所属县区：
+            </label>
+            <div class="col-md-10">
+                <select class="form-control validate[required] " id="County" data-prop="Id">
+                    @MyHelpers.RenderDict(CountyController.GetAll(), "", "请选择县区");
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                所属类型：
+            </label>
+            <div class="col-md-10">
+                <select class="form-control validate[required] " id="Type">
+                    @MyHelpers.RenderEnum(typeof(Poetry.Model.OrgType).GetEnumItems(), "", "请选择类型");
+                </select>
+            </div>
+        </div>
+
+
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                基层党组织：
+            </label>
+            <div class="col-md-10">
+                <input type="text" id="Organization" class="form-control validate[required] " placeholder="请输入基层党组织名称" />
+            </div>
+        </div>
+
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                党员姓名：
+            </label>
+            <div class="col-md-10">
+                <input class="form-control validate[required]" type="text" id="PartyMember" placeholder="请输入党员姓名" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                发生时间：
+            </label>
+            <div class="col-md-10">
+                <input class="form-control validate[required] date" type="text" id="NewsDate" placeholder="请输入发生时间" />
+            </div>
+        </div>
+
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                推荐人：
+            </label>
+            <div class="col-md-10">
+                <input class="form-control " type="text" id="Referral" placeholder="请输入推荐人" />
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                优秀事迹图片：
+            </label>
+            <div class="col-md-10">
+                <ul class="imagelists list-unstyled"></ul>
+                <div class="clearfix"></div>
+                <div class="margin-top-10">
+                    <div class="btnUpload btn btn-success">
+                        <div id="btnUpload"></div>
+                    </div>
+                    <small>绿边图片为标题图片，鼠标移至图片上可设置标题图片或删除图片。最多上传<span class="text-danger">4</span>张图片。建议图片最小宽度为：660px</small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
+                优秀事迹内容：
+            </label>
+            <div class="col-md-10">
+                <textarea class="form-control" id="Content" rows="15" placeholder="请输入优秀事迹正文"></textarea>
+            </div>
+        </div>
+
+
+    </script>
+
+    <script type="text/x-jsrender" id="listTmpl">
+        <tr>
+            <td>
+                <a class="btnEdit">
+                    {{>PartyMember}}
+                </a>
+            </td>
+            <td>{{>Referral}}</td>
+            <td>{{>County.Name}}</td>
+            <td>{{>TypeStr}}</td>
+            <td> {{>Organization}}</td>
+            <td> {{>Liked}}</td>
+            <td> {{>Views}}</td>
+            <td>
+                <img src="{{>Icon}}" style="height:30px" />
+            </td>
+            <td>
+                {{if !IsChecked}}
+
+                <lable class="label  label-danger "> 未审核</lable>
+                {{else}}
+                <lable class="label  label-success ">已审核</lable>
+                {{/if}}
+
+                {{if !IsPublish}}
+                <lable class="label  label-danger "> 未发布</lable>
+                {{else}}
+                <lable class="label  label-success ">已发布</lable>
+                {{/if}}
+
+            </td>
+            <td>{{ToDateTime:CreateTime}}</td>
+
+            <td>
+                <a class="text-primary m_r_10 btnEdit" title="修改"><i class="fa fa-edit fa-lg"></i></a>
+                {{if !IsChecked}}
+                <a class="text-primary m_r_10 btnAct" data-act="checkPass" title="审核"><i class="fa fa-check fa-lg"></i></a>
+                {{/if}}
+
+                {{if !IsPublish}}
+                <a class="text-primary m_r_10 btnAct" data-act="publish" title="发布"><i class="fa fa-paper-plane fa-lg"></i></a>
+                {{else}}
+                <a class="text-danger m_r_10 btnAct" data-act="unpublish" title="取消发布"><i class="fa fa-paper-plane-o fa-lg"></i></a>
+                {{/if}}
+
+                <a class="text-danger btnRemove" title="删除"><i class="fa fa-lg  fa-trash"></i></a>
+            </td>
+        </tr>
+    </script>
+    <style>
+        .imagelists {width: 100%;overflow-x: auto; }
+        .imagelists .images.active { border: 4px solid #080; }
+        .imagelists li {float: left;margin: 5px;border: 1px solid #ccc;padding: 5px 5px;height: 128px;width: 192px;position: relative; }
+        .imagelists li img {width: 100%;height: 100%; }
+        .imagelists li:hover span { display: block; }
+        .imagelists li span {display: none;width: 100%;height: 100%;line-height: 138px;font-size: 36px;background-color: #fff;filter: alpha(opacity=70);-moz-opacity: 0.7;-khtml-opacity: 0.7;opacity: 0.7;text-align: center;position: absolute;left: 0;top: 0; }
+        .imagelists li span .btnCheck { color: #080; }
+        .imagelists li span .btnRemove {color: #f00;margin-left: 10px; }
+        .imagelists li span a i { font-size: 36px !important; }
+    </style>
+    <script>
+        $(function() {
+            @*var id = '@UrlData[0]';
+            if (id) console.log(id);*@
+
+
+
+            
+
+            var tool = new Sail.RazorPage("优秀事迹", "MemberNews", "Id").SetTitle("优秀事迹管理");
+
+
+            tool.CreatePage({
+                titles: ["党员姓名", "推荐人", "县区", "类型", "基层党组织", "点赞数", "阅读数", "标题图片", "状态", "发布时间", "操作"],
+                titleWidth: [0, 0, 0, 0, 120],
+            });
+            tool.Page.Query();
+
+
+            var imageTmpl = $.templates('{{if #data}} <li class="images"><span> ' +
+                '<a class="btnCheck"><i class="fa fa-check "></i></a>' +
+                '<a class="btnRemove"><i class="fa fa-times "></i></a>' +
+                '</span><img data-src={{:#data}} src="{{:#data}}"/></li>{{/if}}');
+
+            $("#btnUpload").uploadify({
+                'width': 80,
+                'height': 30,
+                fileSizeLimit: '12Mb',
+                fileTypeDesc: '不超过12mb的图片文件',
+                swf: '@(WebHelper.GetRootUrl())Scripts/uploadify/uploadify.swf', // The path to the uploadify SWF file
+                uploader: "@(WebHelper.GetRootUrl())api/Icon/UploadFile", // The path to the server-side upload script
+                buttonText: "上传图片",
+                onUploadSuccess: function(swf, value, res) {
+                    var result = JSON.parse(value);
+                    if (!result.IsSuccess) {
+                        ShowError(result.Msg);
+                        return;
+                    }
+                    if ($(".imagelists .images").length > 4) {
+                        ShowError("最多只能上传4张图片");
+                        return;
+                    }
+                    var path = result.Data.FilePath.replace("~", "");
+                    $(".imagelists").append(imageTmpl.render([path]));
+                    rebindImage();
+                }
+            });
+
+            function rebindImage() {
+                var images = $(".imagelists .images");
+                $("#btnUpload").uploadify("disable", images.length > 3);
+                if ($(".imagelists .active").length === 0) {
+                    $(".imagelists .images:eq(0)").addClass("active");
+                }
+            }
+
+            $(".imagelists").on("click", ".btnRemove", function() {
+                if (!confirm("确定要删除这张图片么")) return;
+                var $this = $(this);
+                $this.parents("li.images").remove();
+                rebindImage();
+            }).on("click", ".btnCheck", function() {
+                var $this = $(this);
+                $("li.images").removeClass("active");
+                $this.parents("li.images").addClass("active");
+            });
+
+            tool.PreSave = function(div, data) {
+                if ($(".imagelists img").length == 0) {
+                    ShowError("请至少上传一张照片");
+                    return null;
+                }
+
+                if ($(".imagelists .active").length == 0) {
+                    ShowError("请选择标题图片");
+                    return null;
+                }
+                var images = $(".imagelists img").map(function() { return $(this).data("src") });
+                data.Images = "";
+                $.each(images, function() { data.Images += this + "," });
+
+                data.Icon = $(".imagelists .active img").data("src");
+
+                return data;
+            };
+
+            tool.content.on("after.Add", function() {
+                $("#btnUpload").data("images", []);
+                $(".imagelists").empty();
+            }).on("after.Edit", function(sender, data, page, obj) {
+                var images = data.Images.split(',');
+                $(".imagelists").html(imageTmpl.render(images));
+                $(".imagelists img").each(function() {
+                    var $this = $(this);
+                    if ($this.data("src") === data.Icon) {
+                        $this.parents(".images").addClass("active");
+                    }
+                });
+                rebindImage();
+            });
+        });
+    </script>
+}
+
+
+
+@Helper.PageList(@<text>
+        <div class="form-float" style="padding: 0;">
+
+            <div class="form-group">
+                <div class="form-element-control">
+                    <input type="text" class="form-control" name="key" placeholder="过滤关键字" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-element-control">
+                    <select class="form-control" name="county">
+                        @CountyController.GetAllKv().RenderOptions("全部县区","0");
+                    </select>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="form-element-control">
+                    <select class="form-control" name="type">
+                        @MyHelpers.RenderEnum(typeof(Poetry.Model.OrgType).GetEnumItems(), "0", "所有类型");
+                    </select>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="form-element-control">
+                    <select class="form-control" name="checkeStatus">
+                        @(new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("False", "未审核"), new KeyValuePair<string, string>("True", "已审核") }.RenderOptions("审核状态") )
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-element-control">
+                    <select class="form-control" name="publishStatus">
+                        @(new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("False", "未发布"), new KeyValuePair<string, string>("True", "已发布") }.RenderOptions("发布状态") )
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <button class="btn btn-primary" id="btnQuery">
+                    <i class="fa fa-search"></i>
+                    过滤
+                </button>
+                <button id="btnReset" class="btn btn-secondary">清除条件</button>
+            </div>
+
+
+        </div>
+
+</text>)
+
+@Helper.PageDetail()
+

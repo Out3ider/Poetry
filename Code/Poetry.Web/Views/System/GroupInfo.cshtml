@@ -1,0 +1,154 @@
+﻿@{
+    this.SetPage("B42137D7-4DA1-4D6D-95BB-E07C33121277", "用户组", "系统设置");
+}
+
+@section head{
+    <style>
+        .powers .form-group { margin-left: 0px; margin-right: 0px; }
+    </style>
+    <script type="text/x-jsrender" id="modalTmpl">
+        <div class="form-group ">
+            <label class="col-md-2 control-label">用户角色名称：<span>*</span></label>
+            <div class="col-md-10">
+                <input type="text" class="form-control validate[required]" id="RoleName" placeholder="用户角色名称" />
+                <div class="form-control-focus">
+                </div>
+            </div>
+        </div>
+        <div class="form-group ">
+
+            <label class="col-md-2 control-label">功能模块：</label>
+            <div class="col-md-10">
+                <div id="powersx" class="powers">
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="listTmpl">
+        <tr>
+            <td>
+                <a class="btnEdit">{{>RoleName}}</a>
+            </td>
+            <td>
+                <a class="text-primary m_r_10 btnEdit" title="修改" data-toggle="tooltip"><i class="fa fa-edit fa-lg"></i></a>
+                <a class="text-danger btnRemove" title="删除" data-toggle="tooltip"><i class="fa fa-lg  fa-trash"></i></a>
+            </td>
+        </tr>
+    </script>
+
+    <script type="text/x-jsrender" id="powerTmpl">
+        {{if SubItems.length ==0}}
+        <div class="md-checkbox">
+            <input type="checkbox" id="{{>ItemId}}" value="{{>ItemId}}" name="powers" class="md-check">
+            <label for="{{>ItemId}}">
+                <span class="inc"></span>
+                <span class="check"></span>
+                <span class="box"></span>{{>ItemName}}
+            </label>
+        </div>
+
+        {{else}}
+        <div class="form-group ">
+            <label class="control-label md-check">{{:ItemName}}</label>
+            <div class="md-checkbox-inline">
+                {{for SubItems}}
+                <div class="md-checkbox">
+                    <input type="checkbox" id="{{>ItemId}}" value="{{>ItemId}}" name="powers" class="md-check">
+                    <label for="{{>ItemId}}">
+                        <span class="inc"></span>
+                        <span class="check"></span>
+                        <span class="box"></span>{{>ItemName}}
+                    </label>
+                </div>
+                {{/for}}
+            </div>
+            <hr />
+        </div>
+        {{/if}}
+
+
+
+    </script>
+
+    <script>
+
+        $(function () {
+
+            var tool = new Sail.RazorPage("", "Group", "RoleId");
+
+            function LoadModules() {
+                var modules = [];
+                $(".powers input[type=checkbox][name=powers]:checked").each(function (i, o) {
+                    var data = $.view(o).data;
+                    modules.push({ Key: data.ItemId, Name: data.ItemName });
+                });
+                return modules;
+            }
+
+            tool.content.on("after.Edit", function (sender, data, page, obj) {
+                $(".powers input[type=checkbox]").prop("checked", false);
+                $.each(data.Powers, function (i, o) {
+                    var ipt = $("#" + o.Key)
+                    if (ipt.length > 0)
+                        ipt.prop("checked", true)
+                });
+            })
+
+
+            tool.PreSave = function (form, data) {
+                data.Powers = LoadModules();
+                return data;
+            };
+
+            
+            $.get(tool.GetApi("menus") , function (data) {
+                if (data.IsSuccess) {
+                    $(".powers").Link("#powerTmpl", data.Data);
+                    $(".powers input[type=checkbox][name=powers]").change(function () {
+                        var data = $.view(this).data;
+                        $(this).siblings("div").find("input[type=checkbox][name=powers]").prop("checked", $(this).is(":checked"));
+                    });
+                }
+            });
+
+            tool.CreatePage({
+                titles: ["角色名称", "操作"],
+                titleWidth: [0, 120],
+            })
+            tool.Page.Query();
+
+
+        });
+    </script>
+}
+
+ 
+
+@Helper.PageList(@<text>
+     <div class="form-float" style="padding: 0;">
+
+    <div class="form-group">
+        <div class="form-element-control">
+            <input type="text" class="form-control" id="key" placeholder="过滤关键字" />
+        </div>
+
+    </div>
+
+ 
+    <div class="form-group">
+        <button class="btn btn-primary" id="btnQuery">
+            <i class="fa fa-search"></i>
+            过滤
+        </button>
+        <button id="btnReset" class="btn btn-secondary">清除条件</button>
+    </div>
+
+
+</div>
+
+</text>)
+
+@Helper.PageDetail()
+
+
+ 

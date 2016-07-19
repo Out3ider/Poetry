@@ -1,0 +1,108 @@
+﻿[
+    
+    {
+        "ClassName": "fa fa-flash",
+        "ItemId": "D6F07512-FE25-4941-A404-DAE23DA3D38B",
+        "ItemName": "社区名单",
+        "Url": "~/System/Community"
+    },
+    {
+        "ItemId": "373837AF-8383-4C57-93EF-1B2D48489BD6",
+        "ItemName": "县区名单",
+        "ClassName": "fa fa-book",
+        "Url": "~/System/County"
+    },
+    {
+        "ClassName": "fa fa-newspaper-o ",
+        "ItemId": "4B3DAA3F-7B2C-4C3F-8D94-B195021540E3",
+        "ItemName": "优秀事迹管理",
+        "Url": "~/system/news"
+    },
+
+    {
+        "ItemId": "7B1FE618-C706-400C-9A60-63B84ED45E97",
+        "ItemName": "评论管理",
+        "ClassName": "fa fa-comment",
+        "Url": "~/System/Comment"
+
+    },
+
+    {
+        "ClassName": "fa fa-user ",
+        "ItemId": "072BA852-0539-4017-80EA-226ACB2780CD",
+        "ItemName": "注册用户",
+        "Url": "~/system/Members"
+    },
+
+    {
+        "ClassName": "fa fa-users",
+        "ItemId": "B42137D7-4DA1-4D6D-95BB-E07C33121277",
+        "ItemName": "用户组管理",
+        "Url": "~/system/groupinfo"
+    },
+    {
+        "ItemId": "E367B923-9CD7-411E-AD92-B4F67C942778",
+        "ItemName": "管理员管理",
+        "ClassName": "fa  fa-user-secret",
+        "Url": "~/System/userinfo"
+    },
+    {
+        "ClassName": "fa fa-cog",
+        "ItemId": "68E7ABB0-86F7-4701-A3D7-3C86760EB42C",
+        "ItemName": "系统设置",
+        "Url": "~/system/System"
+    }
+
+    //{
+    //  "ItemId": "",
+    //  "ItemName": "机构、用户及绑定",
+    //  "ClassName": "fa fa-street-view",
+    //  "SubItems": [
+
+    //    {
+    //      "ItemId": "5AD5231B-E2CC-48B4-9A87-C9B1801C453A",
+    //      "ItemName": "机构管理",
+    //      "ClassName": "fa fa-building",
+    //      "Url": "/System/baseinfo/Organizations"
+    //    },
+
+    //    {
+    //      "ItemId": "6043FCF7-5DF1-4B6E-BBC8-94C04CDA3B60",
+    //      "ItemName": "用户绑定审核",
+    //      "ClassName": "fa  fa-users",
+    //      "Url": "/System/system/checkuser"
+    //    }
+    //  ]
+    //},
+
+    //{
+    //  "ItemId": "",
+    //  "ItemName": "活动及展现",
+    //  "ClassName": "fa fa-newspaper-o ",
+    //  "SubItems": [
+
+    //    {
+    //      "ClassName": "",
+    //      "ItemId": "138ECCB3-E42F-4E2C-B9CA-AAEB0B9DA5B9",
+    //      "ItemName": "精彩瞬间",
+    //      "Url": "/system/news/Topnews"
+
+    //    },
+    //    {
+    //      "ClassName": "",
+    //      "ItemId": "0985AE1E-4656-4BB2-A9CC-372499EBF218",
+    //      "ItemName": "本周推荐(微信)",
+    //      "Url": "/system/news/recommendnews"
+
+    //    },
+
+    //  ]
+    //},
+
+
+
+
+
+
+
+]

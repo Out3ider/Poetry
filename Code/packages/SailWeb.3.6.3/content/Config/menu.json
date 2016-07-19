@@ -1,0 +1,207 @@
+﻿[
+    {
+        "ItemId": "4B3DAA3F-7B2C-4C3F-8D94-B195021540E3",
+        "ItemName": "基础信息",
+        "ClassName": "fa fa-clipboard",
+        "SubItems": [
+            {
+                "ItemId": "373837AF-8383-4C57-93EF-1B2D48489BD6",
+                "ItemName": "目的地管理",
+                "ClassName": "fa fa-book",
+                "Url": "/System/baseinfo/BournInfo.aspx"
+            },
+            {
+                "ItemId": "BFD35BA2-E1C7-4271-8742-4D30F9533D3A",
+                "ItemName": "旅游类型管理",
+                "ClassName": "fa fa-book",
+                "Url": "/System/baseinfo/ProductTypeInfo.aspx"
+            },
+            {
+                "ItemId": "5AD5231B-E2CC-48B4-9A87-C9B1801C453A",
+                "ItemName": "签证国家管理",
+                "ClassName": "fa fa-bookmark",
+                "Url": "/System/baseinfo/CountryInfo.aspx"
+            },
+
+            {
+                "ItemId": "48E8B017-7C76-4ABC-9E70-E5CF8F8D9543",
+                "ItemName": "保险管理",
+                "ClassName": "fa fa-bookmark",
+                "Url": "/System/baseinfo/InsuranceInfo.aspx"
+            },
+            {
+                "ItemId": "072BA852-0539-4017-80EA-226ACB2780CD",
+                "ItemName": "会员管理",
+                "ClassName": "fa  fa-user",
+                "Url": "/System/manager/members.aspx"
+            },
+        ]
+    },
+
+    {
+        "ItemId": "2650747B-E24D-4C03-9A49-BC71C7FCF037",
+        "ItemName": "运营管理",
+        "ClassName": "fa fa-list",
+        "SubItems": [
+            {
+                "ItemId": "21C13048-1BCD-4FF3-94DE-204BB4F45A78",
+                "ItemName": "签证订单信息",
+                "ClassName": "fa fa-newspaper-o",
+                "Url": "/System/product/ViseOrderInfo.aspx"
+            },
+            {
+                "ItemId": "7A5D05EA-3E8E-493A-BDFD-F7571E811583",
+                "ItemName": "团队定制订单管理",
+                "ClassName": "fa fa-newspaper-o",
+                "Url": "/System/product/GroupOrder.aspx"
+            },
+
+          {
+            "ItemId": "98B83DD2-14F0-48DC-87BF-8F009D4D2409",
+            "ItemName": "旅游订单管理",
+            "ClassName": "fa fa-newspaper-o",
+            "Url": "/System/product/OrderInfo.aspx"
+          },
+           {
+                "ItemId": "47C69102-C1DA-4B41-ABC3-2EACA98DD896",
+                "ItemName": "票务管理",
+                "ClassName": "fa fa-newspaper-o",
+                "Url": "/System/product/TicketsInfo.aspx"
+            },
+            {
+                "ItemId": "D7C4BF5A-358C-45FD-99BB-7F1EEEA964A8",
+                "ItemName": "充值记录",
+                "ClassName": "fa fa-newspaper-o",
+                "Url": "/System/product/PayLogInfo.aspx"
+            },
+            {
+                "ItemId": "4F8E0E53-745C-47E5-966B-9289C1A1D654",
+                "ItemName": "退改管理",
+                "ClassName": "fa fa-newspaper-o",
+                "Url": "/System/product/BackMealInfo.aspx"
+            },
+            {
+                "ItemId": "BCC3CE8D-DF34-4117-87D2-C91C8462FD6B",
+                "ItemName": "微信焦点图",
+                "ClassName": "fa fa-check",
+                "Url": "/system/system/gallery.aspx"
+            }
+        ]
+    },
+    {
+        "ItemId": "2650747B-E24D-4C03-9A49-BC71C7FCF037",
+        "ItemName": "内容管理",
+        "ClassName": "fa fa-clipboard",
+        "SubItems": [
+          {
+            "ItemId": "37CE55BC-0073-4C08-8105-742E2F23B6B9",
+            "ItemName": "公告信息",
+            "ClassName": "fa fa-newspaper-o",
+            "Url": "/system/system/newsinfo.aspx"
+          },
+           {
+                "ItemId": "0E833A55-C634-4EF9-A04A-4D0F8FA42FA8",
+                "ItemName": "预订须知",
+                "ClassName": "fa fa-newspaper-o",
+                "Url": "/system/system/NoticeInfo.aspx"
+            },
+            {
+                "ItemId": "888831DE-CAB2-489A-A52A-B85B38046A2C",
+                "ItemName": "旅游产品信息",
+                "ClassName": "fa fa-newspaper-o",
+                "Url": "/System/product/tourisminfo.aspx"
+            },
+
+            {
+                "ItemId": "D6F431D2-647C-4277-A026-6F2D3871CA18",
+                "ItemName": "产品库存管理",
+                "ClassName": "fa fa-bookmark",
+                "Url": "/System/baseinfo/stocksInfo.aspx"
+            },
+            {
+                "ItemId": "34D7A867-6E00-475A-AB5A-6FFAC2D771CF",
+                "ItemName": "签证内容管理",
+                "ClassName": "fa fa-bookmark",
+                "Url": "/System/baseinfo/ViseInfo.aspx"
+            },
+        ]
+    },
+    {
+        "ItemId": "5BB78642-DE98-4F2D-9E50-DBCC18AA8C5B",
+        "ItemName": "财务及报表",
+        "ClassName": "fa fa-money",
+        "SubItems": [
+
+            {
+                "ItemId": "AA67FA83-2F66-413A-8D22-AB1611580E2E",
+                "ItemName": "创建对账单",
+                "ClassName": "fa fa-ils",
+                "Url": "/System/Finance/CreateSettlement.aspx"
+            },
+            {
+                "ItemId": "47BCFB69-ACE9-4091-A252-2845E4C8196C",
+                "ItemName": "对账单列表",
+                "ClassName": "fa fa-columns",
+                "Url": "/System/Finance/SettlementList.aspx"
+            },
+            {
+                "ItemId": "F4090812-7B87-46D4-9868-73871E7CBD79",
+                "ClassName": "fa fa-newspaper-o",
+                "ItemName": "分销商欠款报表",
+                "Url": "/System/reports/DebtReport.aspx"
+            },
+            {
+                "ClassName": "fa fa-newspaper-o",
+                "ItemId": "966D978D-CEC3-42C4-8B42-D6BF7EB3C4A5",
+                "ItemName": "收支汇总报表",
+                "Url": "/System/reports/DailySummary.aspx"
+            }
+        ]
+    },
+
+    {
+        "ItemId": "F61DA552-A619-437B-BC95-05FB31F40AC6",
+        "ItemName": "系统管理",
+        "ClassName": "fa fa-cog",
+        "SubItems": [
+            {
+                "ClassName": "fa fa-wrench ",
+                "ItemId": "68E7ABB0-86F7-4701-A3D7-3C86760EB42C",
+                "ItemName": "系统设置",
+                "Url": "/system/system/system.aspx"
+            },
+
+            {
+                "ClassName": "fa fa-list ",
+                "ItemId": "CB015B23-776C-440A-88C3-23D1FD5B5999",
+                "ItemName": "模板管理",
+                "Url": "/system/system/template.aspx"
+            },
+
+            {
+                "ClassName": "fa  fa-users",
+                "ItemId": "B42137D7-4DA1-4D6D-95BB-E07C33121277",
+                "ItemName": "用户组",
+                "Url": "/system/system/group.aspx"
+            },
+            {
+                "ClassName": "fa fa-user",
+                "ItemId": "E367B923-9CD7-411E-AD92-B4F67C942778",
+                "ItemName": "操作员设置",
+                "Url": "/system/system/userinfo.aspx"
+            },
+          {
+            "ClassName": "fa fa-user",
+            "ItemId": "BC80CB6F-9728-4D7C-86FA-254C6BD67B89",
+            "ItemName": "推送设置",
+            "Url": "/system/system/pushmsg.aspx"
+          },
+            {
+                "ClassName": "fa fa-user",
+                "ItemId": "82271B41-7760-420C-8DC8-16ADA3045362",
+                "ItemName": "短信发送记录",
+                "Url": "/system/system/SmsLogInfo.aspx"
+            }
+        ]
+    }
+]

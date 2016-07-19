@@ -1,0 +1,272 @@
+﻿
+@using System.Collections
+@using Poetry.Web
+@using Sail.Common
+@using Sail.Web
+
+
+@helper RenderHead(string controll, string loginUrl, string userName, string companyName = null)
+{
+loginUrl = WebHelper.GetRootUrl() + loginUrl;
+
+    <header class="page-header navbar">
+
+        <div class="page-header-inner">
+            <div class="page-logo">
+                <a>
+                    <img src="~/Content/images/logo-login.png" alt="logo" height="40" class="logo-default" />
+                </a>
+            </div>
+
+            <div class="page-top">
+                @if (companyName.IsNotNull())
+                {
+                    <div class="page-actions">
+                        <div class="top-tags">
+                            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;<span>@companyName</span>
+                        </div>
+                    </div>
+                }
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+
+                        <li class="dropdown dropdown-user dropdown-light">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="username username-hide-on-mobile">
+                                    @userName
+                                </span>
+                                <img class="img-circle" src="~/Content/images/avatar_default.jpg" />
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li><a id="btnChangePwd"><i class="fa fa-key"></i> 修改密码</a></li>
+                                <li><a id="btnLogout"><i class="fa fa-power-off"></i> 注销</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <script>
+
+        $(function () {
+
+            var $sidebar = $(".page-sidebar");
+            var $content = $(".page-content");
+            //function initHeight() {
+            //    //if ($sidebar.height() >= $content.height()) $content.height($sidebar.height());
+            //    //else $sidebar.height($content.height());
+            //}
+
+            //initHeight();
+
+            $sidebar.on("click", ".page-sidebar-menu  li a", function () {
+                var $this = $(this);
+                var $li = $this.parent();
+                var $submenu = $li.find(".sub-menu");
+                var $arrow = $this.find(".arrow");
+
+                $submenu.toggle();
+                if ($submenu.is(":visible")) {
+                    $arrow.addClass("open");
+                    $li.addClass("active");
+                } else {
+                    $arrow.removeClass("open");
+                    $li.removeClass("active");
+                }
+            });
+
+            $("#btnLogout").click(function () {
+                $.post($.SailConfig.ApiRoot + "@controll/logout");
+                window.location.href = '@(loginUrl)';
+            });
+
+            $("#btnChangePwd").click(function () {
+                $.CreateModal("changePwd", {
+                    title: "修改密码",
+                    tmplName: "ChangePassword",
+                    okEvent: function (modal) {
+                        if (modal.modal.CheckValidation()) {
+                            $.post($.SailConfig.ApiRoot + "@controll/changepwd", { "": JSON.stringify(modal.modal.GetJson()) }, function (data) {
+                                ShowMessage(data);
+                                if (data.IsSuccess) {
+                                    window.location.href = '@(loginUrl)';
+                                }
+                                modal.$ok.prop("disabled", false);
+                            });
+                        }
+                    },
+                    hideEvent: function (modal) { modal.modal.remove(); },
+                    init: function () { $("#changePwd").modal(); }
+                });
+            });
+        })
+    </script>
+}
+
+
+
+@* 输出主菜单 *@
+@helper RenderMainMenu(IList<HMenuItem> items, string indexUrl)
+{ <div class="page-sidebar" style="overflow: auto;">
+        <ul class="page-sidebar-menu">
+            <li class="home">
+                <a href="@(WebHelper.GetRootUrl()+ indexUrl)">
+                    <i class="fa fa-home"></i>
+                    <span class="title">首页</span>
+                </a>
+            </li>
+            @RenderMenu(items)
+        </ul>
+    </div>
+    @* ReSharper disable ConditionIsAlwaysConst *@
+    <script>
+        $(function () {
+            var current = '@(PageData[PageHelper.ItemId])';
+            if (current) $(".page-sidebar-menu a[data-itemid=" + current + "]").parents("li").addClass("active");
+            else $(".page-sidebar-menu .home").addClass("active");
+        });
+    </script>
+}
+@* ReSharper restore ConditionIsAlwaysConst *@
+@* 递归输出菜单 *@
+@helper RenderMenu(IList<HMenuItem> items)
+{
+foreach (var item in items)
+{
+        <li>
+            <a data-itemid="@item.ItemId" @(item.SubItems.Count == 0 ? $"href={  item.Url}" : "")>
+                <i class="@item.ClassName"></i>
+                <span class="title">@item.ItemName</span>
+
+                @if (item.SubItems.Count > 0)
+                {
+                    <span class="arrow"></span>
+                }
+            </a>
+            @if (item.SubItems.Count > 0)
+            {
+                <ul class="sub-menu">
+                    @RenderMenu(item.SubItems)
+                </ul>
+            }
+        </li>
+}}
+
+
+@* 输出列表 *@
+@helper PageList(Func<object, HelperResult> toolbar = null, bool isHasAdd = true)
+{
+    <div id="divList">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+
+                    <span class="caption-subject bold uppercase">@(PageData[PageHelper.PageTitle])列表</span>
+                </div>
+                <div class="actions">
+                    @if (isHasAdd)
+                    {
+                        <div class="btn-group pull-right">
+                            <button class="btn   btn-primary" id="btnAdd">
+                                新增<i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="portlet-body" id="pageList">
+                <div class="table-toolbar" id="toolbar">
+                    @if (toolbar != null)
+                    {
+                        @toolbar.Invoke(null)
+                    }
+                </div>
+                <table class="table table-striped table-bordered table-condensed table-hover table-checkable">
+                    <thead>
+
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div class="table-pages" id="page"></div>
+            </div>
+
+        </div>
+    </div>
+}
+
+@* 输出详情 *@
+@helper PageDetail(Func<object, HelperResult> result = null, Func<object, HelperResult> tabs = null, Func<object, HelperResult> expand = null)
+{
+
+
+    <div id="divDetail" style="display: none">
+        <div class="portlet light bordered ">
+
+            <div class="portlet-title">
+                <div class="caption">
+                    <a class="btn btn-sm btn-secondary margin-right-10 btnReturn">
+                        <i class="fa fa-arrow-left"></i>返回
+                    </a>
+                    <span class="caption-subject bold uppercase font-green"></span>
+                    <span class="bold   margin-right-10 font-green">@(PageData[PageHelper.PageTitle])详情</span>
+                </div>
+            </div>
+            <div class="portlet-body  row">
+                <div class="@(expand!=null ? "col-sm-8" : "col-sm-12") mainForm dashed-border-right">
+                    <div class="tabbable tabbable-tabdrop">
+                        @if (tabs != null)
+                        {
+                            <ul class="nav nav-pills">
+                                <li class="nav-item">
+                                    <a class="nav-link active">基本信息</a>
+                                </li>
+                                @tabs.Invoke(null)
+                            </ul>
+                        }
+                        <div class="tab-content baseInfo">
+                            <div class="tab-pane active">
+                                <div class="portlet light">
+                                    <div class="portlet-body">
+                                        <div class="form-horizontal form-body">
+
+                                        </div>
+                                        <div class="form-actions">
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-5">
+                                                    <button class="btn btn-primary" id="btnSave"> 保存 </button>
+                                                    <button class="btn btn-secondary btnReturn" id="btnCancel"> 取消 </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane otherInfo">
+                                <div class="portlet light">
+                                    <div class="portlet-body">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @if (expand != null)
+                {
+                    <div class="col-sm-4 expandForm">
+                        @expand.Invoke(null)
+                    </div>
+                }
+
+
+            </div>
+            @if (result != null)
+            {
+                @result.Invoke(null)
+            }
+        </div>
+    </div>
+}
+

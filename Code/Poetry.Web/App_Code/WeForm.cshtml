@@ -1,0 +1,83 @@
+﻿@using Poetry.Web
+@helper RenderGroup(Element element, Func<object, HelperResult> act, string outCss = "")
+{
+    <li class='zqui-table-view-cell zqui-dis-flex @outCss'>
+        <div class="zqui-cell-hd">
+            <div class="zqui-cell-label">
+                @element.Label
+            </div>
+        </div>
+        <div class="zqui-cell-bd zqui-flex-1">
+            @act.Invoke(null)
+        </div>
+        <div class="zqui-cell-ft none">
+            <i class="icon icon-exclamation-sign"></i>
+        </div>
+    </li>
+}
+@* 输出文本框 *@
+@helper Input(Element element)
+{@RenderGroup(element, @<text><input type="text" @element.Attr(controllCalss: "zqui-input") /></text>)}
+@helper  TextArea(Element element)
+{@RenderGroup(element, @<text><textarea rows="5" @element.Attr(controllCalss: "zqui-textarea")></textarea></text>)}
+
+@helper Password(Element element)
+{@RenderGroup(element, @<text><input type="password" @element.Attr(controllCalss: "zqui-input") /></text>)}
+
+
+@* 输出选择器 *@
+@helper Select(Element element, IList<KeyValuePair<string, string>> items, string defaultText = "", string defaultValue = "", string prop = "")
+{
+
+element.Data["text"] = "Value";
+element.Data["value"] = "Key";
+if (!string.IsNullOrEmpty(prop)) { element.Data["prop"] = prop; }
+if (!string.IsNullOrEmpty(defaultValue)) { element.Data["defaultvalue"] = defaultValue; }
+if (!string.IsNullOrEmpty(defaultText)) { element.Data["defaulttext"] = defaultText; }
+    @RenderGroup(element, @<text>
+            <select @element.Attr(controllCalss: "zqui-select")>
+                @items.RenderOptions(defaultText, defaultValue)
+            </select>
+    </text>, "zqui-cell-select  zqui-elect-after")
+}
+
+
+
+@*输出查看字段*@
+@helper ViewTag(Element element, string formClass = "")
+{
+    <div class='form-group form-text @formClass'>
+        <label class='control-label'>
+            @element.Label :
+        </label>
+        <div class="form-element-control">
+            <span name="@element.Id" class="prop @element.Class" @element.RenderData()></span>
+            &nbsp;
+            @if (!string.IsNullOrEmpty(element.Tips))
+            {     <span class="help-block">@element.Tips</span>}
+        </div>
+    </div>
+}
+
+
+@helper LoginForm()
+{
+    <div  id="LoginForm">
+        <ul class="zqui-table-view">
+
+            @Input(new Element("手机号", "LoginId", "validate[required]"))
+
+            @Password(new Element("密码", "Password", "validate[required]"))
+
+        </ul>
+
+        <div class="zqui-content-padded">
+            <button id="btnLogin" class="zqui-btn zqui-btn-block zqui-btn-primary">登录</button>
+            <div class="link-area">
+                <a href="register">注册账号</a>
+                <span class="spliter">|</span>
+                <a href="revert">忘记密码</a>
+            </div>
+        </div>
+    </div>
+}
