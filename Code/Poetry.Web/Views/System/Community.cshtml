@@ -59,7 +59,7 @@
                 </a>
             </td>
             <td>{{>County.Name}}</td>
-            <td>{{>Describe}}</td>
+            <td>{{>Describe}}</td>  @*list和modal中新增一项属性则需要在对应的models中添加对应的无参构造方法，并在方法｛set；get；｝*@
     
             <td>{{>OrderByNo}}</td>
          
@@ -99,10 +99,10 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="form-element-control">
+        <div class="form-element-control">    @*新增过滤条件后，需要在对应controller中调整对应的方法来实现这个过滤条件*@
             <select class="form-control" name="county">
                 @CountyController.GetAllKv().RenderOptions("全部县区", "");
-            </select>
+            </select>   
         </div>
     </div>
     <div class="form-group">
