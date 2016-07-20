@@ -11,6 +11,30 @@ namespace Poetry.Model
     [HTable]
     public class Community : DictBase
     {
+        /// <summary>
+        /// 标题图片
+        /// </summary>
+        [HColumn(Length = 200)]
+        public string Icon { set; get; }     //list中显示图片
+        /// <summary>
+        /// 图片
+        /// </summary>
+        [HColumn]
+        public string Images { set; get; } 
+
+        /// <summary>
+        /// 图片列表
+        /// </summary>
+        /// <returns></returns>
+        public IList<string> GetImages()
+        {
+            return Images?.Split(',').Where(x => x.IsNotNull()).Select(x => x ).ToList();
+        }
+
+        /// <summary>
+        /// 县区id
+        /// </summary>
+
         [HColumn]
         public County County
         {

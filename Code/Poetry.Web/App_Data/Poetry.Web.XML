@@ -533,6 +533,27 @@
         <member name="T:Poetry.Model.Community">
             社区
         </member>
+        <member name="P:Poetry.Model.Community.Icon">
+            <summary>
+            标题图片
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Community.Images">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.Community.GetImages">
+            <summary>
+            图片列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Poetry.Model.Community.County">
+            <summary>
+            县区id
+            </summary>
+        </member>
         <member name="T:Poetry.Model.NewsComment">
             <summary>
             事迹评论

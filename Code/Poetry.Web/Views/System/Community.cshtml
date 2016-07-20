@@ -1,5 +1,6 @@
 ﻿@using Poetry.Web
-
+@using Sail.Common
+@using Sail.Web
 @{
     var user = this.SetPage("D6F07512-FE25-4941-A404-DAE23DA3D38B", "社区名单", "基础信息");
 }
@@ -7,7 +8,7 @@
 
 @section head{
 
-
+    <script src="~/Scripts/uploadify/jquery.uploadify-3.2.js"></script>
     <script type="text/x-jsrender" id="modalTmpl">
 
 
@@ -25,7 +26,7 @@
                 社区状况：<span>*</span>
             </label>
             <div class="col-md-10">
-                <input type="text" class="form-control validate[required]" id="Describe"  placeholder="请输入社区的基本状况" />
+                <input type="text" class="form-control validate[required]" id="Describe" placeholder="请输入社区的基本状况" />
             </div>
         </div>
         <div class="form-group ">
@@ -41,6 +42,22 @@
 
         <div class="form-group ">
             <label class="col-md-2 control-label">
+                社区图片：
+            </label>
+            <div class="col-md-10">
+                <ul class="imagelists list-unstyled"></ul>
+                <div class="clearfix"></div>
+                <div class="margin-top-10">
+                    <div class="btnUpload btn btn-success">
+                        <div id="btnUpload"></div>
+                    </div>
+                    <small>绿边图片为标题图片，鼠标移至图片上可设置标题图片或删除图片。最多上传<span class="text-danger">4</span>张图片。建议图片最小宽度为：660px</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-md-2 control-label">
                 排序号：<span>*</span>
             </label>
             <div class="col-md-10">
@@ -48,7 +65,7 @@
                 <span class="help-block text-warning">社区按照排序号由小到大排列</span>
             </div>
         </div>
-       
+
     </script>
 
     <script type="text/x-jsrender" id="listTmpl">
@@ -59,24 +76,121 @@
                 </a>
             </td>
             <td>{{>County.Name}}</td>
-            <td>{{>Describe}}</td>  @*list和modal中新增一项属性则需要在对应的models中添加对应的无参构造方法，并在方法｛set；get；｝*@
-    
+            <td>{{>Describe}}</td>
+            <td>
+                <img src="{{>Icon}}" style="height:30px" />   @*上传图片在list区域的预览*@ 
+            </td>
             <td>{{>OrderByNo}}</td>
-         
+
             <td>
                 <a class="text-primary m_r_10 btnEdit" title="修改" data-toggle="tooltip"><i class="fa fa-edit fa-lg"></i></a>
                 <a class="text-danger btnRemove" title="删除" data-toggle="tooltip"><i class="fa fa-lg  fa-trash"></i></a>
             </td>
         </tr>
     </script>
-    <script>
+<style>   /*上传图片插件使用的系列格式*/
+         .imagelists {width: 100%;overflow-x: auto; }
+        .imagelists .images.active { border: 4px solid #080; }
+        .imagelists li {float: left;margin: 5px;border: 1px solid #ccc;padding: 5px 5px;height: 128px;width: 192px;position: relative; }
+        .imagelists li img {width: 100%;height: 100%; }
+        .imagelists li:hover span { display: block; }
+        .imagelists li span {display: none;width: 100%;height: 100%;line-height: 138px;font-size: 36px;background-color: #fff;filter: alpha(opacity=70);-moz-opacity: 0.7;-khtml-opacity: 0.7;opacity: 0.7;text-align: center;position: absolute;left: 0;top: 0; }
+        .imagelists li span .btnCheck { color: #080; }
+        .imagelists li span .btnRemove {color: #f00;margin-left: 10px; }
+        .imagelists li span a i { font-size: 36px !important; }
+</style>
+   
+        <script>
         $(function () {
             var tool = new Sail.RazorPage("", "Community", "Id");
             tool.CreatePage({
-                titles: ["社区名称", "县区","社区状况","排序号", "操作"],
-                titleWidth: [0,0,120]
+                titles: ["社区名称", "县区", "社区状况", "社区图片", "排序号", "操作"],
+                titleWidth: [0, 0, 120]
             });
             tool.Page.Query();
+         //上传图片插件预览模版
+            var imageTmpl = $.templates('{{if #data}} <li class="images"><span> ' +
+               '<a class="btnCheck"><i class="fa fa-check "></i></a>' +
+               '<a class="btnRemove"><i class="fa fa-times "></i></a>' +
+               '</span><img data-src={{:#data}} src="{{:#data}}"/></li>{{/if}}');
+
+            $("#btnUpload").uploadify({  //上传图片插件主体
+                'width': 80,
+                'height': 30,
+                fileSizeLimit: '12Mb',
+                fileTypeDesc: '不超过12mb的图片文件',
+                swf: '@(WebHelper.GetRootUrl())Scripts/uploadify/uploadify.swf', // The path to the uploadify SWF file
+                uploader: "@(WebHelper.GetRootUrl())api/Icon/UploadFile", // The path to the server-side upload script
+                buttonText: "上传图片",
+                onUploadSuccess: function (swf, value, res) {
+                    var result = JSON.parse(value);
+                    if (!result.IsSuccess) {
+                        ShowError(result.Msg);
+                        return;
+                    }
+                    if ($(".imagelists .images").length > 4) {
+                        ShowError("最多只能上传4张图片");
+                        return;
+                    }
+                    var path = result.Data.FilePath.replace("~", "");
+                    $(".imagelists").append(imageTmpl.render([path]));
+                    rebindImage();
+                }
+            });
+
+            function rebindImage() {
+                var images = $(".imagelists .images");
+                $("#btnUpload").uploadify("disable", images.length > 3);
+                if ($(".imagelists .active").length === 0) {
+                    $(".imagelists .images:eq(0)").addClass("active");
+                }
+            }
+
+            $(".imagelists").on("click", ".btnRemove", function () {
+                if (!confirm("确定要删除这张图片么")) return;
+                var $this = $(this);
+                $this.parents("li.images").remove();
+                rebindImage();
+            }).on("click", ".btnCheck", function () {
+                var $this = $(this);
+                $("li.images").removeClass("active");
+                $this.parents("li.images").addClass("active");
+            });
+
+            tool.PreSave = function (div, data) {
+                if ($(".imagelists img").length == 0) {
+                    ShowError("请至少上传一张照片");
+                    return null;
+                }
+
+                if ($(".imagelists .active").length == 0) {
+                    ShowError("请选择标题图片");
+                    return null;
+                }
+                var images = $(".imagelists img").map(function () { return $(this).data("src") });
+                data.Images = "";
+                $.each(images, function () { data.Images += this + "," });
+
+                data.Icon = $(".imagelists .active img").data("src");
+
+                return data;
+            };
+
+            tool.content.on("after.Add", function () {
+                $("#btnUpload").data("images", []);
+                $(".imagelists").empty();
+            }).on("after.Edit", function (sender, data, page, obj) {
+                var images = data.Images.split(',');
+                $(".imagelists").html(imageTmpl.render(images));
+                $(".imagelists img").each(function () {
+                    var $this = $(this);
+                    if ($this.data("src") === data.Icon) {
+                        $this.parents(".images").addClass("active");
+                    }
+                });
+                rebindImage();
+            });
+
         });
     </script>
 }
@@ -85,37 +199,37 @@
 @Helper.PageList(
 
     @<text>
-<div class="form-float" style="padding: 0;">
+        <div class="form-float" style="padding: 0;">
 
-    <div class="form-group">
-        <div class="form-element-control">
-            <input type="text" class="form-control" name="key" placeholder="过滤关键字" />
-        </div>
-    </div>
-   @* 添加描述 *@
-    <div class="form-group">
-        <div class="form-element-control">
-            <input type="text" class="form-control" name="describe" placeholder="过滤社区描述" />
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="form-element-control">    @*新增过滤条件后，需要在对应controller中调整对应的方法来实现这个过滤条件*@
-            <select class="form-control" name="county">
-                @CountyController.GetAllKv().RenderOptions("全部县区", "");
-            </select>   
-        </div>
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary" id="btnQuery">
-            <i class="fa fa-search"></i>
-            过滤
-        </button>
-        <button id="btnReset" class="btn btn-secondary">清除条件</button>
-    </div>
+            <div class="form-group">
+                <div class="form-element-control">
+                    <input type="text" class="form-control" name="key" placeholder="过滤关键字" />
+                </div>
+            </div>
+            @* 添加描述 *@
+            <div class="form-group">
+                <div class="form-element-control">
+                    <input type="text" class="form-control" name="describe" placeholder="过滤社区描述" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-element-control">
+                    <select class="form-control" name="county">
+                        @CountyController.GetAllKv().RenderOptions("全部县区", "");
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" id="btnQuery">
+                    <i class="fa fa-search"></i>
+                    过滤
+                </button>
+                <button id="btnReset" class="btn btn-secondary">清除条件</button>
+            </div>
 
 
-  
-    </div>
+
+        </div>
     </text>)
 
 @Helper.PageDetail()
