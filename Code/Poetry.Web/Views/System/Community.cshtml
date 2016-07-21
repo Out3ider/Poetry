@@ -78,7 +78,7 @@
             <td>{{>County.Name}}</td>
             <td>{{>Describe}}</td>
             <td>
-                <img src="{{>Icon}}" style="height:30px" />   @*上传图片在list区域的预览*@ 
+                <img src="{{>Icon}}" style="height:30px" />   @*上传图片在list区域的预览*@
             </td>
             <td>{{>OrderByNo}}</td>
 
@@ -88,19 +88,68 @@
             </td>
         </tr>
     </script>
-<style>   /*上传图片插件使用的系列格式*/
-         .imagelists {width: 100%;overflow-x: auto; }
-        .imagelists .images.active { border: 4px solid #080; }
-        .imagelists li {float: left;margin: 5px;border: 1px solid #ccc;padding: 5px 5px;height: 128px;width: 192px;position: relative; }
-        .imagelists li img {width: 100%;height: 100%; }
-        .imagelists li:hover span { display: block; }
-        .imagelists li span {display: none;width: 100%;height: 100%;line-height: 138px;font-size: 36px;background-color: #fff;filter: alpha(opacity=70);-moz-opacity: 0.7;-khtml-opacity: 0.7;opacity: 0.7;text-align: center;position: absolute;left: 0;top: 0; }
-        .imagelists li span .btnCheck { color: #080; }
-        .imagelists li span .btnRemove {color: #f00;margin-left: 10px; }
-        .imagelists li span a i { font-size: 36px !important; }
-</style>
-   
-        <script>
+    <style>
+        /*上传图片插件使用的系列格式*/
+        .imagelists {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+            .imagelists .images.active {
+                border: 4px solid #080;
+            }
+
+            .imagelists li {
+                float: left;
+                margin: 5px;
+                border: 1px solid #ccc;
+                padding: 5px 5px;
+                height: 128px;
+                width: 192px;
+                position: relative;
+            }
+
+                .imagelists li img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .imagelists li:hover span {
+                    display: block;
+                }
+
+                .imagelists li span {
+                    display: none;
+                    width: 100%;
+                    height: 100%;
+                    line-height: 138px;
+                    font-size: 36px;
+                    background-color: #fff;
+                    filter: alpha(opacity=70);
+                    -moz-opacity: 0.7;
+                    -khtml-opacity: 0.7;
+                    opacity: 0.7;
+                    text-align: center;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+
+                    .imagelists li span .btnCheck {
+                        color: #080;
+                    }
+
+                    .imagelists li span .btnRemove {
+                        color: #f00;
+                        margin-left: 10px;
+                    }
+
+                    .imagelists li span a i {
+                        font-size: 36px !important;
+                    }
+    </style>
+
+    <script>
         $(function () {
             var tool = new Sail.RazorPage("", "Community", "Id");
             tool.CreatePage({
@@ -108,7 +157,7 @@
                 titleWidth: [0, 0, 120]
             });
             tool.Page.Query();
-         //上传图片插件预览模版
+            //上传图片插件预览模版
             var imageTmpl = $.templates('{{if #data}} <li class="images"><span> ' +
                '<a class="btnCheck"><i class="fa fa-check "></i></a>' +
                '<a class="btnRemove"><i class="fa fa-times "></i></a>' +

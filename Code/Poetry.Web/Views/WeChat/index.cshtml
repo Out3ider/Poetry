@@ -1,5 +1,5 @@
 ﻿
-
+@* 主页瀑布流下显示的个体，“活动首页”以及“我要推荐”在 后面 *@  @*而"我要推荐"则在input页面中*@     
 <script type="text/js-render" id="listTmpl">
     <div data-id="{{>Id}}" class="box-item">
         <img src="{{Pre:Icon}}" />
@@ -23,7 +23,7 @@
         </div>
     </div>
 </script>
-
+@* 点击首页一个小的图片进入该事迹的详细介绍页面 *@
 <script type="text/js-render" id="modalTmpl">
     <div class="zqui-panel-card">
         {{for ImageList}}
