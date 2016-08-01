@@ -13,38 +13,45 @@ namespace Poetry.Web.Code
     /// </summary>
     public static class SqlHelper
     {
-        public static Field Select<T>(Expression<Func<T, object>> expression) where T : IModel
-        {
-            var exp = expression.Body as NewExpression;
-            return ExpandColumn(exp);
-        }
 
-        private static Field ExpandColumn(NewExpression exp)
+
+        private static Field ExpandSelectColumn(NewExpression exp)
         {
-            return exp.Arguments.Select(x =>
+            return exp.Arguments.Select((x, index) =>
             {
                 var data = x as MemberExpression;
                 var param = data?.Expression as ParameterExpression;
-                return $"{param?.Name}.{data?.Member.Name}";
+                var table = data?.Member.DeclaringType.GetHTable();
+                var col = table?.Columns.Find(c => c.Property == data?.Member.Name)?.ColumnName;
+                var columnName = exp.Members[index].Name;
+                var asName = (col == columnName ? "" : $" as {columnName}");
+                return $"{param?.Name}.{col}{asName}";
             }).JoinToString().ToField("");
         }
+
+        private static Field ExpandJoinColumn(NewExpression exp)
+        {
+            return exp.Arguments.Select((x, index) =>
+            {
+                var data = x as MemberExpression;
+                var param = data?.Expression as ParameterExpression;
+                var table = data?.Member.DeclaringType.GetHTable();
+                var col = table?.Columns.Find(c => c.Property == data?.Member.Name)?.ColumnName;
+                var columnName = exp.Members[index].Name;
+                var asName = (col == columnName ? "" : $" as {columnName}");
+                return $"{param?.Name}.{col}{asName}";
+            }).JoinToString().ToField("");
+        }
+
+
+        
 
         public static Field Select<T1, T2>(Expression<Func<T1, T2, object>> expression) where T1 : IModel where T2 : IModel
         {
             var exp = expression.Body as NewExpression;
-            return ExpandColumn(exp);
+            return ExpandSelectColumn(exp);
         }
-
-        public static Field Select<T1, T2, T3>(Expression<Func<T1, T2, T3, object>> expression) where T1 : IModel where T2 : IModel where T3 : IModel
-        {
-            var exp = expression.Body as NewExpression;
-            return ExpandColumn(exp);
-        }
-
-        public static Field Select<T1, T2, T3, T4>(Expression<Func<T1, T2, T3, T4, object>> expression) where T1 : IModel where T2 : IModel where T3 : IModel where T4 : IModel
-        {
-            var exp = expression.Body as NewExpression;
-            return ExpandColumn(exp);
-        }
+ 
+       
     }
 }

@@ -1,0 +1,123 @@
+﻿<script type="text/javascript">
+    $(function () {
+        $(".ShowModal").click(function () {
+            $(".Modal").addClass("active");
+            $(".CloseModal").click(function () {
+                $(".Modal").removeClass("active");
+            });
+        });
+    });
+</script>
+<div class="Modal zqui-modal" style="display:block;">
+    <div class="zqui-modal-mask"></div>
+    <div class="zqui-modal-dialog  distance-one zqui-modal-lg">
+        <div class="zqui-modal-content">
+            <header class="zqui-modal-header bannersub"></header>
+            <div class="zqui-modal-footer">
+                <button class="CloseModal zqui-modal-btn"><i class="icon icon-reply"></i> 返回</button>
+                <button class="CloseModal zqui-modal-btn text-danger"><i class="icon icon-trash"></i> 删除</button>
+                <button class="ShowModalMsg zqui-modal-btn"><i class="icon icon-hongxin-o"></i> 赞</button>@*点击之前*@
+                @*<button class="zqui-modal-btn text-danger"><i class="icon icon-hongxin-copy"></i> 赞</button>*@@*点击之后*@
+                <button class="ShowcommentModal zqui-modal-btn text-danger"><i class="icon icon-pinglun-o"></i> 评论</button>
+            </div>
+            <div class="zqui-modal-body">
+                <div class="zqui-panel-card">
+                    <div class="panel-title clearfix">
+                        <img class="zqui-media-object zqui-pull-left" src="/content/images/1.jpg">
+                        <div class="zqui-media-body">
+                            张三
+                            <p class="zqui-ellipsis">2015-05-05 09:22 <span class="zqui-rt">鸠江区</span></p>
+                        </div>
+                    </div>
+                    <div></div>
+                    <p>
+                        陈礼云说，抢险队伍已经连续工作一周，朱同宝一直在第一线，带领群众排涝抢险。中心河段近日水位不断上涨，险情危及，朱同宝是在６日巡视了河堤一整夜后，７日早上６点多继续投入加固河堤的工作，过度劳累导致坠河。
+                    </p>
+                    <p>
+                        <img src="/Content/images/pic.jpg">
+                    </p>
+                    <p>
+                        <img src="/Content/images/pic.jpg">
+                    </p>
+                    <p>
+                        <img src="/Content/images/pic.jpg">
+                    </p>
+                </div>
+                <ul class="zqui-table-view zqui-table-view-icon list-comment">
+                    <li class="zqui-table-view-divider">
+                        <span>评论:&nbsp;<span class="text-danger">10</span></span>
+                        <span class="zqui-rt">
+                            <a>
+                                <i class="icon icon-hongxin-copy text-info"></i>34888
+                            </a>
+                        </span>
+                    </li>
+                    <li class="zqui-table-view-cell zqui-media">
+                        <div class="rafting-head">
+                            <img class="zqui-media-object zqui-pull-left" src="/content/images/1.jpg">
+                            <div class="zqui-media-body">
+                                张三
+                                <p class="zqui-ellipsis">2015-05-05 09:22<span class="zqui-rt">鸠江区</span></p>
+                            </div>
+                        </div>
+                        <div class="zqui-article">
+                            <section>
+                                <p class="">
+                                    由各种物质组成的巨型球状天体
+                                </p>
+                            </section>
+                        </div>
+                        <div class="action">
+                            <a class="zqui-btn zqui-btn-sm text-danger zqui-rt"><i class="icon icon-trash"></i> 删除</a>
+                        </div>
+                    </li>
+                    <li class="zqui-table-view-cell zqui-media">
+                        <div class="rafting-head">
+                            <img class="zqui-media-object zqui-pull-left" src="/content/images/1.jpg">
+                            <div class="zqui-media-body">
+                                张三
+                                <p class="zqui-ellipsis">2015-05-05 09:22<span class="zqui-rt">鸠江区</span></p>
+                            </div>
+                        </div>
+                        <div class="zqui-article">
+                            <section>
+                                <p class="">
+                                    由各种物质组成的巨型球状天体
+                                </p>
+                            </section>
+                        </div>
+                        <div class="action">
+                            <a class="zqui-btn zqui-btn-sm text-danger zqui-rt"><i class="icon icon-trash"></i> 删除</a>
+                        </div>
+                    </li>
+                    <li class="zqui-table-view-cell zqui-media">
+                        <div class="rafting-head">
+                            <img class="zqui-media-object zqui-pull-left" src="/content/images/1.jpg">
+                            <div class="zqui-media-body">
+                                张三
+                                <p class="zqui-ellipsis">2015-05-05 09:22<span class="zqui-rt">鸠江区</span></p>
+                            </div>
+                        </div>
+                        <div class="zqui-article">
+                            <section>
+                                <p class="">
+                                    由各种物质组成的巨型球状天体
+                                </p>
+                            </section>
+                        </div>
+                        <div class="action">
+                            <a class="zqui-btn zqui-btn-sm text-danger zqui-rt"><i class="icon icon-trash"></i> 删除</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+﻿@model Admin
+<header class="shakeheader">
+    <img src="~/content/images/shakeheader.png" />
+</header>
+<script src="~/Scripts/shake.js"></script>
+<a id="showModalShakeResult" class="shakebody">
+    <img src="~/content/images/shakebody.png" />
+</a>
+<footer class="shakefooter">
+
+    <p class="zqui-h6">如果手机不支持摇动，也可点击抽奖</p>
+
+    @switch (Model.MobileOperator)
+    {
+        case MobileOperator.移动:
+            <p class="zqui-h6">
+                中共芜湖市委组织部联合芜湖移动开展“抗洪抢险微感悟 千兆流量等你拿”活动；分别摇出10M（50%）、30M（45%）和100M（5%）；微感悟获奖用户再赠送1G以上流量包。
+            </p>
+            break;
+        case MobileOperator.联通:
+            <p class="zqui-h6">
+                中共芜湖市委组织部联合芜湖联通开展“抗洪抢险微感悟 千兆流量等你拿”活动。分别摇出100M（100%）；微感悟获奖用户再赠送1G以上流量包。
+            </p>
+            break;
+        case MobileOperator.电信:
+            <p class="zqui-h6">
+                中共芜湖市委组织部联合芜湖电信开展“抗洪抢险微感悟 千兆流量等你拿”活动；分别摇出30M（85%）和100M（15%）；微感悟获奖用户再赠送1G以上流量包。
+            </p>
+            break;
+    }
+
+</footer>
+
+<div class="zqui-modal" id="ModalShakeResult">
+    <div class="zqui-modal-mask" style="z-index: 15"></div>
+    <div class="zqui-modal-dialog distance-two zqui-modal-sm" style="z-index: 16">
+        <div class="zqui-modal-content">
+            <div class="zqui-modal-body zqui-bg-white prize-result">
+                <div id="w1">
+                    <img src="~/content/images/prize.png" />
+                    <p>
+                        中共芜湖市委组织部联合
+                        <span>
+                            芜湖@(Model.MobileOperator)
+                        </span>
+                        为您提供奖品"：<span class="zqui-h4 text-danger prizeName"> </span>。
+                </div>
+            </div>
+            <div class="zqui-modal-footer">
+                <a href="myprize" class="zqui-modal-btn text-primary">查看我的奖品</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        var api = new Sail.ApiHelper("Prize");
+        var isShaked = false;
+        function query() {
+            if (!isShaked) {
+                isShaked = true;
+                $.post(api.GetApi("Lottery"), { "": $.Request("id") }, function (result) {
+
+                    MsgBox.Action(result, function () {
+                        $("#ModalShakeResult").show();
+                        $("#ModalShakeResult .prizeName").text(result.Data.Prize.Title);
+                    });;
+                });
+            }
+        }
+        $("#showModalShakeResult").click(query);
+        $("body").addClass("bg-shake");
+        $(".zqui-bar").remove();
+
+        var myShakeEvent = new Shake({
+            threshold: 15
+        });
+        myShakeEvent.start();
+        window.addEventListener('shake', query, false);
+    })
+</script>

@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
     <title> </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="width=device-width, initial-scale=1" name="viewpo rt" />
     <meta content="" name="description" />
     <meta content="http://www.whzqkj.com/" name="author" />
     <title>@(Param.Default.SiteName) - 后台登录</title>
@@ -21,63 +21,9 @@
     @Scripts.Render("~/bundles/jplugin")
 
 
-
-    <script>
-        $(function () {
-            var root = '@WebHelper.GetRootUrl()';
-            $.setSailConfig({
-                Root: root,
-                ApiRoot: root + "Api/"
-            });
-            $(".login-form").InitLogin("admin", "@WebHelper.GetRootUrl()system/");
-        })
-    </script>
 </head>
-<body class="login logo-bg">
-    <div class="logo">
-        <a href="">
-            <img src="~/Content/images/logo-login.png" />
-        </a>
-    </div>
 
-    <div class="menu-toggler sidebar-toggler">
-    </div>
-    <div class="content">
-        <div class="login-form">
-            <h3 class="form-title">欢迎登录账户</h3>
+@Html.Action("sysLogin", "Utility", new { area = "", type = ProjectType.发现身边先锋 })
 
-            <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">用户名</label>
-                <div class="input-icon">
-                    <i class="fa fa-user"></i>
-                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="请输入用户名" id="LoginId" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">密码</label>
-                <div class="input-icon">
-                    <i class="fa fa-lock"></i>
-                    <input class="form-control placeholder-no-fix" type="password" id="Password" placeholder="请输入密码" />
-                </div>
-            </div>
-            <div class="form-actions">
-                <div class="checkbox">
-                    <input type="checkbox" id="ckRemember" class="" data-valuetype="bool">
-                    <label for="ckRemember">
-                        <span class="inc"></span>
-                        <span class="check"></span>
-                        <span class="box"></span>
-                        记住我？
-                    </label>
-                </div>
 
-                <button id="btnLogin" class="btn btn-primary pull-right">
-                    登录 <i class="fa fa-arrow-right"></i>
-                </button>
-            </div>
-
-        </div>
-    </div>
-
-</body>
 </html>

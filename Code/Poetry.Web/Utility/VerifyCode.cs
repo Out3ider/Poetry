@@ -164,7 +164,9 @@ namespace Poetry.Web.Utility
             var phone = Mobile;
             if (phone.IsNotNull())
             {
+#if !DEBUG
                 if (!GovSms.SendSms(phone, str)) throw new SailCommonException("短信发送失败，请与系统管理员联系");
+#endif 
                 LastSendTime = DateTime.Now;
             }
         }

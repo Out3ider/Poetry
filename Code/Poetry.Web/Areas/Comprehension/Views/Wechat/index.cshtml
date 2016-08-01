@@ -1,0 +1,46 @@
+﻿@model Tuple<object, object, object, object>
+<div class="panel-data">
+    <div class="item-data">
+        <p>@Model.Item1</p>
+        <p>发帖数</p>
+    </div>
+    <div class="item-data">
+        <p>@Model.Item2</p>
+        <p>浏览数</p>
+    </div>
+    <div class="item-data">
+        <p>@Model.Item3</p>
+        <p>抽奖数</p>
+    </div>
+    <div class="item-data">
+        <p>@Model.Item4</p>
+        <p>点赞数</p>
+    </div>
+</div>
+<div class="title-img">
+    <img src="~/content/images/title.png" />
+</div>
+<article class="zqui-article text-white">
+    <section>
+        <p>
+            我们在风雨中守护大堤，我们在洪水中并肩战斗。”还记得大堤上飘扬的红旗么，还记得泥浆中的国防绿么，还记得乡亲们期盼的眼神么？抗洪抢险的勇士们，坚守岗位的亲们，来“芜湖先锋”微信号大声说出的自己的防汛抗洪感悟吧。
+        </p>
+        <p>
+            8月1日起,“芜湖先锋”微信号开展主题“坚持根本宗旨，发挥党员作用”抗洪抢险微感悟征集活动，千兆流量等你拿，我们期待您的参与……
+        </p>
+    </section>
+</article>
+<div class="zqui-content-padded">
+    <a href="~/Comprehension/Wechat/recommend" class="zqui-btn zqui-btn-block zqui-btn-danger">发布感悟</a>
+</div>
+<div class="qr">
+    <img src="~/content/images/qr.jpg" />
+    <p>关注芜湖先锋-->两学一做-->微感悟</p>
+</div>
+<script>
+    $(function () {
+        $("body").addClass("bg-index");
+        $("body nav.zqui-bar a").eq(0).addClass("active");
+        $(".bannersub").remove();
+    })
+</script>

@@ -53,11 +53,21 @@ namespace Poetry.Web
               ));
 
             bundles.Add(new StyleBundle("~/Content/css/wecss").Include(
+                "~/Content/css/p_zqui.css",
                 "~/Content/css/portry.css",
-               "~/Content/css/zqui.css",
                "~/Content/css/grow.css",
                "~/Content/css/iconfont.css",
                "~/Content/css/poetry.css"
+               ));
+
+            bundles.Add(new StyleBundle("~/Content/css/raftingwecss").Include(
+               "~/Content/css/zqui.css",
+               "~/Content/css/portry.css",
+               "~/Content/css/rafting.css",
+               "~/Content/css/iconfont.css",
+               "~/Content/css/grow.css"
+               
+         
                ));
 
             bundles.Add(new ScriptBundle("~/bundles/wejs").Include(

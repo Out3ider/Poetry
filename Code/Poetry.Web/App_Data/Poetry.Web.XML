@@ -9,13 +9,13 @@
             超级管理员
             </summary>
         </member>
-        <member name="M:Poetry.Web.AdminController.BeforeAction(Sail.Common.DataContext,Sail.Common.ControllerEvent,System.Object)">
+        <member name="M:Poetry.Web.AdminController.Put(System.String,System.String)">
             <summary>
-            操作前
+            保存管理员信息
             </summary>
-            <param name="db"></param>
-            <param name="e"></param>
-            <param name="o"></param> 
+            <param name="id"></param>
+            <param name="value"></param>
+            <returns></returns>
         </member>
         <member name="M:Poetry.Web.AdminController.Login(System.String)">
             <summary>
@@ -24,19 +24,22 @@
             <param name="str"></param>
             <returns></returns>
         </member>
+        <member name="M:Poetry.Web.AdminController.GetList(System.Int32,System.Int32,Poetry.Model.ProjectType)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
         <member name="M:Poetry.Web.AdminController.Logout">
             <summary>
-            退出登录
+            管理员退出登录
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Poetry.Web.AdminController.LoadMenu">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Poetry.Web.AdminController.CheckLogin">
+        <member name="M:Poetry.Web.AdminController.LoadMenu(System.String)">
             <summary>
             
             </summary>
@@ -47,6 +50,13 @@
             重置密码
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.AdminController.ChangePwd(System.String)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="value"></param>
             <returns></returns>
         </member>
         <member name="T:Poetry.Web.CommentController">
@@ -61,20 +71,274 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="T:Poetry.Web.CommunityController">
+        <member name="T:Poetry.Web.ComprehensionParamController">
             <summary>
-            社区控制器
+            微感悟系统设置
             </summary>
+        </member>
+        <member name="M:Poetry.Web.ComprehensionParamController.Get">
+            <summary>
+            获取系统参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.ComprehensionParamController.Save(System.String)">
+            <summary>
+            保存系统参数
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
         </member>
         <member name="T:Poetry.Web.GroupController">
             <summary>
             
             </summary>
         </member>
+        <member name="M:Poetry.Web.GroupController.BeforeAction(Sail.Common.DataContext,Sail.Common.ControllerEvent,System.Object)">
+            <summary>增删改查之前执行,可以被覆盖</summary>
+            <param name="db">The database.</param>
+            <param name="e">The e.</param>
+            <param name="o">The o.</param>
+        </member>
+        <member name="M:Poetry.Web.GroupController.MakeWhere(System.String)">
+            <summary>创建默认where条件，可以被覆盖</summary>
+            <param name="key">The key.</param>
+            <returns>Clip.</returns>
+        </member>
+        <member name="M:Poetry.Web.GroupController.Filter(System.Collections.Generic.List{Sail.Web.HMenuItem},Sail.Common.IPower)">
+            <summary>
+            过滤菜单权限
+            </summary>
+            <param name="list"></param>
+            <param name="user"></param>
+        </member>
+        <member name="M:Poetry.Web.GroupController.Menus(Poetry.Model.ProjectType)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.GroupController.GetList(System.Int32,System.Int32,System.String,Poetry.Model.ProjectType)">
+            <summary>
+            
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="key"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.GroupController.All(Poetry.Model.ProjectType)">
+            <summary>
+            所有用户组
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Poetry.Web.MemberSensesController.OrderBy">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.MemberSensesController.BeforeAction(Sail.Common.DataContext,Sail.Common.ControllerEvent,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="db"></param>
+            <param name="e"></param>
+            <param name="o"></param>
+        </member>
+        <member name="M:Poetry.Web.MemberSensesController.MakeWhere(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.MemberSensesController.GetList(System.Int32,System.Int32,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="key"></param>
+            <param name="type"></param>
+            <param name="county"></param>
+            <param name="stickStatus"></param>
+            <param name="publishStatus"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.MemberSensesController.CheckPass(System.String)">
+            <summary>
+            审核通过
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.MemberSensesController.Publish(System.String)">
+            <summary>
+            发布
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.MemberSensesController.UnPublish(System.String)">
+            <summary>
+            取消发布
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.MemberSensesController.SetStick(System.String)">
+            <summary>
+            精华
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.MemberSensesController.UnStick(System.String)">
+            <summary>
+            取消精华
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.MemberSensesController.ActToNews(System.String,System.Action{Poetry.Model.Senses})">
+            <summary>
+            对某实体操作
+            </summary>
+            <param name="id"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Web.PrizeController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.PrizeController.OrderBy">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.PrizeController.MakeWhere(System.String)">
+            <summary>创建默认where条件，可以被覆盖</summary>
+            <param name="key">The key.</param>
+            <returns>Clip.</returns>
+        </member>
+        <member name="M:Poetry.Web.PrizeController.GetList(System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            后台获取奖品列表
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="key"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.PrizeController.UserPrizeList(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            用户奖品列表
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.PrizeController.GetRandom(Sail.Common.DataContext,System.Int32,Poetry.Model.Admin,Poetry.Model.ProjectType)">
+            <summary>
+            随机生成一条感悟奖品
+            </summary>
+            <param name="db"></param>
+            <param name="senseId"></param>
+            <param name="user"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.PrizeController.Lottery(System.Int32)">
+            <summary>
+            抽奖了
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.SenseCommentController.CheckPass(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Web.WeChatSensesController">
+            <summary>
+            微信端微感悟
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.WeChatSensesController.Like(System.String)">
+            <summary>
+            用户赞
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.WeChatSensesController.Comment(System.String,System.String)">
+            <summary>
+            评论
+            </summary>
+            <param name="id"></param>
+            <param name="conent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.WeChatSensesController.DeleteCommon(System.String)">
+            <summary>
+            删除评论
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.WeChatSensesController.List(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            滚动直播
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="countyId"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.WeChatSensesController.ListStick(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            精华帖
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="countyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.WeChatSensesController.Ranking(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="countyId"></param>
+            <returns></returns>
+        </member>
         <member name="T:Poetry.Web.WxUserController">
             <summary>
             微信注册用户
             </summary>
+        </member>
+        <member name="P:Poetry.Web.WxUserController.OrderBy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.WxUserController.MakeWhere(System.String)">
+            <summary>创建默认where条件，可以被覆盖</summary>
+            <param name="key">The key.</param>
+            <returns>Clip.</returns>
         </member>
         <member name="M:Poetry.Web.WxUserController.Login(System.String)">
             <summary>
@@ -121,6 +385,107 @@
             县区控制器
             </summary>
         </member>
+        <member name="P:Poetry.Web.Areas.Comprehension.ComprehensionAreaRegistration.AreaName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.ComprehensionAreaRegistration.RegisterArea(System.Web.Mvc.AreaRegistrationContext)">
+            <summary>
+            注册
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Poetry.Web.Areas.Comprehension.Controllers.SystemController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.SystemController.HandleUnknownAction(System.String)">
+            <summary>
+            无名控制器
+            </summary>
+            <param name="actionName"></param>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.SystemController.Login">
+            <summary>
+            登录页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Web.Areas.Comprehension.Controllers.WechatController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.WechatController.NeedLogin(Antlr.Runtime.Misc.Func{Poetry.Model.Admin,System.Web.Mvc.ActionResult})">
+            <summary>
+            登录验证
+            </summary>
+            <param name="act"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.WechatController.Index">
+            <summary>
+            微信首页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.WechatController.Center">
+            <summary>
+            个人中心
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.WechatController.Modify">
+            <summary>
+            修改个人资料
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.WechatController.Recommend">
+            <summary>
+            发表感悟
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.WechatController.RaftingList">
+            <summary>
+            直播列表页面（兼详情）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.WechatController.Logout">
+            <summary>
+            登录退出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.WechatController.MyPrize">
+            <summary>
+            我的奖品
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.WechatController.Shake(System.Int32)">
+            <summary>
+            摇一摇
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.WechatController.CountyHead">
+            <summary>
+            县区导航
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Areas.Comprehension.Controllers.WechatController.RankingCountyHead">
+            <summary>
+            点赞排行榜县区导航
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Poetry.Web.IconController.RotateFlip(System.String)">
             <summary>
             根据exif信息旋转图片
@@ -147,6 +512,27 @@
             排序
             </summary>
         </member>
+        <member name="M:Poetry.Web.MemberNewsController.Demo">
+            <summary>
+            动态创建演示数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.MemberNewsController.BeforeAction(Sail.Common.DataContext,Sail.Common.ControllerEvent,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="db"></param>
+            <param name="e"></param>
+            <param name="o"></param>
+        </member>
+        <member name="M:Poetry.Web.MemberNewsController.MakeWhere(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
         <member name="M:Poetry.Web.MemberNewsController.GetList(System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.String,System.String)">
             <summary>
             获取列表
@@ -155,6 +541,9 @@
             <param name="pageSize"></param>
             <param name="key"></param>
             <param name="type"></param>
+            <param name="county"></param>
+            <param name="checkeStatus"></param>
+            <param name="publishStatus"></param>
             <returns></returns>
         </member>
         <member name="M:Poetry.Web.MemberNewsController.CheckPass(System.String)">
@@ -186,9 +575,14 @@
             <param name="action"></param>
             <returns></returns>
         </member>
+        <member name="T:Poetry.Web.WeChatNewsController">
+            <summary>
+            微信端发布党员事迹
+            </summary>
+        </member>
         <member name="T:Poetry.Web.ParamController">
             <summary>
-            系统参数控制器
+            发现身边先锋系统参数控制器
             </summary>
         </member>
         <member name="M:Poetry.Web.ParamController.Get">
@@ -231,10 +625,105 @@
             </summary>
             <param name="actionName"></param>
         </member>
+        <member name="M:Poetry.Web.Controller.SystemController.HandleUnknownAction(System.String)">
+            <summary>
+            无名控制器
+            </summary>
+            <param name="actionName"></param>
+        </member>
+        <member name="P:Poetry.Web.Controller.LeftMenu.Menus">
+            <summary>
+            菜单项
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Controller.LeftMenu.IndexUrl">
+            <summary>
+            首页地址
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Controller.LeftMenu.CurrentId">
+            <summary>
+            当前菜单id
+            </summary>
+        </member>
+        <member name="T:Poetry.Web.Controller.UtilityController">
+            <summary>
+            通用帮助类
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.Controller.UtilityController.Menu(System.String,Poetry.Model.ProjectType)">
+            <summary>
+            输出菜单页面
+            </summary>
+            <param name="currentId"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Controller.UtilityController.Group(Poetry.Model.ProjectType)">
+            <summary>
+            不同的用户组
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Controller.UtilityController.SysLogin(Poetry.Model.ProjectType)">
+            <summary>
+            后台登录页
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Controller.UtilityController.AdminInfo(Poetry.Model.ProjectType)">
+            <summary>
+            管理员
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Web.Controller.UtilityController.Member">
+            <summary>
+            用户管理
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Poetry.Web.Controller.WeChatController">
             <summary>
             微信端控制器
             </summary>
+        </member>
+        <member name="M:Poetry.Web.Controller.WeChatController.Rankinglist">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Web.Utility.BadWords">
+            <summary>
+            敏感词
+            </summary>
+        </member>
+        <member name="F:Poetry.Web.Utility.BadWords.FileName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Poetry.Web.Utility.BadWords.CurrentBadWords">
+            <summary>
+            敏感词列表
+            </summary>
+        </member>
+        <member name="M:Poetry.Web.Utility.BadWords.CheckBadWords(System.String)">
+            <summary>
+            检查是否有关键字
+            </summary>
+            <param name="text"></param>
+            <returns>有关键字就返回true，否则返回false</returns>
+        </member>
+        <member name="M:Poetry.Web.Utility.BadWords.Config(System.String)">
+            <summary>
+            设置配置文件
+            </summary>
+            <param name="fileName"></param>
         </member>
         <member name="T:Poetry.Web.Utility.GovSms">
             <summary>
@@ -366,6 +855,18 @@
             </summary>
             <param name="db"></param>
         </member>
+        <member name="M:Poetry.Web.PageHelper.CheckAdmin(System.Web.HttpResponseBase,Poetry.Model.ProjectType)">
+            <summary>
+            后台用户登录确认
+            </summary>
+            <param name="response"></param>
+            <param name="type"></param>
+        </member>
+        <member name="P:Poetry.Web.PageHelper.DefaultHeadIcon">
+            <summary>
+            用户默认头像
+            </summary>
+        </member>
         <member name="M:Poetry.Web.PageHelper.ToDictionary(System.Data.DataTable)">
             <summary>
             datable转换动态数据集
@@ -453,6 +954,16 @@
             <param name="pageSize"></param>
             <returns></returns>
         </member>
+        <member name="M:Poetry.Web.ContentController.Query(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            前台查询
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="countyId"></param>
+            <param name="sort"></param>
+            <returns></returns>
+        </member>
         <member name="M:Poetry.Web.ContentController.Like(System.String)">
             <summary>
             用户赞
@@ -478,6 +989,200 @@
         <member name="M:Poetry.Web.Global.InitData">
             <summary>
             初始化数据
+            </summary>
+        </member>
+        <member name="T:Poetry.Model.Prize">
+            <summary>
+            奖品
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Prize.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Prize.ProjectType">
+            <summary>
+            项目类型
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Prize.Operator">
+            <summary>
+            运营商
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Prize.OperatorStr">
+            <summary>
+            运营商
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Prize.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Prize.Title">
+            <summary>
+            奖品名称
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Prize.Probability">
+            <summary>
+            随机几率(千分几率)
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Prize.TotalStock">
+            <summary>
+            总数量
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Prize.MaxNumber">
+            <summary>
+            每人上限数量
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Prize.CurrentStock">
+            <summary>
+            已抽取数量
+            </summary>
+        </member>
+        <member name="T:Poetry.Model.PrizeBase`1">
+            <summary>
+            奖品基类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Poetry.Model.UserPrize">
+            <summary>
+            用户中奖信息
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserPrize.Id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserPrize.PrizeUser">
+            <summary>
+            获取人
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserPrize.Prize">
+            <summary>
+            奖品
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserPrize.SensesId">
+            <summary>
+            关联的感悟Id
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserPrize.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.UserPrize.IsCanGet(Sail.Common.IDataContext,Sail.Common.IUser)">
+            <summary>
+            能否抽奖
+            </summary>
+            <param name="db"></param>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Model.SensesComment">
+            <summary>
+            感悟评论
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.SensesComment.Creater">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.SensesComment.SensesId">
+            <summary>
+            关联的感悟Id
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.SensesComment.Content">
+            <summary>
+            回答内容
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.SensesComment.IsChecked">
+            <summary>
+            是否审核通过
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.SensesComment.UpdateSenses(Sail.Common.IDataContext)">
+            <summary>
+            更新感悟的评论数
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="T:Poetry.Model.Senses">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Senses.SensesTitle">
+            <summary>
+            感悟标题
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Senses.Creater">
+            <summary>
+            用户姓名
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Senses.IsStick">
+            <summary>
+            是否精华
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Senses.OrderByNo">
+            <summary>
+            排序号
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.Senses.GetComments(Sail.Common.DataContext)">
+            <summary>
+            获取评论
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poetry.Model.Senses.DeleteInfos(Sail.Common.IDataContext)">
+            <summary>
+            删除相关信息
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:Poetry.Model.Senses.Init(Poetry.Model.Admin)">
+            <summary>
+            初始化发布人姓名什么
+            </summary>
+            <param name="user"></param>
+        </member>
+        <member name="T:Poetry.Model.ReaderLike">
+            <summary>
+            用户赞记录
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.ReaderLike.SensesId">
+            <summary>
+            优秀事迹id
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.ReaderLike.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.ReaderLike.CreateTime">
+            <summary>
+            创建时间
             </summary>
         </member>
         <member name="T:Poetry.Model.FormAttribute">
@@ -530,29 +1235,135 @@
             data-值
             </summary>
         </member>
-        <member name="T:Poetry.Model.Community">
-            社区
+        <member name="T:Poetry.Model.ComprehensionParam">
+            <summary>
+            
+            </summary>
         </member>
-        <member name="P:Poetry.Model.Community.Icon">
+        <member name="P:Poetry.Model.ComprehensionParam.ParamId">
+            <summary>
+            参数id
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.ComprehensionParam.SiteName">
+            <summary>
+            系统名称
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.ComprehensionParam.IsCommentNeedCheck">
+            <summary>
+            评论无需审核
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.ComprehensionParam.IsAutoPublish">
+            <summary>
+            感悟自动发布
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.ComprehensionParam.MaxPrize">
+            <summary>
+            每人最多领取次数
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.ComprehensionParam.MaxPrizeUser">
+            <summary>
+            最大参与抽奖人数
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.ComprehensionParam.Get(Sail.Common.IDataContext)">
+            <summary>
+            获取系统参数
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Model.MobileHelper">
+            <summary>
+            检查手机号的
+            </summary>
+        </member>
+        <member name="F:Poetry.Model.MobileHelper.Mobile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.MobileHelper.Check(System.String)">
+            <summary>
+            检验运营商
+            </summary>
+            <param name="phone"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poetry.Model.MobileOperator">
+            <summary>
+            手机运营商
+            </summary>
+        </member>
+        <member name="F:Poetry.Model.MobileOperator.移动">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Poetry.Model.MobileOperator.联通">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Poetry.Model.MobileOperator.电信">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Poetry.Model.MobileOperator.其他">
+            <summary>
+            其他运营商
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.NewsBase.Icon">
             <summary>
             标题图片
             </summary>
         </member>
-        <member name="P:Poetry.Model.Community.Images">
+        <member name="P:Poetry.Model.NewsBase.Images">
             <summary>
             图片
             </summary>
         </member>
-        <member name="M:Poetry.Model.Community.GetImages">
+        <member name="P:Poetry.Model.NewsBase.IsChecked">
+            <summary>
+            是否审核
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.NewsBase.Liked">
+            <summary>
+            点赞
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.NewsBase.Views">
+            <summary>
+            查看次数
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.NewsBase.IsPublish">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.NewsBase.Comments">
+            <summary>
+            评论数
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.NewsBase.Content">
+            <summary>
+            事迹内容
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.NewsBase.GetImages">
             <summary>
             图片列表
             </summary>
             <returns></returns>
-        </member>
-        <member name="P:Poetry.Model.Community.County">
-            <summary>
-            县区id
-            </summary>
         </member>
         <member name="T:Poetry.Model.NewsComment">
             <summary>
@@ -585,19 +1396,89 @@
             类型
             </summary>
         </member>
+        <member name="T:Poetry.Model.ProjectType">
+            <summary>
+            项目类型
+            </summary>
+        </member>
+        <member name="F:Poetry.Model.ProjectType.发现身边先锋">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Poetry.Model.ProjectType.微感悟">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Poetry.Model.UserGroup">
+            <summary>
+            用户组和用户关联表
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserGroup.Id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserGroup.UserRole">
+            <summary>
+             用户组
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserGroup.Admin">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserGroup.County">
+            <summary>
+            所属县区
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.UserGroup.Type">
+            <summary>
+            项目类型
+            </summary>
+        </member>
         <member name="T:Poetry.Model.Admin">
             <summary>
             系统管理员
             </summary>
         </member>
-        <member name="P:Poetry.Model.Admin.Type">
+        <member name="P:Poetry.Model.Admin.UserId">
             <summary>
-            用户类型
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Admin.LoginId">
+            <summary>
+            登录名
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Admin.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Admin.Password">
+            <summary>
+            用户密码
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Admin.MobileOperator">
+            <summary>
+            运营商
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Admin.MobileOperatorStr">
+            <summary>
+            移动运营商
             </summary>
         </member>
         <member name="P:Poetry.Model.Admin.County">
             <summary>
-            关联县区
+            县区
             </summary>
         </member>
         <member name="P:Poetry.Model.Admin.Memo">
@@ -620,21 +1501,35 @@
             所在单位或居住地
             </summary>
         </member>
+        <member name="P:Poetry.Model.Admin.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="M:Poetry.Model.Admin.IsHasPower(System.String)">
+            <summary>
+            是否有权限
+            </summary>
+            <param name="powerid"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Poetry.Model.Admin.IsSuperAdmin">
+            <summary>
+            是否超级管理员
+            </summary>
+        </member>
         <member name="M:Poetry.Model.Admin.ResetPassword(Sail.Common.IDataContext)">
             <summary>
             重置密码为默认密码
             </summary>
             <param name="db"></param>
         </member>
-        <member name="M:Poetry.Model.Admin.SearchUser(Sail.Common.IDataContext,System.Int32,System.Int32,System.Int32,System.String)">
+        <member name="M:Poetry.Model.Admin.GetUserGroup(Sail.Common.IDataContext,Poetry.Model.ProjectType)">
             <summary>
-            搜索用户
+            获取用户组
             </summary>
             <param name="db"></param>
-            <param name="pageIndex"></param>
-            <param name="pageSize"></param>
-            <param name="countyId"></param>
-            <param name="key"></param>
+            <param name="type"></param>
             <returns></returns>
         </member>
         <member name="T:Poetry.Model.County">
@@ -652,6 +1547,16 @@
             排序号
             </summary>
         </member>
+        <member name="T:Poetry.Model.Group">
+            <summary>
+            用户组
+            </summary>
+        </member>
+        <member name="P:Poetry.Model.Group.ProjectType">
+            <summary>
+            管理员类型
+            </summary>
+        </member>
         <member name="T:Poetry.Model.IDict">
             <summary>
             字典类接口
@@ -660,11 +1565,6 @@
         <member name="T:Poetry.Model.News">
             <summary>
             
-            </summary>
-        </member>
-        <member name="P:Poetry.Model.News.Icon">
-            <summary>
-            标题图片
             </summary>
         </member>
         <member name="P:Poetry.Model.News.PartyMember">
@@ -681,17 +1581,6 @@
             <summary>
             引用
             </summary>
-        </member>
-        <member name="P:Poetry.Model.News.Images">
-            <summary>
-            图片
-            </summary>
-        </member>
-        <member name="M:Poetry.Model.News.GetImages">
-            <summary>
-            图片列表
-            </summary>
-            <returns></returns>
         </member>
         <member name="P:Poetry.Model.News.County">
             <summary>
@@ -711,36 +1600,6 @@
         <member name="P:Poetry.Model.News.Organization">
             <summary>
             基层党组织
-            </summary>
-        </member>
-        <member name="P:Poetry.Model.News.IsChecked">
-            <summary>
-            是否审核
-            </summary>
-        </member>
-        <member name="P:Poetry.Model.News.Liked">
-            <summary>
-            点赞
-            </summary>
-        </member>
-        <member name="P:Poetry.Model.News.Views">
-            <summary>
-            查看次数
-            </summary>
-        </member>
-        <member name="P:Poetry.Model.News.IsPublish">
-            <summary>
-            是否显示
-            </summary>
-        </member>
-        <member name="P:Poetry.Model.News.Comments">
-            <summary>
-            评论数
-            </summary>
-        </member>
-        <member name="P:Poetry.Model.News.Content">
-            <summary>
-            事迹内容
             </summary>
         </member>
         <member name="M:Poetry.Model.News.MakeWhere(System.Int32,System.Int32,System.String)">
@@ -839,11 +1698,6 @@
         <member name="P:Poetry.Model.UserLike.CreateTime">
             <summary>
             创建时间
-            </summary>
-        </member>
-        <member name="T:Poetry.Model.UserType">
-            <summary>
-            用户类型
             </summary>
         </member>
         <member name="T:System.Web.WebPages.Element">

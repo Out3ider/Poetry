@@ -1,0 +1,58 @@
+﻿[
+
+    {
+        "ClassName": "fa fa-newspaper-o ",
+        "ItemId": "6CF30780-F182-4CA7-93A8-5D9FB8D0E775",
+        "ItemName": "感悟管理",
+        "Url": "~/Comprehension/system/senses"
+    },
+
+    {
+        "ItemId": "7B1FE618-C706-400C-9A60-63B84ED45E97",
+        "ItemName": "评论管理",
+        "ClassName": "fa fa-comment",
+        "Url": "~/Comprehension/System/Comment"
+
+    },
+
+    {
+        "ClassName": "fa fa-user ",
+        "ItemId": "072BA852-0539-4017-80EA-226ACB2780CD",
+        "ItemName": "注册用户",
+        "Url": "~/Comprehension/system/Members"
+    },
+
+    {
+        "ClassName": "fa fa-users",
+        "ItemId": "650ED2B5-54F9-4831-86F4-8C72AFF5F0E8",
+        "ItemName": "用户组管理",
+        "Url": "~/Comprehension/system/groupinfo"
+    },
+    {
+        "ItemId": "BD99CF72-780D-4E81-A7C8-9B4F03D8B719",
+        "ItemName": "管理员管理",
+        "ClassName": "fa  fa-user-secret",
+        "Url": "~/Comprehension/System/adminInfo"
+    },
+    {
+        "ItemId": "D1827C4C-3A04-4046-8686-759B47D86AA6",
+        "ItemName": "奖品管理",
+        "ClassName": "fa fa-trophy",
+        "Url": "~/Comprehension/System/Prize"
+
+    },
+    {
+        "ItemId": "56C02F55-3CFD-499E-9EFA-915EFA495DC0",
+        "ItemName": "抽奖记录",
+        "ClassName": "fa fa-list",
+        "Url": "~/Comprehension/System/USerPrize"
+
+    },
+
+    {
+        "ClassName": "fa fa-cog",
+        "ItemId": "68E7ABB0-86F7-4701-A3D7-3C86760EB42C",
+        "ItemName": "系统设置",
+        "Url": "~/Comprehension/system/System"
+    }
+]

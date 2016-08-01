@@ -1,0 +1,118 @@
+﻿<div class="zqui-profile">
+    <div class="zqui-profile-userpic">
+        <img src="~/content/images/default.jpg" />
+    </div>
+    <div class="zqui-profile-usertitle">
+        <p class="zqui-h4">张三</p>
+    </div>
+    <div class="zqui-profile-userbuttons">
+        <a class="zqui-profile-userbtn active">主页</a>
+        <a class="zqui-profile-userbtn">我的感悟</a>
+    </div>
+</div>
+<div class="zqui-tab-content">
+    <div class="zqui-tab-pane">
+        <ul class="zqui-table-view">
+            <li class="zqui-table-view-cell">
+                <a href="~/html/recommend.cshtml" class="zqui-navigate-right text-danger" style="font-weight:bold;">
+                    发布感悟
+                </a>
+            </li>
+            <li class="zqui-table-view-cell">
+                <a href="~/html/prize.cshtml" class="zqui-navigate-right">
+                    我获得的奖品
+                </a>
+            </li>
+            
+            @*<li class="zqui-table-view-cell">
+                <a href="~/html/modify.cshtml" class="zqui-navigate-right">
+                    修改资料
+                </a>
+            </li>*@
+        </ul>
+        <ul class="zqui-table-view">
+            <li class="zqui-table-view-divider">基础资料</li>
+            <li class="zqui-table-view-cell">
+                <a class="">
+                    手机号码
+                    <span class="zqui-pull-right">
+                        15623105036
+                    </span>
+                </a>
+            </li>
+            <li class="zqui-table-view-cell">
+                <a class="">
+                    区县
+                    <span class="zqui-pull-right">
+                        鸠江区
+                    </span>
+                </a>
+            </li>
+            <li class="zqui-table-view-cell">
+                <a class="">
+                    单位
+                    <span class="zqui-pull-right">
+                        科创中心
+                    </span>
+                </a>
+            </li>
+        </ul>
+        
+
+        <ul class="zqui-table-view" style="margin-bottom:.75rem;">
+
+                <li class="zqui-table-view-cell zqui-text-center">
+                    <a href="~/html/modify.cshtml">修改资料</a>
+                </li>
+            </ul>
+        <ul class="zqui-table-view" style="margin-bottom:.75rem;">
+            <li class="zqui-table-view-cell zqui-text-center">
+                <a href="~/html/login.cshtml">退出</a>
+            </li>
+        </ul>
+    </div>
+    <div class="zqui-tab-pane">
+        <div class="zqui-container">
+            <div class="zqui-timeline">
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".divViewer").show();
+        $(".divEditor").hide();
+        $(".btnView").click(function () {
+            $(".divEditor").show();
+            $(".divViewer").hide();
+            $(".btnSave").click(function () {
+                $(".divViewer").show();
+                $(".divEditor").hide();
+            })
+        })
+    })
+    $(document).ready(function () {
+        jQuery.jqtab = function (nav, content, click) {
+            $(content).find(".zqui-tab-pane").hide();
+            $(nav).find(".zqui-profile-userbtn:first").addClass("active").show();
+            $(content).find(".zqui-tab-pane:first").show();
+            $(nav).find(".zqui-profile-userbtn").bind(click, function () {
+                $(this).addClass("active").siblings(".zqui-profile-userbtn").removeClass("active");
+                var activeindex = $(nav).find(".zqui-profile-userbtn").index(this);
+                $(content).children().eq(activeindex).show().siblings().hide();
+                return false;
+            });
+        };
+        $.jqtab(".zqui-profile-userbuttons", ".zqui-tab-content", "click");
+    });
+</script>
+@Helper.HelperDataModal()

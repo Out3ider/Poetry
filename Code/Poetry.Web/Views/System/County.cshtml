@@ -23,11 +23,10 @@
                 排序号：<span>*</span>
             </label>
             <div class="col-md-10">
-                <input type="text" data-defaultvalue="0" class="form-control validate[required,custom[pdecimal]]" id="OrderByNo" placeholder="请输入排序号" />
+                <input type="text" data-defaultvalue="0" class="form-control validate[required,custom[decimal]]" id="OrderByNo" placeholder="请输入排序号" />
                 <span class="help-block text-warning">县区按照排序号由小到大排列</span>
             </div>
         </div>
-      
     </script>
 
     <script type="text/x-jsrender" id="listTmpl">
@@ -39,7 +38,6 @@
             </td>
 
             <td>{{>OrderByNo}}</td>
-            
             <td>
                 <a class="text-primary m_r_10 btnEdit" title="修改" data-toggle="tooltip"><i class="fa fa-edit fa-lg"></i></a>
                 <a class="text-danger btnRemove" title="删除" data-toggle="tooltip"><i class="fa fa-lg  fa-trash"></i></a>
@@ -51,7 +49,7 @@
             var tool = new Sail.RazorPage("", "County", "Id");
             tool.CreatePage({
                 titles: ["县区名称", "排序号", "操作"],
-                titleWidth: [0,0,120]
+                titleWidth: [0, 0, 120]
             });
             tool.Page.Query();
         });
@@ -59,10 +57,9 @@
 }
 
 
-@Helper.PageList(
-    
-    @<text>
+@Helper.PageList(@<text>
         @Form.RenderInfoStatusSearch("过滤县区单位名称")
+
 </text>)
 
 @Helper.PageDetail()

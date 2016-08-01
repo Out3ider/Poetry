@@ -1,4 +1,4 @@
-
+﻿
 
 function PageLoad(title, pageTmpl) {
 
@@ -124,11 +124,28 @@ function PageLoad(title, pageTmpl) {
 
 
 var moreTmpl = '<div class="last showMore"><div class="more">点击显示更多</div><div class="clearfix"></div></div>';
-var noneTmpl = '<div class="last"><div class="data"></div><div class="noMore">没有更多了</div><div class="clearfix"></div></div>';
+var noneTmpl = '<div class="zqui-pull-bottom-pocket zqui-block zqui-visibility"><div class="zqui-pull"><div class="zqui-pull-loading zqui-icon zqui-spinner zqui-hidden"></div><div class="zqui-pull-caption zqui-pull-caption-nomore">没有更多数据了</div></div></div>';
 
-function Nodata() {
-    $("#pager").Render("NoOrder");
+function Nodata(pager) {
+    pager.empty();
+    $(noneTmpl).appendTo(pager);
 }
+
+Sail.modalTemplates = {
+    dialog: "<div class='modal zqui-modal' >" +
+        "<div class='modal-dialog zqui-modal-dialog' >" +
+        "<div class='modal-content zqui-modal-content'>" +
+        "<div class='modal-body zqui-modal-body'></div>" +
+        "</div>" +
+        "</div>" +
+        "<div class='zqui-modal-mask'></div></div>",
+    header: "<div class='modal-header zqui-modal-header'>" +
+        "<h4 class='modal-title zqui-modal-title'></h4>" +
+        "</div>",
+    footer: "<div class='modal-footer zqui-modal-footer'></div>",
+    cancleButton: "<a  class='zqui-modal-btn btnCancel' data-dismiss='modal' aria-hidden='true'></a>",
+    okButton: '<button class="zqui-modal-btn text-primary btnOk"></button>'
+};
 
 $.fn.modal = $.fn.myModal;
 
@@ -137,7 +154,7 @@ jQuery.fn.extend({
         set = jQuery.extend({
             noData: "暂无数据",
             queryed: null, //查询完成后的回调
-            pageSize: 3,//每页行数   
+            pageSize: 10,//每页行数   
             Type: 1,
             handleName: null,//handle  
             events: [],//事件集合
@@ -169,15 +186,14 @@ jQuery.fn.extend({
                     success: function (data) {
 
                         if (data.Data == null) {
-                            Nodata();
+                            Nodata(result.pager);
                             return;
                         }
                         if (data.Data.Count == 0) {
-                            Nodata();
+                            Nodata(result.pager);
                             return;
                         }
-                        result.$list.append($.Loadtmpl("#listTmpl").render(data.Data.Data));
-
+                        result.$list.append($.Loadtmpl("#listTmpl").render(data.Data.Data)); 
                         var pageCount = data.Data.PageInfo.PageCount;
                         result.pager.html(pageCount > result.currentIndex ? moreTmpl : noneTmpl);
                     }
@@ -229,5 +245,3 @@ function scanCode(act) {
         }
     });
 }
-
-

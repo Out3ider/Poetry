@@ -5,8 +5,9 @@
 @using Sail.Web
 
 
-@helper RenderHead(string controll, string loginUrl, string userName, string companyName = null)
+@helper RenderHead(string controll, string loginUrl, string userName, string logo = "logo-login")
 {
+
 loginUrl = WebHelper.GetRootUrl() + loginUrl;
 
     <header class="page-header navbar">
@@ -14,19 +15,12 @@ loginUrl = WebHelper.GetRootUrl() + loginUrl;
         <div class="page-header-inner">
             <div class="page-logo">
                 <a>
-                    <img src="~/Content/images/logo-login.png" alt="logo" height="40" class="logo-default" />
+                    <img src="~/Content/images/@(logo).png" alt="logo" class="logo-default" />
                 </a>
             </div>
 
             <div class="page-top">
-                @if (companyName.IsNotNull())
-                {
-                    <div class="page-actions">
-                        <div class="top-tags">
-                            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;<span>@companyName</span>
-                        </div>
-                    </div>
-                }
+
                 <div class="top-menu">
                     <ul class="nav navbar-nav pull-right">
 
@@ -103,55 +97,6 @@ loginUrl = WebHelper.GetRootUrl() + loginUrl;
         })
     </script>
 }
-
-
-
-@* 输出主菜单 *@
-@helper RenderMainMenu(IList<HMenuItem> items, string indexUrl)
-{ <div class="page-sidebar" style="overflow: auto;">
-        <ul class="page-sidebar-menu">
-            <li class="home">
-                <a href="@(WebHelper.GetRootUrl()+ indexUrl)">
-                    <i class="fa fa-home"></i>
-                    <span class="title">首页</span>
-                </a>
-            </li>
-            @RenderMenu(items)
-        </ul>
-    </div>
-    @* ReSharper disable ConditionIsAlwaysConst *@
-    <script>
-        $(function () {
-            var current = '@(PageData[PageHelper.ItemId])';
-            if (current) $(".page-sidebar-menu a[data-itemid=" + current + "]").parents("li").addClass("active");
-            else $(".page-sidebar-menu .home").addClass("active");
-        });
-    </script>
-}
-@* ReSharper restore ConditionIsAlwaysConst *@
-@* 递归输出菜单 *@
-@helper RenderMenu(IList<HMenuItem> items)
-{
-foreach (var item in items)
-{
-        <li>
-            <a data-itemid="@item.ItemId" @(item.SubItems.Count == 0 ? $"href={  item.Url}" : "")>
-                <i class="@item.ClassName"></i>
-                <span class="title">@item.ItemName</span>
-
-                @if (item.SubItems.Count > 0)
-                {
-                    <span class="arrow"></span>
-                }
-            </a>
-            @if (item.SubItems.Count > 0)
-            {
-                <ul class="sub-menu">
-                    @RenderMenu(item.SubItems)
-                </ul>
-            }
-        </li>
-}}
 
 
 @* 输出列表 *@

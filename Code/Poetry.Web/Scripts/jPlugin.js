@@ -1792,98 +1792,76 @@
 /***表单验证**/
 
 
-(function ($) {
-    $.fn.validationEngineLanguage = function () { };
-    $.validationEngineLanguage = {
-        newLang: function () {
-            $.validationEngineLanguage.allRules = {
-                required: {
-                    regex: "none",
-                    alertText: "必填",
-                    alertTextCheckboxMultiple: "请选择一个选项",
-                    alertTextCheckboxe: "必须选中"
-                },
-                length: {
-                    regex: "none",
-                    alertText: "长度在 ",
-                    alertText2: " 到 ",
-                    alertText3: " 个字符之间"
-                },
-                maxCheckbox: {
-                    regex: "none",
-                    alertText: "选择的选项超出"
-                },
-                minCheckbox: {
-                    regex: "none",
-                    alertText: "请选择不超过 ",
-                    alertText2: " 个选项"
-                },
-                confirm: {
-                    regex: "none",
-                    alertText: "输入内容不匹配"
-                },
-                url: {
-                    regex: /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i,
-                    alertText: "无效的网址"
-                },
-                idNumber: {
-                    regex: /^\d{17}([0-9]|X|x)$/,
-                    alertText: "身份证号码无效"
-                },
-                mobile: {
-                    regex: /^(1)[0-9]{10}$/,
-                    alertText: "无效手机号码"
-                },
-
-                email: {
-                    regex: /^[a-zA-Z0-9_.-]+@([a-zA-Z0-9-]+.)+[a-zA-Z0-9]{2,4}$/,
-                    alertText: "无效邮件地址"
-                },
-                integer: {
-                    regex: /^-?[0-9]+$/,
-                    alertText: "只允许录入整数"
-                },
-                pinteger: {
-                    regex: /^[0-9]+$/,
-                    alertText: "只允许录入整数"
-                },
-                pdecimal: {
-                    regex: /^\d*\.?\d+$/,
-                    alertText: "只能输入数字"
-                },
-                decimal: {
-                    regex: /^-?\d*\.?\d+$/,
-                    alertText: "只能输入数字"
-                }
-            };
+$.validationEngineLanguage = {
+    allRules: {
+        required: {
+            regex: "none",
+            alertText: "必填",
+            alertTextCheckboxMultiple: "请选择一个选项",
+            alertTextCheckboxe: "必须选中"
+        },
+        length: {
+            regex: "none",
+            alertText: "长度在 ",
+            alertText2: " 到 ",
+            alertText3: " 个字符之间"
+        },
+        confirm: {
+            regex: "none",
+            alertText: "输入内容不匹配"
+        },
+        url: {
+            regex:
+                /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i,
+            alertText: "无效的网址"
+        },
+        idNumber: {
+            regex: /^\d{17}([0-9]|X|x)$/,
+            alertText: "身份证号码无效"
+        },
+        mobile: {
+            regex: /^(1)[0-9]{10}$/,
+            alertText: "无效手机号码"
+        },
+        email: {
+            regex: /^[a-zA-Z0-9_.-]+@([a-zA-Z0-9-]+.)+[a-zA-Z0-9]{2,4}$/,
+            alertText: "无效邮件地址"
+        },
+        integer: {
+            regex: /^-?[0-9]+$/,
+            alertText: "只允许录入整数"
+        },
+        pinteger: {
+            regex: /^[0-9]+$/,
+            alertText: "只允许录入整数"
+        },
+        pdecimal: {
+            regex: /^\d*\.?\d+$/,
+            alertText: "只能输入数字"
+        },
+        decimal: {
+            regex: /^-?\d*\.?\d+$/,
+            alertText: "只能输入数字"
         }
-    };
-})(jQuery);
-
+    }
+};
 (function ($) {
     $.fn.validationEngine = function (settings) {
-        if ($.validationEngineLanguage) {
-            allRules = $.validationEngineLanguage.allRules;
-        } else {
-            $.validationEngine.debug("Validation engine rules are not loaded check your external file");
-        }
+
         settings = jQuery.extend({
-            allrules: $.validationEngineLanguage.allRules,
             validationEventTriggers: "keyup blur",
             inlineValidation: true,
             returnIsValid: false,
-            liveEvent: true,
             unbindEngine: false,
             ajaxSubmit: true,
             scroll: true,
-            promptPosition: "topRight",
+
             success: false,
             beforeSuccess: function () { },
             failure: function () { }
         }, settings);
         $.validationEngine.settings = settings;
-        $.validationEngine.ajaxValidArray = new Array();
-        function _inlinEvent(caller) {
+        function inlinEvent(caller) {
             $.validationEngine.settings = settings;
             if ($.validationEngine.intercept == false || !$.validationEngine.intercept) {
                 $.validationEngine.onSubmitValid = false;
@@ -1896,10 +1874,10 @@
             if (!settings.returnIsValid) {
                 allowReturnIsvalid = false;
                 $(this).on(settings.validationEventTriggers, "[class*=validate][type!=checkbox]", function (caller) {
-                    _inlinEvent(this);
+                    inlinEvent(this);
                 });
                 $(this).on("click", "[class*=validate][type=checkbox]", function (caller) {
-                    _inlinEvent(this);
+                    inlinEvent(this);
                 });
                 firstvalid = false;
             }
@@ -1908,22 +1886,18 @@
             return !$.validationEngine.submitValidation(this, settings);
         }
     };
+
+  
+
     $.validationEngine = {
         defaultSetting: function (caller) {
-            if ($.validationEngineLanguage) {
-                allRules = $.validationEngineLanguage.allRules;
-            } else {
-                $.validationEngine.debug("Validation engine rules are not loaded check your external file");
-            }
-            settings = {
-                allrules: allRules,
+            var settings = { 
                 validationEventTriggers: "keyup blur",
                 inlineValidation: true,
                 returnIsValid: false,
                 scroll: true,
                 unbindEngine: true,
                 ajaxSubmit: true,
-                promptPosition: "topRight",
                 success: false,
                 failure: function () { }
             };
@@ -1933,89 +1907,47 @@
             if (!$.validationEngine.settings) {
                 $.validationEngine.defaultSetting();
             }
-            rulesParsing = $(caller).attr("class");
-            rulesRegExp = /\[(.*)\]/;
-            getRules = rulesRegExp.exec(rulesParsing);
-            str = getRules[1];
-            pattern = /\[|,|\]/;
-            result = str.split(pattern);
+            var rulesParsing = $(caller).attr("class");
+            var rulesRegExp = /\[(.*)\]/;
+            var getRules = rulesRegExp.exec(rulesParsing);
+            var str = getRules[1];
+            var pattern = /\[|,|\]/;
+            var result = str.split(pattern);
             var validateCalll = $.validationEngine.validateCall(caller, result);
             return validateCalll;
         },
         validateCall: function (caller, rules) {
             var promptText = "";
-            var checked = true;
-            if (!$(caller).attr("id")) {
-                $.validationEngine.debug("This field have no ID attribut( name & class displayed): " + $(caller).attr("name") + " " + $(caller).attr("class"));
-            }
-            caller = caller;
-            ajaxValidate = false;
             var callerName = $(caller).attr("name");
             $.validationEngine.isError = false;
             $.validationEngine.showTriangle = true;
-            callerType = $(caller).attr("type");
-            for (i = 0; i < rules.length; i++) {
+            var callerType = $(caller).attr("type");
+            for (var i = 0; i < rules.length; i++) {
                 switch (rules[i]) {
                     case "optional":
-                        if (!$(caller).val()) {
-                            $.validationEngine.closePrompt(caller);
-                            return $.validationEngine.isError;
-                        }
+                        if (!$(caller).val()) { return $.validationEngine.isError; }
                         break;
-
                     case "required":
-                        _required(caller, rules);
+                        required(caller, rules);
                         break;
-
                     case "custom":
-                        _customRegex(caller, rules, i);
+                        customRegex(caller, rules, i);
                         break;
-
-                    case "exemptString":
-                        _exemptString(caller, rules, i);
-                        break;
-
-                    case "ajax":
-                        if (!$.validationEngine.onSubmitValid) {
-                            _ajax(caller, rules, i);
-                        }
-                        ;
-                        break;
-
                     case "length":
-                        _length(caller, rules, i);
+                        length(caller, rules, i);
                         break;
-
-                    case "maxCheckbox":
-                        _maxCheckbox(caller, rules, i);
-                        groupname = $(caller).prop("name");
-                        caller = $("input[name='" + groupname + "']");
-                        break;
-
-                    case "minCheckbox":
-                        _minCheckbox(caller, rules, i);
-                        groupname = $(caller).prop("name");
-                        caller = $("input[name='" + groupname + "']");
-                        break;
-
                     case "confirm":
-                        _confirm(caller, rules, i);
+                        confirm(caller, rules, i);
                         break;
-
-                    case "funcCall":
-                        _funcCall(caller, rules, i);
-                        break;
-
-                    default:
-                        ;
                 }
             }
             radioHack();
-            if ($.validationEngine.isError == true) {
-                linkTofield = $.validationEngine.linkTofield(caller);
-                $("div." + linkTofield).size() == 0 ? $.validationEngine.buildPrompt(caller, promptText, "error") : $.validationEngine.updatePromptText(caller, promptText);
+            if ($.validationEngine.isError === true) {
+                $.validationEngine.buildPrompt(caller, promptText, "error");
             } else {
-                $.validationEngine.closePrompt(caller);
+                var group = $.validationEngine.findTipsGroup(caller);
+                group.removeClass("has-error").prop("title", "");
+
             }
             function radioHack() {
                 if ($("input[name='" + callerName + "']").size() > 1 && (callerType == "radio" || callerType == "checkbox")) {
@@ -2023,314 +1955,115 @@
                     $.validationEngine.showTriangle = false;
                 }
             }
-            function _required(caller, rules) {
+
+            function required(caller, rules) {
                 callerType = $(caller).attr("type");
                 switch ($(caller).prop("tagName").toLowerCase()) {
                     case "textarea":
                         callerType = "textarea";
                         break;
-
                     case "select":
                         callerType = "select";
                         break;
                 }
-                var group = $(caller).parents(".form-group-default");
-                if (group.length == 0) group = $(caller).parent().parent();
-                group.removeClass("has-error");
-                var types = ["hidden", "text", "password", "textarea", "select"];
-                if (types.indexOf(callerType) >= 0) {
-                    var value = $(caller).val();
-                    if (typeof (value) == "object") {
-                        if (!value || value.length <= 0) {
+                var types = ["hidden", "text", "password", "textarea", "select", "date", "number", "tel", "email", "url", "month", "week", "time", "datetime", "datetime-local", "search"];
+                switch (callerType) {
+                    case "radio":
+                    case "checkbox":
+                        callerName = $(caller).attr("name");
+                        if ($("input[name='" + callerName + "']:checked").size() === 0) {
                             $.validationEngine.isError = true;
-                        }
-                    }
-                    else {
-                        if (!value || !value.trim()) {
-                            $.validationEngine.isError = true;
-                        }
-                    }
-                    if ($.validationEngine.isError == true) {
-                        promptText += $.validationEngineLanguage.allRules[rules[i]].alertText;
-                    }
-                }
-                if (callerType == "radio" || callerType == "checkbox") {
-                    callerName = $(caller).attr("name");
-                    if ($("input[name='" + callerName + "']:checked").size() == 0) {
-                        $.validationEngine.isError = true;
-                        if ($("input[name='" + callerName + "']").size() == 1) {
-                            promptText += $.validationEngineLanguage.allRules[rules[i]].alertTextCheckboxe;
-                        } else {
-                            promptText += $.validationEngineLanguage.allRules[rules[i]].alertTextCheckboxMultiple;
-                        }
-                    }
-                }
-            }
-            function _customRegex(caller, rules, position) {
-                customRule = rules[position + 1];
-                pattern = eval($.validationEngineLanguage.allRules[customRule].regex);
-                var group = $(caller).parents(".form-group-default");
-                if (group.length == 0) group = $(caller).parent().parent();
-                group.removeClass("has-error");
-                if (!$(caller).val() == "" && !pattern.test($(caller).val())) {
-                    $.validationEngine.isError = true;
-                    promptText += $.validationEngineLanguage.allRules[customRule].alertText;
-                }
-            }
-            function _exemptString(caller, rules, position) {
-                customString = rules[position + 1];
-                if (customString == $(caller).val()) {
-                    $.validationEngine.isError = true;
-                    promptText += $.validationEngineLanguage.allRules["required"].alertText;
-                }
-            }
-            function _funcCall(caller, rules, position) {
-                customRule = rules[position + 1];
-                funce = $.validationEngineLanguage.allRules[customRule].nname;
-                var fn = window[funce];
-                if (typeof fn === "function") {
-                    var fn_result = fn(caller);
-                    $.validationEngine.isError = fn_result;
-                    promptText += $.validationEngineLanguage.allRules[customRule].alertText;
-                }
-            }
-            function _ajax(caller, rules, position) {
-                customAjaxRule = rules[position + 1];
-                postfile = $.validationEngineLanguage.allRules[customAjaxRule].file;
-                fieldValue = $(caller).val();
-                ajaxCaller = caller;
-                fieldId = $(caller).attr("id");
-                ajaxValidate = true;
-                ajaxisError = $.validationEngine.isError;
-                if ($.validationEngineLanguage.allRules[customAjaxRule].extraData) {
-                    extraData = $.validationEngineLanguage.allRules[customAjaxRule].extraData;
-                } else {
-                    extraData = "";
-                }
-                if (!ajaxisError) {
-                    $.ajax({
-                        type: "POST",
-                        url: postfile,
-                        async: false,
-                        data: "validateValue=" + fieldValue + "&validateId=" + fieldId + "&validateError=" + customAjaxRule + extraData,
-                        beforeSend: function () {
-                            if ($.validationEngineLanguage.allRules[customAjaxRule].alertTextLoad) {
-                                if (!$("div." + fieldId + "formError")[0]) {
-                                    return $.validationEngine.buildPrompt(ajaxCaller, $.validationEngineLanguage.allRules[customAjaxRule].alertTextLoad, "load");
-                                } else {
-                                    $.validationEngine.updatePromptText(ajaxCaller, $.validationEngineLanguage.allRules[customAjaxRule].alertTextLoad, "load");
-                                }
-                            }
-                        },
-                        error: function (data, transport) {
-                            $.validationEngine.debug("error in the ajax: " + data.status + " " + transport);
-                        },
-                        success: function (data) {
-                            data = eval("(" + data + ")");
-                            ajaxisError = data.jsonValidateReturn[2];
-                            customAjaxRule = data.jsonValidateReturn[1];
-                            ajaxCaller = $("#" + data.jsonValidateReturn[0])[0];
-                            fieldId = ajaxCaller;
-                            ajaxErrorLength = $.validationEngine.ajaxValidArray.length;
-                            existInarray = false;
-                            if (ajaxisError == "false") {
-                                _checkInArray(false);
-                                if (!existInarray) {
-                                    $.validationEngine.ajaxValidArray[ajaxErrorLength] = new Array(2);
-                                    $.validationEngine.ajaxValidArray[ajaxErrorLength][0] = fieldId;
-                                    $.validationEngine.ajaxValidArray[ajaxErrorLength][1] = false;
-                                    existInarray = false;
-                                }
-                                promptText += $.validationEngineLanguage.allRules[customAjaxRule].alertText;
-                                $.validationEngine.buildPrompt(ajaxCaller, promptText, "", true);
+                            if ($("input[name='" + callerName + "']").size() === 1) {
+                                promptText += $.validationEngineLanguage.allRules["required"].alertTextCheckboxe;
                             } else {
-                                _checkInArray(true);
-                                $.validationEngine.ajaxValid = true;
-                                if (!customAjaxRule) {
-                                    $.validationEngine.debug("wrong ajax response, are you on a server or in xampp? if not delete de ajax[ajaxUser] validating rule from your form ");
-                                }
-                                if ($.validationEngineLanguage.allRules[customAjaxRule].alertTextOk) {
-                                    $.validationEngine.updatePromptText(ajaxCaller, $.validationEngineLanguage.allRules[customAjaxRule].alertTextOk, "pass", true);
-                                } else {
-                                    $.validationEngine.ajaxValid = false;
-                                    $.validationEngine.closePrompt(ajaxCaller);
-                                }
-                            }
-                            function _checkInArray(validate) {
-                                for (x = 0; x < ajaxErrorLength; x++) {
-                                    if ($.validationEngine.ajaxValidArray[x][0] == fieldId) {
-                                        $.validationEngine.ajaxValidArray[x][1] = validate;
-                                        existInarray = true;
-                                    }
-                                }
+                                promptText += $.validationEngineLanguage.allRules["required"].alertTextCheckboxMultiple;
                             }
                         }
-                    });
+                        break;
+                    default:
+                        if (types.indexOf(callerType) >= 0) {
+                            var value = $(caller).val();
+                            if (typeof (value) == "object") {
+                                if (!value || value.length <= 0) {
+                                    $.validationEngine.isError = true;
+                                }
+                            }
+                            else {
+                                if (!value || !value.trim()) {
+                                    $.validationEngine.isError = true;
+                                }
+                            }
+                            if ($.validationEngine.isError == true) {
+                                promptText += $.validationEngineLanguage.allRules["required"].alertText;
+                            }
+                        }
                 }
             }
-            function _confirm(caller, rules, position) {
-                confirmField = rules[position + 1];
-                if ($(caller).val() != $("#" + confirmField).val()) {
+            function customRegex(caller, rules, position) {
+                var customRule = rules[position + 1];
+                var pattern = eval($.validationEngineLanguage.allRules[customRule].regex);
+                if ($(caller).val() && !pattern.test($(caller).val())) {
+                    $.validationEngine.isError = true;
+                    promptText += $.validationEngineLanguage.allRules[customRule].alertText;
+                }
+            }
+            function confirm(caller, rules, position) {
+                var confirmField = rules[position + 1];
+                if ($(caller).val() !== $("#" + confirmField).val()) {
                     $.validationEngine.isError = true;
                     promptText += $.validationEngineLanguage.allRules["confirm"].alertText;
                 }
             }
-            function _length(caller, rules, position) {
-                startLength = eval(rules[position + 1]);
-                endLength = eval(rules[position + 2]);
-                feildLength = $(caller).val().length;
+            function length(caller, rules, position) {
+                var startLength = eval(rules[position + 1]);
+                var endLength = eval(rules[position + 2]);
+                var feildLength = $(caller).val().length;
                 if (feildLength < startLength || feildLength > endLength) {
                     $.validationEngine.isError = true;
                     promptText += $.validationEngineLanguage.allRules["length"].alertText + startLength + $.validationEngineLanguage.allRules["length"].alertText2 + endLength + $.validationEngineLanguage.allRules["length"].alertText3;
                 }
             }
-            function _maxCheckbox(caller, rules, position) {
-                nbCheck = eval(rules[position + 1]);
-                groupname = $(caller).prop("name");
-                groupSize = $("input[name='" + groupname + "']:checked").size();
-                if (groupSize > nbCheck) {
-                    $.validationEngine.showTriangle = false;
-                    $.validationEngine.isError = true;
-                    promptText += $.validationEngineLanguage.allRules["maxCheckbox"].alertText;
-                }
-            }
-            function _minCheckbox(caller, rules, position) {
-                nbCheck = eval(rules[position + 1]);
-                groupname = $(caller).prop("name");
-                groupSize = $("input[name='" + groupname + "']:checked").size();
-                if (groupSize < nbCheck) {
-                    $.validationEngine.isError = true;
-                    $.validationEngine.showTriangle = false;
-                    promptText += $.validationEngineLanguage.allRules["minCheckbox"].alertText + " " + nbCheck + " " + $.validationEngineLanguage.allRules["minCheckbox"].alertText2;
-                }
-            }
             return $.validationEngine.isError ? $.validationEngine.isError : false;
         },
-        submitForm: function (caller) {
-            if ($.validationEngine.settings.ajaxSubmit) {
-                if ($.validationEngine.settings.ajaxSubmitExtraData) {
-                    extraData = $.validationEngine.settings.ajaxSubmitExtraData;
-                } else {
-                    extraData = "";
-                }
-                $.ajax({
-                    type: "POST",
-                    url: $.validationEngine.settings.ajaxSubmitFile,
-                    async: true,
-                    data: $(caller).serialize() + "&" + extraData,
-                    error: function (data, transport) {
-                        $.validationEngine.debug("error in the ajax: " + data.status + " " + transport);
-                    },
-                    success: function (data) {
-                        if (data == "true") {
-                            $(caller).css("opacity", 1);
-                            $(caller).animate({
-                                opacity: 0,
-                                height: 0
-                            }, function () {
-                                $(caller).css("display", "none");
-                                $(caller).before("<div class='ajaxSubmit'>" + $.validationEngine.settings.ajaxSubmitMessage + "</div>");
-                                $.validationEngine.closePrompt(".formError", true);
-                                $(".ajaxSubmit").show("slow");
-                                if ($.validationEngine.settings.success) {
-                                    $.validationEngine.settings.success && $.validationEngine.settings.success();
-                                    return false;
-                                }
-                            });
-                        } else {
-                            data = eval("(" + data + ")");
-                            if (!data.jsonValidateReturn) {
-                                $.validationEngine.debug("you are not going into the success fonction and jsonValidateReturn return nothing");
-                            }
-                            errorNumber = data.jsonValidateReturn.length;
-                            for (index = 0; index < errorNumber; index++) {
-                                fieldId = data.jsonValidateReturn[index][0];
-                                promptError = data.jsonValidateReturn[index][1];
-                                type = data.jsonValidateReturn[index][2];
-                                $.validationEngine.buildPrompt(fieldId, promptError, type);
-                            }
-                        }
-                    }
-                });
-                return true;
-            }
-            if (!$.validationEngine.settings.beforeSuccess()) {
-                if ($.validationEngine.settings.success) {
-                    if ($.validationEngine.settings.unbindEngine) {
-                        $(caller).unbind("submit");
-                    }
-                    $.validationEngine.settings.success && $.validationEngine.settings.success();
-                    return true;
-                }
-            } else {
-                return true;
-            }
-            return false;
+
+        /**
+         * 找到控件组名称，或者向上数三层容器
+         * @param {} caller 
+         * @returns {} 
+         */
+        findTipsGroup: function (caller) {
+            var group = $(caller).closest(".form-group-default");
+            if (group.length === 0) group = $(caller).parent().parent();
+            return group;
         },
-        buildPrompt: function (caller, promptText, type, ajaxed) {
+        /**
+         * 增加错误提示信息与错误颜色
+         * @param {} caller 
+         * @param {} promptText 
+         * @param {} type 
+         * @param {} ajaxed 
+         * @returns {} 
+         */
+        buildPrompt: function (caller, promptText) {
             if (!$.validationEngine.settings) $.validationEngine.defaultSetting();
-            var group = $(caller).parents(".form-group-default");
-            if (group.length == 0) group = $(caller).parent().parent();
+            var group = $.validationEngine.findTipsGroup(caller);
             group.addClass("has-error");
             group.prop("title", promptText);
             return $("<div>");
         },
-        updatePromptText: function (caller, promptText, type, ajaxed) { },
-        linkTofield: function (caller) {
-            linkTofield = $(caller).prop("id") + "formError";
-            linkTofield = linkTofield.replace(/\[/g, "");
-            linkTofield = linkTofield.replace(/\]/g, "");
-            return linkTofield;
-        },
-        closePrompt: function (caller, outside) {
-            if (!$.validationEngine.settings) {
-                $.validationEngine.defaultSetting();
-            }
-            if (outside) {
-                $(caller).fadeTo("fast", 0, function () {
-                    $(caller).remove();
-                });
-                return false;
-            }
-            if (typeof ajaxValidate == "undefined") {
-                ajaxValidate = false;
-            }
-            if (!ajaxValidate) {
-                linkTofield = $.validationEngine.linkTofield(caller);
-                closingPrompt = "." + linkTofield;
-                $(closingPrompt).fadeTo("fast", 0, function () {
-                    $(closingPrompt).remove();
-                });
-            }
-        },
-        debug: function (error) { },
         submitValidation: function (caller) {
             var stopForm = false;
-            $.validationEngine.ajaxValid = true;
-            $(caller).find(".formError").remove();
             var items = $(caller).find("[class*=validate]");
-            var toValidateSize = items.size();
             items.each(function () {
-                linkTofield = $.validationEngine.linkTofield(this);
-                if (!$("." + linkTofield).hasClass("ajaxed")) {
-                    var validationPass = $.validationEngine.loadValidation(this);
-                    return validationPass ? stopForm = true : "";
-                }
+                var validationPass = $.validationEngine.loadValidation(this);
+                return validationPass ? stopForm = true : "";
             });
-            ajaxErrorLength = $.validationEngine.ajaxValidArray.length;
-            for (x = 0; x < ajaxErrorLength; x++) {
-                if ($.validationEngine.ajaxValidArray[x][1] == false) {
-                    $.validationEngine.ajaxValid = false;
-                }
-            }
-            return stopForm || !$.validationEngine.ajaxValid;
+            return stopForm;
         }
     };
 })(jQuery);
 
-$(function () {
-    $.validationEngineLanguage.newLang();
-});
+ 
 /****表单验证结束**/
 
 
@@ -2383,29 +2116,24 @@ $.fn.resetEditor = function () {
 ///从编辑器取值到实体
 $.fn.editorToModel = function (model) {
     try {
-        $(this).find(".myeditor").each(function (i, o) {
+        $(this).find(".myeditor").each(function(i, o) {
             var editor = $(o).data("editor");
-            editor.ready(function () {
-                model[$(o).data("item")] = editor.getContent();
-            })
-
-        })
+            editor.ready(function() { model[$(o).data("item")] = editor.getContent(); });
+        });
     }
     catch (e) {
-        console.log("从编辑器取值失败")
+        console.log("从编辑器取值失败");
     }
     return model;
 }
 ///设置值到编辑器
 $.fn.setToEditor = function (model) {
     try {
-        $(this).find(".myeditor").each(function (i, o) {
+        $(this).find(".myeditor").each(function(i, o) {
             var $obj = $(o);
             var editor = $obj.data("editor");
-            editor.ready(function () {
-                editor.setContent(model[$obj.data("item")]);
-            });
-        })
+            editor.ready(function() { editor.setContent(model[$obj.data("item")]); });
+        });
     }
     catch (e) {
         console.log("设置编辑器内容失败");
@@ -2745,7 +2473,9 @@ var Sail;
         form.find("select.ajaxSelect").each(function () {
             $(this).ajaxAddOptions();
         });
-        $(".dateSwitch").DateSwitch();
+        $(".dateSwitch").each(function (i, o) {
+            $(o).DateSwitch();
+        });
         if ($.fn.bootstrapSwitch) {
             form.find("input[type=checkbox].checkSwitch").each(function () {
                 var check = $(this);
@@ -2769,8 +2499,9 @@ var Sail;
      */
     $.fn.ResetForm = function () {
         var form = $(this);
-        form.find("textarea,input[type=text],input[type=password],input[type=hidden]").val("").trigger("change");
+        form.find("textarea,input:not([type=radio], [type=checkbox])").val("").trigger("change");
         form.find("input[type=checkbox],input[type=radio]").prop("checked", false).trigger("change");
+        form.find(".has-error").removeClass("has-error");
         if ($.fn.bootstrapSwitch) {
             form.find("input[type=checkbox].checkSwitch").each(function () {
                 $(this).bootstrapSwitch("state", false).prop("checked", false);
@@ -2799,7 +2530,7 @@ var Sail;
             });
         }
         form.resetEditor();
-        form.trigger("after.ResetForm");
+        $("body").trigger("after.ResetForm", form);
         return form;
     };
     ///select2赋值
@@ -3029,11 +2760,11 @@ var Sail;
     //增加日期选择方式
     $.fn.DateSwitch = function () {
         var $this = $(this);
-        var $start = $($this.data("start"));
-        var $end = $($this.data("end"));
+        var $ipts = $this.find("input[type=text]");
+        var $start = $ipts.eq(0);
+        var $end = $ipts.eq(1);
         var dayFormat = "yyyy-MM-dd";
-        [".today", ".thisWeek", ".thisMonth", ".preDay", ".nextDay", ".preWeek", ".nextWeek", ".preMonth", ".nextMonth"]
-            .forEach(function (x) {
+        [".today", ".thisWeek", ".thisMonth", ".preDay", ".nextDay", ".preWeek", ".nextWeek", ".preMonth", ".nextMonth"].forEach(function (x) {
             $this.off("click", x);
         });
         $this.on("click", ".today", function () {
@@ -3047,30 +2778,45 @@ var Sail;
             $start.val(new Date().MonthFirst().format(dayFormat));
             $end.val(new Date().MonthEnd().format(dayFormat));
         }).on("click", ".preDay", function () {
+            if (!$start.val())
+                $start.val(new Date().format(dayFormat));
             var date = DateTime.Parse($start.val()).AddDays(-1).format(dayFormat);
             $start.val(date);
             $end.val(date);
         }).on("click", ".nextDay", function () {
+            if (!$start.val())
+                $start.val(new Date().format(dayFormat));
             var date = DateTime.Parse($start.val()).AddDays(1).format(dayFormat);
             $start.val(date);
             $end.val(date);
         }).on("click", ".preWeek", function () {
+            if (!$start.val())
+                $start.val(new Date().format(dayFormat));
             var date = DateTime.Parse($start.val()).WeekFirst().AddDays(-7);
             $start.val(date.format(dayFormat));
             $end.val(date.WeekEnd().format(dayFormat));
         }).on("click", ".nextWeek", function () {
+            if (!$start.val())
+                $start.val(new Date().format(dayFormat));
             var date = DateTime.Parse($start.val()).WeekFirst().AddDays(7);
             $start.val(date.format(dayFormat));
             $end.val(date.WeekEnd().format(dayFormat));
         }).on("click", ".preMonth", function () {
+            if (!$start.val())
+                $start.val(new Date().format(dayFormat));
             var date = DateTime.Parse($start.val()).MonthFirst().AddMonths(-1);
             $start.val(date.format(dayFormat));
             $end.val(date.MonthEnd().format(dayFormat));
         }).on("click", ".nextMonth", function () {
+            if (!$start.val())
+                $start.val(new Date().format(dayFormat));
             var date = DateTime.Parse($start.val()).MonthFirst().AddMonths(1);
             $start.val(date.format(dayFormat));
             $end.val(date.MonthEnd().format(dayFormat));
         });
+        var isInit = $this.data("init");
+        if (isInit != false) 
+            $this.find(".thisMonth").click();
         return $this;
     };
 })(Sail || (Sail = {}));
@@ -3471,14 +3217,6 @@ var Sail;
                 return ControlType.Val;
             case "INPUT":
                 switch (control.attr("type")) {
-                    case "text":
-                    case "hidden":
-                    case "password":
-                    case "tel":
-                    case "email":
-                    case "date":
-                    case "month":
-                        return ControlType.Val;
                     case "checkbox":
                     case "radio":
                         return ControlType.Checked;
@@ -3500,16 +3238,14 @@ var Sail;
                     break;
                 case ControlType.Val:
                     if (value || value === 0) {
-                        if (control.hasClass("date"))
+                        if (control.hasClass("date") && value)
                             control.val(value.substring(0, 10));
-                        else if (control.hasClass("datetime"))
+                        else if (control.hasClass("datetime") && value)
                             control.val(DateTime.Parse(value).format("yyyy-MM-dd hh:mm"));
-                        else if (control.data("dateformat"))
+                        else if (control.data("dateformat") && value)
                             control.val(DateTime.Parse(value).format(control.data("dateformat")));
                         else if (control.hasClass("select2")) {
-                            if (typeof (value) == "object") {
-                            }
-                            else {
+                            if (typeof (value) != "object") {
                                 $(control).ValSelect2(value);
                             }
                         }
@@ -3524,14 +3260,16 @@ var Sail;
                     if (!value && value != 0)
                         control.empty();
                     else {
-                        if (control.hasClass("date"))
-                            control.html(value.substring(0, 10));
-                        else if (control.hasClass("datetime"))
-                            control.html(DateTime.Parse(value).format("yyyy-MM-dd hh:mm"));
-                        else if (control.data("dateformat"))
-                            control.html(DateTime.Parse(value).format(control.data("dateformat")));
-                        else
-                            control.html(value);
+                        if (value) {
+                            if (control.hasClass("date"))
+                                control.html(value.substring(0, 10));
+                            else if (control.hasClass("datetime"))
+                                control.html(DateTime.Parse(value).format("yyyy-MM-dd hh:mm"));
+                            else if (control.data("dateformat"))
+                                control.html(DateTime.Parse(value).format(control.data("dateformat")));
+                            else
+                                control.html(value);
+                        }
                     }
                     break;
             }
@@ -3706,6 +3444,9 @@ var Sail;
             this.head = $(Sail.modalTemplates.header).insertBefore(body);
             this.head.find("h4").html(settings.title);
             var foot = $(Sail.modalTemplates.footer).appendTo(div);
+            if (settings.cancelTitle) {
+                $(Sail.modalTemplates.cancleButton).html(settings.cancelTitle).appendTo(foot);
+            }
             if (settings.okTitle) {
                 this.$ok = $(Sail.modalTemplates.okButton).html(settings.okTitle).appendTo(foot);
                 if (settings.okEvent)
@@ -3715,9 +3456,6 @@ var Sail;
                         _this.$ok.prop("disabled", true);
                         settings.okEvent(_this);
                     });
-            }
-            if (settings.cancelTitle) {
-                $(Sail.modalTemplates.cancleButton).html(settings.cancelTitle).appendTo(foot);
             }
             if (settings.hideEvent) {
                 div.parent().parent().on("hidden.bs.modal", function () {
@@ -3732,8 +3470,8 @@ var Sail;
             div.parent().parent().appendTo("body");
             this.modal = dialog;
             var tmpl = $.LoadHtml(settings.tmplName);
-            $("<div id='divView' class='clearfix'>").appendTo(body);
-            $("<div id='divEditor' class='clearfix'>").html(tmpl).appendTo(body);
+            $("<div class='clearfix divView'>").appendTo(body);
+            $("<div class='clearfix divEditor'>").html(tmpl).appendTo(body);
             this.modal.initForm();
             if (settings.init) {
                 settings.init(this.modal);
@@ -3743,8 +3481,7 @@ var Sail;
          * 显示弹窗
          */
         Modal.prototype.Show = function () {
-            if (this.$ok)
-                this.$ok.prop("disabled", false);
+            this.resetOk();
             this.modal.modal();
         };
         /**
@@ -3759,6 +3496,10 @@ var Sail;
          */
         Modal.prototype.Title = function (title) {
             this.head.find(".modal-title").text(title);
+        };
+        Modal.prototype.resetOk = function () {
+            if (this.$ok)
+                this.$ok.prop("disabled", false);
         };
         return Modal;
     })();
@@ -3861,14 +3602,13 @@ var Sail;
             this.ApiName = api;
             this.IdName = idName;
             this.Id = "";
-            //  this.title = title;
             this.Page = undefined;
             this.modal = undefined;
             this.setting = $.extend({
+                saveApi: "put",
                 isAutoHide: true,
                 title: title
             }, set);
-            console.log(this.setting);
             this.$Editor = $("<div id=divEditor></div>");
             this.$Viewer = $("<div id=divViewer></div>");
             var content = $.SailConfig.PageContent;
@@ -3925,6 +3665,7 @@ var Sail;
                 this.$form.hide();
                 this.$List.show();
             }
+            this.$form.find(".has-error").removeClass("has-error");
             this.content.trigger("after.Cancel", [this.Page, this.modal ? this.modal.modal : this.$form]);
             return this;
         };
@@ -3973,7 +3714,7 @@ var Sail;
         };
         RazorPage.prototype.displayNav = function (isShow) {
             var $main = this.$form.find(".mainForm");
-            $main.find(".tabbable > .nav ").Display(isShow);
+            $main.find(".tabbable  .nav:eq(0) ").Display(isShow);
         };
         RazorPage.prototype.Expand = function (isShow) {
             var $main = this.$form.find(".mainForm");
@@ -3990,13 +3731,18 @@ var Sail;
             return this.$extend.is(":visible");
         };
         RazorPage.prototype.ToEdit = function () {
+            var isExpand = this.isExpand();
             this.showDetail("编辑");
             var data = this.$form.data("dataItem");
             this.$form.find(".btnToView").show();
             this.$Editor.ItemBinder().SetObject(data);
             this.content.trigger("after.Edit", [data, this.Page, null]);
+            if (isExpand)
+                this.Expand(true);
+            ;
         };
         RazorPage.prototype.ToView = function () {
+            var isExpand = this.isExpand();
             this.showDetail("查看");
             var data = this.$form.data("dataItem");
             this.$Viewer.ItemBinder().SetObject(data);
@@ -4004,6 +3750,9 @@ var Sail;
             this.$Editor.hide();
             this.$Viewer.show();
             this.content.trigger("after.View", [data, this.Page, null]);
+            if (isExpand)
+                this.Expand(true);
+            ;
         };
         /**
          * 新增事件
@@ -4092,23 +3841,23 @@ var Sail;
             $(btn).prop("disabled", true);
             $.ajax({
                 type: "put",
-                url: this.GetApi("Put/") + this.Id,
+                url: this.GetApi(this.setting.saveApi + "/") + this.Id,
                 data: { "": JSON.stringify(data) },
                 success: function (result) {
                     $(btn).prop("disabled", false);
                     MsgBox.Show(result, "保存成功", function () {
                         tool.$form.data("dataItem", result.Data);
                         tool.Id = tool.GetDataId(result.Data);
-                        console.log(tool.setting.isAutoHide);
+                        var isExpand = tool.isExpand();
+                        if (tool.Page)
+                            tool.Page.Query();
                         if (tool.setting.isAutoHide) {
                             tool.Cancel();
                         }
-                        if (tool.Page)
-                            tool.Page.Query();
-                        if (!tool.setting.isAutoHide) {
-                            var isExpand = tool.isExpand();
+                        if (!tool.setting.isAutoHide || isExpand) {
                             tool.EditAct(result.Data, tool.Page, null);
-                            tool.Expand(isExpand);
+                            if (isExpand)
+                                tool.Expand(isExpand);
                         }
                         tool.content.trigger("after.Save", [result]);
                     });
@@ -4126,16 +3875,19 @@ var Sail;
          * @param {type} param
          */
         RazorPage.prototype.CreatePage = function (param) {
+            var _this = this;
             var tool = this;
             param = $.extend({
                 getPostKey: function () { return $("#toolbar").GetJson(); },
                 handleName: tool.listApi()
             }, param);
-            var page = $.Pagination(param);
-            this.Page = page;
-            this.RegisterAct($(page.settings.bodyContainer), page);
-            $("#toolbar #btnReset").click(function () { $("#toolbar").ResetForm(); page.Query(1); });
-            return page;
+            this.Page = $.Pagination(param);
+            this.RegisterAct($(this.Page.settings.bodyContainer), this.Page);
+            $("#toolbar .btnReset").click(function () {
+                $("#toolbar").ResetForm();
+                _this.Page.Query(1);
+            });
+            return this.Page;
         };
         RazorPage.prototype.RegisterAct = function (body, page) {
             var tool = this;
@@ -4208,7 +3960,6 @@ var Sail;
     })();
     Sail.RazorPage = RazorPage;
 })(Sail || (Sail = {}));
-//var PageTools = Sail.PageTools; 
 
 var Sail;
 (function (Sail) {
@@ -4264,7 +4015,7 @@ var Sail;
                 headContainer: "#pageList table thead",
                 bodyContainer: "#pageList table tbody",
                 footContainer: "#pageList #page",
-                ajaxType: "get",
+                ajaxType: function () { return "get"; },
                 queryed: null,
                 pageSize: 10,
                 bodyTmpl: "#listTmpl",
@@ -4302,6 +4053,7 @@ var Sail;
         ///读取数据
         Pagination.prototype.Query = function (pageIndex) {
             var _this = this;
+            var tooltip = '[data-toggle="tooltip"]';
             if (pageIndex)
                 this.currentIndex = pageIndex;
             pageIndex = this.currentIndex;
@@ -4312,8 +4064,11 @@ var Sail;
             var url = settings.handleName;
             if (typeof url == "function")
                 url = url();
+            var type = settings.ajaxType();
+            if (type !== "get")
+                postData = { "": JSON.stringify(postData) };
             $.ajax({
-                type: settings.ajaxType,
+                type: type,
                 url: url,
                 data: postData,
                 dataType: "json",
@@ -4329,7 +4084,6 @@ var Sail;
                         if (settings.footTmpl && settings.footContainer)
                             $(settings.footContainer).Render(settings.footTmpl, data.Data.PageInfo);
                         if ($.fn.tooltip) {
-                            var tooltip = '[data-toggle="tooltip"]';
                             $(_this.settings.headContainer).find(tooltip).tooltip();
                             $(_this.settings.footContainer).find(tooltip).tooltip();
                             _this.Container.find("td a").tooltip();

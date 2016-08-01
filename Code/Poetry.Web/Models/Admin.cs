@@ -1,31 +1,58 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using Sail.Common;
 
 namespace Poetry.Model
 {
-
-
     /// <summary>
     /// 系统管理员
     /// </summary>
     [HTable]
-    public class Admin : Member
+    public class Admin : IModel, IUser
     {
         public static string DefaultPassword => "123456";
 
         /// <summary>
-        /// 用户类型
+        /// 用户ID
         /// </summary>
-        [HColumn]
-        public UserType Type { set; get; }
-
-
-        [HColumn(ColumnName = "C_Group")]
-        public Group Group { set; get; }
+        [HColumn(IsPrimary = true, IsGuid = true)]
+        public string UserId { set; get; }
 
         /// <summary>
-        /// 关联县区
+        /// 登录名
+        /// </summary>
+        [HColumn(Length = 50)]
+        public string LoginId { get; set; }
+
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        [HColumn(Length = 50)]
+        public string UserName { set; get; }
+
+        /// <summary>
+        /// 用户密码
+        /// </summary>
+        [HColumn(Length = 2000)]
+        public string Password { get; set; }
+
+        /// <summary>
+        /// 运营商
+        /// </summary>
+        [HColumn]
+        public MobileOperator MobileOperator { set; get; }
+
+
+        /// <summary>
+        /// 移动运营商
+        /// </summary>
+        public string MobileOperatorStr => MobileOperator.ToString();
+
+
+        public UserGroup Group { set; get; }
+
+        /// <summary>
+        /// 县区
         /// </summary>
         [HColumn]
         [Form(IsRequired = true)]
@@ -62,15 +89,29 @@ namespace Poetry.Model
         [Form(IsRequired = true)]
         public string OrgName { set; get; }
 
-        
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        [HColumn]
+        public DateTime CreateTime { set; get; }
 
 
-        public override bool IsHasPower(string powerid)
+        /// <summary>
+        /// 是否有权限
+        /// </summary>
+        /// <param name="powerid"></param>
+        /// <returns></returns>
+        public bool IsHasPower(string powerid)
         {
             if (Group.IsNull()) return false;
-            if (Group.RoleId == 1) return true;
-            return Group?.Powers?.Select(x => x.Key).Contains(powerid) ?? false;
+            if (Group?.UserRole.RoleId == 1) return true;
+            return Group?.UserRole.Powers?.Select(x => x.Key).Contains(powerid) ?? false;
         }
+
+        /// <summary>
+        /// 是否超级管理员
+        /// </summary>
+        public bool IsSuperAdmin => LoginId == "admin";
 
         /// <summary>
         /// 重置密码为默认密码
@@ -83,21 +124,15 @@ namespace Poetry.Model
         }
 
 
-
         /// <summary>
-        /// 搜索用户
+        /// 获取用户组
         /// </summary>
         /// <param name="db"></param>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="countyId"></param>
-        /// <param name="key"></param>
+        /// <param name="type"></param>
         /// <returns></returns>
-        public PageResult SearchUser(IDataContext db, int pageIndex, int pageSize, int countyId, string key)
+        public UserGroup GetUserGroup(IDataContext db, ProjectType type)
         {
-            Clip where = Clip.Where<Admin>(x => x.Type == UserType.普通用户);
-            if (key.IsNotNull()) where &= Clip.Where<Admin>(x => x.LoginId.Like(key) || x.Phone.Like(key) || x.UserName.Like(key)).Bracket();
-            return db.GetPageList<Admin>(pageIndex, pageSize, where, Clip.OrderBy<Admin>(x => x.UserName.Asc()));
+            return db.GetModel<UserGroup>(x => x.Admin.UserId == UserId && x.Type == type);
         }
 
     }

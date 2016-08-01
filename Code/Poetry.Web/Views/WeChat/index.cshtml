@@ -1,5 +1,5 @@
 ﻿
-@* 主页瀑布流下显示的个体，“活动首页”以及“我要推荐”在 后面 *@  @*而"我要推荐"则在input页面中*@     
+
 <script type="text/js-render" id="listTmpl">
     <div data-id="{{>Id}}" class="box-item">
         <img src="{{Pre:Icon}}" />
@@ -23,7 +23,7 @@
         </div>
     </div>
 </script>
-@* 点击首页一个小的图片进入该事迹的详细介绍页面 *@
+
 <script type="text/js-render" id="modalTmpl">
     <div class="zqui-panel-card">
         {{for ImageList}}
@@ -58,7 +58,6 @@
         <div class="comment" id="Pinglun">
             <div class="tips-line">
                 <span class="tips">评论</span>
-
             </div>
             <div class="write"><a class="btnComment" href="#Pinglun">写评论</a></div>
             <div id="divComment" style="display:none">
@@ -98,29 +97,44 @@
 </script>
 
 
-<div class="zqui-tab-wrapper" style="top: 2rem;">
-    <div class="zqui-table-view">
-        <div class="zqui-table-view-cell zqui-dis-flex zqui-cell-select  zqui-elect-after">
-            <div class="zqui-cell-hd">
-                <label class="zqui-cell-label">选择县区</label>
-            </div>
-            <div class="zqui-cell-bd zqui-flex-1">
-                <select class="zqui-select" id="CountyId">
-                    @(CountyController.GetAllKv().RenderOptions("请选择县区", "0"))
-                </select>
+
+<div class="zqui-tab-wrapper"  style="top: 2rem;" >
+    <ul class="zqui-tab-scroll counties">
+
+        <li class="active" data-id="0">
+            <a>全部县区</a>
+        </li>
+        @foreach (var county in CountyController.GetAllKv())
+        {
+            <li data-id="@county.Key"><a>@county.Value</a></li>
+        }
+
+    </ul>
+</div>
+
+@*<div class="zqui-tab-wrapper" style="top: 2rem;">
+        <div class="zqui-table-view">
+            <div class="zqui-table-view-cell zqui-dis-flex zqui-cell-select  zqui-elect-after">
+                <div class="zqui-cell-hd">
+                    <label class="zqui-cell-label">选择县区</label>
+                </div>
+                <div class="zqui-cell-bd zqui-flex-1">
+                    <select class="zqui-select" id="CountyId">
+
+                    </select>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>*@
 
 <div class="zqui-tab-content">
     <div class="zqui-filter">
         <div class="zqui-filter-bar">
             <a class="zqui-filter-item active" data-sort="CreateTime">
-                按发布时间
+                按发布时间排序
             </a>
             <a class="zqui-filter-item" data-sort="Liked">
-                按点赞数
+                按点赞数排序
             </a>
         </div>
     </div>
@@ -154,7 +168,7 @@
         <header class="zqui-modal-header banner"></header>
         <div class="zqui-modal-footer">
             <a class="btnClose zqui-modal-btn">
-                返回首页
+                返回
             </a>
         </div>
         <div class="zqui-modal-body">
@@ -181,7 +195,7 @@
 
     $(function () {
         $("#divDetail,#divLogin").appendTo("body");
-        $.views.converters({ 
+        $.views.converters({
             Pre: function(str) {
                 if (!str ||str.indexOf("/demoPic/") > 0) return str;
                 var index = str.lastIndexOf("/");
@@ -204,17 +218,30 @@
 
         var wf = new WaterFall({
             api: function () { return api.GetApi("Query") } ,
-            getPostKey:function() { return {countyId:$("#CountyId").val(),sort: $(".zqui-filter .zqui-filter-item.active").data("sort")};}
+            getPostKey:function() { return {countyId:$(".counties .active").data("id"),sort: $(".zqui-filter .zqui-filter-item.active").data("sort")};}
         });
 
         wf.on(".box-item img,.box-item .foot", function (data,o) {
             data = $(o).closest(".box-item").data();
-            $.get(api.GetApi("Get"), { id: data.id }, function (result) {
+            queryDetail(data.id);
+        });
+
+        function queryDetail(id) {
+            $.get(api.GetApi("Get"), { id: id }, function (result) {
                 $("#divDetail .zqui-modal-body").html($.templates("#modalTmpl").render(result.Data));
                 $("#divDetail").addClass("active").data("data", result.Data);
                 $("#divDetail .zqui-modal-body").scrollTop(0);
+                console.log(result.Data);
             });
-        });
+        }
+
+
+        if ($.Request("id")) {
+            $("#divDetail").addClass("active");
+            queryDetail($.Request("id"));
+        }
+        else wf.Query(1);
+
 
 
         wf.on(".btnLike", function(data, o) {
@@ -226,10 +253,17 @@
 
         $("#divLogin").on("click", ".btnClose", function () {
             $("#divLogin").removeClass("active");
+
         });
 
 
-        $("#divDetail").on("click", ".btnClose", function() { $("#divDetail").removeClass("active"); })
+        $("#divDetail").on("click", ".btnClose", function() {
+            if ($.Request("id"))
+                window.history.go(-1);
+            else
+                $("#divDetail").removeClass("active");
+
+        })
             .on("click", ".btnLike", function() {
                 var item = $(this);
                 var data = $("#divDetail").data("data");
@@ -259,6 +293,7 @@
                         $("#divDetail").find("#divComment").hide();
                         if (result.Data.IsChecked) {
                             $($.templates("#commentListTmpl").render(result.Data)).insertAfter("#divComment");
+                            console.log(result.Data);
                             ShowSuccess("评论添加成功");
                         }
                         else {
@@ -273,7 +308,7 @@
             var $this = $($item);
             $.post(api.GetApi("like"), { "": id }, function (result) {
                 ShowMessage(result, "已点赞", function () {
-                    $this.find("i").removeClass("icon-hongxinweidianzan").addClass("icon-hongxinyidianzan")
+                    $this.find("i").removeClass("icon-hongxinweidianzan").addClass("icon-hongxinyidianzan");
                     $this.find("span").text(result.Data);
                 });
             });
@@ -282,7 +317,6 @@
 
         function ActOrLogin(act) {
             var $this = $("#divLogin");
-            console.log(isLogined)
             if (!isLogined) $this.addClass("active");
             else if (act && typeof act == "function") act();
 
@@ -297,10 +331,17 @@
             });
         }
 
-        $("#CountyId").change(function() {
+        $(".counties").on("click touchend", "li", function() {
+            var $this = $(this);
+            if ($this.hasClass("active")) return;
+
+            $(".counties li.active").removeClass("active");
+            $this.addClass("active");
             wf.Query(1);
         });
-        $(".zqui-filter").on("click", ".zqui-filter-item", function() {
+        
+
+        $(".zqui-filter").on("click touchend", ".zqui-filter-item", function() {
             var $this = $(this);
             if ($this.hasClass("active")) return;
             $(".zqui-filter .zqui-filter-item.active ").removeClass("active");

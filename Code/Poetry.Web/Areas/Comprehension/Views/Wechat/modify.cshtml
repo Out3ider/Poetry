@@ -1,0 +1,106 @@
+﻿@model Admin
+@section head{
+    <style>
+        .uploadifive-queue { display: none; }
+    </style>
+    <script src="~/Scripts/uploadify/jquery.uploadifive.js"></script>
+    }
+
+
+<ul class="zqui-table-view">
+        <li class="zqui-table-view-cell">
+            <a class="zqui-navigate-right line-height-2">
+                头像
+                <span class="zqui-pull-right zqui-head-img">
+                <div id="UploadIcon">
+                    <img src="@Model.Icon" />
+                </div>
+                    <input type="hidden" id="Icon" value="@Model.Icon" data-defaultvalue="@Model.Icon" />
+            </span>
+            </a>
+        </li>
+        <li class="zqui-table-view-cell">
+            <a class="">
+                手机号码
+                <span class="zqui-pull-right">
+                @Model.Phone
+            </span>
+            </a>
+        </li>
+
+        <li class="zqui-table-view-cell zqui-dis-flex haserror">
+            <div class="zqui-cell-hd">
+                <label class="zqui-cell-label">姓名</label>
+            </div>
+            <div class="zqui-cell-bd zqui-flex-1">
+                <input class="zqui-input" type="text" id="UserName" data-defaultvalue="@Model.UserName" placeholder="请输入真实姓名">
+            </div>
+            <div class="zqui-cell-ft none">
+                <i class="icon icon-exclamation-sign"></i>
+            </div>
+        </li>
+
+        <li class="zqui-table-view-cell zqui-dis-flex zqui-cell-select  zqui-elect-after">
+            <div class="zqui-cell-hd">
+                <label class="zqui-cell-label">所属县区</label>
+            </div>
+            <div class="zqui-cell-bd zqui-flex-1">
+                <select class="zqui-select" id="County" data-prop="Id" data-defaultvalue="@(Model.County.Id)">
+                    @(CountyController.GetAllKv().RenderOptions()) @*获取所有县区等*@
+                </select>
+            </div>
+            <div class="zqui-cell-ft none">
+                <i class="icon icon-exclamation-sign"></i>
+            </div>
+        </li>
+        <li class="zqui-table-view-cell zqui-dis-flex ">
+            <div class="zqui-cell-hd">
+                <label class="zqui-cell-label">所在单位或居住地</label>
+            </div>
+            <div class="zqui-cell-bd zqui-flex-1">
+                <input class="zqui-input" type="text" id="OrgName" data-defaultvalue="@(Model.OrgName)" placeholder="请输入所在单位或居住地">
+            </div>
+            <div class="zqui-cell-ft none"><i class="icon icon-exclamation-sign"></i>
+            </div>
+        </li>
+    </ul>
+    <div class="zqui-content-padded">
+        <button id="btnSave" class="zqui-btn zqui-btn-block zqui-btn-danger ">保存</button>
+    </div>
+
+
+    <script>
+        $(function() {
+            $(".zqui-table-view").ResetForm();
+            $("#County").val($("#County").data("defaultvalue"));
+            var iconApi = new Sail.ApiHelper("Icon");
+
+            $("#UploadIcon").uploadifive({
+                multi: false,
+                buttonText: "",
+                uploadScript: iconApi.GetApi("UploadFile"),
+                onUploadComplete: function(file, data, res) {
+                    var result = JSON.parse(data);
+                    if (result.IsSuccess) {
+                        var path = result.Data.FilePath.replace("~", "");
+                        $("#UploadIcon").find("img").prop("src", path);
+                        $("#Icon").val(path);
+                    }
+                },
+                onInit: function() { 
+                    $("#UploadIcon").show();
+                }
+            });
+            var api = new Sail.ApiHelper("wxuser");
+            $("#btnSave").click(function() {
+                var data = $(".zqui-table-view").GetJson();
+
+                $.Put(api.GetApi("modify"), { "": JSON.stringify(data) }, function(result) {
+                    ShowMessage(result, function() {
+                        window.location.href = "center";
+                    });
+                });
+            });
+            $("body nav.zqui-bar a").eq(4).addClass("active");
+        })
+    </script>

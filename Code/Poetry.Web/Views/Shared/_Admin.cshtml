@@ -5,13 +5,15 @@
 @using Sail.Web
 
 @{
-    var user = AdminController.CheckLogin();
+    var user = WebHelper.CurrentAdmin as Admin;
 }
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-   
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
@@ -43,7 +45,7 @@
 
     <div class="flexbox-body">
         <div class="flexbox-nav">
-            @Helper.RenderMainMenu(AdminController.LoadMenu(), "system/index")
+            @Html.Action("Menu", "Utility", new { area = "", currentId = PageData[PageHelper.ItemId], type = ProjectType.发现身边先锋 })
         </div>
         <main class="flexbox-content">
             <div class="page-head">

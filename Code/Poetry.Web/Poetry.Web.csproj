@@ -74,7 +74,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Sail.Common, Version=2016.6.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SailDataAccess.5.7.0\lib\Sail.Common.dll</HintPath>
+      <HintPath>..\packages\SailDataAccess.5.7.3\lib\Sail.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sail.Web, Version=2016.6.9.0, Culture=neutral, processorArchitecture=MSIL">
@@ -153,8 +153,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Poetry.Web.XML" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Config\敏感词.txt" />
+    <Content Include="Content\audio\shake.mp3" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\components.css" />
     <Content Include="Content\css\custom.css" />
@@ -169,6 +169,7 @@
     <Content Include="Content\css\portry.css" />
     <Content Include="Content\css\wechat.css" />
     <Content Include="Content\css\weui.css" />
+    <Content Include="Content\css\p_zqui.css" />
     <Content Include="Content\css\zqui.css" />
     <Content Include="Content\demoPic\Image_001.jpg" />
     <Content Include="Content\demoPic\Image_002.jpg" />
@@ -262,30 +263,49 @@
     <Content Include="Content\demoPic\Image_090.jpg" />
     <Content Include="Content\fonts\poetry.css" />
     <Content Include="Content\fonts\poetry.svg" />
+    <Content Include="Content\fonts\rafting.css" />
+    <Content Include="Content\fonts\rafting.svg" />
+    <Content Include="Content\images\1.jpg" />
     <Content Include="Content\images\360.png" />
     <Content Include="Content\images\360anquan.jpg" />
     <Content Include="Content\images\avatar_default.jpg" />
     <Content Include="Content\images\banner.jpg" />
     <Content Include="Content\images\banner.png" />
+    <Content Include="Content\images\bannersub.jpg" />
     <Content Include="Content\images\bg-white-lock.png" />
+    <Content Include="Content\images\bg4.png" />
+    <Content Include="Content\images\bg6.jpg" />
+    <Content Include="Content\images\bg7.jpg" />
+    <Content Include="Content\images\come.jpg" />
     <Content Include="Content\images\dangbg.jpg" />
+    <Content Include="Content\images\default.jpg" />
     <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\feeling.png" />
     <Content Include="Content\images\huohu.jpg" />
+    <Content Include="Content\images\icon.png" />
     <Content Include="Content\images\ie.jpg" />
     <Content Include="Content\images\issue.png" />
     <Content Include="Content\images\kunian.png" />
+    <Content Include="Content\images\liuliang.jpg" />
     <Content Include="Content\images\logo-bar.png" />
     <Content Include="Content\images\logo-login.png" />
+    <Content Include="Content\images\logowgw.png" />
     <Content Include="Content\images\pic.jpg" />
+    <Content Include="Content\images\prize.png" />
+    <Content Include="Content\images\prizeno.png" />
+    <Content Include="Content\images\qr.jpg" />
+    <Content Include="Content\images\shake.jpg" />
+    <Content Include="Content\images\shakebody.png" />
+    <Content Include="Content\images\shakeheader.png" />
     <Content Include="Content\images\sidebar-toggle-light.png" />
     <Content Include="Content\images\sidebar_toggler_icon_darkblue.png" />
     <Content Include="Content\images\sidebar_toggler_icon_default.png" />
     <Content Include="Content\images\tick.png" />
+    <Content Include="Content\images\title.png" />
     <Content Include="Content\images\upload.png" />
     <Content Include="Content\images\userImg.png" />
     <Content Include="Content\images\wecome.jpg" />
-    <Content Include="Content\Site.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\css\rafting.css" />
     <Content Include="packages.config" />
     <Content Include="readme.md" />
     <Content Include="Config\menu.json" />
@@ -299,10 +319,23 @@
     <Content Include="Content\fonts\iconfont.eot" />
     <Content Include="Content\fonts\iconfont.ttf" />
     <Content Include="Content\fonts\iconfont.woff" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Areas\Comprehension\Views\Wechat\recommend.cshtml" />
+    <Content Include="Content\fonts\rafting.eot" />
+    <Content Include="Content\fonts\rafting.ttf" />
+    <Content Include="Content\fonts\rafting.woff" />
+    <Content Include="Areas\Comprehension\Views\Wechat\listrafting.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\center.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\shake.cshtml" />
+    <Content Include="Config\Senses.json" />
+    <Content Include="Areas\Comprehension\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Comprehension\Views\System\GroupInfo.cshtml" />
+    <Content Include="Areas\Comprehension\Views\System\AdminInfo.cshtml" />
+    <Content Include="Areas\Comprehension\Views\System\Login.cshtml" />
+    <Content Include="Scripts\mobile.js" />
+    <Content Include="Scripts\modal.js" />
+    <Content Include="Scripts\shake.js" />
+    <Content Include="Scripts\WeModal.js" />
     <Content Include="Views\Shared\_Admin.cshtml" />
     <Content Include="Views\Shared\_Wechat.cshtml" />
     <Content Include="Scripts\Extend.js" />
@@ -316,9 +349,29 @@
     <Content Include="Content\fonts\poetry.ttf" />
     <Content Include="Content\fonts\poetry.woff" />
     <Content Include="App_Code\WeForm.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Comprehension\Views\web.config" />
+    <Content Include="Areas\Comprehension\Views\System\index.cshtml" />
+    <Content Include="Areas\Comprehension\Views\System\members.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Shared\_Admin.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Shared\_Wechat.cshtml" />
+    <Content Include="Areas\Comprehension\Views\System\System.cshtml" />
+    <Content Include="Areas\Comprehension\Views\System\_ViewStart.cshtml" />
+    <Content Include="Areas\Comprehension\Views\System\senses.cshtml" />
+    <Content Include="Areas\Comprehension\Views\System\comment.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\_ViewStart.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\index.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\login.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\modify.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\myprize.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\rankinglist.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\Register.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\revert.cshtml" />
+    <Content Include="Areas\Comprehension\Views\System\Prize.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\raftinglist.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\recommendTips.cshtml" />
+    <Content Include="Areas\Comprehension\Views\System\UserPrize.cshtml" />
+    <Content Include="Areas\Comprehension\Views\Wechat\_CountyList.cshtml" />
+    <None Include="Properties\PublishProfiles\iis.pubxml" />
     <None Include="Properties\PublishProfiles\xx.pubxml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\System\County.cshtml" />
@@ -331,10 +384,13 @@
     <Content Include="Views\WeChat\revert.cshtml" />
     <Content Include="Views\System\GroupInfo.cshtml" />
     <Content Include="Views\System\comment.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\System\Community.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\WeChat\rankinglist.cshtml" />
+    <Content Include="Views\Utility\Menu.cshtml" />
+    <Content Include="Views\Utility\_ViewStart.cshtml" />
+    <Content Include="Views\Utility\_GroupInfo.cshtml" />
+    <Content Include="Views\Utility\_SystemLogin.cshtml" />
+    <Content Include="Views\Utility\_AdminInfo.cshtml" />
+    <Content Include="Views\Utility\_Member.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -405,9 +461,6 @@
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jsviews.js" />
     <Content Include="Scripts\layout.js" />
-    <Content Include="Scripts\metronic.js" />
-    <Content Include="Scripts\mobile.js" />
-    <Content Include="Scripts\mobile.min.js" />
     <Content Include="Scripts\plugs\bootstrap-editable.min.js" />
     <Content Include="Scripts\plugs\Calendar.min.js" />
     <Content Include="Scripts\plugs\highCharts.js" />
@@ -416,7 +469,6 @@
     <Content Include="Scripts\plugs\jquery.raty.js" />
     <Content Include="Scripts\plugs\jquery.zeroclipboard.min.js" />
     <Content Include="Scripts\plugs\ZeroClipboard.swf" />
-    <Content Include="Scripts\popwin.js" />
     <Content Include="Scripts\rem.js" />
     <Content Include="Scripts\scrollMove.js" />
     <Content Include="Scripts\select2\select2-spinner.gif" />
@@ -433,31 +485,51 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="apis\AdminController.cs" />
-    <Compile Include="apis\CommentController.cs" />
-    <Compile Include="apis\CommunityController.cs" />
+    <Compile Include="apis\Poetry\CommentController.cs" />
+    <Compile Include="apis\Senses\ComprehensionParamController.cs" />
     <Compile Include="apis\GroupController.cs" />
+    <Compile Include="apis\Senses\MemberSensesController.cs" />
+    <Compile Include="apis\Senses\PrizeController.cs" />
+    <Compile Include="apis\Senses\SenseCommentController.cs" />
+    <Compile Include="apis\Senses\WeChatSensesController.cs" />
     <Compile Include="apis\WxUserController.cs" />
     <Compile Include="apis\BaseDictController.cs" />
     <Compile Include="apis\CountyController.cs" />
+    <Compile Include="Areas\Comprehension\ComprehensionAreaRegistration.cs" />
+    <Compile Include="Areas\Comprehension\Controllers\SystemController.cs" />
+    <Compile Include="Areas\Comprehension\Controllers\WechatController.cs" />
+    <Compile Include="Areas\Comprehension\Models\Envelopes\Prize.cs" />
+    <Compile Include="Areas\Comprehension\Models\Envelopes\PrizeBase.cs" />
+    <Compile Include="Areas\Comprehension\Models\Envelopes\UserPrize.cs" />
+    <Compile Include="Areas\Comprehension\Models\SensesComment.cs" />
+    <Compile Include="Areas\Comprehension\Models\Senses.cs" />
+    <Compile Include="Areas\Comprehension\Models\ReaderLike.cs" />
     <Compile Include="Code\Element.cs" />
     <Compile Include="apis\IconController.cs" />
     <Compile Include="Code\HumanName.cs" />
-    <Compile Include="apis\MemberNewsController.cs" />
-    <Compile Include="apis\NewsController.cs" />
-    <Compile Include="apis\ParamController.cs" />
+    <Compile Include="apis\Poetry\MemberNewsController.cs" />
+    <Compile Include="apis\Poetry\WeChatNewsController.cs" />
+    <Compile Include="apis\Poetry\ParamController.cs" />
     <Compile Include="Code\BundleConfig.cs" />
     <Compile Include="Code\RouteConfig.cs" />
     <Compile Include="Code\SqlHelper.cs" />
     <Compile Include="Controller\BaseControll.cs" />
     <Compile Include="Controller\SystemController.cs" />
+    <Compile Include="Controller\UtilityController.cs" />
     <Compile Include="Controller\WeChatController.cs" />
-    <Compile Include="Models\Community.cs" />
+    <Compile Include="Models\ComprehensionParam.cs" />
+    <Compile Include="Models\MobileHelper.cs" />
+    <Compile Include="Models\MobileOperator.cs" />
+    <Compile Include="Models\NewsBase.cs" />
     <Compile Include="Models\NewsComment.cs" />
     <Compile Include="Models\OrgType.cs" />
+    <Compile Include="Models\ProjectType.cs" />
+    <Compile Include="Models\UserGroup.cs" />
+    <Compile Include="Utility\BadWords.cs" />
     <Compile Include="Utility\GovSms.cs" />
     <Compile Include="Utility\VerifyCode.cs" />
     <Compile Include="Code\PageHelper.cs" />
-    <Compile Include="apis\ContentController.cs" />
+    <Compile Include="apis\Poetry\ContentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -471,19 +543,18 @@
     <Compile Include="Models\Param.cs" />
     <Compile Include="Models\UserInfoBase.cs" />
     <Compile Include="Models\UserLike.cs" />
-    <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Views\Community\" />
-  </ItemGroup>
-  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\modal.ts" />
     <TypeScriptCompile Include="Scripts\tsd\jquery.cookie.d.ts" />
     <TypeScriptCompile Include="Scripts\tsd\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\tsd\jsrender.d.ts" />
     <TypeScriptCompile Include="Scripts\tsd\Sail.JavaScript.d.ts" />
     <TypeScriptCompile Include="Scripts\tsd\underscore.d.ts" />
     <TypeScriptCompile Include="Scripts\waterFall.ts" />
+    <TypeScriptCompile Include="Scripts\WeModal.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -525,11 +596,4 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

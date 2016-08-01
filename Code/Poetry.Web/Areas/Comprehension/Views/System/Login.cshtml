@@ -1,0 +1,27 @@
+﻿ 
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="http://www.whzqkj.com/" name="author" />
+    <title>@(ComprehensionParam.Default.SiteName) - 后台登录</title>
+
+    @Styles.Render("~/Content/css/css")
+    <link rel="stylesheet" href="~/content/css/login.css?t=2015042611" type="text/css" />
+    @Scripts.Render("~/bundles/jplugin")
+
+
+</head>
+
+@Html.Action("sysLogin", "Utility", new { area = "", type = ProjectType.微感悟 })
+
+
+</html>

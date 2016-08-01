@@ -1,0 +1,125 @@
+﻿@model ProjectType
+
+<script src="~/Scripts/modal.js"></script>
+
+<script id="SearcModalTmpl" type="text/x-jsrender">
+    <div class="table-toolbar">
+        <div class="form-float">
+            <div class="form-group">
+                <div class="form-element-control">
+                    <input type="text" name="key" class="form-control" placeholder="请输入关键字搜索" />
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btnQuery">过滤</button>
+                <button class="btn btn-secondary btnReset">清除条件</button>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered table-condensed table-hover table-checkable">
+        <thead>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div class="table-pages"></div>
+</script>
+
+
+<script id="UserListTmpl" type="text/x-jsrender">
+    <tr>
+        <td>
+            <a class="btnSelect">
+                <i class="fa fa-lg fa-check-circle-o"></i>
+                &nbsp;
+                {{>UserName}}
+            </a>
+        </td>
+        <td>{{>LoginId}}</td>
+    </tr>
+</script>
+
+<script type="text/x-jsrender" id="AdminResultTmpl">
+    <div class="form-horizontal">
+        @Form.ViewTmpl(Element.Create<Admin>(x => x.UserName))
+        @Form.ViewTmpl(Element.Create<Admin>(x => x.Phone))
+        @Form.ViewTmpl(Element.Create<Admin>(x => x.County.Name))
+        @Form.ViewTmpl(Element.Create<Admin>(x => x.OrgName))
+    </div>
+</script>
+
+<script type="text/x-jsrender" id="modalTmpl">
+    <input type="hidden" name="Type" data-defaultValue="@((int) Model)" />
+    @Form.InputBtn(Element.Create<UserGroup>(x => x.Admin))
+    @Form.Select(Element.Create<UserGroup>(x => x.County), CountyController.GetAllKv(), "全部县区", "0")
+    @Form.Select(Element.Create<UserGroup>(x => x.UserRole), GroupController.All(Model), "请选择用户组")
+
+</script>
+
+<script type="text/x-jsrender" id="listTmpl">
+    <tr>
+        <td><a class="btnEdit">{{>Admin.LoginId}}</a></td>
+        <td>{{>Admin.UserName}}</td>
+        <td>
+            {{if County.Name}}
+            {{>County.Name}}
+            {{else}}
+            全部县区
+            {{/if}}
+        </td>
+        <td>{{>UserRole.RoleName}}</td>
+        <td>
+            <a class="text-primary m_r_10 btnEdit" title="修改" data-toggle="tooltip"><i class="fa fa-edit fa-lg"></i></a>
+            <a class="text-warning m_r_10 btnAct" data-act="ResetPwd" title="重置密码" data-toggle="tooltip"><i class="fa fa-refresh fa-lg"></i> </a>
+            <a class="text-danger btnRemove" title="删除" data-toggle="tooltip"><i class="fa fa-lg  fa-trash"></i></a>
+        </td>
+    </tr>
+
+</script>
+
+<script>
+
+    $(function () {
+        var tool = new Sail.RazorPage("", "Admin", "@(nameof(UserGroup.Id))");
+
+        var model=    $("[data-target=Admin]").ModalSelect({
+            id: "AdminModal",
+            title: "注册用户搜索",
+            modalTmpl: "#SearcModalTmpl",
+            api: "WxUser",
+            pageSet: {
+                titles: ["姓名", "电话"],
+                bodyTmpl: "#UserListTmpl"
+            }
+        });
+
+        tool.content.on("after.Edit", function(s, data) {
+            model.setData(data.Admin);
+        }).on("after.Add", function(s, data) {
+            model.setData(null);
+        });
+
+
+
+        tool.CreatePage({
+            titles: ["操作员手机号", "操作员名称", "所属县区",  "用户组", "操作"],
+            titleWidth: [0, 0, 0,0, 120],
+            getPostKey: function() {
+                var data = $("#toolbar").GetJson();
+                data.type = @((int)Model);
+                return data;
+            }
+        });
+
+        tool.Page.Query();
+    });
+</script>
+
+
+@Helper.PageList(@<text>
+
+
+</text>)
+
+@Helper.PageDetail()
+
+

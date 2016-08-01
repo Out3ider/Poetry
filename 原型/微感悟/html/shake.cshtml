@@ -1,0 +1,29 @@
+﻿<header class="shakeheader">
+    <img src="~/content/images/shakeheader.png" />
+</header>
+<a id="showModalShakeResult" class="shakebody">
+    <img src="~/content/images/shakebody.png" />
+</a>
+<footer class="shakefooter">
+    @*<p class="zqui-h4">手机摇一摇进行抽奖 </p>*@
+    <p class="zqui-h6">如果手机不支持摇动，也可点击抽奖</p>@*改小*@
+    <!--移动用户显示-->
+    <p class="zqui-h6">
+        中共芜湖市委组织部联合芜湖移动开展“抗洪抢险微感悟 千兆流量等你拿”活动；分别摇出10M（50%）、30M（45%）和100M（5%）；微感悟获奖用户再赠送1G以上流量包。
+    </p>
+    <!--电信用户显示-->
+    <p class="zqui-h6">
+        中共芜湖市委组织部联合芜湖电信开展“抗洪抢险微感悟 千兆流量等你拿”活动；分别摇出30M（85%）和100M（15%）；微感悟获奖用户再赠送1G以上流量包。
+    </p>
+    <!--联通用户显示-->
+    <p class="zqui-h6">
+        中共芜湖市委组织部联合芜湖联通开展“抗洪抢险微感悟 千兆流量等你拿”活动。分别摇出100M（100%）；微感悟获奖用户再赠送1G以上流量包。
+    </p>
+</footer>
+@Helper.ShakeResult()
+<script>
+    $(function () {
+        $("body").addClass("bg-shake");
+        $(".zqui-bar").remove();
+    })
+</script>

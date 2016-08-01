@@ -1,0 +1,88 @@
+﻿<div class="zqui-tab-wrapper" style="top: 2rem;">
+    <ul class="zqui-tab-scroll counties">
+        <li class="active" data-id="0">
+            <a><p>全部县区</p><p>10</p></a>
+        </li>
+        <li data-id="1"><a><p>市级</p><p>10</p></a></li>
+        <li data-id="2"><a><p>无为县</p><p>10</p></a></li>
+        <li data-id="3"><a><p>芜湖县</p><p>10</p></a></li>
+        <li data-id="4"><a><p>繁昌县</p><p>10</p></a></li>
+        <li data-id="5"><a><p>南陵县</p><p>10</p></a></li>
+        <li data-id="6"><a><p>镜湖区</p><p>10</p></a></li>
+        <li data-id="7"><a><p>弋江区</p><p>10</p></a></li>
+        <li data-id="8"><a><p>鸠江区</p><p>10</p></a></li>
+        <li data-id="9"><a><p>三山区</p><p>10</p></a></li>
+        <li data-id="10"><a><p>经开区</p><p>10</p></a></li>
+        <li data-id="11"><a><p>大桥区</p><p>10</p></a></li>
+    </ul>
+</div>
+<div class="zqui-tab-content" style="padding-top:4.5rem !important;">
+
+    <div class="zqui-tab-pane">
+        <div class="zqui-filter">
+            <div class="zqui-search-btn">
+                <input class="zqui-search-input" type="text" placeholder="关键字搜索">
+                <i class="BtnCloseMsg zqui-icon-clear icon icon-remove-sign"></i>
+                <a class="btnEdit zqui-icon-search">
+                    <i class="icon icon-search"></i>
+                </a>
+            </div>
+        </div>
+            <div class="zqui-container">
+                <div class="zqui-timeline">
+                    @Helper.timelineranking()
+                    @Helper.timelineranking()
+                    @Helper.timelineranking()
+                    @Helper.timelineranking()
+                    @Helper.timelineranking()
+                    @Helper.timelineranking()
+                    @Helper.timelineranking()
+                    @Helper.timelineranking()
+                    @Helper.timelineranking()
+                </div>
+            </div>
+    </div>
+    <div class="zqui-tab-pane">
+        <div class="zqui-filter" style="top:4rem;">
+            <div class="zqui-search-btn">
+                <input class="zqui-search-input" type="text" placeholder="关键字搜索">
+                <i class="BtnCloseMsg zqui-icon-clear icon icon-remove-sign"></i>
+                <a class="btnEdit zqui-icon-search">
+                    <i class="icon icon-search"></i>
+                </a>
+            </div>
+        </div>
+        <div class="zqui-container">
+            <div class="zqui-timeline">
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+                @Helper.timelineranking()
+            </div>
+        </div>
+    </div>
+</div>
+@Helper.HelperloginModal()
+@Helper.HelperDataModal()
+@Helper.HelpercommentModal()
+<script type="text/javascript">
+    $(document).ready(function () {
+        jQuery.jqtab = function (nav, content, click) {
+            $(content).find(".zqui-tab-pane").hide();
+            $(nav).find(".zqui-filter-item:first").addClass("active").show();
+            $(content).find(".zqui-tab-pane:first").show();
+            $(nav).find(".zqui-filter-item").bind(click, function () {
+                $(this).addClass("active").siblings(".zqui-filter-item").removeClass("active");
+                var activeindex = $(nav).find(".zqui-filter-item").index(this);
+                $(content).children().eq(activeindex).show().siblings().hide();
+                return false;
+            });
+        };
+        $.jqtab(".zqui-filter-bar", ".zqui-tab-content", "click");
+    });
+</script>

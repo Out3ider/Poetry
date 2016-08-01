@@ -1,3 +1,4 @@
+using System;
 using System.Web.Http;
 using Poetry.Model;
 using Poetry.Web.Utility;
@@ -11,10 +12,18 @@ namespace Poetry.Web
     /// </summary>
     public class WxUserController : BaseController<Admin>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override Clip OrderBy => Clip.OrderBy<Admin>(x => x.UserName.Asc());
+
+        /// <summary>创建默认where条件，可以被覆盖</summary>
+        /// <param name="key">The key.</param>
+        /// <returns>Clip.</returns>
         protected override Clip MakeWhere(string key)
         {
-            var where = Clip.Where<Admin>(x => x.Type == UserType.普通用户);
-            if (key.IsNotNull()) where &= Clip.Where<Admin>(x => x.UserName.Like(key));
+            var where = Clip.Where<Admin>(x => x.LoginId != "admin");
+            if (key.IsNotNull()) where &= Clip.Where<Admin>(x => x.Phone.Like(key) || x.UserName.Like(key)).Bracket();
             return where;
         }
 
@@ -65,6 +74,28 @@ namespace Poetry.Web
             WebHelper.CurrentUser = null;
         });
 
+
+
+        [HttpGet]
+        public AjaxResult Fix()
+        {
+            return HandleHelper.TryAction(db =>
+            {
+                db.GetList<Admin>(x => x.LoginId != "admin").ForEach(x =>
+                {
+                    try
+                    {
+                        x.MobileOperator = MobileHelper.Check(x.LoginId);
+                        if (x.CreateTime < new DateTime(2000, 1, 1)) x.CreateTime = DateTime.Now;
+                        db.Save(x);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                });
+            });
+        }
+
         [HttpPost]
         public AjaxResult Register([FromBody]string value) => HandleHelper.TryAction(db =>
         {
@@ -81,8 +112,8 @@ namespace Poetry.Web
             {
                 BeforeAction(db, ControllerEvent.Put, user);
                 user.LoginId = user.Phone;
-                user.Type = UserType.普通用户;
-
+                // user.Type = UserType.普通用户;
+                user.MobileOperator = MobileHelper.Check(user.LoginId);
                 db.Save(user);
                 AfterAction(db, ControllerEvent.Put, user);
             });
@@ -136,6 +167,17 @@ namespace Poetry.Web
             });
         }
 
+        [HttpGet]
+        public AjaxResult Query(int pageIndex, int pageSize)
+        {
+            return GetList(pageIndex, pageSize);
+        }
+
+        [HttpGet]
+        public AjaxResult Query(int pageIndex, int pageSize, string key)
+        {
+            return GetList(pageIndex, pageSize, key);
+        }
 
         /// <summary>
         /// 忘记密码
@@ -160,6 +202,16 @@ namespace Poetry.Web
             });
         }
 
-
+        [HttpPut]
+        public AjaxResult Modify([FromBody] string value)
+        {
+            return HandleHelper.TryAction(db =>
+            {
+                var user = WebHelper.CheckUser<Admin>();
+                var model = db.LoadModalByJson<Admin>(value, user.UserId);
+                db.Save(model);
+                WebHelper.CurrentUser = model;
+            });
+        }
     }
 }

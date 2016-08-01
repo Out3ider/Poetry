@@ -1,0 +1,54 @@
+﻿@using Sail.Web
+
+
+@model LeftMenu
+
+@helper RenderMenu(IList<HMenuItem> items)
+{
+foreach (var item in items)
+{
+        <li>
+            <a data-itemid="@item.ItemId" @(item.SubItems.Count == 0 ? $"href={item.Url}" : "")>
+                <i class="@item.ClassName"></i>
+                <span class="title">@item.ItemName</span>
+
+                @if (item.SubItems.Count > 0)
+                {
+                    <span class="arrow"></span>
+                }
+            </a>
+            @if (item.SubItems.Count > 0)
+            {
+                <ul class="sub-menu">
+                    @RenderMenu(item.SubItems)
+                </ul>
+            }
+        </li>
+}
+}
+
+<div class="page-sidebar" style="overflow: auto;">
+    <ul class="page-sidebar-menu">
+        
+                <li class="home">
+                    <a href="@Model.IndexUrl">
+                        <i class="fa fa-home"></i>
+                        <span class="title">首页</span>
+                    </a>
+                </li>
+                @RenderMenu(Model.Menus)
+            </ul>
+        </div>
+        @* ReSharper disable ConditionIsAlwaysConst *@
+        <script>
+            $(function () {
+
+                var current = '@Model.CurrentId';
+                if (current) {
+                    var $item = $(".page-sidebar-menu a[data-itemid=" + current + "]");
+                    //    if ($item.length === 0) { window.location.href = "/nopower"; }
+                    $item.parents("li").addClass("active");
+                }
+                else $(".page-sidebar-menu .home").addClass("active");
+            });
+        </script>

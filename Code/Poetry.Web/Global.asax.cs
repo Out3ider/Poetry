@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
@@ -26,8 +27,16 @@ namespace Poetry.Web
         protected void Application_Start(object sender, EventArgs e)
         {
             WebApiConfig.Register(GlobalConfiguration.Configuration);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            AreaRegistration.RegisterAllAreas();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            RouteTable.Routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "WeChat", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "Poetry.Web.Controller" }
+               );
 
             DatabaseScheme.InitDatabase();
             VerifyCode.Init(typeof(VerifyType)); //初始化验证码类型
@@ -51,7 +60,7 @@ namespace Poetry.Web
                 if (db.GetCount<Admin>() == 0)
                 {
                     db.Save(new Group { RoleName = "超级管理员" });
-                    db.Save(new Admin { LoginId = "admin", Password = "admin", UserName = "超级管理员", Type = UserType.系统管理员, Group = new Group { RoleId = 1 } });
+                    db.Save(new Admin { LoginId = "admin", Password = "admin", UserName = "超级管理员" });
                 }
 
 
@@ -62,12 +71,48 @@ namespace Poetry.Web
                         AppId = "wx366a13dfa1da94e0",
                         Secret = "0f8059760687d0dba0d913465d63b093",
                         Host = "",
-                        SiteName = "发现身边好党员",
+                        SiteName = "发现身边先锋",
                     });
                 }
 
+                if (db.GetCount<ComprehensionParam>() == 0)
+                {
+                    db.Save(new ComprehensionParam
+                    {
+                        SiteName = "微感悟",
+                        IsAutoPublish = true,
+                        IsCommentNeedCheck = false,
+                    });
+                }
+
+                if (db.GetCount<Prize>() == 0)
+                {
+                    new Dictionary<MobileOperator, Tuple<int, int>[]>
+                    {
+                        [MobileOperator.联通] = new[] { Tuple.Create(100, 1000) },
+                        [MobileOperator.电信] = new[] { Tuple.Create(100, 50), Tuple.Create(30, 950) },
+                        [MobileOperator.移动] = new[] { Tuple.Create(100, 50), Tuple.Create(30, 750), Tuple.Create(10, 200) },
+
+                    }.ForEach(x =>
+                    {
+                        x.Value.ForEach(c =>
+                        {
+                            db.Save(new Prize
+                            {
+                                MaxNumber = 999999,
+                                Title = $"{c.Item1}M{x.Key}流量",
+                                ProjectType = ProjectType.微感悟,
+                                Operator = x.Key,
+                                Probability = c.Item2,
+                                TotalStock = 999999
+                            });
+                        });
+                    });
+                }
+                ComprehensionParam.Config(ComprehensionParam.Get(db));
+                BadWords.Config();
                 Param.Config(Param.Get(db));
-                //Param.Default.SetConfig();
+
             }
         }
 

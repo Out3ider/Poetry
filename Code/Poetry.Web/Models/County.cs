@@ -11,8 +11,7 @@ namespace Poetry.Model
     [HTable]
     public class County : DictBase
     {
-      
-                public static IList<KeyValuePair<string, string>> GetAll(IDataContext db)
+        public static IList<KeyValuePair<string, string>> GetAll(IDataContext db)
         {
             return db.GetList<County>()
                     .OrderBy(x => x.OrderByNo)
@@ -20,5 +19,4 @@ namespace Poetry.Model
                     .ToList();
         }
     }
-    
 }

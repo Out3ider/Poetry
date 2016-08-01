@@ -1,0 +1,71 @@
+﻿@{
+    this.SetPage("56C02F55-3CFD-499E-9EFA-915EFA495DC0", "抽奖记录", "系统设置");
+}
+
+@section head{
+
+
+
+    <script type="text/x-jsrender" id="listTmpl">
+        <tr>
+            <td>
+                {{>PrizeUser.LoginId}}/{{>PrizeUser.UserName}}
+            </td>
+            <td>
+                {{>Prize.OperatorStr}}
+            </td>
+            <td>
+                {{>Prize.Title}}
+            </td>
+            <td>{{ToDateTime:CreateTime}}</td>
+
+        </tr>
+    </script>
+    <script>
+        $(function () {
+            var tool = new Sail.RazorPage("", "Prize", "Id").SetTitle("领奖记录");
+
+
+
+            tool.CreatePage({
+                titles: ["用户", "运营商", "奖品名称", "获取时间"],
+                //titleWidth: [0, 0, 0, 80, 100],
+                handleName: function () { return tool.GetApi("UserPrizeList") }
+            });
+            tool.Page.Query();
+
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+@Helper.PageList(@<text>
+        <div class="form-float" style="padding: 0;">
+
+            <div class="form-group">
+                <div class="form-element-control">
+                    <select class="form-control" name="type">
+                        @typeof(MobileOperator).EnumList().RenderOptions("全部", "-1")
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" id="btnQuery">
+                    <i class="fa fa-search"></i>
+                    过滤
+                </button>
+                <button class="btnReset btn btn-secondary">清除条件</button>
+            </div>
+        </div>
+
+</text>, false)
+
+
+

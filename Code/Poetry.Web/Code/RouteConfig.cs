@@ -8,7 +8,6 @@ namespace Poetry.Web
     /// </summary>
     public class RouteConfig
     {
-
         /// <summary>
         /// 注册路由
         /// </summary>
@@ -16,7 +15,12 @@ namespace Poetry.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute(name: "Default", url: "{controller}/{action}/{id}", defaults: new { controller = "WeChat", action = "Index", id = UrlParameter.Optional });
+            routes.MapRoute(
+                url: "{controller}/{action}/{id}",
+                name: "Default",
+                namespaces: new[] { "Sail.Common" },
+                defaults: new { controller = "WeChat", action = "Index", id = UrlParameter.Optional }
+               );
         }
     }
 }

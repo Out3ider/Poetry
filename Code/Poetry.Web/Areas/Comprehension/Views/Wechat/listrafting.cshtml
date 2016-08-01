@@ -1,0 +1,272 @@
+﻿
+<script src="~/Scripts/WeModal.js"></script>
+<script type="text/js-render" id="listTmpl">
+
+    @WeForm.SensesListTmpl()
+</script>
+@* Detail *@
+<script type="text/js-render" id="modalTmpl">
+    <header class="zqui-modal-header bannersub"></header>
+    <div class="zqui-modal-footer">
+        <button class="zqui-modal-btn btnReturn"><i class="icon icon-reply"></i> 返回</button>
+        {{if isLike}}
+        <button class="zqui-modal-btn text-danger"><i class="icon icon-hongxin-copy"></i> 赞</button>
+        {{else}}
+        <button class="btnLike zqui-modal-btn "><i class="icon icon-hongxin-o"></i> 赞</button>
+        {{/if}}
+        <button class="ShowcommentModal zqui-modal-btn"><i class="icon icon-pinglun-o"></i> 评论</button>
+    </div>
+    <div class="zqui-modal-body">
+        <div class="zqui-panel-card">
+            <div class="panel-title clearfix">
+                <img class="zqui-media-object zqui-pull-left" src="{{Pre:Creater.Icon}}">
+                <div class="zqui-media-body">
+                    {{>Creater.UserName}}
+                    <p class="zqui-ellipsis">
+                        {{ToDateTime:CreateTime}}<span class="zqui-rt">
+                            <span>
+                                {{if Creater.County}}
+                                {{>Creater.County.Name}}
+                                {{/if}}
+                            </span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <h5 class="zqui-text-center zqui-ellipsis">{{>SensesTitle}}</h5>
+            <p>
+                {{>Content}}
+            </p>
+            {{for ImagesList}}
+            <p>
+                <img src="{{MidPre:#data}}">
+            </p>
+            {{/for}}
+
+        </div>
+        <ul class="zqui-table-view zqui-table-view-icon list-comment">
+            <li class="zqui-table-view-divider" id="divComment">
+                <span>评论:&nbsp;<span class="text-danger">{{>Comments}}</span></span>
+                <span class="zqui-rt">
+                    <a>
+                        {{if isLike}}
+                        <i class="icon icon-hongxin-copy text-danger"></i>{{>Liked}}
+                        {{else}}
+                        <i class="icon icon-hongxin-o text-info"></i>{{>Liked}}
+                        {{/if}}
+
+                    </a>
+                </span>
+            </li>
+            {{for CommentList tmpl="#commentListTmpl"}}
+
+            {{/for}}
+
+        </ul>
+
+    </div>
+</script>
+
+<div class="zqui-filter">
+    <div class="zqui-filter-bar">
+        <a class="zqui-filter-item active" data-type="all">
+            全部
+        </a>
+        <a class="zqui-filter-item" data-type="stick">
+            精华
+        </a>
+    </div>
+</div>
+<div class="zqui-tab-content">
+    <div class="zqui-tab-pane">
+        <div class="zqui-container">
+            <div class="zqui-timeline" id="listBody">
+            </div>
+            @*<div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>*@
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/mobile.js"></script>
+
+<script>
+
+
+    $(function () {
+        var api = new Sail.ApiHelper("Wechatsenses");
+        var isLogined = @(((WebHelper.CurrentUser as Admin) != null).ToString().ToLower());
+        var   commentModal = new Sail.Modal("commentModal", {
+            title: '发表评论',
+            tmplName: '#commentModalTmpl',
+            okEvent: function () {
+                if (!commentModal.modal.CheckValidation()) {
+                    ShowError("评论必须填写内容");
+                    return;
+                }
+                var data = commentModal.modal.GetJson();
+                var id = $("body").data("id");
+                $.post(api.GetApi("comment/") + id, { "": data.Content }, function (result) {
+                    ShowMessage(result, "", function () {
+                        commentModal.Hide();
+                        if (result.Data.IsChecked) {
+                            $($.templates("#commentListTmpl").render(result.Data)).insertAfter("#divComment");
+                            ShowSuccess("评论添加成功");
+                        }
+                        else {
+                            ShowSuccess("评论添加成功，请等待管理员审核");
+                        }
+                    });
+                });
+            },
+            cssClass: "distance-three zqui-modal-lg",
+            okTitle: "确定",
+            cancelTitle: "取消",
+            init:function(div) {
+                div.hide();
+                div.find("textarea[name=Content]").on("keyup change",function() {
+                    div.find(".zqui-textarea-counter span").text($(this).val().length);
+                });
+            }
+        });
+
+        //详情页相关
+        function queryDetail(id) {
+            $.get(api.GetApi("Get"), { id: id }, function (result) {
+                $("#divDetail .zqui-modal-content").html($.templates("#modalTmpl").render(result.Data));
+                $("#divDetail").show().data("data", result.Data);
+                $("#divDetail .zqui-modal-content").scrollTop(0);
+                $("body").data("id", id);
+            });
+        }
+
+
+        $("#divDetail,#divLogin").appendTo("body");
+
+
+        $("#divDetail").on("click", ".btnReturn", function() {
+            if ($.Request("id")) window.history.go(-1);
+            else $("#divDetail").hide();
+        }).on("click", ".ShowcommentModal", function() {
+            ActOrLogin(isLogined, function() {
+                isLogined = true;
+                commentModal.Show();
+                commentModal.modal.ResetForm();
+            });
+        }).on("click", ".btnLike", function() {
+            var o = $(this);
+            var id = $("body").data("id");
+            ActOrLogin(isLogined, function() {
+                isLogined = true;
+                like(o, id);
+            });
+        });
+
+        function like($item, id) {
+            var $this = $($item);
+            $.post(api.GetApi("like"), { "": id }, function (result) {
+                ShowMessage(result, "已点赞", function () {
+                    $this.find("i").removeClass("icon-hongxin-o").addClass("icon-hongxin-copy");
+                    $this.find("span").text(result.Data);
+                });
+            });
+        }
+
+        var $listBody = $("#listBody");
+        $listBody.on("click", ".zqui-body", function () {
+            queryDetail($(this).data("id"));
+
+        });
+        $listBody.on("sail.nodata", function () {
+            $listBody.html("暂无数据");
+        });
+        var page = $listBody.LoadMore({
+            pageSize: 20,
+            pager: $("#pager"),
+            handleName: api.GetApi("list"),
+            getPostKey:function () { return {type: $(".zqui-filter .active").data("type")}  }
+        });
+
+        $(".zqui-filter").on("click", ".zqui-filter-item", function() {
+            $(".zqui-filter-item").removeClass("active");
+            $(this).addClass("active");
+            $listBody.empty();
+            page.Query(1);
+        });
+
+        if ($.Request("id"))  queryDetail($.Request("id"));
+        else page.Query();
+
+
+    });
+</script>
+<div class="zqui-modal" id="divDetail" style="display: none">
+    <div class="zqui-modal-mask"></div>
+    <div class="zqui-modal-dialog  distance-one zqui-modal-lg">
+        <div class="zqui-modal-content">
+        </div>
+    </div>
+</div>
+
+<div class="zqui-modal" id="divLogin" style="display: none">
+    <div class="zqui-modal-mask" style="z-index: 30"></div>
+    <div class="zqui-modal-dialog distance-two  zqui-modal-sm" style="z-index: 31">
+        <div class="zqui-modal-content">
+            <div class="zqui-modal-header">
+                登录用户账户
+                <a class="btnClose  zqui-header-clear">×</a>
+            </div>
+            <div class="zqui-modal-body">
+                @WeForm.LoginForm("danger")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script type="text/x-jsrender" id="commentListTmpl">
+    <li class="zqui-table-view-cell zqui-media">
+        <div class="rafting-head">
+            <img class="zqui-media-object zqui-pull-left" src="{{Pre:Creater.Icon}}">
+            <div class="zqui-media-body">
+                {{>Creater.UserName}}
+                <p class="zqui-ellipsis">
+                    {{ToDateTime:CreateTime}}<span class="zqui-rt">
+                        {{if Creater.County}}
+                        {{>Creater.County.Name}}
+                        {{/if}}
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="zqui-article">
+            <section>
+                <p class="">
+                    {{>Content}}
+                </p>
+            </section>
+        </div>
+    </li>
+</script>
+
+
+<script type="text/js-render" id="commentModalTmpl">
+    <ul class="zqui-table-view">
+        <li class="zqui-table-view-cell">
+            <div class="zqui-cell-bd zqui-flex-1">
+                <textarea class="zqui-form-control validate[required]" name="Content" maxlength="200" placeholder="请输入评论" rows="8"></textarea>
+                <div class="zqui-textarea-counter"><span>0</span>/200</div>
+            </div>
+        </li>
+    </ul>
+    <div class="zqui-content-padded">
+        <p>  用户发布的任何内容不得违反国家法律法规！</p>
+    </div>
+</script>

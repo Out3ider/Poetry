@@ -1,0 +1,212 @@
+﻿
+<script src="~/Scripts/uploadify/jquery.uploadifive.js"></script>
+<script src="~/Scripts/WeModal.js"></script>
+<style>
+    .uploadifive-queue { display: none; }
+
+    .has-error textarea { border: solid 1px red; }
+</style>
+
+<div class="tooltips">
+    若手机发布不便，可登录电脑端微信。
+</div>
+<ul class="zqui-table-view">
+    <li class="zqui-table-view-divider">感悟标题<span class="zqui-rt zqui-h7">不超过20字</span></li>
+    <li class="zqui-table-view-cell">
+        <div class="zqui-cell-bd zqui-flex-1">
+            <input class="zqui-input validate[required]" id="SensesTitle" maxlength="20" placeholder="请输入标题" />
+
+        </div>
+    </li>
+    <li class="zqui-table-view-divider">填写感悟<span class="zqui-rt zqui-h7" id="ContentTips">最少140字，当前&nbsp;<span class="text-danger">0</span>&nbsp;字</span></li>
+    <li class="zqui-table-view-cell">
+        <div class="zqui-cell-bd zqui-flex-1">
+            <textarea class="zqui-textarea validate[required]" id="Content" data-autoresize placeholder="请输入内容" rows="10"></textarea>
+            <div class="zqui-textarea-counter">亲，题外话会被删帖得不到流量!</div>
+        </div>
+    </li>
+    <li class="zqui-table-view-divider">上传图片</li>
+    <li class="zqui-table-view-cell zqui-dis-flex">
+        <div class="zqui-uploader">
+            <div class="zqui-uploader-hd  zqui-dis-flex">
+                <div class="zqui-cell-bd zqui-flex-1">点击照片可设置标题图片或删除</div>
+                <div class="zqui-cell-ft">
+                    0/4
+                </div>
+            </div>
+            <div class="zqui-uploader-bd">
+                <ul class="zqui-uploader-files" id="img"></ul>
+                <div class="zqui-uploader-input-wrp">
+                    <a class="zqui_uploader_input" id="selectImage"></a>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<div class="zqui-content-padded">
+    <button id="btnSave" class="zqui-btn zqui-btn-block zqui-btn-danger">发布感悟</button>
+</div>
+<div class="zqui-content-padded zqui-text-center">
+    <p>用户发布的任何内容不得违反国家法律法规！
+</p>
+</div>
+
+<script type="text/js-render" id="tipsTmpl">
+
+    <div class="zqui-msg">
+        <div class="zqui-icon-area zqui-primary">
+            <i class="icon icon-ok-sign"></i>
+        </div>
+
+        @if ((bool)ViewBag.IsGet)
+        {
+            <div class="zqui-text-area">
+                <h2 class="zqui-msg-title">发布成功！</h2>
+            </div>
+            <div class="zqui-opr-area">
+                <p class="zqui-btn-area">
+                    <a href="raftinglist" class="zqui-btn zqui-btn-block">查看微感悟</a>
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="zqui-text-area">
+                <h2 class="zqui-msg-title">发布成功！</h2>
+                <p class="zqui-msg-desc">您获得一次抽流量机会。</p>
+            </div>
+                <div class="zqui-opr-area">
+                    <p class="zqui-btn-area">
+                        <a id="showModalShake" class="zqui-btn zqui-btn-block">前去抽奖</a>
+                    </p>
+                </div>
+
+        } 
+    </div>
+    <div class="zqui-content-padded">
+        <p class="zqui-h6">温馨提示：</p>
+        <p class="zqui-h6">1、发布微感悟后，亲可获得一次抽流量的机会。<i class="fa fa-sup"></i></p>@*惊喜*@
+        <p class="zqui-h6">2、发帖次数不限。亲，发帖越多，进入精华帖和点赞榜的机会就越大哦。<i class="fa fa-lft"></i></p>@*期盼*@
+        <p class="zqui-h6">3、精华帖和点赞榜前列的亲，将获得由通讯运营商提供的1G以上流量包奖励。<i class="fa fa-cheer"></i></p>@*欢呼*@
+    </div>
+
+
+
+</script>
+
+
+<script>
+    $(function () {
+        $(".btnClose").click(function () { $(".zqui-popup, .zqui-popup-backdrop").hide(); });
+
+
+        $("#actionSheet_wrap").insertAfter(".footer");
+        $("#actionsheet_cancel").click(function (parameters) {
+            $("#actionSheet_wrap").hide();
+        });
+
+        var sheet = new WeChat.SheetAction([
+             {
+                 cssClass: "btnDelete text-danger",
+                 title: "删除图片",
+                 act: function () {
+                     if (confirm("确认要删除该图片？")) {
+                         sheet.$modal.data("img").remove();
+                         reBind();
+                         sheet.$modal.hide();
+                     }
+                 }
+             }]);
+
+        sheet.$modal.appendTo("body");
+
+        $("#img").on("click", ".upImage", function () {
+            sheet.$modal.data("img", $(this)).show();
+        });
+
+        var maxLength = 4;
+
+        $("#Content").on("keyup change", function () {
+            var length = $(this).val().length;
+            $("#ContentTips span").text(length);
+        });
+
+        var titletmpl = '<div class="ShowIcon zqui-uploader-status-content text-primary"><i class="icon icon-ok-sign"></i></div>';
+
+        function reBind() {
+            var length = $("#img .upImage").length;
+            $(".zqui_cell_ft").text(length + "/" + maxLength);
+            $("#selectImage").parent().parent().Display(length < maxLength);
+
+            if ($(".upImage .zqui-uploader-status").length == 0) {
+                var img = $("#img .upImage:eq(0)");
+                img.addClass("zqui-uploader-status");
+                $(titletmpl).appendTo(img);
+
+            }
+            $(".zqui-cell-ft").text(length + "/4");
+        }
+
+        $("#selectImage").uploadifive(
+            {
+                multi: false,
+                uploadScript: "@WebHelper.GetRootUrl()api/Icon/UploadFile",
+                buttonText: "",
+                onUploadComplete: function (file, data, res) {
+                    var result = JSON.parse(data);
+                    console.log(result);
+                    var filename = result.Data.FilePath; //.substr(1);
+                    var image = $('<li class="zqui-uploader-file upImage">' +
+                        '<img class="Show" src="' + filename + '">' +
+                        '</li>');
+                    $("#img").append(image);
+                    image.data("mediaid", filename);
+                    reBind();
+                }
+            }
+        );
+        $("#uploadifive-selectImage").css({ height: "77px", width: "77px", "line-height": "77px" });
+
+
+
+
+
+        $("#btnSave").click(function () {
+
+
+            if (!$(".zqui-content").CheckValidation()) return;
+
+
+            var data = $(".zqui-content").GetJson();
+
+            if (data.Content.length < 140) {
+                ShowError("请至少输入140字的感悟内容");
+                return;
+            }
+            var $imgs = $("#img .upImage");
+
+            data.Images = "";
+            $imgs.each(function () {
+                var img = $(this).data("mediaid");
+                if (img) data.Images += img + ",";
+            });
+
+            data.Icon = $("#img .zqui-uploader-status").data("mediaid");
+            $(this).prop("disabled", true);
+            var btn = $(this);
+            var api = new Sail.ApiHelper("WeChatSenses");
+            $.Put(api.GetApi("Put"), { "": JSON.stringify(data) }, function (result) {
+                if (!result.IsSuccess) btn.prop("disabled", false);
+
+                MsgBox.Action(result, function () {
+                    $(".zqui-content").html($("#tipsTmpl").html());
+                    $(".zqui-content #showModalShake").prop("href", "shake?id=" + result.Data.Id);
+                });
+
+            });
+
+        });
+
+    });
+</script>

@@ -17,12 +17,20 @@
 }
 @* 输出文本框 *@
 @helper Input(Element element)
-{@RenderGroup(element, @<text><input type="text" @element.Attr(controllCalss: "zqui-input") /></text>)}
+{
+    @RenderGroup(element, @<text><input type="text" @element.Attr(controllCalss: "zqui-input") /></text>)
+}
+
 @helper  TextArea(Element element)
-{@RenderGroup(element, @<text><textarea rows="5" @element.Attr(controllCalss: "zqui-textarea")></textarea></text>)}
+{
+    @RenderGroup(element, @<text><textarea rows="5" @element.Attr(controllCalss: "zqui-textarea")></textarea></text>)
+
+}
 
 @helper Password(Element element)
-{@RenderGroup(element, @<text><input type="password" @element.Attr(controllCalss: "zqui-input") /></text>)}
+{
+    @RenderGroup(element, @<text><input type="password" @element.Attr(controllCalss: "zqui-input") /></text>)
+}
 
 
 @* 输出选择器 *@
@@ -60,19 +68,16 @@ if (!string.IsNullOrEmpty(defaultText)) { element.Data["defaulttext"] = defaultT
 }
 
 
-@helper LoginForm()
+@helper LoginForm(string btnClass = "primary")
 {
-    <div  id="LoginForm">
+    <div id="LoginForm">
         <ul class="zqui-table-view">
-
             @Input(new Element("手机号", "LoginId", "validate[required]"))
-
             @Password(new Element("密码", "Password", "validate[required]"))
-
         </ul>
 
         <div class="zqui-content-padded">
-            <button id="btnLogin" class="zqui-btn zqui-btn-block zqui-btn-primary">登录</button>
+            <button id="btnLogin" class="zqui-btn zqui-btn-block zqui-btn-@(btnClass)">登录</button>
             <div class="link-area">
                 <a href="register">注册账号</a>
                 <span class="spliter">|</span>
@@ -81,3 +86,63 @@ if (!string.IsNullOrEmpty(defaultText)) { element.Data["defaulttext"] = defaultT
         </div>
     </div>
 }
+
+@helper SensesListTmpl(bool isInList = false)
+{
+
+    <div class="zqui-timeline-block">
+        <div class="zqui-timeline-img">
+            <img src="{{Pre:Creater.Icon}}"  />
+        </div>
+        <div class="zqui-timeline-content">
+            @if (isInList)
+            {
+                <a class="zqui-body" href='raftinglist?id={{>Id}}'>
+                    <h5 class="zqui-ellipsis">{{>SensesTitle}}</h5>
+                    <p>
+                        <span>{{ToDateTime:CreateTime}}</span><span class="zqui-rt">
+                            <span>{{>Creater.UserName}}</span>&nbsp;&nbsp;
+                            <span>
+                                {{if Creater.County}}
+                                {{>Creater.County.Name}}
+                                {{/if}}
+                            </span>
+                        </span>
+                    </p>
+                    <p class="zqui-ellipsis-2">
+                        {{>Content}}
+                    </p>
+                    <p class="zqui-foot clearfix">
+                        <span class="zqui-lt"><i class="icon icon-hongxin-o"></i>{{>Liked}}</span>
+                        <span class="zqui-rt"><i class="icon icon-pinglun-o"></i>{{>Comments}}</span>
+                    </p>
+                </a>
+
+            }
+            else
+            {
+                <a class="zqui-body" data-id="{{>Id}}">
+                    <h5 class="zqui-ellipsis">{{>SensesTitle}}</h5>
+                    <p>
+                        <span>{{ToDateTime:CreateTime}}</span><span class="zqui-rt">
+                            <span>{{>Creater.UserName}}</span>&nbsp;&nbsp;
+                            <span>
+                                {{if Creater.County}}
+                                {{>Creater.County.Name}}
+                                {{/if}}
+                            </span>
+                        </span>
+                    </p>
+                    <p class="zqui-ellipsis-2">
+                        {{>Content}}
+                    </p>
+                    <p class="zqui-foot clearfix">
+                        <span class="zqui-lt"><i class="icon icon-hongxin-o"></i>{{>Liked}}</span>
+                        <span class="zqui-rt"><i class="icon icon-pinglun-o"></i>{{>Comments}}</span>
+                    </p>
+                </a>
+            }
+        </div>
+    </div>
+}
+

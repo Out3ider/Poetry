@@ -1,0 +1,154 @@
+﻿@{
+    this.SetPage("D1827C4C-3A04-4046-8686-759B47D86AA6", "奖品管理", "系统设置");
+}
+
+@section head{
+
+
+    <script type="text/x-jsrender" id="modalTmpl">
+        @Form.Input(Element.Create<Prize>(x => x.Title))
+        @Form.Select(Element.Create<Prize>(x => x.Operator), typeof(MobileOperator).EnumList(), "请选择")
+        @*@Form.Input(Element.Create<Prize>(x => x.TotalStock))
+            @Form.Input(Element.Create<Prize>(x => x.MaxNumber))*@
+        @Form.Input(Element.Create<Prize>(x => x.Probability))
+        <input type="hidden" name="ProjectType" value="1" data-defaultvalue="1" />
+        <input type="hidden" name="TotalStock" value="999999" data-defaultvalue="999999" />
+        <input type="hidden" name="MaxNumber" value="999999" data-defaultvalue="999999" />
+    </script>
+    <script type="text/x-jsrender" id="listXTmpl">
+        <tr>
+            <td>{{>UserName}}</td>
+            <td>{{ToDateTime2:CreateTime}}</td>
+            <td>{{if IsUsed}}{{ToDateTime:UsedTime}}{{else}}未使用{{/if}}</td>
+        </tr>
+    </script>
+    <script type="text/x-jsrender" id="userTmpl">
+        <div class="portlet light">
+            <table class="table table-bordered table-striped table-condensed flip-content dataTable">
+                <thead>
+                    <tr class="font-green-haze">
+                        <th>领取者</th>
+                        <th>领取时间</th>
+                        <th>使用时间</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="listTmpl">
+        <tr>
+            <td>
+                <a class="btnEdit">
+                    {{>Title}}
+                </a>
+            </td>
+            <td>
+                {{>OperatorStr}}
+            </td>
+
+            @*<td>
+                    <a class="btnShowMore">
+                        {{:CurrentStock}}
+                    </a>
+                    /
+                    {{:TotalStock}}
+
+                </td>*@
+            @*<td>{{:MaxNumber}}</td>*@
+            <td>{{>Probability}}‰</td>
+            <td>
+                <a class="text-primary m_r_10 btnEdit" title="修改" data-toggle="tooltip"><i class="fa fa-edit fa-lg"></i></a>
+                <a class="text-danger  m_r_10 btnRemove" title="删除" data-toggle="tooltip"><i class="fa fa-lg  fa-trash"></i></a>
+                <a class="text-warning  m_r_10 btnClear" title="清零" data-toggle="tooltip"><i class="fa fa-lg  fa-refresh"></i></a>
+            </td>
+        </tr>
+    </script>
+    <script>
+        $(function () {
+            var tool = new Sail.RazorPage("", "Prize", "Id").SetTitle("奖品信息管理");
+
+            var modal = $.CreateModal("usercoupons", {
+                title: "奖品领取记录",
+                modalHandle: null,
+                tmplName: "#userTmpl",
+                okEvent: function () { }
+            });
+
+            tool.CreatePage({
+                titles: ["奖品名称", "运营商",
+                    //"已领取/总库存", "抽取次数",
+                    "抽奖几率‰", "操作"],
+                titleWidth: [0, 0, 80, 100],
+                events: [
+                  {
+                      handle: ".btnShowMore",
+                      act: function (data) {
+                          $.get("/api/UserPrize/GetPrizeList", { id: data.Id }, function (result) {
+                              modal.Show();
+                              $("#usercoupons .btnOk").hide();
+                              $("#usercoupons .modal-title").text(data.Name + " 领取记录");
+                              var tobdy = modal.modal.find("table tbody");
+                              tobdy.html($.templates("#listXTmpl").render(result.Data));
+                          });
+                      }
+                  },
+                   {
+                       handle: ".btnClear",
+                       act: function (data) {
+                           if (!confirm("确定要清除该奖品的领取记录么，清除后将无法恢复")) return;
+                           $.post("/api/Prize/ClearData/" + data.Id, function (result) {
+                               if (result.IsSuccess) {
+                                   ShowSuccess("清除成功");
+                               } else {
+                                   ShowSuccess(result.Msg);
+                               }
+                               tool.Page.Query();
+                           });
+                       }
+                   }
+                ]
+            });
+            tool.Page.Query();
+
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+@Helper.PageList(@<text>
+        <div class="form-float" style="padding: 0;">
+
+            <div class="form-group">
+                <div class="form-element-control">
+                    <input type="text" class="form-control" name="key" placeholder="过滤关键字" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-element-control">
+                    <select class="form-control" name="type">
+                        @typeof(MobileOperator).EnumList().RenderOptions("全部", "-1")
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" id="btnQuery">
+                    <i class="fa fa-search"></i>
+                    过滤
+                </button>
+                <button class="btnReset btn btn-secondary">清除条件</button>
+            </div>
+        </div>
+
+</text>)
+
+@Helper.PageDetail()
+

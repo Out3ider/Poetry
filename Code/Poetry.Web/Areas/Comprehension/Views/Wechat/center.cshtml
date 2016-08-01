@@ -1,0 +1,118 @@
+﻿@using System.Web.UI.WebControls
+@model Admin
+
+<script src="~/Scripts/WeModal.js"></script>
+<script type="text/js-render" id="listTmpl">
+    @WeForm.SensesListTmpl(true)
+</script>
+
+<div class="zqui-profile">
+    <div class="zqui-profile-userpic">
+        <img src="@(Model.Icon)" />
+    </div>
+    <div class="zqui-profile-usertitle">
+        <p class="zqui-h4">@Model.UserName</p>
+    </div>
+    <div class="zqui-profile-userbuttons">
+        <a class="zqui-profile-userbtn active">主页</a>
+        <a class="zqui-profile-userbtn">我的感悟</a>
+    </div>
+</div>
+<div class="zqui-tab-content">
+    <div class="zqui-tab-pane">
+        <ul class="zqui-table-view">
+            <li class="zqui-table-view-cell">
+                <a href="~/Comprehension/Wechat/recommend" class="zqui-navigate-right text-danger" style="font-weight:bold;">
+                    发布感悟
+                </a>
+            </li>
+            <li class="zqui-table-view-cell">
+                <a href="~/Comprehension/Wechat/myprize" class="zqui-navigate-right">
+                    我获得的奖品
+                </a>
+            </li>
+           
+        </ul>
+        <ul class="zqui-table-view">
+            <li class="zqui-table-view-divider">基础资料</li>
+            <li class="zqui-table-view-cell">
+                <a class="">
+                    手机号码
+                    <span class="zqui-pull-right">
+                        @Model.Phone
+                    </span>
+                </a>
+            </li>
+
+            <li class="zqui-table-view-cell">
+                <a class="">
+                    区县
+                    <span class="zqui-pull-right">
+                        @Model.County.Name
+                    </span>
+                </a>
+            </li>
+
+            <li class="zqui-table-view-cell">
+                <a class="">
+                    单位
+                    <span class="zqui-pull-right">
+                        @Model.OrgName
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <ul class="zqui-table-view" style="margin-bottom: .75rem;">
+            <li class="zqui-table-view-cell zqui-text-center">
+                <a href="~/Comprehension/Wechat/modify">修改资料</a>
+            </li>
+        </ul>
+       
+        <ul class="zqui-table-view" style="margin-bottom: .75rem;">
+            <li class="zqui-table-view-cell zqui-text-center">
+                <a href="~/Comprehension//Wechat/logout">退出</a>
+            </li>
+        </ul>
+    </div>
+    <div class="zqui-tab-pane">
+        <div class="zqui-container">
+            <div class="zqui-timeline" id="listBody">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/mobile.js"></script>
+<script>
+    $(function() {
+
+
+        var api = new Sail.ApiHelper("Wechatsenses");
+        var $listBody = $("#listBody");
+        $listBody.on("sail.nodata", function() {
+            console.log("暂无数据");
+            $listBody.html("暂无数据");
+        });
+        var page = $listBody.LoadMore({
+            pageSize: 20,
+            pager: $("#pager"),
+            handleName: api.GetApi("mysenses")
+        });
+        page.Query();
+        $("body nav.zqui-bar a").eq(4).addClass("active");
+    })
+    $(document).ready(function () {
+        jQuery.jqtab = function (nav, content, click) {
+            $(content).find(".zqui-tab-pane").hide();
+            $(nav).find(".zqui-profile-userbtn:first").addClass("active").show();
+            $(content).find(".zqui-tab-pane:first").show();
+            $(nav).find(".zqui-profile-userbtn").bind(click, function () {
+                $(this).addClass("active").siblings(".zqui-profile-userbtn").removeClass("active");
+                var activeindex = $(nav).find(".zqui-profile-userbtn").index(this);
+                $(content).children().eq(activeindex).show().siblings().hide();
+                return false;
+            });
+        };
+        $.jqtab(".zqui-profile-userbuttons", ".zqui-tab-content", "click");
+    });
+</script>
+

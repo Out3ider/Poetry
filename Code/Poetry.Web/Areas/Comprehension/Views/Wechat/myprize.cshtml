@@ -1,0 +1,22 @@
+﻿@model List<UserPrize>
+
+<ul class="zqui-table-view prize">
+    <li class="zqui-table-view-divider">我获得的奖品</li>
+    @foreach (var item in Model)
+    {
+
+        <li class="zqui-table-view-cell zqui-media">
+            <img class="zqui-media-object zqui-pull-left" src="~/content/images/liuliang.jpg">
+            <div class="zqui-media-body">
+                @(item.Prize.Title)
+                <p class="zqui-ellipsis">流量在活动结束后15个工作日内发出</p>
+            </div>
+        </li>
+
+    }
+</ul>
+<script>
+    $(function() {
+        $("body nav.zqui-bar a").eq(4).addClass("active");
+    })
+</script>

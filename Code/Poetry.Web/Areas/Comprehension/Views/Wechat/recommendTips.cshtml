@@ -1,0 +1,61 @@
+﻿
+
+
+<script src="~/Scripts/mobile.js"></script>
+<script src="~/Scripts/WeModal.js"></script>
+<script type="text/js-render" id="listTmpl">
+
+    @WeForm.SensesListTmpl(true)
+</script>
+
+
+
+ @Html.Action("CountyHead")
+<div class="zqui-tab-content">
+    <div class="zqui-tab-pane">
+        <div class="zqui-container">
+            <div class="zqui-timeline" id="listBody">
+            </div>
+            <div class="spinner" style="display: none">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("body nav.zqui-bar a").eq(2).addClass("active");
+        var api = new Sail.ApiHelper("Wechatsenses");
+
+        var $listBody = $("#listBody");
+
+        $listBody.on("sail.nodata", function () {
+            $listBody.html("暂无数据");
+        });
+
+
+        var page = new WaterFall({
+            api: api.GetApi("ListStick"),
+            getPostKey: function () { return { countyId: $(".counties .active").data("id") }; },
+            left: $listBody,
+            right: $listBody
+
+        });
+
+        
+        $(".counties").on("click touchend", "li", function () {
+            var $this = $(this);
+            if ($this.hasClass("active")) return;
+
+            $(".counties li.active").removeClass("active");
+            $this.addClass("active");
+            page.Query(1);
+        });
+        $(".counties li:eq(0)").trigger("click");
+    })
+</script>

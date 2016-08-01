@@ -1,0 +1,97 @@
+﻿
+
+<script type="text/x-jsrender" id="listTmpl">
+    <li class="zqui-table-view-cell">
+        <a href="raftinglist?id={{>Id}}" class="zqui-table-item">
+            <div class="zqui-table-cell zqui-col-xs-1">
+                <span class="zqui-h5 text-danger">
+                    {{toIndex:(#index+1)}}
+                </span>
+            </div>
+            <div class="zqui-table-cell zqui-col-xs-9">
+                <h5 class="zqui-ellipsis">{{>SensesTitle}}</h5>
+                <p>
+                    <span>{{ToDateTime:CreateTime}}</span><span class="zqui-rt">
+                        <span>{{>Creater.UserName}}</span>&nbsp;&nbsp;
+                        <span>
+                            {{if Creater.County}}
+                            {{>Creater.County.Name}}
+                            {{/if}}
+                        </span>
+                    </span>
+                </p>
+            </div>
+            <div class="zqui-table-cell zqui-col-xs-2 zqui-text-right">
+                <i class="icon icon-hongxin-o"></i><span>{{>Liked}}</span>
+            </div>
+        </a>
+    </li>
+</script>
+
+@Html.Action("RankingCountyHead")
+
+
+<div class="zqui-tab-content">
+    <ul class="zqui-table-view zqui-table-view-icon list-ranking">
+        <li class="zqui-table-view-divider">
+            排名
+            <span class="zqui-rt">赞</span>
+        </li>
+        <li id="listBody"></li>
+        <div class="spinner" style="display: none">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </ul>
+</div>
+<script>
+    $(function () {
+        $("body nav.zqui-bar a").eq(3).addClass("active");
+
+        $.views.converters({
+            toIndex: function (x) {
+                console.log(x);
+                return (page.currentIndex - 1) * page.set.pageSize + x;
+            }
+        });
+
+        var $listBody = $("#listBody");
+        $listBody.on("sail.nodata", function () {
+            $listBody.html("暂无数据");
+        });
+
+        var api = new Sail.ApiHelper("Wechatsenses");
+
+
+        $listBody.on("sail.nodata", function () {
+            $listBody.html("暂无数据");
+        });
+
+
+        var page = new WaterFall({
+            api: api.GetApi("ranking"),
+            left: $listBody,
+            right: $listBody,
+            getPostKey: function () {
+                return {
+                    countyId: $(".counties .active").data("id"),
+                    key: $("input[name=key]").val()
+                };
+
+            }
+        });
+        $(".counties").on("click touchend", "li", function () {
+            var $this = $(this);
+            if ($this.hasClass("active")) return;
+
+            $(".counties li.active").removeClass("active");
+            $this.addClass("active");
+            page.Query(1);
+        });
+
+        $(".counties li:eq(0)").trigger("click");
+    })
+</script>

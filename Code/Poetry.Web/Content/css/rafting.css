@@ -1,0 +1,472 @@
+﻿
+/*首页数据面板*/
+.title-img {
+    text-align: center;
+    padding-top: 0rem;
+}
+
+    .title-img img {
+        width: 90%;
+    }
+
+.panel-data {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: .75rem .25rem;
+}
+
+    .panel-data .item-data {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        text-align: center;
+        margin: .25rem;
+        padding: .25rem;
+        border-radius: .3rem;
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+        .panel-data .item-data p {
+            color: #fff;
+            margin: 0;
+            font-size: .6rem;
+        }
+
+.zqui-article {
+    padding: 0 .75rem;
+}
+.zqui-article p{
+    text-indent:1.4rem;
+}
+.qr {
+    text-align: center;
+    padding: .75rem;
+}
+
+    .qr img {
+        width: 50%;
+    }
+
+    .qr p {
+        color: #fff;
+        padding-top: .5rem;
+    }
+/*banner*/
+.bg-index {
+    background: url(../images/bg7.jpg) repeat-x center center;
+    background-size: 100% 100%;
+}
+
+.bannersub {
+    width: 100%;
+    height: 2rem;
+    background: url("../images/bannersub.jpg") no-repeat;
+    background-size: 100% 100%;
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+    text-indent: -10000px;
+    overflow: hidden;
+}
+
+.zqui-table-view-cell {
+    width: 100%;
+}
+/*棕色*/
+.text-brown {
+    color: #a94442 !important;
+}
+
+.zqui-article.text-brown h4 {
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.zqui-article.text-brown p {
+    line-height: 1.2rem;
+    color: #a94442 !important;
+}
+/*白色*/
+.text-white {
+    color: white !important;
+}
+
+.zqui-article.text-white h4 {
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.zqui-article.text-white p {
+    line-height: 1.2rem;
+    color: white !important;
+}
+
+h5 {
+    font-size: .6rem;
+    color: #303e49;
+    margin: 0;
+    line-height: 1.2rem;
+    font-weight: 600;
+}
+
+.zqui-filter {
+    top: 4rem !important;
+}
+
+.zqui-tab-content {
+    padding-top: 4.5rem;
+}
+
+.zqui-bar-tab .zqui-tab-item.active {
+    color: #d9534f;
+}
+/*提示*/
+.tooltips {
+    line-height: 1.8rem;
+    text-align: center;
+    background-color: rgba(255, 242, 183, 0.95);
+    color: #303e49;
+}
+/*列表*/
+.list-rafting {
+    background: none;
+}
+
+    .list-rafting .zqui-table-view-cell:after {
+        height: 0;
+    }
+
+    .list-rafting .zqui-table-view-cell {
+        background: #fff;
+        padding: 0;
+        margin-bottom: .75rem;
+    }
+
+    .list-rafting li a {
+        margin: 0 !important;
+        padding: .5rem .75rem .5rem .75rem !important;
+    }
+
+    .list-rafting li .rafting-head {
+        margin: 0 !important;
+    }
+
+    .list-rafting li .zqui-article {
+        margin: 0 !important;
+        padding: 0;
+    }
+
+        .list-rafting li .zqui-article section {
+            margin: 0;
+        }
+
+    .list-rafting .rafting-img {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+        .list-rafting .rafting-img .img {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-radius: 0;
+            border: 1px solid #ccc;
+            width: 3.25rem;
+            height: 3.25rem;
+            margin-left: .5rem;
+        }
+
+            .list-rafting .rafting-img .img:first-child {
+                margin: 0;
+            }
+
+    .list-rafting .detial {
+        text-align: center;
+        border-top: 1px solid #F1F1F1;
+    }
+
+        .list-rafting .detial .item {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            padding: .25rem !important;
+            border-left: 1px solid #F1F1F1;
+        }
+
+            .list-rafting .detial .item:first-child {
+                border: none;
+            }
+
+/*底部按钮*/
+.foot-icon .zqui-tab-item {
+    line-height: 1.8rem;
+}
+
+    .foot-icon .zqui-tab-item .icon {
+        font-size: 1.2rem;
+    }
+
+    .foot-icon .zqui-tab-item.icon-bg .icon {
+        top: .3rem;
+        font-size: 2rem;
+        color: #c01920;
+    }
+/*个人中心*/
+.zqui-profile {
+    width: 100%;
+    padding-top: .75rem;
+    background: url(../images/bg6.jpg) no-repeat;
+    background-size: 100% auto;
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.zqui-profile-userpic {
+    width: 100%;
+    text-align: center;
+}
+
+    .zqui-profile-userpic img {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        line-height: 4rem;
+    }
+
+.zqui-profile-usertitle {
+    width: 100%;
+    margin: .5rem 0;
+    text-align: center;
+}
+
+    .zqui-profile-usertitle p {
+        line-height: 1.2rem;
+        margin: 0;
+        color: #fff;
+    }
+
+.zqui-profile-userbuttons {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: #fff;
+}
+
+.zqui-profile-userbtn {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    color: #999;
+    line-height: 1.8rem;
+    background: none;
+    text-align: center;
+}
+
+    .zqui-profile-userbtn.active {
+        color: #c01920;
+        border-bottom: 1px solid #c01920;
+    }
+
+.zqui-profile + .zqui-tab-content {
+    padding-top: 0 !important;
+}
+/*详情*/
+.list-comment .zqui-table-view-cell:after {
+    left: 0;
+}
+
+.list-comment .zqui-article {
+    padding: 0;
+}
+
+    .list-comment .zqui-article section {
+        margin: 0;
+    }
+
+.zqui-panel-card h5 {
+    font-size: .7rem;
+}
+
+.zqui-panel-card .panel-foot {
+    color: #8c8c8c;
+}
+
+.panel-title .zqui-media-object {
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    border-radius: 50%;
+}
+
+    .panel-title .zqui-media-object.zqui-pull-left {
+        margin-right: .5rem;
+    }
+
+.panel-title .zqui-media-body {
+    overflow: hidden;
+}
+
+.panel-title p {
+    font-size: 0.6rem;
+    color: #8f8f94;
+    font-weight: normal;
+    margin: 0;
+}
+/*删除*/
+
+.action .icon {
+    font-size: .7rem !;
+    margin: 0 !important;
+}
+
+.text-danger .icon {
+    color: #d9534f !important;
+}
+/*摇一摇*/
+.bg-shake {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('../images/shake.jpg');
+}
+
+.shakeheader {
+    padding: 1rem 2rem 0 2rem;
+}
+
+.shakebody {
+    display: block;
+    padding: 1rem 2rem;
+}
+
+.shakeheader img {
+    width: 100%;
+    height: auto;
+}
+
+.shakebody img {
+    width: 100%;
+    height: auto;
+}
+
+.shakefooter {
+    text-align: center;
+}
+
+    .shakefooter p {
+        text-align: center;
+        padding: 0 .5rem;
+        color: #fff;
+    }
+
+    .shakefooter span {
+        font-size: 1rem;
+        margin: 0 .25rem;
+    }
+/*摇一摇*/
+.prize-result {
+    text-align: center;
+    padding: 10% 10% 0 10% !important;
+}
+
+    .prize-result p {
+        margin-top: .5rem;
+    }
+
+    .prize-result img {
+        width: 100%;
+        margin: auto;
+    }
+/*排行*/
+.list-ranking .zqui-table-view-cell {
+    padding: 0;
+}
+
+    .list-ranking .zqui-table-view-cell:after {
+        left: 0;
+    }
+
+    .list-ranking .zqui-table-view-cell .zqui-table-item {
+        display: table !important;
+        padding: .55rem .75rem;
+        margin: 0;
+    }
+/*我的奖品*/
+.prize .zqui-media-object {
+    border-radius: 0;
+}
+/*滚动tab*/
+.zqui-tab-wrapper .zqui-tab-scroll {
+    height: 2rem;
+}
+
+    .zqui-tab-wrapper .zqui-tab-scroll li {
+        text-align: center;
+        padding: .2rem;
+    }
+    .zqui-tab-wrapper .zqui-tab-scroll li.active p {
+        color:#c01920;
+    }
+        .zqui-tab-wrapper .zqui-tab-scroll li p {
+            font-size: .6rem;
+            line-height: .8rem;
+            padding: 0;
+            margin: 0;
+        }
+
+.zqui-tab-content {
+    padding-top: 2rem !important;
+}
+
+.zqui-search-btn .zqui-icon-search {
+    background: #c01920;
+}
+/*图片图标*/
+.fa {margin-bottom:-.5rem;
+    display:inline-block;
+    width:32px;
+    height:32px;
+    background-image: url(../images/icon.png);
+    background-repeat: no-repeat;
+    -webkit-background-size: 32px auto;
+    background-size: 32px auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+    .fa.fa-sup {
+        background-position: 50% 0;
+    }
+
+    .fa.fa-lft {
+            background-position: 50% -37px;
+    }
+
+    .fa.fa-cheer {
+            background-position: 50% -69px;
+    }

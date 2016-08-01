@@ -12,12 +12,9 @@
     <script type="text/x-jsrender" id="listTmpl">
         <tr>
             <td>
-                <a class="btnEdit">
-                    {{>CreaterName}}
-                </a>
+                {{>CreaterName}}
             </td>
             <td>{{>Content}}</td>
-
             <td>{{ToDateTime:CreateTime}}</td>
             <td>
                 {{if IsChecked}}
@@ -41,7 +38,7 @@
             var tool = new Sail.RazorPage("", "Comment", "Id");
 
             tool.CreatePage({
-                titles: ["评论人", "评论内容", "评论时间","状态", "操作"],
+                titles: ["评论人", "评论内容", "评论时间", "状态", "操作"],
                 titleWidth: [0, 0, 0, 120],
             });
             tool.Page.Query();
@@ -79,13 +76,13 @@
                     <i class="fa fa-search"></i>
                     过滤
                 </button>
-                <button id="btnReset" class="btn btn-secondary">清除条件</button>
+                <button class="btnReset btn btn-secondary">清除条件</button>
             </div>
 
 
         </div>
 
-</text>)
+</text>, false)
 
 @Helper.PageDetail()
 

@@ -1,0 +1,2200 @@
+﻿## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /SELECT  sys.schemas.name AS schemas  ,t.name
+## 2016-07-30 02:48:06 |					FROM    sys.objects t 
+## 2016-07-30 02:48:06 |					INNER JOIN sys.schemas ON t.schema_id = sys.schemas.schema_id
+## 2016-07-30 02:48:06 \					where t.type='u'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_Prize' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_UserPrize' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_SensesComment' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_Senses' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_Senses
+## 2016-07-30 02:48:06 | Alter column NewsDate datetime null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_Senses
+## 2016-07-30 02:48:06 | Alter column Partymember text null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_Senses
+## 2016-07-30 02:48:06 | Alter column SensesCounty int null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_ReaderLike' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_ComprehensionParam' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_NewsComment' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_UserGroup' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_UserGroup
+## 2016-07-30 02:48:06 | ADD  County int null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_UserGroup
+## 2016-07-30 02:48:06 | Alter column C_Group int null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_UserGroup
+## 2016-07-30 02:48:06 | Alter column UserId text null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_Admin' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_Admin
+## 2016-07-30 02:48:06 | Alter column Type int null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_Admin
+## 2016-07-30 02:48:06 | Alter column C_Group int null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_Admin
+## 2016-07-30 02:48:06 | Alter column WxOpenId nvarchar(200) null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_Admin
+## 2016-07-30 02:48:06 | Alter column WxName nvarchar(50) null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_Admin
+## 2016-07-30 02:48:06 | Alter column OrgCounts int null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_Admin
+## 2016-07-30 02:48:06 | Alter column ApplyOrgId uniqueidentifier null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_Admin
+## 2016-07-30 02:48:06 | Alter column IsChecked bit null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_County' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /alter table T_County
+## 2016-07-30 02:48:06 | Alter column Size decimal(14,2) null  
+## 2016-07-30 02:48:06 \ 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_Group' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_News' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_NewsType' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_Param' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /select a.name,
+## 2016-07-30 02:48:06 |						c.is_primary_key ,
+## 2016-07-30 02:48:06 |						a.is_Identity ,
+## 2016-07-30 02:48:06 |						a.is_nullable ,
+## 2016-07-30 02:48:06 |						t.name as type,
+## 2016-07-30 02:48:06 |						COLUMNPROPERTY(a.object_id,a.name,'PRECISION') as length,
+## 2016-07-30 02:48:06 |						isnull(COLUMNPROPERTY(a.object_id,a.name,'Scale'),0) as Scale,
+## 2016-07-30 02:48:06 |						e.name as schemaName,
+## 2016-07-30 02:48:06 |						d.name as tablename
+## 2016-07-30 02:48:06 |						from sys.columns a 
+## 2016-07-30 02:48:06 |						LEFT join sys.index_columns b on a.object_id=b.object_id and a.column_id=b.column_id
+## 2016-07-30 02:48:06 |						LEFT join sys.indexes c on a.object_id=c.object_id
+## 2016-07-30 02:48:06 |						LEFT join sys.types t on a.user_type_id =t.user_type_id   
+## 2016-07-30 02:48:06 |						LEFT join sys.objects d on a.object_id = d.object_id  and d.type='U' and  d.name<>'dtproperties'  
+## 2016-07-30 02:48:06 |						LEFT join Sys.schemas e on d.schema_id = e.schema_id
+## 2016-07-30 02:48:06 \						where d.name = 'T_UserLike' and e.name = 'dbo'
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06  select count(1) from T_County as t 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06  select count(1) from T_Admin as t 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06  select count(1) from T_Param as t 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06  select count(1) from T_ComprehensionParam as t 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06  select count(1) from T_Prize as t 
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06  参数0：00000000-0000-0000-0000-000000000000
+## 2016-07-30 02:48:06  select t.* from T_ComprehensionParam t  where t.ParamId <> @p0
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06  参数0：00000000-0000-0000-0000-000000000000
+## 2016-07-30 02:48:06  select t.* from T_Param t  where t.ParamId <> @p0
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:06  /***********记录sql语句********/
+## 2016-07-30 02:48:06 /
+## 2016-07-30 02:48:06 |select COUNT(1) from T_Senses where IsPublish=1
+## 2016-07-30 02:48:06 |UNION ALL
+## 2016-07-30 02:48:06 |select sum( Views) from T_Senses  where IsPublish =1
+## 2016-07-30 02:48:06 |UNION ALL
+## 2016-07-30 02:48:06 |select count(1) from T_UserPrize
+## 2016-07-30 02:48:06 |UNION ALL
+## 2016-07-30 02:48:06 |select sum( Liked) from T_Senses  where IsPublish =1
+## 2016-07-30 02:48:06 |
+## 2016-07-30 02:48:06 \
+## 2016-07-30 02:48:06  /********************************/
+## 2016-07-30 02:48:48  /***********记录sql语句********/
+## 2016-07-30 02:48:48 /select u.County,count(1) 
+## 2016-07-30 02:48:48 |from T_Senses s left JOIN T_Admin u on s.Creater = u.UserId
+## 2016-07-30 02:48:48 \GROUP BY u.County
+## 2016-07-30 02:48:48  /********************************/
+## 2016-07-30 02:48:48  /***********记录sql语句********/
+## 2016-07-30 02:48:48  select t.* from T_County t 
+## 2016-07-30 02:48:48  /********************************/
+## 2016-07-30 02:48:49  /***********记录sql语句********/
+## 2016-07-30 02:48:49  参数0：True
+## 2016-07-30 02:48:49 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0)  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:48:49 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:48:49  /********************************/
+## 2016-07-30 02:48:49  /***********记录sql语句********/
+## 2016-07-30 02:48:49  参数0：2
+## 2016-07-30 02:48:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:48:49  /********************************/
+## 2016-07-30 02:48:49  /***********记录sql语句********/
+## 2016-07-30 02:48:49  参数0：2
+## 2016-07-30 02:48:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:48:49  /********************************/
+## 2016-07-30 02:48:49  /***********记录sql语句********/
+## 2016-07-30 02:48:49  参数0：9
+## 2016-07-30 02:48:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:48:49  /********************************/
+## 2016-07-30 02:48:49  /***********记录sql语句********/
+## 2016-07-30 02:48:49  参数0：9
+## 2016-07-30 02:48:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:48:49  /********************************/
+## 2016-07-30 02:48:49  /***********记录sql语句********/
+## 2016-07-30 02:48:49  参数0：True
+## 2016-07-30 02:48:49  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0
+## 2016-07-30 02:48:49  /********************************/
+## 2016-07-30 02:48:50  /***********记录sql语句********/
+## 2016-07-30 02:48:50 /select u.County,count(1) 
+## 2016-07-30 02:48:50 |from T_Senses s left JOIN T_Admin u on s.Creater = u.UserId
+## 2016-07-30 02:48:50 \GROUP BY u.County
+## 2016-07-30 02:48:50  /********************************/
+## 2016-07-30 02:48:50  /***********记录sql语句********/
+## 2016-07-30 02:48:50  select t.* from T_County t 
+## 2016-07-30 02:48:50  /********************************/
+## 2016-07-30 02:48:50  /***********记录sql语句********/
+## 2016-07-30 02:48:50  参数0：True
+## 2016-07-30 02:48:50  参数1：True
+## 2016-07-30 02:48:50 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and t.IsStick = @p1)  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:48:50 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:48:50  /********************************/
+## 2016-07-30 02:48:50  /***********记录sql语句********/
+## 2016-07-30 02:48:50  参数0：True
+## 2016-07-30 02:48:50  参数1：True
+## 2016-07-30 02:48:50  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and t.IsStick = @p1
+## 2016-07-30 02:48:50  /********************************/
+## 2016-07-30 02:48:51  /***********记录sql语句********/
+## 2016-07-30 02:48:51 /select u.County,sum(Liked) 
+## 2016-07-30 02:48:51 |from T_Senses s left JOIN T_Admin u on s.Creater = u.UserId
+## 2016-07-30 02:48:51 \GROUP BY u.County
+## 2016-07-30 02:48:51  /********************************/
+## 2016-07-30 02:48:51  /***********记录sql语句********/
+## 2016-07-30 02:48:51  select t.* from T_County t 
+## 2016-07-30 02:48:51  /********************************/
+## 2016-07-30 02:48:51  /***********记录sql语句********/
+## 2016-07-30 02:48:51  参数0：True
+## 2016-07-30 02:48:51  参数1：True
+## 2016-07-30 02:48:51 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsChecked = @p0 and t.IsPublish = @p1)  select * from (select ROW_NUMBER()  Over( order by t.Liked desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:48:51 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:48:51  /********************************/
+## 2016-07-30 02:48:51  /***********记录sql语句********/
+## 2016-07-30 02:48:51  参数0：2
+## 2016-07-30 02:48:51  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:48:51  /********************************/
+## 2016-07-30 02:48:51  /***********记录sql语句********/
+## 2016-07-30 02:48:51  参数0：2
+## 2016-07-30 02:48:51  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:48:51  /********************************/
+## 2016-07-30 02:48:51  /***********记录sql语句********/
+## 2016-07-30 02:48:51  参数0：9
+## 2016-07-30 02:48:51  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:48:51  /********************************/
+## 2016-07-30 02:48:51  /***********记录sql语句********/
+## 2016-07-30 02:48:51  参数0：9
+## 2016-07-30 02:48:51  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:48:51  /********************************/
+## 2016-07-30 02:48:51  /***********记录sql语句********/
+## 2016-07-30 02:48:51  参数0：True
+## 2016-07-30 02:48:51  参数1：True
+## 2016-07-30 02:48:51  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsChecked = @p0 and t.IsPublish = @p1
+## 2016-07-30 02:48:51  /********************************/
+## 2016-07-30 02:49:07  /***********记录sql语句********/
+## 2016-07-30 02:49:07  参数0：15056582733
+## 2016-07-30 02:49:07  select t.*,County.Id as County_Id,County.Name as County_Name,County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId = @p0
+## 2016-07-30 02:49:07  /********************************/
+## 2016-07-30 02:49:14  /***********记录sql语句********/
+## 2016-07-30 02:49:14  参数0：15056582733
+## 2016-07-30 02:49:14  select t.*,County.Id as County_Id,County.Name as County_Name,County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId = @p0
+## 2016-07-30 02:49:14  /********************************/
+## 2016-07-30 02:49:29  /***********记录sql语句********/
+## 2016-07-30 02:49:29  参数0：11111111112
+## 2016-07-30 02:49:29  select t.*,County.Id as County_Id,County.Name as County_Name,County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId = @p0
+## 2016-07-30 02:49:29  /********************************/
+## 2016-07-30 02:49:29  /***********记录sql语句********/
+## 2016-07-30 02:49:29 /
+## 2016-07-30 02:49:29 |select COUNT(1) from T_Senses where IsPublish=1
+## 2016-07-30 02:49:29 |UNION ALL
+## 2016-07-30 02:49:29 |select sum( Views) from T_Senses  where IsPublish =1
+## 2016-07-30 02:49:29 |UNION ALL
+## 2016-07-30 02:49:29 |select count(1) from T_UserPrize
+## 2016-07-30 02:49:29 |UNION ALL
+## 2016-07-30 02:49:29 |select sum( Liked) from T_Senses  where IsPublish =1
+## 2016-07-30 02:49:29 |
+## 2016-07-30 02:49:29 \
+## 2016-07-30 02:49:29  /********************************/
+## 2016-07-30 02:49:31  /***********记录sql语句********/
+## 2016-07-30 02:49:31  参数0：fcff8f33-526b-4791-a928-51a315ae24e1
+## 2016-07-30 02:49:31  参数1：1
+## 2016-07-30 02:49:31  select t.*,UserRole.ProjectType as UserRole_ProjectType,UserRole.RoleId as UserRole_RoleId,UserRole.RoleName as UserRole_RoleName,UserRole.Memo as UserRole_Memo,UserRole.Powers as UserRole_Powers,UserRole.CreateTime as UserRole_CreateTime,UserRole.LastUpdateTime as UserRole_LastUpdateTime,UserRole.LastAdminId as UserRole_LastAdminId,UserRole.IsDeleted as UserRole_IsDeleted,Admin.UserId as Admin_UserId,Admin.LoginId as Admin_LoginId,Admin.UserName as Admin_UserName,Admin.Password as Admin_Password,Admin.MobileOperator as Admin_MobileOperator,Admin.County as Admin_County,Admin.Memo as Admin_Memo,Admin.Phone as Admin_Phone,Admin.Icon as Admin_Icon,Admin.OrgName as Admin_OrgName,Admin.CreateTime as Admin_CreateTime,County.Id as County_Id,County.Name as County_Name,County.OrderByNo as County_OrderByNo from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id   where Admin.UserId = @p0 and t.Type = @p1
+## 2016-07-30 02:49:31  /********************************/
+## 2016-07-30 02:49:31  /***********记录sql语句********/
+## 2016-07-30 02:49:31 /select u.County,count(1) 
+## 2016-07-30 02:49:31 |from T_Senses s left JOIN T_Admin u on s.Creater = u.UserId
+## 2016-07-30 02:49:31 \GROUP BY u.County
+## 2016-07-30 02:49:31  /********************************/
+## 2016-07-30 02:49:31  /***********记录sql语句********/
+## 2016-07-30 02:49:31  select t.* from T_County t 
+## 2016-07-30 02:49:31  /********************************/
+## 2016-07-30 02:49:31  /***********记录sql语句********/
+## 2016-07-30 02:49:31  参数0：True
+## 2016-07-30 02:49:31 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0)  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:31 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:49:31  /********************************/
+## 2016-07-30 02:49:31  /***********记录sql语句********/
+## 2016-07-30 02:49:31  参数0：2
+## 2016-07-30 02:49:31  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:31  /********************************/
+## 2016-07-30 02:49:31  /***********记录sql语句********/
+## 2016-07-30 02:49:31  参数0：2
+## 2016-07-30 02:49:31  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:31  /********************************/
+## 2016-07-30 02:49:31  /***********记录sql语句********/
+## 2016-07-30 02:49:31  参数0：9
+## 2016-07-30 02:49:31  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:31  /********************************/
+## 2016-07-30 02:49:31  /***********记录sql语句********/
+## 2016-07-30 02:49:31  参数0：9
+## 2016-07-30 02:49:31  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:31  /********************************/
+## 2016-07-30 02:49:31  /***********记录sql语句********/
+## 2016-07-30 02:49:31  参数0：True
+## 2016-07-30 02:49:31  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0
+## 2016-07-30 02:49:31  /********************************/
+## 2016-07-30 02:49:32  /***********记录sql语句********/
+## 2016-07-30 02:49:32 /select u.County,count(1) 
+## 2016-07-30 02:49:32 |from T_Senses s left JOIN T_Admin u on s.Creater = u.UserId
+## 2016-07-30 02:49:32 \GROUP BY u.County
+## 2016-07-30 02:49:32  /********************************/
+## 2016-07-30 02:49:32  /***********记录sql语句********/
+## 2016-07-30 02:49:32  select t.* from T_County t 
+## 2016-07-30 02:49:32  /********************************/
+## 2016-07-30 02:49:32  /***********记录sql语句********/
+## 2016-07-30 02:49:32  参数0：True
+## 2016-07-30 02:49:32  参数1：True
+## 2016-07-30 02:49:32 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and t.IsStick = @p1)  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:32 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:49:32  /********************************/
+## 2016-07-30 02:49:32  /***********记录sql语句********/
+## 2016-07-30 02:49:32  参数0：True
+## 2016-07-30 02:49:32  参数1：True
+## 2016-07-30 02:49:32  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and t.IsStick = @p1
+## 2016-07-30 02:49:32  /********************************/
+## 2016-07-30 02:49:33  /***********记录sql语句********/
+## 2016-07-30 02:49:33 /select u.County,sum(Liked) 
+## 2016-07-30 02:49:33 |from T_Senses s left JOIN T_Admin u on s.Creater = u.UserId
+## 2016-07-30 02:49:33 \GROUP BY u.County
+## 2016-07-30 02:49:33  /********************************/
+## 2016-07-30 02:49:33  /***********记录sql语句********/
+## 2016-07-30 02:49:33  select t.* from T_County t 
+## 2016-07-30 02:49:33  /********************************/
+## 2016-07-30 02:49:34  /***********记录sql语句********/
+## 2016-07-30 02:49:34  参数0：True
+## 2016-07-30 02:49:34  参数1：True
+## 2016-07-30 02:49:34 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsChecked = @p0 and t.IsPublish = @p1)  select * from (select ROW_NUMBER()  Over( order by t.Liked desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:34 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:49:34  /********************************/
+## 2016-07-30 02:49:34  /***********记录sql语句********/
+## 2016-07-30 02:49:34  参数0：2
+## 2016-07-30 02:49:34  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:34  /********************************/
+## 2016-07-30 02:49:34  /***********记录sql语句********/
+## 2016-07-30 02:49:34  参数0：2
+## 2016-07-30 02:49:34  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:34  /********************************/
+## 2016-07-30 02:49:34  /***********记录sql语句********/
+## 2016-07-30 02:49:34  参数0：9
+## 2016-07-30 02:49:34  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:34  /********************************/
+## 2016-07-30 02:49:34  /***********记录sql语句********/
+## 2016-07-30 02:49:34  参数0：9
+## 2016-07-30 02:49:34  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:34  /********************************/
+## 2016-07-30 02:49:34  /***********记录sql语句********/
+## 2016-07-30 02:49:34  参数0：True
+## 2016-07-30 02:49:34  参数1：True
+## 2016-07-30 02:49:34  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsChecked = @p0 and t.IsPublish = @p1
+## 2016-07-30 02:49:34  /********************************/
+## 2016-07-30 02:49:35  /***********记录sql语句********/
+## 2016-07-30 02:49:35  参数0：fcff8f33-526b-4791-a928-51a315ae24e1
+## 2016-07-30 02:49:35 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where Creater.UserId = @p0)  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:35 \                    where rnuserdpage between 1 and 20 
+## 2016-07-30 02:49:35  /********************************/
+## 2016-07-30 02:49:35  /***********记录sql语句********/
+## 2016-07-30 02:49:35  参数0：2
+## 2016-07-30 02:49:35  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:35  /********************************/
+## 2016-07-30 02:49:35  /***********记录sql语句********/
+## 2016-07-30 02:49:35  参数0：2
+## 2016-07-30 02:49:35  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:35  /********************************/
+## 2016-07-30 02:49:35  /***********记录sql语句********/
+## 2016-07-30 02:49:35  参数0：fcff8f33-526b-4791-a928-51a315ae24e1
+## 2016-07-30 02:49:35  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where Creater.UserId = @p0
+## 2016-07-30 02:49:35  /********************************/
+## 2016-07-30 02:49:38  /***********记录sql语句********/
+## 2016-07-30 02:49:38  参数0：fcff8f33-526b-4791-a928-51a315ae24e1
+## 2016-07-30 02:49:38  select count(1) from T_UserPrize as t  where t.PrizeUser = @p0
+## 2016-07-30 02:49:38  /********************************/
+## 2016-07-30 02:49:38  /***********记录sql语句********/
+## 2016-07-30 02:49:38  select count(1) from T_UserPrize as t 
+## 2016-07-30 02:49:38  /********************************/
+## 2016-07-30 02:49:39  /***********记录sql语句********/
+## 2016-07-30 02:49:39 /select u.County,sum(Liked) 
+## 2016-07-30 02:49:39 |from T_Senses s left JOIN T_Admin u on s.Creater = u.UserId
+## 2016-07-30 02:49:39 \GROUP BY u.County
+## 2016-07-30 02:49:39  /********************************/
+## 2016-07-30 02:49:39  /***********记录sql语句********/
+## 2016-07-30 02:49:39  select t.* from T_County t 
+## 2016-07-30 02:49:39  /********************************/
+## 2016-07-30 02:49:39  /***********记录sql语句********/
+## 2016-07-30 02:49:39  参数0：True
+## 2016-07-30 02:49:39  参数1：True
+## 2016-07-30 02:49:39 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsChecked = @p0 and t.IsPublish = @p1)  select * from (select ROW_NUMBER()  Over( order by t.Liked desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:39 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:49:39  /********************************/
+## 2016-07-30 02:49:39  /***********记录sql语句********/
+## 2016-07-30 02:49:39  参数0：2
+## 2016-07-30 02:49:39  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:39  /********************************/
+## 2016-07-30 02:49:39  /***********记录sql语句********/
+## 2016-07-30 02:49:39  参数0：2
+## 2016-07-30 02:49:39  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:39  /********************************/
+## 2016-07-30 02:49:39  /***********记录sql语句********/
+## 2016-07-30 02:49:39  参数0：9
+## 2016-07-30 02:49:39  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:39  /********************************/
+## 2016-07-30 02:49:39  /***********记录sql语句********/
+## 2016-07-30 02:49:39  参数0：9
+## 2016-07-30 02:49:39  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:39  /********************************/
+## 2016-07-30 02:49:39  /***********记录sql语句********/
+## 2016-07-30 02:49:39  参数0：True
+## 2016-07-30 02:49:39  参数1：True
+## 2016-07-30 02:49:39  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsChecked = @p0 and t.IsPublish = @p1
+## 2016-07-30 02:49:39  /********************************/
+## 2016-07-30 02:49:40  /***********记录sql语句********/
+## 2016-07-30 02:49:40  参数0：fcff8f33-526b-4791-a928-51a315ae24e1
+## 2016-07-30 02:49:40 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where Creater.UserId = @p0)  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:40 \                    where rnuserdpage between 1 and 20 
+## 2016-07-30 02:49:40  /********************************/
+## 2016-07-30 02:49:40  /***********记录sql语句********/
+## 2016-07-30 02:49:40  参数0：2
+## 2016-07-30 02:49:40  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:40  /********************************/
+## 2016-07-30 02:49:40  /***********记录sql语句********/
+## 2016-07-30 02:49:40  参数0：2
+## 2016-07-30 02:49:40  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:40  /********************************/
+## 2016-07-30 02:49:40  /***********记录sql语句********/
+## 2016-07-30 02:49:40  参数0：fcff8f33-526b-4791-a928-51a315ae24e1
+## 2016-07-30 02:49:40  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where Creater.UserId = @p0
+## 2016-07-30 02:49:40  /********************************/
+## 2016-07-30 02:49:41  /***********记录sql语句********/
+## 2016-07-30 02:49:41  参数0：fcff8f33-526b-4791-a928-51a315ae24e1
+## 2016-07-30 02:49:41  select t.*,PrizeUser.UserId as PrizeUser_UserId,PrizeUser.LoginId as PrizeUser_LoginId,PrizeUser.UserName as PrizeUser_UserName,PrizeUser.Password as PrizeUser_Password,PrizeUser.MobileOperator as PrizeUser_MobileOperator,PrizeUser.County as PrizeUser_County,PrizeUser.Memo as PrizeUser_Memo,PrizeUser.Phone as PrizeUser_Phone,PrizeUser.Icon as PrizeUser_Icon,PrizeUser.OrgName as PrizeUser_OrgName,PrizeUser.CreateTime as PrizeUser_CreateTime,Prize.Id as Prize_Id,Prize.CreateTime as Prize_CreateTime,Prize.ProjectType as Prize_ProjectType,Prize.Operator as Prize_Operator,Prize.Description as Prize_Description,Prize.Title as Prize_Title,Prize.Probability as Prize_Probability,Prize.TotalStock as Prize_TotalStock,Prize.MaxNumber as Prize_MaxNumber,Prize.CurrentStock as Prize_CurrentStock from T_UserPrize t left join T_Admin PrizeUser on t.PrizeUser = PrizeUser.UserId  left join T_Prize Prize on t.Prize = Prize.Id   where PrizeUser.UserId = @p0 order by t.CreateTime desc 
+## 2016-07-30 02:49:41  /********************************/
+## 2016-07-30 02:49:42  /***********记录sql语句********/
+## 2016-07-30 02:49:42  参数0：fcff8f33-526b-4791-a928-51a315ae24e1
+## 2016-07-30 02:49:42 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where Creater.UserId = @p0)  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:42 \                    where rnuserdpage between 1 and 20 
+## 2016-07-30 02:49:42  /********************************/
+## 2016-07-30 02:49:42  /***********记录sql语句********/
+## 2016-07-30 02:49:42  参数0：2
+## 2016-07-30 02:49:42  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:42  /********************************/
+## 2016-07-30 02:49:42  /***********记录sql语句********/
+## 2016-07-30 02:49:42  参数0：2
+## 2016-07-30 02:49:42  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:42  /********************************/
+## 2016-07-30 02:49:42  /***********记录sql语句********/
+## 2016-07-30 02:49:42  参数0：fcff8f33-526b-4791-a928-51a315ae24e1
+## 2016-07-30 02:49:42  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where Creater.UserId = @p0
+## 2016-07-30 02:49:42  /********************************/
+## 2016-07-30 02:49:45  /***********记录sql语句********/
+## 2016-07-30 02:49:45 /select u.County,sum(Liked) 
+## 2016-07-30 02:49:45 |from T_Senses s left JOIN T_Admin u on s.Creater = u.UserId
+## 2016-07-30 02:49:45 \GROUP BY u.County
+## 2016-07-30 02:49:45  /********************************/
+## 2016-07-30 02:49:45  /***********记录sql语句********/
+## 2016-07-30 02:49:45  select t.* from T_County t 
+## 2016-07-30 02:49:45  /********************************/
+## 2016-07-30 02:49:45  /***********记录sql语句********/
+## 2016-07-30 02:49:45  参数0：True
+## 2016-07-30 02:49:45  参数1：True
+## 2016-07-30 02:49:45 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsChecked = @p0 and t.IsPublish = @p1)  select * from (select ROW_NUMBER()  Over( order by t.Liked desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:45 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:49:45  /********************************/
+## 2016-07-30 02:49:45  /***********记录sql语句********/
+## 2016-07-30 02:49:45  参数0：2
+## 2016-07-30 02:49:45  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:45  /********************************/
+## 2016-07-30 02:49:45  /***********记录sql语句********/
+## 2016-07-30 02:49:45  参数0：2
+## 2016-07-30 02:49:45  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:45  /********************************/
+## 2016-07-30 02:49:45  /***********记录sql语句********/
+## 2016-07-30 02:49:45  参数0：9
+## 2016-07-30 02:49:46  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:46  /********************************/
+## 2016-07-30 02:49:46  /***********记录sql语句********/
+## 2016-07-30 02:49:46  参数0：9
+## 2016-07-30 02:49:46  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:46  /********************************/
+## 2016-07-30 02:49:46  /***********记录sql语句********/
+## 2016-07-30 02:49:46  参数0：True
+## 2016-07-30 02:49:46  参数1：True
+## 2016-07-30 02:49:46  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsChecked = @p0 and t.IsPublish = @p1
+## 2016-07-30 02:49:46  /********************************/
+## 2016-07-30 02:49:46  /***********记录sql语句********/
+## 2016-07-30 02:49:46 /select u.County,count(1) 
+## 2016-07-30 02:49:46 |from T_Senses s left JOIN T_Admin u on s.Creater = u.UserId
+## 2016-07-30 02:49:46 \GROUP BY u.County
+## 2016-07-30 02:49:46  /********************************/
+## 2016-07-30 02:49:46  /***********记录sql语句********/
+## 2016-07-30 02:49:46  select t.* from T_County t 
+## 2016-07-30 02:49:46  /********************************/
+## 2016-07-30 02:49:46  /***********记录sql语句********/
+## 2016-07-30 02:49:46  参数0：True
+## 2016-07-30 02:49:46  参数1：True
+## 2016-07-30 02:49:46 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and t.IsStick = @p1)  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:46 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:49:46  /********************************/
+## 2016-07-30 02:49:46  /***********记录sql语句********/
+## 2016-07-30 02:49:46  参数0：True
+## 2016-07-30 02:49:46  参数1：True
+## 2016-07-30 02:49:46  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and t.IsStick = @p1
+## 2016-07-30 02:49:46  /********************************/
+## 2016-07-30 02:49:47  /***********记录sql语句********/
+## 2016-07-30 02:49:47  参数0：fcff8f33-526b-4791-a928-51a315ae24e1
+## 2016-07-30 02:49:47  参数1：1
+## 2016-07-30 02:49:47  select t.*,UserRole.ProjectType as UserRole_ProjectType,UserRole.RoleId as UserRole_RoleId,UserRole.RoleName as UserRole_RoleName,UserRole.Memo as UserRole_Memo,UserRole.Powers as UserRole_Powers,UserRole.CreateTime as UserRole_CreateTime,UserRole.LastUpdateTime as UserRole_LastUpdateTime,UserRole.LastAdminId as UserRole_LastAdminId,UserRole.IsDeleted as UserRole_IsDeleted,Admin.UserId as Admin_UserId,Admin.LoginId as Admin_LoginId,Admin.UserName as Admin_UserName,Admin.Password as Admin_Password,Admin.MobileOperator as Admin_MobileOperator,Admin.County as Admin_County,Admin.Memo as Admin_Memo,Admin.Phone as Admin_Phone,Admin.Icon as Admin_Icon,Admin.OrgName as Admin_OrgName,Admin.CreateTime as Admin_CreateTime,County.Id as County_Id,County.Name as County_Name,County.OrderByNo as County_OrderByNo from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id   where Admin.UserId = @p0 and t.Type = @p1
+## 2016-07-30 02:49:47  /********************************/
+## 2016-07-30 02:49:47  /***********记录sql语句********/
+## 2016-07-30 02:49:47 /select u.County,count(1) 
+## 2016-07-30 02:49:47 |from T_Senses s left JOIN T_Admin u on s.Creater = u.UserId
+## 2016-07-30 02:49:47 \GROUP BY u.County
+## 2016-07-30 02:49:47  /********************************/
+## 2016-07-30 02:49:47  /***********记录sql语句********/
+## 2016-07-30 02:49:47  select t.* from T_County t 
+## 2016-07-30 02:49:47  /********************************/
+## 2016-07-30 02:49:47  /***********记录sql语句********/
+## 2016-07-30 02:49:47  参数0：True
+## 2016-07-30 02:49:47 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0)  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:47 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:49:47  /********************************/
+## 2016-07-30 02:49:47  /***********记录sql语句********/
+## 2016-07-30 02:49:47  参数0：2
+## 2016-07-30 02:49:47  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:47  /********************************/
+## 2016-07-30 02:49:47  /***********记录sql语句********/
+## 2016-07-30 02:49:47  参数0：2
+## 2016-07-30 02:49:47  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:47  /********************************/
+## 2016-07-30 02:49:47  /***********记录sql语句********/
+## 2016-07-30 02:49:47  参数0：9
+## 2016-07-30 02:49:47  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:47  /********************************/
+## 2016-07-30 02:49:47  /***********记录sql语句********/
+## 2016-07-30 02:49:47  参数0：9
+## 2016-07-30 02:49:47  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:47  /********************************/
+## 2016-07-30 02:49:47  /***********记录sql语句********/
+## 2016-07-30 02:49:47  参数0：True
+## 2016-07-30 02:49:47  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0
+## 2016-07-30 02:49:47  /********************************/
+## 2016-07-30 02:49:48  /***********记录sql语句********/
+## 2016-07-30 02:49:48 /
+## 2016-07-30 02:49:48 |select COUNT(1) from T_Senses where IsPublish=1
+## 2016-07-30 02:49:48 |UNION ALL
+## 2016-07-30 02:49:48 |select sum( Views) from T_Senses  where IsPublish =1
+## 2016-07-30 02:49:48 |UNION ALL
+## 2016-07-30 02:49:48 |select count(1) from T_UserPrize
+## 2016-07-30 02:49:48 |UNION ALL
+## 2016-07-30 02:49:48 |select sum( Liked) from T_Senses  where IsPublish =1
+## 2016-07-30 02:49:48 |
+## 2016-07-30 02:49:48 \
+## 2016-07-30 02:49:48  /********************************/
+## 2016-07-30 02:49:49  /***********记录sql语句********/
+## 2016-07-30 02:49:49  参数0：fcff8f33-526b-4791-a928-51a315ae24e1
+## 2016-07-30 02:49:49  参数1：1
+## 2016-07-30 02:49:49  select t.*,UserRole.ProjectType as UserRole_ProjectType,UserRole.RoleId as UserRole_RoleId,UserRole.RoleName as UserRole_RoleName,UserRole.Memo as UserRole_Memo,UserRole.Powers as UserRole_Powers,UserRole.CreateTime as UserRole_CreateTime,UserRole.LastUpdateTime as UserRole_LastUpdateTime,UserRole.LastAdminId as UserRole_LastAdminId,UserRole.IsDeleted as UserRole_IsDeleted,Admin.UserId as Admin_UserId,Admin.LoginId as Admin_LoginId,Admin.UserName as Admin_UserName,Admin.Password as Admin_Password,Admin.MobileOperator as Admin_MobileOperator,Admin.County as Admin_County,Admin.Memo as Admin_Memo,Admin.Phone as Admin_Phone,Admin.Icon as Admin_Icon,Admin.OrgName as Admin_OrgName,Admin.CreateTime as Admin_CreateTime,County.Id as County_Id,County.Name as County_Name,County.OrderByNo as County_OrderByNo from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id   where Admin.UserId = @p0 and t.Type = @p1
+## 2016-07-30 02:49:49  /********************************/
+## 2016-07-30 02:49:49  /***********记录sql语句********/
+## 2016-07-30 02:49:49 /select u.County,count(1) 
+## 2016-07-30 02:49:49 |from T_Senses s left JOIN T_Admin u on s.Creater = u.UserId
+## 2016-07-30 02:49:49 \GROUP BY u.County
+## 2016-07-30 02:49:49  /********************************/
+## 2016-07-30 02:49:49  /***********记录sql语句********/
+## 2016-07-30 02:49:49  select t.* from T_County t 
+## 2016-07-30 02:49:49  /********************************/
+## 2016-07-30 02:49:49  /***********记录sql语句********/
+## 2016-07-30 02:49:49  参数0：True
+## 2016-07-30 02:49:49 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0)  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:49 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:49:49  /********************************/
+## 2016-07-30 02:49:49  /***********记录sql语句********/
+## 2016-07-30 02:49:49  参数0：2
+## 2016-07-30 02:49:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:49  /********************************/
+## 2016-07-30 02:49:49  /***********记录sql语句********/
+## 2016-07-30 02:49:49  参数0：2
+## 2016-07-30 02:49:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:49  /********************************/
+## 2016-07-30 02:49:49  /***********记录sql语句********/
+## 2016-07-30 02:49:49  参数0：9
+## 2016-07-30 02:49:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:49  /********************************/
+## 2016-07-30 02:49:49  /***********记录sql语句********/
+## 2016-07-30 02:49:49  参数0：9
+## 2016-07-30 02:49:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:49  /********************************/
+## 2016-07-30 02:49:49  /***********记录sql语句********/
+## 2016-07-30 02:49:49  参数0：True
+## 2016-07-30 02:49:49  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0
+## 2016-07-30 02:49:49  /********************************/
+## 2016-07-30 02:49:55  /***********记录sql语句********/
+## 2016-07-30 02:49:55  参数0：True
+## 2016-07-30 02:49:55  参数1：%d%
+## 2016-07-30 02:49:55  参数2：%d%
+## 2016-07-30 02:49:55 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2)))  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:55 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:49:55  /********************************/
+## 2016-07-30 02:49:55  /***********记录sql语句********/
+## 2016-07-30 02:49:55  参数0：2
+## 2016-07-30 02:49:55  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:55  /********************************/
+## 2016-07-30 02:49:55  /***********记录sql语句********/
+## 2016-07-30 02:49:55  参数0：True
+## 2016-07-30 02:49:55  参数1：%d%
+## 2016-07-30 02:49:55  参数2：%d%
+## 2016-07-30 02:49:55  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2))
+## 2016-07-30 02:49:55  /********************************/
+## 2016-07-30 02:49:58  /***********记录sql语句********/
+## 2016-07-30 02:49:58  参数0：True
+## 2016-07-30 02:49:58 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0)  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:49:58 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:49:58  /********************************/
+## 2016-07-30 02:49:58  /***********记录sql语句********/
+## 2016-07-30 02:49:58  参数0：2
+## 2016-07-30 02:49:58  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:58  /********************************/
+## 2016-07-30 02:49:58  /***********记录sql语句********/
+## 2016-07-30 02:49:58  参数0：2
+## 2016-07-30 02:49:58  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:58  /********************************/
+## 2016-07-30 02:49:58  /***********记录sql语句********/
+## 2016-07-30 02:49:58  参数0：9
+## 2016-07-30 02:49:58  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:58  /********************************/
+## 2016-07-30 02:49:58  /***********记录sql语句********/
+## 2016-07-30 02:49:58  参数0：9
+## 2016-07-30 02:49:58  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:49:58  /********************************/
+## 2016-07-30 02:49:58  /***********记录sql语句********/
+## 2016-07-30 02:49:58  参数0：True
+## 2016-07-30 02:49:58  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0
+## 2016-07-30 02:49:58  /********************************/
+## 2016-07-30 02:50:08  /***********记录sql语句********/
+## 2016-07-30 02:50:08  参数0：True
+## 2016-07-30 02:50:08  参数1：%超级%
+## 2016-07-30 02:50:08  参数2：%超级%
+## 2016-07-30 02:50:08 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2)))  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:50:08 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:50:08  /********************************/
+## 2016-07-30 02:50:08  /***********记录sql语句********/
+## 2016-07-30 02:50:08  参数0：9
+## 2016-07-30 02:50:08  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:50:08  /********************************/
+## 2016-07-30 02:50:08  /***********记录sql语句********/
+## 2016-07-30 02:50:08  参数0：9
+## 2016-07-30 02:50:08  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:50:08  /********************************/
+## 2016-07-30 02:50:08  /***********记录sql语句********/
+## 2016-07-30 02:50:08  参数0：True
+## 2016-07-30 02:50:08  参数1：%超级%
+## 2016-07-30 02:50:08  参数2：%超级%
+## 2016-07-30 02:50:08  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2))
+## 2016-07-30 02:50:08  /********************************/
+## 2016-07-30 02:50:16  /***********记录sql语句********/
+## 2016-07-30 02:50:16  参数0：True
+## 2016-07-30 02:50:16  参数1：%wreewr%
+## 2016-07-30 02:50:16  参数2：%wreewr%
+## 2016-07-30 02:50:16 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2)))  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:50:16 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:50:16  /********************************/
+## 2016-07-30 02:50:16  /***********记录sql语句********/
+## 2016-07-30 02:50:16  参数0：True
+## 2016-07-30 02:50:16  参数1：%wreewr%
+## 2016-07-30 02:50:16  参数2：%wreewr%
+## 2016-07-30 02:50:16  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2))
+## 2016-07-30 02:50:16  /********************************/
+## 2016-07-30 02:50:20  /***********记录sql语句********/
+## 2016-07-30 02:50:20  参数0：True
+## 2016-07-30 02:50:20  参数1：%wreew%
+## 2016-07-30 02:50:20  参数2：%wreew%
+## 2016-07-30 02:50:20 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2)))  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:50:20 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:50:20  /********************************/
+## 2016-07-30 02:50:20  /***********记录sql语句********/
+## 2016-07-30 02:50:20  参数0：True
+## 2016-07-30 02:50:20  参数1：%wreew%
+## 2016-07-30 02:50:20  参数2：%wreew%
+## 2016-07-30 02:50:20  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2))
+## 2016-07-30 02:50:20  /********************************/
+## 2016-07-30 02:50:23  /***********记录sql语句********/
+## 2016-07-30 02:50:23  参数0：True
+## 2016-07-30 02:50:23  参数1：%wree%
+## 2016-07-30 02:50:23  参数2：%wree%
+## 2016-07-30 02:50:23 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2)))  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:50:23 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:50:23  /********************************/
+## 2016-07-30 02:50:23  /***********记录sql语句********/
+## 2016-07-30 02:50:23  参数0：True
+## 2016-07-30 02:50:23  参数1：%wree%
+## 2016-07-30 02:50:23  参数2：%wree%
+## 2016-07-30 02:50:23  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2))
+## 2016-07-30 02:50:23  /********************************/
+## 2016-07-30 02:50:27  /***********记录sql语句********/
+## 2016-07-30 02:50:27  参数0：True
+## 2016-07-30 02:50:27  参数1：%w%
+## 2016-07-30 02:50:27  参数2：%w%
+## 2016-07-30 02:50:27 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2)))  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:50:27 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:50:27  /********************************/
+## 2016-07-30 02:50:27  /***********记录sql语句********/
+## 2016-07-30 02:50:27  参数0：9
+## 2016-07-30 02:50:27  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:50:27  /********************************/
+## 2016-07-30 02:50:27  /***********记录sql语句********/
+## 2016-07-30 02:50:27  参数0：True
+## 2016-07-30 02:50:27  参数1：%w%
+## 2016-07-30 02:50:27  参数2：%w%
+## 2016-07-30 02:50:27  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2))
+## 2016-07-30 02:50:27  /********************************/
+## 2016-07-30 02:50:30  /***********记录sql语句********/
+## 2016-07-30 02:50:30  参数0：True
+## 2016-07-30 02:50:30  参数1：%we%
+## 2016-07-30 02:50:30  参数2：%we%
+## 2016-07-30 02:50:30 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2)))  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:50:30 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:50:30  /********************************/
+## 2016-07-30 02:50:30  /***********记录sql语句********/
+## 2016-07-30 02:50:30  参数0：9
+## 2016-07-30 02:50:30  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:50:30  /********************************/
+## 2016-07-30 02:50:30  /***********记录sql语句********/
+## 2016-07-30 02:50:30  参数0：True
+## 2016-07-30 02:50:30  参数1：%we%
+## 2016-07-30 02:50:30  参数2：%we%
+## 2016-07-30 02:50:30  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2))
+## 2016-07-30 02:50:30  /********************************/
+## 2016-07-30 02:50:34  /***********记录sql语句********/
+## 2016-07-30 02:50:34  参数0：True
+## 2016-07-30 02:50:34  参数1：%wer%
+## 2016-07-30 02:50:34  参数2：%wer%
+## 2016-07-30 02:50:34 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2)))  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:50:34 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:50:34  /********************************/
+## 2016-07-30 02:50:34  /***********记录sql语句********/
+## 2016-07-30 02:50:34  参数0：9
+## 2016-07-30 02:50:34  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:50:34  /********************************/
+## 2016-07-30 02:50:34  /***********记录sql语句********/
+## 2016-07-30 02:50:34  参数0：True
+## 2016-07-30 02:50:34  参数1：%wer%
+## 2016-07-30 02:50:34  参数2：%wer%
+## 2016-07-30 02:50:34  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2))
+## 2016-07-30 02:50:34  /********************************/
+## 2016-07-30 02:50:36  /***********记录sql语句********/
+## 2016-07-30 02:50:36  参数0：True
+## 2016-07-30 02:50:36  参数1：3
+## 2016-07-30 02:50:36  参数2：%wer%
+## 2016-07-30 02:50:36  参数3：%wer%
+## 2016-07-30 02:50:36 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and Creater.County = @p1 and ((t.SensesTitle like @p2) or (Creater.UserName like @p3)))  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:50:36 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:50:36  /********************************/
+## 2016-07-30 02:50:36  /***********记录sql语句********/
+## 2016-07-30 02:50:36  参数0：True
+## 2016-07-30 02:50:36  参数1：3
+## 2016-07-30 02:50:36  参数2：%wer%
+## 2016-07-30 02:50:36  参数3：%wer%
+## 2016-07-30 02:50:36  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and Creater.County = @p1 and ((t.SensesTitle like @p2) or (Creater.UserName like @p3))
+## 2016-07-30 02:50:36  /********************************/
+## 2016-07-30 02:50:38  /***********记录sql语句********/
+## 2016-07-30 02:50:38  参数0：True
+## 2016-07-30 02:50:38  参数1：3
+## 2016-07-30 02:50:38  参数2：%werq%
+## 2016-07-30 02:50:38  参数3：%werq%
+## 2016-07-30 02:50:38 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and Creater.County = @p1 and ((t.SensesTitle like @p2) or (Creater.UserName like @p3)))  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:50:38 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:50:38  /********************************/
+## 2016-07-30 02:50:38  /***********记录sql语句********/
+## 2016-07-30 02:50:38  参数0：True
+## 2016-07-30 02:50:38  参数1：3
+## 2016-07-30 02:50:38  参数2：%werq%
+## 2016-07-30 02:50:38  参数3：%werq%
+## 2016-07-30 02:50:38  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and Creater.County = @p1 and ((t.SensesTitle like @p2) or (Creater.UserName like @p3))
+## 2016-07-30 02:50:38  /********************************/
+## 2016-07-30 02:50:39  /***********记录sql语句********/
+## 2016-07-30 02:50:39  参数0：True
+## 2016-07-30 02:50:39  参数1：%werq%
+## 2016-07-30 02:50:39  参数2：%werq%
+## 2016-07-30 02:50:39 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2)))  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:50:39 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:50:39  /********************************/
+## 2016-07-30 02:50:39  /***********记录sql语句********/
+## 2016-07-30 02:50:39  参数0：9
+## 2016-07-30 02:50:39  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:50:39  /********************************/
+## 2016-07-30 02:50:39  /***********记录sql语句********/
+## 2016-07-30 02:50:39  参数0：True
+## 2016-07-30 02:50:39  参数1：%werq%
+## 2016-07-30 02:50:39  参数2：%werq%
+## 2016-07-30 02:50:39  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2))
+## 2016-07-30 02:50:39  /********************************/
+## 2016-07-30 02:50:39  /***********记录sql语句********/
+## 2016-07-30 02:50:39  参数0：True
+## 2016-07-30 02:50:39  参数1：%werq%
+## 2016-07-30 02:50:39  参数2：%werq%
+## 2016-07-30 02:50:39 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2)))  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:50:39 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:50:39  /********************************/
+## 2016-07-30 02:50:39  /***********记录sql语句********/
+## 2016-07-30 02:50:39  参数0：9
+## 2016-07-30 02:50:39  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:50:39  /********************************/
+## 2016-07-30 02:50:39  /***********记录sql语句********/
+## 2016-07-30 02:50:39  参数0：True
+## 2016-07-30 02:50:39  参数1：%werq%
+## 2016-07-30 02:50:39  参数2：%werq%
+## 2016-07-30 02:50:39  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0 and ((t.SensesTitle like @p1) or (Creater.UserName like @p2))
+## 2016-07-30 02:50:39  /********************************/
+## 2016-07-30 02:50:40  /***********记录sql语句********/
+## 2016-07-30 02:50:40  参数0：True
+## 2016-07-30 02:50:40 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  where t.IsPublish = @p0)  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:50:40 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:50:40  /********************************/
+## 2016-07-30 02:50:40  /***********记录sql语句********/
+## 2016-07-30 02:50:40  参数0：2
+## 2016-07-30 02:50:40  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:50:40  /********************************/
+## 2016-07-30 02:50:40  /***********记录sql语句********/
+## 2016-07-30 02:50:40  参数0：2
+## 2016-07-30 02:50:40  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:50:40  /********************************/
+## 2016-07-30 02:50:40  /***********记录sql语句********/
+## 2016-07-30 02:50:40  参数0：9
+## 2016-07-30 02:50:40  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:50:40  /********************************/
+## 2016-07-30 02:50:40  /***********记录sql语句********/
+## 2016-07-30 02:50:40  参数0：9
+## 2016-07-30 02:50:40  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:50:40  /********************************/
+## 2016-07-30 02:50:40  /***********记录sql语句********/
+## 2016-07-30 02:50:40  参数0：True
+## 2016-07-30 02:50:40  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId   where t.IsPublish = @p0
+## 2016-07-30 02:50:40  /********************************/
+## 2016-07-30 02:50:54  /***********记录sql语句********/
+## 2016-07-30 02:50:54  参数0：admin
+## 2016-07-30 02:50:54  select t.*,County.Id as County_Id,County.Name as County_Name,County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId = @p0
+## 2016-07-30 02:50:54  /********************************/
+## 2016-07-30 02:51:05  /***********记录sql语句********/
+## 2016-07-30 02:51:05  select t.* from T_County t 
+## 2016-07-30 02:51:05  /********************************/
+## 2016-07-30 02:51:05  /***********记录sql语句********/
+## 2016-07-30 02:51:05 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:05 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:05  /********************************/
+## 2016-07-30 02:51:05  /***********记录sql语句********/
+## 2016-07-30 02:51:05  参数0：2
+## 2016-07-30 02:51:05  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:05  /********************************/
+## 2016-07-30 02:51:05  /***********记录sql语句********/
+## 2016-07-30 02:51:05  参数0：2
+## 2016-07-30 02:51:05  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:05  /********************************/
+## 2016-07-30 02:51:05  /***********记录sql语句********/
+## 2016-07-30 02:51:05  参数0：9
+## 2016-07-30 02:51:05  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:05  /********************************/
+## 2016-07-30 02:51:05  /***********记录sql语句********/
+## 2016-07-30 02:51:05  参数0：9
+## 2016-07-30 02:51:05  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:05  /********************************/
+## 2016-07-30 02:51:05  /***********记录sql语句********/
+## 2016-07-30 02:51:05  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:51:05  /********************************/
+## 2016-07-30 02:51:15  /***********记录sql语句********/
+## 2016-07-30 02:51:15 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:15 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:15  /********************************/
+## 2016-07-30 02:51:15  /***********记录sql语句********/
+## 2016-07-30 02:51:15  参数0：9
+## 2016-07-30 02:51:15  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:15  /********************************/
+## 2016-07-30 02:51:15  /***********记录sql语句********/
+## 2016-07-30 02:51:15  参数0：9
+## 2016-07-30 02:51:15  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:15  /********************************/
+## 2016-07-30 02:51:15  /***********记录sql语句********/
+## 2016-07-30 02:51:15  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:51:15  /********************************/
+## 2016-07-30 02:51:16  /***********记录sql语句********/
+## 2016-07-30 02:51:16  select t.* from T_County t 
+## 2016-07-30 02:51:16  /********************************/
+## 2016-07-30 02:51:17  /***********记录sql语句********/
+## 2016-07-30 02:51:17  参数0：admin
+## 2016-07-30 02:51:17 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:17 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:17  /********************************/
+## 2016-07-30 02:51:17  /***********记录sql语句********/
+## 2016-07-30 02:51:17  参数0：admin
+## 2016-07-30 02:51:17  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:51:17  /********************************/
+## 2016-07-30 02:51:18  /***********记录sql语句********/
+## 2016-07-30 02:51:18  参数0：1
+## 2016-07-30 02:51:18  参数1：1
+## 2016-07-30 02:51:18 /with  pagedTable as (select t.* from T_Group t where t.ProjectType = @p0 and t.RoleId <> @p1)  select * from (select ROW_NUMBER()  Over( order by t.RoleId desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:18 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:18  /********************************/
+## 2016-07-30 02:51:18  /***********记录sql语句********/
+## 2016-07-30 02:51:18  参数0：1
+## 2016-07-30 02:51:18  参数1：1
+## 2016-07-30 02:51:18  select count(1) from T_Group t  where t.ProjectType = @p0 and t.RoleId <> @p1
+## 2016-07-30 02:51:18  /********************************/
+## 2016-07-30 02:51:32  /***********记录sql语句********/
+## 2016-07-30 02:51:32  select t.* from T_County t 
+## 2016-07-30 02:51:32  /********************************/
+## 2016-07-30 02:51:32  /***********记录sql语句********/
+## 2016-07-30 02:51:32  参数0：admin
+## 2016-07-30 02:51:32 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:32 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:32  /********************************/
+## 2016-07-30 02:51:32  /***********记录sql语句********/
+## 2016-07-30 02:51:32  参数0：admin
+## 2016-07-30 02:51:32  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:51:32  /********************************/
+## 2016-07-30 02:51:34  /***********记录sql语句********/
+## 2016-07-30 02:51:34  select t.* from T_County t 
+## 2016-07-30 02:51:34  /********************************/
+## 2016-07-30 02:51:34  /***********记录sql语句********/
+## 2016-07-30 02:51:34  参数0：超级管理员
+## 2016-07-30 02:51:34  select t.* from T_Group t  where t.RoleName = @p0
+## 2016-07-30 02:51:34  /********************************/
+## 2016-07-30 02:51:34  /***********记录sql语句********/
+## 2016-07-30 02:51:34  参数0：1
+## 2016-07-30 02:51:34  select t.* from T_Group t  where t.ProjectType = @p0
+## 2016-07-30 02:51:34  /********************************/
+## 2016-07-30 02:51:34  /***********记录sql语句********/
+## 2016-07-30 02:51:34  参数0：1
+## 2016-07-30 02:51:34 /with  pagedTable as (select t.* , UserRole.ProjectType as UserRole_ProjectType , UserRole.RoleId as UserRole_RoleId , UserRole.RoleName as UserRole_RoleName , UserRole.Memo as UserRole_Memo , UserRole.Powers as UserRole_Powers , UserRole.CreateTime as UserRole_CreateTime , UserRole.LastUpdateTime as UserRole_LastUpdateTime , UserRole.LastAdminId as UserRole_LastAdminId , UserRole.IsDeleted as UserRole_IsDeleted , Admin.UserId as Admin_UserId , Admin.LoginId as Admin_LoginId , Admin.UserName as Admin_UserName , Admin.Password as Admin_Password , Admin.MobileOperator as Admin_MobileOperator , Admin.County as Admin_County , Admin.Memo as Admin_Memo , Admin.Phone as Admin_Phone , Admin.Icon as Admin_Icon , Admin.OrgName as Admin_OrgName , Admin.CreateTime as Admin_CreateTime , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id  where t.Type = @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserRole desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:34 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:34  /********************************/
+## 2016-07-30 02:51:34  /***********记录sql语句********/
+## 2016-07-30 02:51:34  参数0：1
+## 2016-07-30 02:51:34  select count(1) from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id   where t.Type = @p0
+## 2016-07-30 02:51:34  /********************************/
+## 2016-07-30 02:51:35  /***********记录sql语句********/
+## 2016-07-30 02:51:35 /with  pagedTable as (select t.* from T_Prize t)  select * from (select ROW_NUMBER()  Over( order by t.Operator asc  , t.Probability asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:35 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:35  /********************************/
+## 2016-07-30 02:51:35  /***********记录sql语句********/
+## 2016-07-30 02:51:35  select count(1) from T_Prize t 
+## 2016-07-30 02:51:35  /********************************/
+## 2016-07-30 02:51:38  /***********记录sql语句********/
+## 2016-07-30 02:51:38 /with  pagedTable as (select t.* , PrizeUser.UserId as PrizeUser_UserId , PrizeUser.LoginId as PrizeUser_LoginId , PrizeUser.UserName as PrizeUser_UserName , PrizeUser.Password as PrizeUser_Password , PrizeUser.MobileOperator as PrizeUser_MobileOperator , PrizeUser.County as PrizeUser_County , PrizeUser.Memo as PrizeUser_Memo , PrizeUser.Phone as PrizeUser_Phone , PrizeUser.Icon as PrizeUser_Icon , PrizeUser.OrgName as PrizeUser_OrgName , PrizeUser.CreateTime as PrizeUser_CreateTime , Prize.Id as Prize_Id , Prize.CreateTime as Prize_CreateTime , Prize.ProjectType as Prize_ProjectType , Prize.Operator as Prize_Operator , Prize.Description as Prize_Description , Prize.Title as Prize_Title , Prize.Probability as Prize_Probability , Prize.TotalStock as Prize_TotalStock , Prize.MaxNumber as Prize_MaxNumber , Prize.CurrentStock as Prize_CurrentStock from T_UserPrize t left join T_Admin PrizeUser on t.PrizeUser = PrizeUser.UserId  left join T_Prize Prize on t.Prize = Prize.Id )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:38 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:38  /********************************/
+## 2016-07-30 02:51:38  /***********记录sql语句********/
+## 2016-07-30 02:51:38  select count(1) from T_UserPrize t left join T_Admin PrizeUser on t.PrizeUser = PrizeUser.UserId  left join T_Prize Prize on t.Prize = Prize.Id  
+## 2016-07-30 02:51:38  /********************************/
+## 2016-07-30 02:51:39  /***********记录sql语句********/
+## 2016-07-30 02:51:39  select t.* from T_County t 
+## 2016-07-30 02:51:39  /********************************/
+## 2016-07-30 02:51:39  /***********记录sql语句********/
+## 2016-07-30 02:51:39  参数0：超级管理员
+## 2016-07-30 02:51:39  select t.* from T_Group t  where t.RoleName = @p0
+## 2016-07-30 02:51:39  /********************************/
+## 2016-07-30 02:51:39  /***********记录sql语句********/
+## 2016-07-30 02:51:39  参数0：1
+## 2016-07-30 02:51:39  select t.* from T_Group t  where t.ProjectType = @p0
+## 2016-07-30 02:51:39  /********************************/
+## 2016-07-30 02:51:40  /***********记录sql语句********/
+## 2016-07-30 02:51:40  参数0：1
+## 2016-07-30 02:51:40 /with  pagedTable as (select t.* , UserRole.ProjectType as UserRole_ProjectType , UserRole.RoleId as UserRole_RoleId , UserRole.RoleName as UserRole_RoleName , UserRole.Memo as UserRole_Memo , UserRole.Powers as UserRole_Powers , UserRole.CreateTime as UserRole_CreateTime , UserRole.LastUpdateTime as UserRole_LastUpdateTime , UserRole.LastAdminId as UserRole_LastAdminId , UserRole.IsDeleted as UserRole_IsDeleted , Admin.UserId as Admin_UserId , Admin.LoginId as Admin_LoginId , Admin.UserName as Admin_UserName , Admin.Password as Admin_Password , Admin.MobileOperator as Admin_MobileOperator , Admin.County as Admin_County , Admin.Memo as Admin_Memo , Admin.Phone as Admin_Phone , Admin.Icon as Admin_Icon , Admin.OrgName as Admin_OrgName , Admin.CreateTime as Admin_CreateTime , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id  where t.Type = @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserRole desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:40 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:40  /********************************/
+## 2016-07-30 02:51:40  /***********记录sql语句********/
+## 2016-07-30 02:51:40  参数0：1
+## 2016-07-30 02:51:40  select count(1) from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id   where t.Type = @p0
+## 2016-07-30 02:51:40  /********************************/
+## 2016-07-30 02:51:40  /***********记录sql语句********/
+## 2016-07-30 02:51:40  参数0：1
+## 2016-07-30 02:51:40  参数1：1
+## 2016-07-30 02:51:40 /with  pagedTable as (select t.* from T_Group t where t.ProjectType = @p0 and t.RoleId <> @p1)  select * from (select ROW_NUMBER()  Over( order by t.RoleId desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:40 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:40  /********************************/
+## 2016-07-30 02:51:40  /***********记录sql语句********/
+## 2016-07-30 02:51:40  参数0：1
+## 2016-07-30 02:51:40  参数1：1
+## 2016-07-30 02:51:40  select count(1) from T_Group t  where t.ProjectType = @p0 and t.RoleId <> @p1
+## 2016-07-30 02:51:40  /********************************/
+## 2016-07-30 02:51:41  /***********记录sql语句********/
+## 2016-07-30 02:51:41  select t.* from T_County t 
+## 2016-07-30 02:51:41  /********************************/
+## 2016-07-30 02:51:41  /***********记录sql语句********/
+## 2016-07-30 02:51:41  参数0：admin
+## 2016-07-30 02:51:41 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:41 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:41  /********************************/
+## 2016-07-30 02:51:41  /***********记录sql语句********/
+## 2016-07-30 02:51:41  参数0：admin
+## 2016-07-30 02:51:41  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:51:41  /********************************/
+## 2016-07-30 02:51:42  /***********记录sql语句********/
+## 2016-07-30 02:51:42 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:42 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:42  /********************************/
+## 2016-07-30 02:51:42  /***********记录sql语句********/
+## 2016-07-30 02:51:42  参数0：9
+## 2016-07-30 02:51:42  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:42  /********************************/
+## 2016-07-30 02:51:42  /***********记录sql语句********/
+## 2016-07-30 02:51:42  参数0：9
+## 2016-07-30 02:51:42  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:42  /********************************/
+## 2016-07-30 02:51:42  /***********记录sql语句********/
+## 2016-07-30 02:51:42  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:51:42  /********************************/
+## 2016-07-30 02:51:44  /***********记录sql语句********/
+## 2016-07-30 02:51:44  select t.* from T_County t 
+## 2016-07-30 02:51:44  /********************************/
+## 2016-07-30 02:51:44  /***********记录sql语句********/
+## 2016-07-30 02:51:44 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:44 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:44  /********************************/
+## 2016-07-30 02:51:44  /***********记录sql语句********/
+## 2016-07-30 02:51:44  参数0：2
+## 2016-07-30 02:51:44  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:44  /********************************/
+## 2016-07-30 02:51:44  /***********记录sql语句********/
+## 2016-07-30 02:51:44  参数0：2
+## 2016-07-30 02:51:44  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:44  /********************************/
+## 2016-07-30 02:51:44  /***********记录sql语句********/
+## 2016-07-30 02:51:44  参数0：9
+## 2016-07-30 02:51:44  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:44  /********************************/
+## 2016-07-30 02:51:44  /***********记录sql语句********/
+## 2016-07-30 02:51:44  参数0：9
+## 2016-07-30 02:51:44  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:44  /********************************/
+## 2016-07-30 02:51:44  /***********记录sql语句********/
+## 2016-07-30 02:51:44  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:51:44  /********************************/
+## 2016-07-30 02:51:52  /***********记录sql语句********/
+## 2016-07-30 02:51:52  select t.* from T_County t 
+## 2016-07-30 02:51:52  /********************************/
+## 2016-07-30 02:51:53  /***********记录sql语句********/
+## 2016-07-30 02:51:53 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:53 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:53  /********************************/
+## 2016-07-30 02:51:53  /***********记录sql语句********/
+## 2016-07-30 02:51:53  参数0：2
+## 2016-07-30 02:51:53  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:53  /********************************/
+## 2016-07-30 02:51:53  /***********记录sql语句********/
+## 2016-07-30 02:51:53  参数0：2
+## 2016-07-30 02:51:53  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:53  /********************************/
+## 2016-07-30 02:51:53  /***********记录sql语句********/
+## 2016-07-30 02:51:53  参数0：9
+## 2016-07-30 02:51:53  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:53  /********************************/
+## 2016-07-30 02:51:53  /***********记录sql语句********/
+## 2016-07-30 02:51:53  参数0：9
+## 2016-07-30 02:51:53  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:53  /********************************/
+## 2016-07-30 02:51:53  /***********记录sql语句********/
+## 2016-07-30 02:51:53  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:51:53  /********************************/
+## 2016-07-30 02:51:55  /***********记录sql语句********/
+## 2016-07-30 02:51:55 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:55 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:55  /********************************/
+## 2016-07-30 02:51:55  /***********记录sql语句********/
+## 2016-07-30 02:51:55  参数0：9
+## 2016-07-30 02:51:55  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:55  /********************************/
+## 2016-07-30 02:51:55  /***********记录sql语句********/
+## 2016-07-30 02:51:55  参数0：9
+## 2016-07-30 02:51:55  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:51:55  /********************************/
+## 2016-07-30 02:51:55  /***********记录sql语句********/
+## 2016-07-30 02:51:55  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:51:55  /********************************/
+## 2016-07-30 02:51:56  /***********记录sql语句********/
+## 2016-07-30 02:51:56  select t.* from T_County t 
+## 2016-07-30 02:51:56  /********************************/
+## 2016-07-30 02:51:56  /***********记录sql语句********/
+## 2016-07-30 02:51:56  参数0：admin
+## 2016-07-30 02:51:56 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:56 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:56  /********************************/
+## 2016-07-30 02:51:56  /***********记录sql语句********/
+## 2016-07-30 02:51:56  参数0：admin
+## 2016-07-30 02:51:56  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:51:56  /********************************/
+## 2016-07-30 02:51:57  /***********记录sql语句********/
+## 2016-07-30 02:51:57  参数0：1
+## 2016-07-30 02:51:57  参数1：1
+## 2016-07-30 02:51:57 /with  pagedTable as (select t.* from T_Group t where t.ProjectType = @p0 and t.RoleId <> @p1)  select * from (select ROW_NUMBER()  Over( order by t.RoleId desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:57 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:57  /********************************/
+## 2016-07-30 02:51:57  /***********记录sql语句********/
+## 2016-07-30 02:51:57  参数0：1
+## 2016-07-30 02:51:57  参数1：1
+## 2016-07-30 02:51:57  select count(1) from T_Group t  where t.ProjectType = @p0 and t.RoleId <> @p1
+## 2016-07-30 02:51:57  /********************************/
+## 2016-07-30 02:51:58  /***********记录sql语句********/
+## 2016-07-30 02:51:58  select t.* from T_County t 
+## 2016-07-30 02:51:58  /********************************/
+## 2016-07-30 02:51:58  /***********记录sql语句********/
+## 2016-07-30 02:51:58  参数0：超级管理员
+## 2016-07-30 02:51:58  select t.* from T_Group t  where t.RoleName = @p0
+## 2016-07-30 02:51:58  /********************************/
+## 2016-07-30 02:51:58  /***********记录sql语句********/
+## 2016-07-30 02:51:58  参数0：1
+## 2016-07-30 02:51:58  select t.* from T_Group t  where t.ProjectType = @p0
+## 2016-07-30 02:51:58  /********************************/
+## 2016-07-30 02:51:58  /***********记录sql语句********/
+## 2016-07-30 02:51:58  参数0：1
+## 2016-07-30 02:51:58 /with  pagedTable as (select t.* , UserRole.ProjectType as UserRole_ProjectType , UserRole.RoleId as UserRole_RoleId , UserRole.RoleName as UserRole_RoleName , UserRole.Memo as UserRole_Memo , UserRole.Powers as UserRole_Powers , UserRole.CreateTime as UserRole_CreateTime , UserRole.LastUpdateTime as UserRole_LastUpdateTime , UserRole.LastAdminId as UserRole_LastAdminId , UserRole.IsDeleted as UserRole_IsDeleted , Admin.UserId as Admin_UserId , Admin.LoginId as Admin_LoginId , Admin.UserName as Admin_UserName , Admin.Password as Admin_Password , Admin.MobileOperator as Admin_MobileOperator , Admin.County as Admin_County , Admin.Memo as Admin_Memo , Admin.Phone as Admin_Phone , Admin.Icon as Admin_Icon , Admin.OrgName as Admin_OrgName , Admin.CreateTime as Admin_CreateTime , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id  where t.Type = @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserRole desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:58 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:58  /********************************/
+## 2016-07-30 02:51:58  /***********记录sql语句********/
+## 2016-07-30 02:51:58  参数0：1
+## 2016-07-30 02:51:58  select count(1) from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id   where t.Type = @p0
+## 2016-07-30 02:51:58  /********************************/
+## 2016-07-30 02:51:59  /***********记录sql语句********/
+## 2016-07-30 02:51:59 /with  pagedTable as (select t.* from T_Prize t)  select * from (select ROW_NUMBER()  Over( order by t.Operator asc  , t.Probability asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:51:59 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:51:59  /********************************/
+## 2016-07-30 02:51:59  /***********记录sql语句********/
+## 2016-07-30 02:51:59  select count(1) from T_Prize t 
+## 2016-07-30 02:51:59  /********************************/
+## 2016-07-30 02:52:06  /***********记录sql语句********/
+## 2016-07-30 02:52:06  select t.* from T_County t 
+## 2016-07-30 02:52:06  /********************************/
+## 2016-07-30 02:52:07  /***********记录sql语句********/
+## 2016-07-30 02:52:07  参数0：admin
+## 2016-07-30 02:52:07 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:52:07 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:52:07  /********************************/
+## 2016-07-30 02:52:07  /***********记录sql语句********/
+## 2016-07-30 02:52:07  参数0：admin
+## 2016-07-30 02:52:07  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:52:07  /********************************/
+## 2016-07-30 02:52:08  /***********记录sql语句********/
+## 2016-07-30 02:52:08  参数0：1
+## 2016-07-30 02:52:08  参数1：1
+## 2016-07-30 02:52:08 /with  pagedTable as (select t.* from T_Group t where t.ProjectType = @p0 and t.RoleId <> @p1)  select * from (select ROW_NUMBER()  Over( order by t.RoleId desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:52:08 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:52:08  /********************************/
+## 2016-07-30 02:52:08  /***********记录sql语句********/
+## 2016-07-30 02:52:08  参数0：1
+## 2016-07-30 02:52:08  参数1：1
+## 2016-07-30 02:52:08  select count(1) from T_Group t  where t.ProjectType = @p0 and t.RoleId <> @p1
+## 2016-07-30 02:52:08  /********************************/
+## 2016-07-30 02:52:08  /***********记录sql语句********/
+## 2016-07-30 02:52:08  select t.* from T_County t 
+## 2016-07-30 02:52:08  /********************************/
+## 2016-07-30 02:52:08  /***********记录sql语句********/
+## 2016-07-30 02:52:08  参数0：超级管理员
+## 2016-07-30 02:52:08  select t.* from T_Group t  where t.RoleName = @p0
+## 2016-07-30 02:52:08  /********************************/
+## 2016-07-30 02:52:08  /***********记录sql语句********/
+## 2016-07-30 02:52:08  参数0：1
+## 2016-07-30 02:52:08  select t.* from T_Group t  where t.ProjectType = @p0
+## 2016-07-30 02:52:08  /********************************/
+## 2016-07-30 02:52:09  /***********记录sql语句********/
+## 2016-07-30 02:52:09  参数0：1
+## 2016-07-30 02:52:09 /with  pagedTable as (select t.* , UserRole.ProjectType as UserRole_ProjectType , UserRole.RoleId as UserRole_RoleId , UserRole.RoleName as UserRole_RoleName , UserRole.Memo as UserRole_Memo , UserRole.Powers as UserRole_Powers , UserRole.CreateTime as UserRole_CreateTime , UserRole.LastUpdateTime as UserRole_LastUpdateTime , UserRole.LastAdminId as UserRole_LastAdminId , UserRole.IsDeleted as UserRole_IsDeleted , Admin.UserId as Admin_UserId , Admin.LoginId as Admin_LoginId , Admin.UserName as Admin_UserName , Admin.Password as Admin_Password , Admin.MobileOperator as Admin_MobileOperator , Admin.County as Admin_County , Admin.Memo as Admin_Memo , Admin.Phone as Admin_Phone , Admin.Icon as Admin_Icon , Admin.OrgName as Admin_OrgName , Admin.CreateTime as Admin_CreateTime , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id  where t.Type = @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserRole desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:52:09 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:52:09  /********************************/
+## 2016-07-30 02:52:09  /***********记录sql语句********/
+## 2016-07-30 02:52:09  参数0：1
+## 2016-07-30 02:52:09  select count(1) from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id   where t.Type = @p0
+## 2016-07-30 02:52:09  /********************************/
+## 2016-07-30 02:52:09  /***********记录sql语句********/
+## 2016-07-30 02:52:09 /with  pagedTable as (select t.* from T_Prize t)  select * from (select ROW_NUMBER()  Over( order by t.Operator asc  , t.Probability asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:52:09 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:52:09  /********************************/
+## 2016-07-30 02:52:09  /***********记录sql语句********/
+## 2016-07-30 02:52:09  select count(1) from T_Prize t 
+## 2016-07-30 02:52:09  /********************************/
+## 2016-07-30 02:52:11  /***********记录sql语句********/
+## 2016-07-30 02:52:11 /with  pagedTable as (select t.* , PrizeUser.UserId as PrizeUser_UserId , PrizeUser.LoginId as PrizeUser_LoginId , PrizeUser.UserName as PrizeUser_UserName , PrizeUser.Password as PrizeUser_Password , PrizeUser.MobileOperator as PrizeUser_MobileOperator , PrizeUser.County as PrizeUser_County , PrizeUser.Memo as PrizeUser_Memo , PrizeUser.Phone as PrizeUser_Phone , PrizeUser.Icon as PrizeUser_Icon , PrizeUser.OrgName as PrizeUser_OrgName , PrizeUser.CreateTime as PrizeUser_CreateTime , Prize.Id as Prize_Id , Prize.CreateTime as Prize_CreateTime , Prize.ProjectType as Prize_ProjectType , Prize.Operator as Prize_Operator , Prize.Description as Prize_Description , Prize.Title as Prize_Title , Prize.Probability as Prize_Probability , Prize.TotalStock as Prize_TotalStock , Prize.MaxNumber as Prize_MaxNumber , Prize.CurrentStock as Prize_CurrentStock from T_UserPrize t left join T_Admin PrizeUser on t.PrizeUser = PrizeUser.UserId  left join T_Prize Prize on t.Prize = Prize.Id )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:52:11 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:52:11  /********************************/
+## 2016-07-30 02:52:11  /***********记录sql语句********/
+## 2016-07-30 02:52:11  select count(1) from T_UserPrize t left join T_Admin PrizeUser on t.PrizeUser = PrizeUser.UserId  left join T_Prize Prize on t.Prize = Prize.Id  
+## 2016-07-30 02:52:11  /********************************/
+## 2016-07-30 02:52:14  /***********记录sql语句********/
+## 2016-07-30 02:52:14 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:52:14 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:52:14  /********************************/
+## 2016-07-30 02:52:14  /***********记录sql语句********/
+## 2016-07-30 02:52:14  参数0：9
+## 2016-07-30 02:52:14  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:14  /********************************/
+## 2016-07-30 02:52:14  /***********记录sql语句********/
+## 2016-07-30 02:52:14  参数0：9
+## 2016-07-30 02:52:14  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:14  /********************************/
+## 2016-07-30 02:52:14  /***********记录sql语句********/
+## 2016-07-30 02:52:14  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:52:14  /********************************/
+## 2016-07-30 02:52:14  /***********记录sql语句********/
+## 2016-07-30 02:52:14  select t.* from T_County t 
+## 2016-07-30 02:52:14  /********************************/
+## 2016-07-30 02:52:14  /***********记录sql语句********/
+## 2016-07-30 02:52:14 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:52:14 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:52:14  /********************************/
+## 2016-07-30 02:52:14  /***********记录sql语句********/
+## 2016-07-30 02:52:14  参数0：2
+## 2016-07-30 02:52:14  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:14  /********************************/
+## 2016-07-30 02:52:14  /***********记录sql语句********/
+## 2016-07-30 02:52:14  参数0：2
+## 2016-07-30 02:52:14  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:14  /********************************/
+## 2016-07-30 02:52:14  /***********记录sql语句********/
+## 2016-07-30 02:52:14  参数0：9
+## 2016-07-30 02:52:14  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:14  /********************************/
+## 2016-07-30 02:52:14  /***********记录sql语句********/
+## 2016-07-30 02:52:14  参数0：9
+## 2016-07-30 02:52:14  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:14  /********************************/
+## 2016-07-30 02:52:14  /***********记录sql语句********/
+## 2016-07-30 02:52:14  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:52:14  /********************************/
+## 2016-07-30 02:52:17  /***********记录sql语句********/
+## 2016-07-30 02:52:17 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:52:17 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:52:17  /********************************/
+## 2016-07-30 02:52:17  /***********记录sql语句********/
+## 2016-07-30 02:52:17  参数0：9
+## 2016-07-30 02:52:17  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:17  /********************************/
+## 2016-07-30 02:52:17  /***********记录sql语句********/
+## 2016-07-30 02:52:17  参数0：9
+## 2016-07-30 02:52:17  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:17  /********************************/
+## 2016-07-30 02:52:17  /***********记录sql语句********/
+## 2016-07-30 02:52:17  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:52:17  /********************************/
+## 2016-07-30 02:52:19  /***********记录sql语句********/
+## 2016-07-30 02:52:19  select t.* from T_County t 
+## 2016-07-30 02:52:19  /********************************/
+## 2016-07-30 02:52:19  /***********记录sql语句********/
+## 2016-07-30 02:52:19 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:52:19 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:52:19  /********************************/
+## 2016-07-30 02:52:19  /***********记录sql语句********/
+## 2016-07-30 02:52:19  参数0：2
+## 2016-07-30 02:52:19  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:19  /********************************/
+## 2016-07-30 02:52:19  /***********记录sql语句********/
+## 2016-07-30 02:52:19  参数0：2
+## 2016-07-30 02:52:19  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:19  /********************************/
+## 2016-07-30 02:52:19  /***********记录sql语句********/
+## 2016-07-30 02:52:19  参数0：9
+## 2016-07-30 02:52:19  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:19  /********************************/
+## 2016-07-30 02:52:19  /***********记录sql语句********/
+## 2016-07-30 02:52:19  参数0：9
+## 2016-07-30 02:52:19  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:19  /********************************/
+## 2016-07-30 02:52:19  /***********记录sql语句********/
+## 2016-07-30 02:52:19  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:52:19  /********************************/
+## 2016-07-30 02:52:37  /***********记录sql语句********/
+## 2016-07-30 02:52:37  select t.* from T_County t 
+## 2016-07-30 02:52:37  /********************************/
+## 2016-07-30 02:52:37  /***********记录sql语句********/
+## 2016-07-30 02:52:37 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:52:37 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:52:37  /********************************/
+## 2016-07-30 02:52:37  /***********记录sql语句********/
+## 2016-07-30 02:52:37  参数0：2
+## 2016-07-30 02:52:37  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:37  /********************************/
+## 2016-07-30 02:52:37  /***********记录sql语句********/
+## 2016-07-30 02:52:37  参数0：2
+## 2016-07-30 02:52:37  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:37  /********************************/
+## 2016-07-30 02:52:37  /***********记录sql语句********/
+## 2016-07-30 02:52:37  参数0：9
+## 2016-07-30 02:52:37  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:37  /********************************/
+## 2016-07-30 02:52:37  /***********记录sql语句********/
+## 2016-07-30 02:52:37  参数0：9
+## 2016-07-30 02:52:37  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:37  /********************************/
+## 2016-07-30 02:52:37  /***********记录sql语句********/
+## 2016-07-30 02:52:37  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:52:37  /********************************/
+## 2016-07-30 02:52:49  /***********记录sql语句********/
+## 2016-07-30 02:52:49 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:52:49 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:52:49  /********************************/
+## 2016-07-30 02:52:49  /***********记录sql语句********/
+## 2016-07-30 02:52:49  参数0：9
+## 2016-07-30 02:52:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:49  /********************************/
+## 2016-07-30 02:52:49  /***********记录sql语句********/
+## 2016-07-30 02:52:49  参数0：9
+## 2016-07-30 02:52:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:52:49  /********************************/
+## 2016-07-30 02:52:49  /***********记录sql语句********/
+## 2016-07-30 02:52:49  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:52:49  /********************************/
+## 2016-07-30 02:52:59  /***********记录sql语句********/
+## 2016-07-30 02:52:59  select t.* from T_County t 
+## 2016-07-30 02:52:59  /********************************/
+## 2016-07-30 02:52:59  /***********记录sql语句********/
+## 2016-07-30 02:52:59  参数0：admin
+## 2016-07-30 02:52:59 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:52:59 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:52:59  /********************************/
+## 2016-07-30 02:52:59  /***********记录sql语句********/
+## 2016-07-30 02:52:59  参数0：admin
+## 2016-07-30 02:52:59  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:52:59  /********************************/
+## 2016-07-30 02:53:19  /***********记录sql语句********/
+## 2016-07-30 02:53:19  参数0：1
+## 2016-07-30 02:53:19  参数1：1
+## 2016-07-30 02:53:19 /with  pagedTable as (select t.* from T_Group t where t.ProjectType = @p0 and t.RoleId <> @p1)  select * from (select ROW_NUMBER()  Over( order by t.RoleId desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:53:19 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:53:19  /********************************/
+## 2016-07-30 02:53:19  /***********记录sql语句********/
+## 2016-07-30 02:53:19  参数0：1
+## 2016-07-30 02:53:19  参数1：1
+## 2016-07-30 02:53:19  select count(1) from T_Group t  where t.ProjectType = @p0 and t.RoleId <> @p1
+## 2016-07-30 02:53:19  /********************************/
+## 2016-07-30 02:53:21  /***********记录sql语句********/
+## 2016-07-30 02:53:21  select t.* from T_County t 
+## 2016-07-30 02:53:21  /********************************/
+## 2016-07-30 02:53:21  /***********记录sql语句********/
+## 2016-07-30 02:53:21  参数0：超级管理员
+## 2016-07-30 02:53:21  select t.* from T_Group t  where t.RoleName = @p0
+## 2016-07-30 02:53:21  /********************************/
+## 2016-07-30 02:53:21  /***********记录sql语句********/
+## 2016-07-30 02:53:21  参数0：1
+## 2016-07-30 02:53:21  select t.* from T_Group t  where t.ProjectType = @p0
+## 2016-07-30 02:53:21  /********************************/
+## 2016-07-30 02:53:21  /***********记录sql语句********/
+## 2016-07-30 02:53:21  参数0：1
+## 2016-07-30 02:53:21 /with  pagedTable as (select t.* , UserRole.ProjectType as UserRole_ProjectType , UserRole.RoleId as UserRole_RoleId , UserRole.RoleName as UserRole_RoleName , UserRole.Memo as UserRole_Memo , UserRole.Powers as UserRole_Powers , UserRole.CreateTime as UserRole_CreateTime , UserRole.LastUpdateTime as UserRole_LastUpdateTime , UserRole.LastAdminId as UserRole_LastAdminId , UserRole.IsDeleted as UserRole_IsDeleted , Admin.UserId as Admin_UserId , Admin.LoginId as Admin_LoginId , Admin.UserName as Admin_UserName , Admin.Password as Admin_Password , Admin.MobileOperator as Admin_MobileOperator , Admin.County as Admin_County , Admin.Memo as Admin_Memo , Admin.Phone as Admin_Phone , Admin.Icon as Admin_Icon , Admin.OrgName as Admin_OrgName , Admin.CreateTime as Admin_CreateTime , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id  where t.Type = @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserRole desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:53:21 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:53:21  /********************************/
+## 2016-07-30 02:53:21  /***********记录sql语句********/
+## 2016-07-30 02:53:21  参数0：1
+## 2016-07-30 02:53:21  select count(1) from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id   where t.Type = @p0
+## 2016-07-30 02:53:21  /********************************/
+## 2016-07-30 02:53:23  /***********记录sql语句********/
+## 2016-07-30 02:53:23  select t.* from T_County t 
+## 2016-07-30 02:53:23  /********************************/
+## 2016-07-30 02:53:23  /***********记录sql语句********/
+## 2016-07-30 02:53:23 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:53:23 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:53:23  /********************************/
+## 2016-07-30 02:53:23  /***********记录sql语句********/
+## 2016-07-30 02:53:23  参数0：2
+## 2016-07-30 02:53:23  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:53:23  /********************************/
+## 2016-07-30 02:53:23  /***********记录sql语句********/
+## 2016-07-30 02:53:23  参数0：2
+## 2016-07-30 02:53:23  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:53:23  /********************************/
+## 2016-07-30 02:53:23  /***********记录sql语句********/
+## 2016-07-30 02:53:23  参数0：9
+## 2016-07-30 02:53:23  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:53:23  /********************************/
+## 2016-07-30 02:53:23  /***********记录sql语句********/
+## 2016-07-30 02:53:23  参数0：9
+## 2016-07-30 02:53:23  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:53:23  /********************************/
+## 2016-07-30 02:53:23  /***********记录sql语句********/
+## 2016-07-30 02:53:23  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:53:23  /********************************/
+## 2016-07-30 02:53:29  /***********记录sql语句********/
+## 2016-07-30 02:53:29 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:53:29 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:53:29  /********************************/
+## 2016-07-30 02:53:29  /***********记录sql语句********/
+## 2016-07-30 02:53:29  参数0：9
+## 2016-07-30 02:53:29  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:53:29  /********************************/
+## 2016-07-30 02:53:29  /***********记录sql语句********/
+## 2016-07-30 02:53:29  参数0：9
+## 2016-07-30 02:53:29  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:53:29  /********************************/
+## 2016-07-30 02:53:29  /***********记录sql语句********/
+## 2016-07-30 02:53:29  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:53:29  /********************************/
+## 2016-07-30 02:53:30  /***********记录sql语句********/
+## 2016-07-30 02:53:30  select t.* from T_County t 
+## 2016-07-30 02:53:30  /********************************/
+## 2016-07-30 02:53:30  /***********记录sql语句********/
+## 2016-07-30 02:53:30 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:53:30 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:53:30  /********************************/
+## 2016-07-30 02:53:30  /***********记录sql语句********/
+## 2016-07-30 02:53:30  参数0：2
+## 2016-07-30 02:53:30  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:53:30  /********************************/
+## 2016-07-30 02:53:30  /***********记录sql语句********/
+## 2016-07-30 02:53:30  参数0：2
+## 2016-07-30 02:53:30  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:53:30  /********************************/
+## 2016-07-30 02:53:30  /***********记录sql语句********/
+## 2016-07-30 02:53:30  参数0：9
+## 2016-07-30 02:53:30  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:53:30  /********************************/
+## 2016-07-30 02:53:30  /***********记录sql语句********/
+## 2016-07-30 02:53:30  参数0：9
+## 2016-07-30 02:53:30  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:53:30  /********************************/
+## 2016-07-30 02:53:30  /***********记录sql语句********/
+## 2016-07-30 02:53:30  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:53:30  /********************************/
+## 2016-07-30 02:53:34  /***********记录sql语句********/
+## 2016-07-30 02:53:34 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:53:34 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:53:34  /********************************/
+## 2016-07-30 02:53:34  /***********记录sql语句********/
+## 2016-07-30 02:53:34  参数0：9
+## 2016-07-30 02:53:34  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:53:34  /********************************/
+## 2016-07-30 02:53:34  /***********记录sql语句********/
+## 2016-07-30 02:53:34  参数0：9
+## 2016-07-30 02:53:34  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:53:34  /********************************/
+## 2016-07-30 02:53:34  /***********记录sql语句********/
+## 2016-07-30 02:53:34  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:53:34  /********************************/
+## 2016-07-30 02:54:19  /***********记录sql语句********/
+## 2016-07-30 02:54:19  select t.* from T_County t 
+## 2016-07-30 02:54:19  /********************************/
+## 2016-07-30 02:54:20  /***********记录sql语句********/
+## 2016-07-30 02:54:20 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:20 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:20  /********************************/
+## 2016-07-30 02:54:20  /***********记录sql语句********/
+## 2016-07-30 02:54:20  参数0：2
+## 2016-07-30 02:54:20  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:20  /********************************/
+## 2016-07-30 02:54:20  /***********记录sql语句********/
+## 2016-07-30 02:54:20  参数0：2
+## 2016-07-30 02:54:20  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:20  /********************************/
+## 2016-07-30 02:54:20  /***********记录sql语句********/
+## 2016-07-30 02:54:20  参数0：9
+## 2016-07-30 02:54:20  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:20  /********************************/
+## 2016-07-30 02:54:20  /***********记录sql语句********/
+## 2016-07-30 02:54:20  参数0：9
+## 2016-07-30 02:54:20  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:20  /********************************/
+## 2016-07-30 02:54:20  /***********记录sql语句********/
+## 2016-07-30 02:54:20  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:54:20  /********************************/
+## 2016-07-30 02:54:21  /***********记录sql语句********/
+## 2016-07-30 02:54:21 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:21 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:21  /********************************/
+## 2016-07-30 02:54:21  /***********记录sql语句********/
+## 2016-07-30 02:54:21  参数0：9
+## 2016-07-30 02:54:21  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:21  /********************************/
+## 2016-07-30 02:54:21  /***********记录sql语句********/
+## 2016-07-30 02:54:21  参数0：9
+## 2016-07-30 02:54:21  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:21  /********************************/
+## 2016-07-30 02:54:21  /***********记录sql语句********/
+## 2016-07-30 02:54:21  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:54:21  /********************************/
+## 2016-07-30 02:54:22  /***********记录sql语句********/
+## 2016-07-30 02:54:22  select t.* from T_County t 
+## 2016-07-30 02:54:22  /********************************/
+## 2016-07-30 02:54:22  /***********记录sql语句********/
+## 2016-07-30 02:54:22  参数0：admin
+## 2016-07-30 02:54:22 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:22 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:22  /********************************/
+## 2016-07-30 02:54:22  /***********记录sql语句********/
+## 2016-07-30 02:54:22  参数0：admin
+## 2016-07-30 02:54:22  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:54:22  /********************************/
+## 2016-07-30 02:54:24  /***********记录sql语句********/
+## 2016-07-30 02:54:24  参数0：1
+## 2016-07-30 02:54:24  参数1：1
+## 2016-07-30 02:54:24 /with  pagedTable as (select t.* from T_Group t where t.ProjectType = @p0 and t.RoleId <> @p1)  select * from (select ROW_NUMBER()  Over( order by t.RoleId desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:24 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:24  /********************************/
+## 2016-07-30 02:54:24  /***********记录sql语句********/
+## 2016-07-30 02:54:24  参数0：1
+## 2016-07-30 02:54:24  参数1：1
+## 2016-07-30 02:54:24  select count(1) from T_Group t  where t.ProjectType = @p0 and t.RoleId <> @p1
+## 2016-07-30 02:54:24  /********************************/
+## 2016-07-30 02:54:25  /***********记录sql语句********/
+## 2016-07-30 02:54:25  select t.* from T_County t 
+## 2016-07-30 02:54:25  /********************************/
+## 2016-07-30 02:54:25  /***********记录sql语句********/
+## 2016-07-30 02:54:25  参数0：超级管理员
+## 2016-07-30 02:54:25  select t.* from T_Group t  where t.RoleName = @p0
+## 2016-07-30 02:54:25  /********************************/
+## 2016-07-30 02:54:25  /***********记录sql语句********/
+## 2016-07-30 02:54:25  参数0：1
+## 2016-07-30 02:54:25  select t.* from T_Group t  where t.ProjectType = @p0
+## 2016-07-30 02:54:25  /********************************/
+## 2016-07-30 02:54:25  /***********记录sql语句********/
+## 2016-07-30 02:54:25  参数0：1
+## 2016-07-30 02:54:25 /with  pagedTable as (select t.* , UserRole.ProjectType as UserRole_ProjectType , UserRole.RoleId as UserRole_RoleId , UserRole.RoleName as UserRole_RoleName , UserRole.Memo as UserRole_Memo , UserRole.Powers as UserRole_Powers , UserRole.CreateTime as UserRole_CreateTime , UserRole.LastUpdateTime as UserRole_LastUpdateTime , UserRole.LastAdminId as UserRole_LastAdminId , UserRole.IsDeleted as UserRole_IsDeleted , Admin.UserId as Admin_UserId , Admin.LoginId as Admin_LoginId , Admin.UserName as Admin_UserName , Admin.Password as Admin_Password , Admin.MobileOperator as Admin_MobileOperator , Admin.County as Admin_County , Admin.Memo as Admin_Memo , Admin.Phone as Admin_Phone , Admin.Icon as Admin_Icon , Admin.OrgName as Admin_OrgName , Admin.CreateTime as Admin_CreateTime , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id  where t.Type = @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserRole desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:25 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:25  /********************************/
+## 2016-07-30 02:54:25  /***********记录sql语句********/
+## 2016-07-30 02:54:25  参数0：1
+## 2016-07-30 02:54:25  select count(1) from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id   where t.Type = @p0
+## 2016-07-30 02:54:25  /********************************/
+## 2016-07-30 02:54:26  /***********记录sql语句********/
+## 2016-07-30 02:54:26 /with  pagedTable as (select t.* from T_Prize t)  select * from (select ROW_NUMBER()  Over( order by t.Operator asc  , t.Probability asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:26 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:26  /********************************/
+## 2016-07-30 02:54:26  /***********记录sql语句********/
+## 2016-07-30 02:54:26  select count(1) from T_Prize t 
+## 2016-07-30 02:54:26  /********************************/
+## 2016-07-30 02:54:27  /***********记录sql语句********/
+## 2016-07-30 02:54:27 /with  pagedTable as (select t.* , PrizeUser.UserId as PrizeUser_UserId , PrizeUser.LoginId as PrizeUser_LoginId , PrizeUser.UserName as PrizeUser_UserName , PrizeUser.Password as PrizeUser_Password , PrizeUser.MobileOperator as PrizeUser_MobileOperator , PrizeUser.County as PrizeUser_County , PrizeUser.Memo as PrizeUser_Memo , PrizeUser.Phone as PrizeUser_Phone , PrizeUser.Icon as PrizeUser_Icon , PrizeUser.OrgName as PrizeUser_OrgName , PrizeUser.CreateTime as PrizeUser_CreateTime , Prize.Id as Prize_Id , Prize.CreateTime as Prize_CreateTime , Prize.ProjectType as Prize_ProjectType , Prize.Operator as Prize_Operator , Prize.Description as Prize_Description , Prize.Title as Prize_Title , Prize.Probability as Prize_Probability , Prize.TotalStock as Prize_TotalStock , Prize.MaxNumber as Prize_MaxNumber , Prize.CurrentStock as Prize_CurrentStock from T_UserPrize t left join T_Admin PrizeUser on t.PrizeUser = PrizeUser.UserId  left join T_Prize Prize on t.Prize = Prize.Id )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:27 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:27  /********************************/
+## 2016-07-30 02:54:27  /***********记录sql语句********/
+## 2016-07-30 02:54:27  select count(1) from T_UserPrize t left join T_Admin PrizeUser on t.PrizeUser = PrizeUser.UserId  left join T_Prize Prize on t.Prize = Prize.Id  
+## 2016-07-30 02:54:27  /********************************/
+## 2016-07-30 02:54:30  /***********记录sql语句********/
+## 2016-07-30 02:54:30 /with  pagedTable as (select t.* , PrizeUser.UserId as PrizeUser_UserId , PrizeUser.LoginId as PrizeUser_LoginId , PrizeUser.UserName as PrizeUser_UserName , PrizeUser.Password as PrizeUser_Password , PrizeUser.MobileOperator as PrizeUser_MobileOperator , PrizeUser.County as PrizeUser_County , PrizeUser.Memo as PrizeUser_Memo , PrizeUser.Phone as PrizeUser_Phone , PrizeUser.Icon as PrizeUser_Icon , PrizeUser.OrgName as PrizeUser_OrgName , PrizeUser.CreateTime as PrizeUser_CreateTime , Prize.Id as Prize_Id , Prize.CreateTime as Prize_CreateTime , Prize.ProjectType as Prize_ProjectType , Prize.Operator as Prize_Operator , Prize.Description as Prize_Description , Prize.Title as Prize_Title , Prize.Probability as Prize_Probability , Prize.TotalStock as Prize_TotalStock , Prize.MaxNumber as Prize_MaxNumber , Prize.CurrentStock as Prize_CurrentStock from T_UserPrize t left join T_Admin PrizeUser on t.PrizeUser = PrizeUser.UserId  left join T_Prize Prize on t.Prize = Prize.Id )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:30 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:30  /********************************/
+## 2016-07-30 02:54:30  /***********记录sql语句********/
+## 2016-07-30 02:54:30  select count(1) from T_UserPrize t left join T_Admin PrizeUser on t.PrizeUser = PrizeUser.UserId  left join T_Prize Prize on t.Prize = Prize.Id  
+## 2016-07-30 02:54:30  /********************************/
+## 2016-07-30 02:54:31  /***********记录sql语句********/
+## 2016-07-30 02:54:31 /with  pagedTable as (select t.* from T_Prize t)  select * from (select ROW_NUMBER()  Over( order by t.Operator asc  , t.Probability asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:31 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:31  /********************************/
+## 2016-07-30 02:54:31  /***********记录sql语句********/
+## 2016-07-30 02:54:31  select count(1) from T_Prize t 
+## 2016-07-30 02:54:31  /********************************/
+## 2016-07-30 02:54:31  /***********记录sql语句********/
+## 2016-07-30 02:54:31  select t.* from T_County t 
+## 2016-07-30 02:54:31  /********************************/
+## 2016-07-30 02:54:31  /***********记录sql语句********/
+## 2016-07-30 02:54:31  参数0：超级管理员
+## 2016-07-30 02:54:31  select t.* from T_Group t  where t.RoleName = @p0
+## 2016-07-30 02:54:31  /********************************/
+## 2016-07-30 02:54:31  /***********记录sql语句********/
+## 2016-07-30 02:54:31  参数0：1
+## 2016-07-30 02:54:31  select t.* from T_Group t  where t.ProjectType = @p0
+## 2016-07-30 02:54:31  /********************************/
+## 2016-07-30 02:54:31  /***********记录sql语句********/
+## 2016-07-30 02:54:31  参数0：1
+## 2016-07-30 02:54:31 /with  pagedTable as (select t.* , UserRole.ProjectType as UserRole_ProjectType , UserRole.RoleId as UserRole_RoleId , UserRole.RoleName as UserRole_RoleName , UserRole.Memo as UserRole_Memo , UserRole.Powers as UserRole_Powers , UserRole.CreateTime as UserRole_CreateTime , UserRole.LastUpdateTime as UserRole_LastUpdateTime , UserRole.LastAdminId as UserRole_LastAdminId , UserRole.IsDeleted as UserRole_IsDeleted , Admin.UserId as Admin_UserId , Admin.LoginId as Admin_LoginId , Admin.UserName as Admin_UserName , Admin.Password as Admin_Password , Admin.MobileOperator as Admin_MobileOperator , Admin.County as Admin_County , Admin.Memo as Admin_Memo , Admin.Phone as Admin_Phone , Admin.Icon as Admin_Icon , Admin.OrgName as Admin_OrgName , Admin.CreateTime as Admin_CreateTime , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id  where t.Type = @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserRole desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:31 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:31  /********************************/
+## 2016-07-30 02:54:31  /***********记录sql语句********/
+## 2016-07-30 02:54:31  参数0：1
+## 2016-07-30 02:54:31  select count(1) from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id   where t.Type = @p0
+## 2016-07-30 02:54:31  /********************************/
+## 2016-07-30 02:54:31  /***********记录sql语句********/
+## 2016-07-30 02:54:31  select t.* from T_County t 
+## 2016-07-30 02:54:31  /********************************/
+## 2016-07-30 02:54:32  /***********记录sql语句********/
+## 2016-07-30 02:54:32  参数0：admin
+## 2016-07-30 02:54:32 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:32 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:32  /********************************/
+## 2016-07-30 02:54:32  /***********记录sql语句********/
+## 2016-07-30 02:54:32  参数0：admin
+## 2016-07-30 02:54:32  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:54:32  /********************************/
+## 2016-07-30 02:54:33  /***********记录sql语句********/
+## 2016-07-30 02:54:33  参数0：1
+## 2016-07-30 02:54:33  参数1：1
+## 2016-07-30 02:54:33 /with  pagedTable as (select t.* from T_Group t where t.ProjectType = @p0 and t.RoleId <> @p1)  select * from (select ROW_NUMBER()  Over( order by t.RoleId desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:33 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:33  /********************************/
+## 2016-07-30 02:54:33  /***********记录sql语句********/
+## 2016-07-30 02:54:33  参数0：1
+## 2016-07-30 02:54:33  参数1：1
+## 2016-07-30 02:54:33  select count(1) from T_Group t  where t.ProjectType = @p0 and t.RoleId <> @p1
+## 2016-07-30 02:54:33  /********************************/
+## 2016-07-30 02:54:33  /***********记录sql语句********/
+## 2016-07-30 02:54:33 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:33 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:33  /********************************/
+## 2016-07-30 02:54:33  /***********记录sql语句********/
+## 2016-07-30 02:54:33  参数0：9
+## 2016-07-30 02:54:33  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:33  /********************************/
+## 2016-07-30 02:54:33  /***********记录sql语句********/
+## 2016-07-30 02:54:33  参数0：9
+## 2016-07-30 02:54:33  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:33  /********************************/
+## 2016-07-30 02:54:33  /***********记录sql语句********/
+## 2016-07-30 02:54:33  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:54:33  /********************************/
+## 2016-07-30 02:54:34  /***********记录sql语句********/
+## 2016-07-30 02:54:34  select t.* from T_County t 
+## 2016-07-30 02:54:34  /********************************/
+## 2016-07-30 02:54:35  /***********记录sql语句********/
+## 2016-07-30 02:54:35 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:35 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:35  /********************************/
+## 2016-07-30 02:54:35  /***********记录sql语句********/
+## 2016-07-30 02:54:35  参数0：2
+## 2016-07-30 02:54:35  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:35  /********************************/
+## 2016-07-30 02:54:35  /***********记录sql语句********/
+## 2016-07-30 02:54:35  参数0：2
+## 2016-07-30 02:54:35  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:35  /********************************/
+## 2016-07-30 02:54:35  /***********记录sql语句********/
+## 2016-07-30 02:54:35  参数0：9
+## 2016-07-30 02:54:35  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:35  /********************************/
+## 2016-07-30 02:54:35  /***********记录sql语句********/
+## 2016-07-30 02:54:35  参数0：9
+## 2016-07-30 02:54:35  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:35  /********************************/
+## 2016-07-30 02:54:35  /***********记录sql语句********/
+## 2016-07-30 02:54:35  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:54:35  /********************************/
+## 2016-07-30 02:54:39  /***********记录sql语句********/
+## 2016-07-30 02:54:39  select t.* from T_County t 
+## 2016-07-30 02:54:39  /********************************/
+## 2016-07-30 02:54:39  /***********记录sql语句********/
+## 2016-07-30 02:54:39 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:39 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:39  /********************************/
+## 2016-07-30 02:54:39  /***********记录sql语句********/
+## 2016-07-30 02:54:39  参数0：2
+## 2016-07-30 02:54:39  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:39  /********************************/
+## 2016-07-30 02:54:39  /***********记录sql语句********/
+## 2016-07-30 02:54:39  参数0：2
+## 2016-07-30 02:54:39  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:39  /********************************/
+## 2016-07-30 02:54:39  /***********记录sql语句********/
+## 2016-07-30 02:54:39  参数0：9
+## 2016-07-30 02:54:39  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:39  /********************************/
+## 2016-07-30 02:54:39  /***********记录sql语句********/
+## 2016-07-30 02:54:39  参数0：9
+## 2016-07-30 02:54:39  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:39  /********************************/
+## 2016-07-30 02:54:39  /***********记录sql语句********/
+## 2016-07-30 02:54:39  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:54:39  /********************************/
+## 2016-07-30 02:54:39  /***********记录sql语句********/
+## 2016-07-30 02:54:39  select t.* from T_County t 
+## 2016-07-30 02:54:39  /********************************/
+## 2016-07-30 02:54:39  /***********记录sql语句********/
+## 2016-07-30 02:54:39  参数0：admin
+## 2016-07-30 02:54:39 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:39 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:39  /********************************/
+## 2016-07-30 02:54:39  /***********记录sql语句********/
+## 2016-07-30 02:54:39  参数0：admin
+## 2016-07-30 02:54:39  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:54:39  /********************************/
+## 2016-07-30 02:54:40  /***********记录sql语句********/
+## 2016-07-30 02:54:40 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:40 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:40  /********************************/
+## 2016-07-30 02:54:40  /***********记录sql语句********/
+## 2016-07-30 02:54:40  参数0：9
+## 2016-07-30 02:54:40  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:40  /********************************/
+## 2016-07-30 02:54:40  /***********记录sql语句********/
+## 2016-07-30 02:54:40  参数0：9
+## 2016-07-30 02:54:40  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:40  /********************************/
+## 2016-07-30 02:54:40  /***********记录sql语句********/
+## 2016-07-30 02:54:40  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:54:40  /********************************/
+## 2016-07-30 02:54:40  /***********记录sql语句********/
+## 2016-07-30 02:54:40  参数0：1
+## 2016-07-30 02:54:40  参数1：1
+## 2016-07-30 02:54:40 /with  pagedTable as (select t.* from T_Group t where t.ProjectType = @p0 and t.RoleId <> @p1)  select * from (select ROW_NUMBER()  Over( order by t.RoleId desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:40 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:40  /********************************/
+## 2016-07-30 02:54:40  /***********记录sql语句********/
+## 2016-07-30 02:54:40  参数0：1
+## 2016-07-30 02:54:40  参数1：1
+## 2016-07-30 02:54:40  select count(1) from T_Group t  where t.ProjectType = @p0 and t.RoleId <> @p1
+## 2016-07-30 02:54:40  /********************************/
+## 2016-07-30 02:54:41  /***********记录sql语句********/
+## 2016-07-30 02:54:41  select t.* from T_County t 
+## 2016-07-30 02:54:41  /********************************/
+## 2016-07-30 02:54:41  /***********记录sql语句********/
+## 2016-07-30 02:54:41  参数0：超级管理员
+## 2016-07-30 02:54:41  select t.* from T_Group t  where t.RoleName = @p0
+## 2016-07-30 02:54:41  /********************************/
+## 2016-07-30 02:54:41  /***********记录sql语句********/
+## 2016-07-30 02:54:41  参数0：1
+## 2016-07-30 02:54:41  select t.* from T_Group t  where t.ProjectType = @p0
+## 2016-07-30 02:54:41  /********************************/
+## 2016-07-30 02:54:42  /***********记录sql语句********/
+## 2016-07-30 02:54:42  参数0：1
+## 2016-07-30 02:54:42 /with  pagedTable as (select t.* , UserRole.ProjectType as UserRole_ProjectType , UserRole.RoleId as UserRole_RoleId , UserRole.RoleName as UserRole_RoleName , UserRole.Memo as UserRole_Memo , UserRole.Powers as UserRole_Powers , UserRole.CreateTime as UserRole_CreateTime , UserRole.LastUpdateTime as UserRole_LastUpdateTime , UserRole.LastAdminId as UserRole_LastAdminId , UserRole.IsDeleted as UserRole_IsDeleted , Admin.UserId as Admin_UserId , Admin.LoginId as Admin_LoginId , Admin.UserName as Admin_UserName , Admin.Password as Admin_Password , Admin.MobileOperator as Admin_MobileOperator , Admin.County as Admin_County , Admin.Memo as Admin_Memo , Admin.Phone as Admin_Phone , Admin.Icon as Admin_Icon , Admin.OrgName as Admin_OrgName , Admin.CreateTime as Admin_CreateTime , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id  where t.Type = @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserRole desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:42 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:42  /********************************/
+## 2016-07-30 02:54:42  /***********记录sql语句********/
+## 2016-07-30 02:54:42  参数0：1
+## 2016-07-30 02:54:42  select count(1) from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id   where t.Type = @p0
+## 2016-07-30 02:54:42  /********************************/
+## 2016-07-30 02:54:49  /***********记录sql语句********/
+## 2016-07-30 02:54:49 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:49 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:49  /********************************/
+## 2016-07-30 02:54:49  /***********记录sql语句********/
+## 2016-07-30 02:54:49  参数0：9
+## 2016-07-30 02:54:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:49  /********************************/
+## 2016-07-30 02:54:49  /***********记录sql语句********/
+## 2016-07-30 02:54:49  参数0：9
+## 2016-07-30 02:54:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:49  /********************************/
+## 2016-07-30 02:54:49  /***********记录sql语句********/
+## 2016-07-30 02:54:49  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:54:49  /********************************/
+## 2016-07-30 02:54:49  /***********记录sql语句********/
+## 2016-07-30 02:54:49  select t.* from T_County t 
+## 2016-07-30 02:54:49  /********************************/
+## 2016-07-30 02:54:49  /***********记录sql语句********/
+## 2016-07-30 02:54:49 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:49 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:49  /********************************/
+## 2016-07-30 02:54:49  /***********记录sql语句********/
+## 2016-07-30 02:54:49  参数0：2
+## 2016-07-30 02:54:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:49  /********************************/
+## 2016-07-30 02:54:49  /***********记录sql语句********/
+## 2016-07-30 02:54:49  参数0：2
+## 2016-07-30 02:54:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:49  /********************************/
+## 2016-07-30 02:54:49  /***********记录sql语句********/
+## 2016-07-30 02:54:49  参数0：9
+## 2016-07-30 02:54:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:49  /********************************/
+## 2016-07-30 02:54:49  /***********记录sql语句********/
+## 2016-07-30 02:54:49  参数0：9
+## 2016-07-30 02:54:49  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:49  /********************************/
+## 2016-07-30 02:54:49  /***********记录sql语句********/
+## 2016-07-30 02:54:49  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:54:49  /********************************/
+## 2016-07-30 02:54:50  /***********记录sql语句********/
+## 2016-07-30 02:54:50  select t.* from T_County t 
+## 2016-07-30 02:54:50  /********************************/
+## 2016-07-30 02:54:50  /***********记录sql语句********/
+## 2016-07-30 02:54:50 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:50 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:50  /********************************/
+## 2016-07-30 02:54:50  /***********记录sql语句********/
+## 2016-07-30 02:54:50  参数0：2
+## 2016-07-30 02:54:50  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:50  /********************************/
+## 2016-07-30 02:54:50  /***********记录sql语句********/
+## 2016-07-30 02:54:50  参数0：2
+## 2016-07-30 02:54:50  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:50  /********************************/
+## 2016-07-30 02:54:50  /***********记录sql语句********/
+## 2016-07-30 02:54:50  参数0：9
+## 2016-07-30 02:54:50  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:50  /********************************/
+## 2016-07-30 02:54:50  /***********记录sql语句********/
+## 2016-07-30 02:54:50  参数0：9
+## 2016-07-30 02:54:50  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:50  /********************************/
+## 2016-07-30 02:54:50  /***********记录sql语句********/
+## 2016-07-30 02:54:50  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:54:50  /********************************/
+## 2016-07-30 02:54:50  /***********记录sql语句********/
+## 2016-07-30 02:54:50 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:50 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:50  /********************************/
+## 2016-07-30 02:54:50  /***********记录sql语句********/
+## 2016-07-30 02:54:50  参数0：9
+## 2016-07-30 02:54:50  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:50  /********************************/
+## 2016-07-30 02:54:50  /***********记录sql语句********/
+## 2016-07-30 02:54:50  参数0：9
+## 2016-07-30 02:54:50  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:54:50  /********************************/
+## 2016-07-30 02:54:50  /***********记录sql语句********/
+## 2016-07-30 02:54:50  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:54:50  /********************************/
+## 2016-07-30 02:54:57  /***********记录sql语句********/
+## 2016-07-30 02:54:57  select t.* from T_County t 
+## 2016-07-30 02:54:57  /********************************/
+## 2016-07-30 02:54:58  /***********记录sql语句********/
+## 2016-07-30 02:54:58  参数0：admin
+## 2016-07-30 02:54:58 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:58 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:58  /********************************/
+## 2016-07-30 02:54:58  /***********记录sql语句********/
+## 2016-07-30 02:54:58  参数0：admin
+## 2016-07-30 02:54:58  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:54:58  /********************************/
+## 2016-07-30 02:54:58  /***********记录sql语句********/
+## 2016-07-30 02:54:58  参数0：1
+## 2016-07-30 02:54:58  参数1：1
+## 2016-07-30 02:54:58 /with  pagedTable as (select t.* from T_Group t where t.ProjectType = @p0 and t.RoleId <> @p1)  select * from (select ROW_NUMBER()  Over( order by t.RoleId desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:58 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:58  /********************************/
+## 2016-07-30 02:54:58  /***********记录sql语句********/
+## 2016-07-30 02:54:58  参数0：1
+## 2016-07-30 02:54:58  参数1：1
+## 2016-07-30 02:54:58  select count(1) from T_Group t  where t.ProjectType = @p0 and t.RoleId <> @p1
+## 2016-07-30 02:54:58  /********************************/
+## 2016-07-30 02:54:59  /***********记录sql语句********/
+## 2016-07-30 02:54:59  select t.* from T_County t 
+## 2016-07-30 02:54:59  /********************************/
+## 2016-07-30 02:54:59  /***********记录sql语句********/
+## 2016-07-30 02:54:59  参数0：admin
+## 2016-07-30 02:54:59 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:54:59 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:54:59  /********************************/
+## 2016-07-30 02:54:59  /***********记录sql语句********/
+## 2016-07-30 02:54:59  参数0：admin
+## 2016-07-30 02:54:59  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:54:59  /********************************/
+## 2016-07-30 02:55:02  /***********记录sql语句********/
+## 2016-07-30 02:55:02 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:55:02 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:55:02  /********************************/
+## 2016-07-30 02:55:02  /***********记录sql语句********/
+## 2016-07-30 02:55:02  参数0：9
+## 2016-07-30 02:55:02  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:55:02  /********************************/
+## 2016-07-30 02:55:02  /***********记录sql语句********/
+## 2016-07-30 02:55:02  参数0：9
+## 2016-07-30 02:55:02  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:55:02  /********************************/
+## 2016-07-30 02:55:02  /***********记录sql语句********/
+## 2016-07-30 02:55:02  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:55:02  /********************************/
+## 2016-07-30 02:55:02  /***********记录sql语句********/
+## 2016-07-30 02:55:02  select t.* from T_County t 
+## 2016-07-30 02:55:02  /********************************/
+## 2016-07-30 02:55:02  /***********记录sql语句********/
+## 2016-07-30 02:55:02 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:55:02 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:55:02  /********************************/
+## 2016-07-30 02:55:02  /***********记录sql语句********/
+## 2016-07-30 02:55:02  参数0：2
+## 2016-07-30 02:55:02  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:55:02  /********************************/
+## 2016-07-30 02:55:02  /***********记录sql语句********/
+## 2016-07-30 02:55:02  参数0：2
+## 2016-07-30 02:55:02  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:55:02  /********************************/
+## 2016-07-30 02:55:02  /***********记录sql语句********/
+## 2016-07-30 02:55:02  参数0：9
+## 2016-07-30 02:55:02  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:55:02  /********************************/
+## 2016-07-30 02:55:02  /***********记录sql语句********/
+## 2016-07-30 02:55:02  参数0：9
+## 2016-07-30 02:55:02  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:55:02  /********************************/
+## 2016-07-30 02:55:02  /***********记录sql语句********/
+## 2016-07-30 02:55:02  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:55:02  /********************************/
+## 2016-07-30 02:55:07  /***********记录sql语句********/
+## 2016-07-30 02:55:07  select t.* from T_County t 
+## 2016-07-30 02:55:07  /********************************/
+## 2016-07-30 02:55:07  /***********记录sql语句********/
+## 2016-07-30 02:55:07  参数0：admin
+## 2016-07-30 02:55:07 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:55:07 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:55:07  /********************************/
+## 2016-07-30 02:55:07  /***********记录sql语句********/
+## 2016-07-30 02:55:07  参数0：admin
+## 2016-07-30 02:55:07  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:55:07  /********************************/
+## 2016-07-30 02:55:08  /***********记录sql语句********/
+## 2016-07-30 02:55:08  参数0：1
+## 2016-07-30 02:55:08  参数1：1
+## 2016-07-30 02:55:08 /with  pagedTable as (select t.* from T_Group t where t.ProjectType = @p0 and t.RoleId <> @p1)  select * from (select ROW_NUMBER()  Over( order by t.RoleId desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:55:08 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:55:08  /********************************/
+## 2016-07-30 02:55:08  /***********记录sql语句********/
+## 2016-07-30 02:55:08  参数0：1
+## 2016-07-30 02:55:08  参数1：1
+## 2016-07-30 02:55:08  select count(1) from T_Group t  where t.ProjectType = @p0 and t.RoleId <> @p1
+## 2016-07-30 02:55:08  /********************************/
+## 2016-07-30 02:55:08  /***********记录sql语句********/
+## 2016-07-30 02:55:08  select t.* from T_County t 
+## 2016-07-30 02:55:08  /********************************/
+## 2016-07-30 02:55:08  /***********记录sql语句********/
+## 2016-07-30 02:55:08  参数0：超级管理员
+## 2016-07-30 02:55:08  select t.* from T_Group t  where t.RoleName = @p0
+## 2016-07-30 02:55:08  /********************************/
+## 2016-07-30 02:55:08  /***********记录sql语句********/
+## 2016-07-30 02:55:08  参数0：1
+## 2016-07-30 02:55:08  select t.* from T_Group t  where t.ProjectType = @p0
+## 2016-07-30 02:55:08  /********************************/
+## 2016-07-30 02:55:08  /***********记录sql语句********/
+## 2016-07-30 02:55:08  参数0：1
+## 2016-07-30 02:55:08 /with  pagedTable as (select t.* , UserRole.ProjectType as UserRole_ProjectType , UserRole.RoleId as UserRole_RoleId , UserRole.RoleName as UserRole_RoleName , UserRole.Memo as UserRole_Memo , UserRole.Powers as UserRole_Powers , UserRole.CreateTime as UserRole_CreateTime , UserRole.LastUpdateTime as UserRole_LastUpdateTime , UserRole.LastAdminId as UserRole_LastAdminId , UserRole.IsDeleted as UserRole_IsDeleted , Admin.UserId as Admin_UserId , Admin.LoginId as Admin_LoginId , Admin.UserName as Admin_UserName , Admin.Password as Admin_Password , Admin.MobileOperator as Admin_MobileOperator , Admin.County as Admin_County , Admin.Memo as Admin_Memo , Admin.Phone as Admin_Phone , Admin.Icon as Admin_Icon , Admin.OrgName as Admin_OrgName , Admin.CreateTime as Admin_CreateTime , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id  where t.Type = @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserRole desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:55:08 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:55:08  /********************************/
+## 2016-07-30 02:55:08  /***********记录sql语句********/
+## 2016-07-30 02:55:08  参数0：1
+## 2016-07-30 02:55:08  select count(1) from T_UserGroup t left join T_Group UserRole on t.UserRole = UserRole.RoleId  left join T_Admin Admin on t.Admin = Admin.UserId  left join T_County County on t.County = County.Id   where t.Type = @p0
+## 2016-07-30 02:55:08  /********************************/
+## 2016-07-30 02:55:09  /***********记录sql语句********/
+## 2016-07-30 02:55:09 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:55:09 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:55:09  /********************************/
+## 2016-07-30 02:55:09  /***********记录sql语句********/
+## 2016-07-30 02:55:09  参数0：9
+## 2016-07-30 02:55:09  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:55:09  /********************************/
+## 2016-07-30 02:55:09  /***********记录sql语句********/
+## 2016-07-30 02:55:09  参数0：9
+## 2016-07-30 02:55:09  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:55:09  /********************************/
+## 2016-07-30 02:55:09  /***********记录sql语句********/
+## 2016-07-30 02:55:09  select count(1) from T_SensesComment t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:55:09  /********************************/
+## 2016-07-30 02:55:10  /***********记录sql语句********/
+## 2016-07-30 02:55:10  select t.* from T_County t 
+## 2016-07-30 02:55:10  /********************************/
+## 2016-07-30 02:55:10  /***********记录sql语句********/
+## 2016-07-30 02:55:10  参数0：admin
+## 2016-07-30 02:55:10 /with  pagedTable as (select t.* , County.Id as County_Id , County.Name as County_Name , County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id  where t.LoginId <> @p0)  select * from (select ROW_NUMBER()  Over( order by t.UserName asc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:55:10 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:55:10  /********************************/
+## 2016-07-30 02:55:10  /***********记录sql语句********/
+## 2016-07-30 02:55:10  参数0：admin
+## 2016-07-30 02:55:10  select count(1) from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId <> @p0
+## 2016-07-30 02:55:10  /********************************/
+## 2016-07-30 02:55:12  /***********记录sql语句********/
+## 2016-07-30 02:55:12  select t.* from T_County t 
+## 2016-07-30 02:55:12  /********************************/
+## 2016-07-30 02:55:12  /***********记录sql语句********/
+## 2016-07-30 02:55:12 /with  pagedTable as (select t.* , Creater.UserId as Creater_UserId , Creater.LoginId as Creater_LoginId , Creater.UserName as Creater_UserName , Creater.Password as Creater_Password , Creater.MobileOperator as Creater_MobileOperator , Creater.County as Creater_County , Creater.Memo as Creater_Memo , Creater.Phone as Creater_Phone , Creater.Icon as Creater_Icon , Creater.OrgName as Creater_OrgName , Creater.CreateTime as Creater_CreateTime from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId )  select * from (select ROW_NUMBER()  Over( order by t.IsStick desc  , t.OrderByNo desc  , t.CreateTime desc )  as rnuserdpage, * from pagedTable t) pppp
+## 2016-07-30 02:55:12 \                    where rnuserdpage between 1 and 10 
+## 2016-07-30 02:55:12  /********************************/
+## 2016-07-30 02:55:12  /***********记录sql语句********/
+## 2016-07-30 02:55:12  参数0：2
+## 2016-07-30 02:55:12  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:55:12  /********************************/
+## 2016-07-30 02:55:12  /***********记录sql语句********/
+## 2016-07-30 02:55:12  参数0：2
+## 2016-07-30 02:55:12  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:55:12  /********************************/
+## 2016-07-30 02:55:12  /***********记录sql语句********/
+## 2016-07-30 02:55:12  参数0：9
+## 2016-07-30 02:55:12  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:55:12  /********************************/
+## 2016-07-30 02:55:12  /***********记录sql语句********/
+## 2016-07-30 02:55:12  参数0：9
+## 2016-07-30 02:55:12  select t.* from T_County t  where t.Id = @p0
+## 2016-07-30 02:55:12  /********************************/
+## 2016-07-30 02:55:12  /***********记录sql语句********/
+## 2016-07-30 02:55:12  select count(1) from T_Senses t left join T_Admin Creater on t.Creater = Creater.UserId  
+## 2016-07-30 02:55:12  /********************************/
+## 2016-07-30 03:54:50  /***********记录sql语句********/
+## 2016-07-30 03:54:50  参数0：admin
+## 2016-07-30 03:54:50  select t.*,County.Id as County_Id,County.Name as County_Name,County.OrderByNo as County_OrderByNo from T_Admin t left join T_County County on t.County = County.Id   where t.LoginId = @p0
+## 2016-07-30 03:54:50  /********************************/
+## 2016-07-30 03:54:50  /***********记录sql语句********/
+## 2016-07-30 03:54:50  select t.* from T_County t 
+## 2016-07-30 03:54:50  /********************************/

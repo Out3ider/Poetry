@@ -1,0 +1,65 @@
+﻿@using System.Web.Optimization
+@using Poetry.Model
+
+@using Poetry.Web
+@using Sail.Web
+
+@{
+    var user = WebHelper.CurrentAdmin as Admin;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <title>@ComprehensionParam.Default.SiteName - 后台管理</title>
+    @Styles.Render("~/Content/css/css")
+
+    <script src="~/Scripts/datepicker/WdatePicker.js"></script>
+
+    @Scripts.Render("~/bundles/jplugin")
+
+
+
+    @RenderSection("head", false)
+</head>
+<body class="flexbox">
+
+    <script>
+
+        var root = '@Sail.Web.WebHelper.GetRootUrl()';
+        $.setSailConfig({
+            Root: root,
+            ApiRoot: root + "Api/"
+        });
+    </script>
+
+    @Helper.RenderHead("admin", "Comprehension/system/login", user?.UserName,logo:ProjectType.微感悟.GetEnumDesc("logo"))
+
+
+
+    <div class="flexbox-body">
+        <div class="flexbox-nav">
+            @Html.Action("Menu", "Utility", new { area = "", currentId = PageData[PageHelper.ItemId], Type = ProjectType.微感悟 })
+        </div>
+        <main class="flexbox-content">
+            <div class="page-head">
+                <div class="page-title">
+                    <h1>
+                        @PageData[PageHelper.PageTitle]
+                        <small>
+                            @PageData[PageHelper.PageTips]
+                        </small>
+                    </h1>
+                </div>
+            </div>
+            @RenderBody()
+        </main>
+    </div>
+    <footer></footer>
+</body>
+</html>

@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <button id="btnQuery" class="btn btn-primary">过滤</button>
-            <button id="btnReset" class="btn btn-secondary">清除条件</button>
+            <button class="btnReset btn btn-secondary">清除条件</button>
         </div>
     </div>
 }
@@ -200,7 +200,7 @@ if (!string.IsNullOrEmpty(defaultText)) { element.Data["defaulttext"] = defaultT
 
 
 @*输出查看字段*@
-@helper ViewTag(Element element, string formClass = "")
+@helper ViewTmplViewTag(Element element, string formClass = "")
 {
     <div class='form-group form-text @formClass'>
         <label class='control-label'>
@@ -215,3 +215,35 @@ if (!string.IsNullOrEmpty(defaultText)) { element.Data["defaulttext"] = defaultT
     </div>
 }
 
+
+
+
+@helper InputBtn(Element element, bool isNotRelation = false, string icon = "fa-search")
+{
+    @RenderGroup(element, @<text>
+        <div class="input-group selectModal" @element.RenderData() data-target="@element.Id">
+
+
+            <input type="text" readonly="readonly" id="@(element.Id)Name" @element.RenderClass() />
+            @if (isNotRelation)
+            {
+                <input type="hidden" id="@(element.Id)Id" />
+            }
+            else
+            {
+                <input type="hidden" id="@(element.Id)" data-prop="Id" />
+            }
+
+            <a class="clear-input " style="display: none">
+                <i class="fa fa-close text-primary "></i>
+            </a>
+            <span class="input-group-btn">
+                <button class="btn btn-secondary">
+                    <i class="fa @icon"></i>
+                </button>
+            </span>
+        </div>
+    </text>)
+
+    <div class="select-result" data-target="@element.Id-result"></div>
+}

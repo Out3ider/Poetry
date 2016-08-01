@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Tuple<int,string,string,int>>
+
+<div class="zqui-tab-wrapper" style="top: 2rem;">
+    <ul class="zqui-tab-scroll counties">
+        
+        @foreach (var county in Model)
+        {
+            <li data-id="@county.Item1">
+                <a>
+                    <p>@county.Item2</p>
+                    <p>
+                        @if (county.Item3.IsNotNull())
+                        {
+                            <i class="@(county.Item3)"></i>
+                        }
+                        @county.Item4
+                    </p>
+                </a>
+            </li>
+        }
+
+    </ul>
+</div>

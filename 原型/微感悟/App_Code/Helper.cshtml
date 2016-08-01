@@ -1,0 +1,450 @@
+﻿@helper HelperImagesModal()//选择图片
+    {
+    <script type="text/javascript">
+    $(function () {
+        $(".showModalaction").click(function () {
+            $(".Modalaction").addClass("active")
+        })
+        $(".btnClose").click(function () {
+            $(".Modalaction").removeClass("active")
+        })
+    })
+    </script>
+    <div class="zqui-modal Modalaction">
+        <div class="zqui-modal-mask" style="z-index:13;"></div>
+        <div class="zqui-modal-dialog zqui-modal-action" style="z-index:14;">
+            <ul class="zqui-table-view">
+                <li class="zqui-table-view-cell">
+                    <a class="btnClose">选择为标题图片</a>
+                </li>
+                <li class="zqui-table-view-cell">
+                    <a class="btnClose text-danger">删除图片</a>
+                </li>
+            </ul>
+            <ul class="zqui-table-view">
+                <li class="zqui-table-view-cell">
+                    <a class="btnClose"><b>取消</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+@helper HelperDateModal()//选择时间
+{
+    <script type="text/javascript">
+    $(function () {
+        $("#showModaldate").click(function () {
+            $("#Modaldate").addClass("active")
+        })
+        $(".btnClose").click(function () {
+            $("#Modaldate").removeClass("active")
+        })
+    })
+    </script>
+    <div class="zqui-modal" id="Modaldate">
+        <div class="zqui-modal-mask" style="z-index: 30"></div>
+        <div class="zqui-modal-dialog distance-two zqui-modal-sm  zqui-text-center" style="z-index: 31">
+            <div class="zqui-modal-content">
+                <div class="zqui-modal-header">
+                    <h4 class="zqui-modal-title">
+                        选择时间
+                    </h4>
+                    <a class="btnClose  zqui-header-clear">×</a>
+                </div>
+
+                <div class="zqui-modal-body zqui-bg-white">
+                    <div class="zqui-date-time">
+                        2015 / 05 / 05
+                    </div>
+                    <div class="zqui-date">
+                        <div class="zqui-date-item">
+                            <a><i class="icon icon-plus"></i></a>
+                            <input placeholder="0">
+                            <a><i class="icon icon-minus"></i></a>
+                        </div>
+                        <div class="zqui-date-item">
+                            <a><i class="icon icon-plus"></i></a>
+                            <input placeholder="0">
+                            <a><i class="icon icon-minus"></i></a>
+                        </div>
+                        <div class="zqui-date-item">
+                            <a><i class="icon icon-plus"></i></a>
+                            <input placeholder="0">
+                            <a><i class="icon icon-minus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="zqui-modal-footer">
+                    <button class="btnClose zqui-modal-btn text-primary">确定</button>
+                    <button class="zqui-modal-btn">今日</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+@helper HelperDataModal()//详情
+{
+    <script type="text/javascript">
+    $(function () {
+        $(".ShowModal").click(function () {
+            $(".Modal").addClass("active");
+            $(".CloseModal").click(function () {
+                $(".Modal").removeClass("active");
+            });
+        });
+    });
+    </script>
+    <div class="Modal zqui-modal">
+        <div class="zqui-modal-mask"></div>
+        <div class="zqui-modal-dialog  distance-one zqui-modal-lg">
+            <div class="zqui-modal-content">
+                <header class="zqui-modal-header bannersub"></header>
+                <div class="zqui-modal-footer">
+                    <button class="CloseModal zqui-modal-btn"><i class="icon icon-reply"></i> 返回</button>
+                    <button class="ShowModalMsg zqui-modal-btn"><i class="icon icon-hongxin-o"></i> 赞</button>@*点击之前*@
+                    @*<button class="zqui-modal-btn text-danger"><i class="icon icon-hongxin-copy"></i> 赞</button>*@@*点击之后*@
+                    <button class="ShowcommentModal zqui-modal-btn text-danger"><i class="icon icon-pinglun-o"></i> 评论</button>
+                </div>
+                <div class="zqui-modal-body">
+                    <div class="zqui-panel-card">
+                        <div class="panel-title clearfix">
+                            <img class="zqui-media-object zqui-pull-left" src="/content/images/1.jpg">
+                            <div class="zqui-media-body">
+                                张三
+                                <p class="zqui-ellipsis">2015-05-05 09:22 <span class="zqui-rt">鸠江区</span></p>
+                            </div>
+                        </div>
+                        <h5 class="zqui-ellipsis zqui-text-center">党员微感悟</h5>
+                        <p>
+                            陈礼云说，抢险队伍已经连续工作一周，朱同宝一直在第一线，带领群众排涝抢险。中心河段近日水位不断上涨，险情危及，朱同宝是在６日巡视了河堤一整夜后，７日早上６点多继续投入加固河堤的工作，过度劳累导致坠河。
+                        </p>
+                        <p>
+                            <img src="/Content/images/pic.jpg">
+                        </p>
+                        <p>
+                            <img src="/Content/images/pic.jpg">
+                        </p>
+                        <p>
+                            <img src="/Content/images/pic.jpg">
+                        </p>
+                        <div class="panel-foot">
+                            浏览：&nbsp;<span>10</span>
+                        </div>
+                    </div>
+                    <ul class="zqui-table-view zqui-table-view-icon list-comment">
+                        <li class="zqui-table-view-divider">
+                            <span>评论:&nbsp;<span class="text-danger">10</span></span>
+                            <span class="zqui-rt">
+                                <a>
+                                    <i class="icon icon-hongxin-copy text-info"></i>34888
+                                </a>
+                            </span>
+                        </li>
+                        <li class="zqui-table-view-cell zqui-media">
+                            <a class="ShowModal">
+                                <div class="rafting-head">
+                                    <img class="zqui-media-object zqui-pull-left" src="/content/images/1.jpg">
+                                    <div class="zqui-media-body">
+                                        张三
+                                        <p class="zqui-ellipsis">2015-05-05 09:22<span class="zqui-rt">鸠江区</span></p>
+                                    </div>
+                                </div>
+                                <div class="zqui-article">
+                                    <section>
+                                        <p class="">
+                                            由各种物质组成的巨型球状天体
+                                        </p>
+                                    </section>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="zqui-table-view-cell zqui-media">
+                            <a class="ShowModal">
+                                <div class="rafting-head">
+                                    <img class="zqui-media-object zqui-pull-left" src="/content/images/1.jpg">
+                                    <div class="zqui-media-body">
+                                        张三
+                                        <p class="zqui-ellipsis">2015-05-05 09:22<span class="zqui-rt">鸠江区</span></p>
+                                    </div>
+                                </div>
+                                <div class="zqui-article">
+                                    <section>
+                                        <p class="">
+                                            由各种物质组成的巨型球状天体
+                                        </p>
+                                    </section>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="zqui-table-view-cell zqui-media">
+                            <a class="ShowModal">
+                                <div class="rafting-head">
+                                    <img class="zqui-media-object zqui-pull-left" src="/content/images/1.jpg">
+                                    <div class="zqui-media-body">
+                                        张三
+                                        <p class="zqui-ellipsis">2015-05-05 09:22<span class="zqui-rt">鸠江区</span></p>
+                                    </div>
+                                </div>
+                                <div class="zqui-article">
+                                    <section>
+                                        <p class="">
+                                            由各种物质组成的巨型球状天体
+                                        </p>
+                                    </section>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@helper HelpercommentModal()//评论弹窗
+    {
+    <script type="text/javascript">
+    $(function () {
+        $(".ShowcommentModal").click(function () {
+            $(".commentModal").addClass("active");
+            $(".ClosecommentModal").click(function () {
+                $(".commentModal").removeClass("active");
+            });
+        });
+    });
+    </script>
+    <div class="commentModal zqui-modal">
+        <div class="zqui-modal-mask" style="z-index:15;"></div>
+        <div class="zqui-modal-dialog  distance-two distance-three zqui-modal-lg" style="z-index:16;">
+            <div class="zqui-modal-content">
+                <header class="zqui-modal-header bannersub"></header>
+                <div class="zqui-modal-footer">
+                    <button class="ClosecommentModal zqui-modal-btn"> 取消</button>
+                    <button class="ClosecommentModal zqui-modal-btn text-danger">发送</button>
+                </div>
+                <div class="zqui-modal-body">
+                    <ul class="zqui-table-view">
+                        <li class="zqui-table-view-cell">
+                            <div class="zqui-cell-bd zqui-flex-1">
+                                <textarea class="zqui-form-control" placeholder="请输入评论" rows="8"></textarea>
+                                <div class="zqui-textarea-counter"><span>0</span>/200</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="zqui-content-padded">
+                        <p>  用户发布的任何内容不得违反国家法律法规！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@helper HelperloginModal()//登录弹窗
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".ShowModalMsg").click(function () {
+                $(".ModalMsg").addClass("active");
+                $(".CloseModalMsg").click(function () {
+                    $(".ModalMsg").removeClass("active");
+                });
+            });
+        });
+    </script>
+    <div class="zqui-modal ModalMsg">
+        <div class="zqui-modal-mask" style="z-index: 16;"></div>
+        <div class="zqui-modal-dialog zqui-modal-sm" style="z-index:17;">
+            <div class="zqui-modal-content">
+                <div class="zqui-modal-header">
+                    登录用户账户
+                    <a class="btnClose CloseModalMsg zqui-header-clear">×</a>
+                </div>
+                <div class="zqui-modal-body">
+                    <div style="">
+                        <ul class="zqui-table-view">
+                            <li class="zqui-table-view-cell zqui-dis-flex">
+                                <div class="zqui-cell-hd">
+                                    <label class="zqui-cell-label">手机号</label>
+                                </div>
+                                <div class="zqui-cell-bd zqui-flex-1">
+                                    <input class="zqui-input" type="text" placeholder="请输入手机号">
+                                </div>
+                                <div class="zqui-cell-ft none"><i class="icon icon-exclamation-sign"></i></div>
+                            </li>
+                            <li class="zqui-table-view-cell zqui-dis-flex">
+                                <div class="zqui-cell-hd">
+                                    <label class="zqui-cell-label">密码</label>
+                                </div>
+                                <div class="zqui-cell-bd zqui-flex-1">
+                                    <input class="zqui-input" type="password" placeholder="请输入密码">
+                                </div>
+                                <div class="zqui-cell-ft none"><i class="icon icon-exclamation-sign"></i></div>
+                            </li>
+                        </ul>
+
+                        <div class="zqui-content-padded">
+                            <button id="login" class="zqui-btn zqui-btn-block zqui-btn-danger">登录</button>
+                            <div class="link-area">
+                                <a id="reg" href="register.cshtml">注册账号</a> <span class="spliter">|</span> <a id="forgetPassword" href="password.cshtml">忘记密码</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@helper Listitem()//列表
+{
+    <li class="zqui-table-view-cell zqui-media">
+        <a class="ShowModal">
+            <div class="rafting-head">
+                <img class="zqui-media-object zqui-pull-left" src="~/content/images/1.jpg">
+                <div class="zqui-media-body">
+                    张三
+                    <p class="zqui-ellipsis">2015-05-05 09:22<span class="zqui-rt">鸠江区</span></p>
+                </div>
+            </div>
+            <div class="zqui-article">
+                <section>
+                    <p class="zqui-ellipsis-7">
+                        本次更新，我们以「人」为本，为所有版本都升级了「成员卡片」，全面支持「项目群聊」。针对企业用户我们还提供了「企业组织架构」功能，搭载粒度更细的成员结构和权限管理，愿为不同发展阶段的团队，量身定制恰到好处的管理和协作方式。
+                    </p>
+                    <p class="rafting-img">
+                        <span class="img" style="background-image:url(/content/images/bannersub.jpg)"></span>
+                        <span class="img" style="background-image:url(/content/images/bannersub.jpg)"></span>
+                        <span class="img" style="background-image:url(/content/images/bannersub.jpg)"></span>
+                        <span class="img" style="background-image:url(/content/images/bannersub.jpg)"></span>
+                    </p>
+                </section>
+            </div>
+        </a>
+        <footer class="detial zqui-dis-flex">
+            <a class="item ShowModalMsg"><i class="icon icon-hongxin-o"></i><span>10</span></a>
+            <a class="item ShowModalMsg"><i class="icon icon-pinglun-o"></i><span>10</span></a>
+        </footer>
+    </li>
+}
+@helper Shake()//摇一摇抽奖
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#showModalShake").click(function () {
+                $("#ModalShake").addClass("active")
+            })
+            $(".btnClose").click(function () {
+                $("#ModalShake").removeClass("active")
+            })
+        })
+    </script>
+    <div class="zqui-modal" id="ModalShake">
+        <div class="zqui-modal-mask" style="z-index: 13"></div>
+        <div class="zqui-modal-dialog distance-two zqui-modal-lg" style="z-index: 14">
+            <div class="zqui-modal-content">
+                <div class="zqui-modal-body bg-shake">
+                    <header class="shakeheader">
+                        <img src="~/content/images/shakeheader.png" />
+                    </header>
+                    <a id="showModalShakeResult" class="shakebody">
+                        <img src="~/content/images/shakebody.png" />
+                    </a>
+                    <footer class="shakefooter">
+                        @*<p class="zqui-h4">手机摇一摇进行抽奖 </p>*@
+                        <p class="zqui-h6">如果手机不支持摇动，也可点击抽奖</p>@*改小*@
+                        <!--移动用户显示-->
+                        <p class="zqui-h6">
+                            中共芜湖市委组织部联合芜湖移动开展“抗洪抢险微感悟 千兆流量等你拿”活动；分别摇出10M（50%）、30M（45%）和100M（5%）；微感悟获奖用户再赠送1G以上流量包。
+                        </p>
+                        <!--电信用户显示-->
+                        <p class="zqui-h6">
+                            中共芜湖市委组织部联合芜湖电信开展“抗洪抢险微感悟 千兆流量等你拿”活动；分别摇出30M（85%）和100M（15%）；微感悟获奖用户再赠送1G以上流量包。
+                        </p>
+                        <!--联通用户显示-->
+                        <p class="zqui-h6">
+                            中共芜湖市委组织部联合芜湖联通开展“抗洪抢险微感悟 千兆流量等你拿”活动。分别摇出100M（100%）；微感悟获奖用户再赠送1G以上流量包。
+                        </p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@helper ShakeResult()//摇一摇抽奖结果
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#showModalShakeResult").click(function () {
+                $("#ModalShakeResult").addClass("active")
+            })
+            $(".btnClose").click(function () {
+                $("#ModalShakeResult").removeClass("active")
+            })
+        })
+    </script>
+    <div class="zqui-modal" id="ModalShakeResult">
+        <div class="zqui-modal-mask" style="z-index: 15"></div>
+        <div class="zqui-modal-dialog distance-two zqui-modal-sm" style="z-index: 16">
+            <div class="zqui-modal-content">
+                <div class="zqui-modal-body zqui-bg-white prize-result">
+                    <div id="w1">
+                        <img src="~/content/images/prize.png" />
+                        <p>中共芜湖市委组织部联合<span>中国移动</span>为您提供奖品"：<span class="zqui-h4 text-danger">50M流量包</span>。
+                    </div>
+                    @*<div id="w2">
+                        <img src="~/content/images/prizeno.png" />
+                        <p>
+                            每个账户只能抽奖一次哦！
+                    </div>*@
+                </div>
+                <div class="zqui-modal-footer">
+                    <a href="~/html/prize.cshtml" class="zqui-modal-btn text-primary">查看我的奖品</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@helper Listranking(string name)//列表排行
+{
+    <li class="zqui-table-view-cell">
+        <a class="ShowModal zqui-table-item">
+            <div class="zqui-table-cell zqui-col-xs-1">
+                <span class="zqui-h5 text-danger">@name</span>
+            </div>
+            <div class="zqui-table-cell zqui-col-xs-9">
+                <h5 class="zqui-ellipsis">关于抗洪救灾感悟</h5>
+                <p><span>2015-05-05</span><span class="zqui-rt"><span>万春老党员支数记</span>&nbsp;&nbsp;<span>鸠江区</span></span></p>
+            </div>
+            <div class="zqui-table-cell zqui-col-xs-2 zqui-text-right">
+                <i class="icon icon-hongxin-o"></i><span>999</span>
+            </div>
+        </a>
+    </li>
+}
+@helper timelineranking()//时间轴列表
+    {
+    <div class="zqui-timeline-block">
+        <div class="zqui-timeline-img">
+            <img src="~/Content/images/1.jpg" />
+        </div>
+        <div class="zqui-timeline-content">
+            <a class="ShowModal zqui-body">
+                <h5 class="zqui-ellipsis">这是个标题</h5>
+                <p><span>2015-05-05</span><span class="zqui-rt"><span>万春老党员支数记</span>&nbsp;&nbsp;<span>鸠江区</span></span></p>
+                <p class="zqui-ellipsis-2">
+                    本次更新，我们以「人」为本，为所有版本都升级了「成员卡片」，全面支持「项目群聊」。针对企业用户我们还提供了「企业组织架构」功能，搭载粒度更细的成员结构和权限管理，愿为不同发展阶段的团队，量身定制恰到好处的管理和协作方式。
+                </p>
+                <p class="zqui-foot clearfix">
+                    <span class="zqui-lt"><i class="icon icon-hongxin-o"></i>10</span>
+                    <span class="zqui-rt"><i class="icon icon-pinglun-o"></i>10</span>
+                </p>
+            </a>
+        </div>
+    </div>
+}

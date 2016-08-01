@@ -1,0 +1,41 @@
+﻿@model IList<News>  
+<ul class="zqui-table-view zqui-rankinglist">
+    <li class="zqui-table-view-divider">县区事迹排行榜</li>
+    <div id="list"></div>
+     
+</ul>
+
+<ul class="zqui-table-view zqui-table-view-chevron  zqui-rankinglist">
+    <li class="zqui-table-view-divider">事迹点赞排行榜</li>
+    @for (var i = 0; i < Model.Count; i++)
+    {
+        var news = Model[i];
+        <li class="zqui-table-view-cell zqui-media">
+            <a href="index?id=@news.Id" class="zqui-navigate-right">
+                <div class="zqui-pull-left">@(i + 1)</div>
+                <div class="zqui-media-body">
+                    @news.PartyMember
+                    <p class="zqui-ellipsis">
+                        点赞数：<span>@news.Liked</span>
+                        <span class="zqui-rt">评论数：@news.Comments</span>
+                    </p>
+                </div>
+            </a>
+        </li>
+    }
+
+</ul>
+
+
+<script id="listTmpl" type="text/x-jsrender">
+    <li class="zqui-table-view-cell zqui-dis-flex">
+        <div class="zqui-cell-hd">{{:#getIndex()+1}}</div>
+        <div class="zqui-cell-bd zqui-flex-1">{{>Name}}</div>
+        <div class="zqui-cell-ft">事迹数：<span class="zqui-num">{{>count}}</span></div>
+    </li>
+</script>
+<script>
+    var test = @Html.Raw(ViewBag.Rank);
+    $("#list").Render("#listTmpl", test);
+    console.log(test);
+</script>

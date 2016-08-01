@@ -23,25 +23,41 @@ namespace Poetry.Web
 
     public static class PageHelper
     {
+        /// <summary>
+        /// 后台用户登录确认
+        /// </summary>
+        /// <param name="response"></param>
+        /// <param name="type"></param>
+        public static void CheckAdmin(HttpResponseBase response, ProjectType type)
+        {
+            var user = WebHelper.CurrentAdmin as Admin;
+#if DEBUG
+            if (WebHelper.CurrentAdmin.IsNull())
+                WebHelper.CurrentAdmin = new DataContext().GetModel<Admin>(Clip.Where<Admin>(x => x.LoginId == "admin"));
+#endif
+            var group = user?.Group?.UserRole;
+            if (user == null
+                || (group == null && !user.IsSuperAdmin)
+                || (group != null && group.RoleId != 1 && group.ProjectType != type)
+                ) response.Redirect("login");
+        }
+
+
         public static string GetPre(this string src, string type = "")
         {
             var result = "";
-            if (src.IsNotNull())
+            if (src.IsNotNull() && src.IndexOf("/uploads/") >= 0)
             {
                 var lastIndex = src.LastIndexOf('/');
-                if (lastIndex > 0)
-                {
-                    result = $"{src.Substring(0, lastIndex)}/{type}pre{src.Substring(lastIndex)}";
-                }
+                result = $"{src.Substring(0, lastIndex)}/{type}pre{src.Substring(lastIndex)}";
             }
             return result;
         }
 
-        public static string AdminName()
-        {
-            var admin = WebHelper.CurrentAdmin as Admin ?? new Admin { UserName = "未登录", Group = new Group() };
-            return $"{admin.UserName} {admin.Group.RoleName}";
-        }
+        /// <summary>
+        /// 用户默认头像
+        /// </summary>
+        public static string DefaultHeadIcon => $"{WebHelper.GetRootUrl()}Content/images/default.jpg";
 
 
 

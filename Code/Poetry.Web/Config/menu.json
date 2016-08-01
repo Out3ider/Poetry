@@ -1,11 +1,4 @@
 ﻿[
-    
-    {
-        "ClassName": "fa fa-flash",
-        "ItemId": "D6F07512-FE25-4941-A404-DAE23DA3D38B",
-        "ItemName": "社区名单",
-        "Url": "~/System/Community"
-    },
     {
         "ItemId": "373837AF-8383-4C57-93EF-1B2D48489BD6",
         "ItemName": "县区名单",

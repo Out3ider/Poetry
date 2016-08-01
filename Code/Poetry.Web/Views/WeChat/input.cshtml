@@ -1,13 +1,14 @@
-﻿@using Poetry.Web
-@using Sail.Common
+﻿@using Sail.Common
 @using Sail.Web
-@{
+@using Poetry.Web.Controller
+
+@*@{
 
     if (WebHelper.CurrentUser == null)
     {
         Response.Redirect("login");
     }
-}
+}*@
 @section head{
 
     <script src="~/Scripts/uploadify/jquery.uploadifive.js"></script>
@@ -60,20 +61,13 @@
 
             </div>
         </li>
-        @*<li class="zqui-table-view-cell zqui-dis-flex">
-                <div class="zqui-cell-hd">
-                    <label class="zqui-cell-label">推荐人姓名</label>
-                </div>
-                <div class="zqui-cell-bd zqui-flex-1">
-                    <input class="zqui-input" type="text" placeholder="请输入姓名">
-                </div>
-            </li>*@
+
         <li class="zqui-table-view-cell zqui-dis-flex">
             <div class="zqui-cell-hd">
                 <label class="zqui-cell-label">拍摄日期</label>
             </div>
             <div class="zqui-cell-bd zqui-flex-1">
-                <input class="zqui-input" type="date" name="NewsDate" placeholder="拍摄日期">
+                <input class="zqui-input validate[required]" readonly="readonly" type="text" Id="NewsDate" placeholder="拍摄日期">
             </div>
         </li>
         <li class="zqui-table-view-divider">上传党员图片</li>
@@ -82,40 +76,12 @@
                 <div class="zqui-uploader-hd  zqui-dis-flex">
                     <div class="zqui-cell-bd zqui-flex-1">点击照片可设置标题图片或删除</div>
                     <div class="zqui-cell-ft">
-                        @*0/2*@
+
                     </div>
                 </div>
                 <div class="zqui-uploader-bd">
-                    <ul class="zqui-uploader-files" id="img">
-                        @*<li class="zqui-uploader-file zqui-uploader-status">
-                                <img class="Show" src="/Content/images/pic.jpg">
-                                <div class="ShowIcon zqui-uploader-status-content text-primary">
-                                    <i class="icon icon-ok-sign"></i>
-                                </div>
-                            </li>
-                            <li class="zqui-uploader-file zqui-uploader-status">
-                                <img class="Show" src="/Content/images/pic.jpg">
-                                <div class="zqui-uploader-status-content">50%</div>
-                            </li>
-                            <li class="zqui-uploader-file">
-                                <img class="Show" src="/Content/images/pic.jpg">
-                            </li>
-                            <li class="zqui-uploader-file">
-                                <img class="Show" src="/Content/images/pic.jpg">
-                            </li>
-                            <li class="zqui-uploader-file">
-                                <img class="Show" src="/Content/images/pic.jpg">
-                            </li>
-                            <li class="zqui-uploader-file">
-                                <img class="Show" src="/Content/images/pic.jpg">
-                            </li>*@
-                    </ul>
-                    <div class="zqui-uploader-input-wrp">
-
-                        <a class="zqui_uploader_input" id="selectImage"></a>
-
-                        @*<input class="zqui-uploader-input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">*@
-                    </div>
+                    <ul class="zqui-uploader-files" id="img"></ul>
+                    <div class="zqui-uploader-input-wrp"><a class="zqui_uploader_input" id="selectImage"></a></div>
                 </div>
             </div>
         </li>
@@ -125,11 +91,8 @@
                 <div>
                     <textarea class="zqui-textarea validate[required]" placeholder="请输入内容" rows="3" name="Content" maxlength="200"></textarea>
                 </div>
-                @*<div class="zqui-textarea-counter"><span>0</span>/200</div>*@
             </div>
         </li>
-
-
     </ul>
     <div class="zqui-content-padded">
         <button id="btnSave" class="zqui-btn zqui-btn-block zqui-btn-primary">提交推荐</button>
@@ -157,16 +120,57 @@
         </div>
         <div class="zqui-opr-area">
             <p class="zqui-btn-area">
-                <a href="index" class="zqui-btn zqui-btn-block">返回首页</a> 
+                <a href="index" class="zqui-btn zqui-btn-block">返回首页</a>
             </p>
-        </div> 
+        </div>
     </div>
 </script>
+
+<div class="zqui-modal" id="dateSelect">
+    <div class="zqui-modal-mask" style="z-index: 30"></div>
+    <div class="zqui-modal-dialog zqui-modal-sm" style="z-index: 31">
+        <div class="zqui-modal-header">
+            选择日期<a class="zqui-header-clear btnClose">×</a>
+        </div>
+
+        <div class="zqui-modal-body zqui-bg-white">
+            <div class="zqui-modal-text zqui-date-time">
+            </div>
+            <div class="zqui-date">
+                <div class="zqui-date-item year">
+                    <a class="plus"><i class="icon icon-plus"></i></a>
+                    <input name="Year" readonly="readonly" type="tel" maxlength="4"/>
+                    <a class="minus"><i class="icon icon-minus"></i></a>
+                </div>
+
+                <div class="zqui-date-item month">
+                    <a class="plus"><i class="icon icon-plus"></i></a>
+                    <input name="Month" readonly="readonly" type="tel" maxlength="2"/>
+                    <a class="minus"><i class="icon icon-minus"></i></a>
+                </div>
+
+                <div class="zqui-date-item day">
+                    <a  class="plus"><i class="icon icon-plus"></i></a>
+                    <input name="Day"  readonly="readonly" type="tel" maxlength="2" />
+                    <a  class="minus"><i class="icon icon-minus"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="zqui-modal-footer">
+            <button class="btnOk zqui-modal-btn  text-primary">确定</button>
+            <button class="btnToday zqui-modal-btn">今日</button>
+        </div>
+    </div>
+</div>
 
 
 <script>
     $(function () {
         $(".btnClose").click(function () { $(".zqui-popup, .zqui-popup-backdrop").hide(); });
+
+        var dp = new DatetimePicker("#dateSelect", "#NewsDate");
+        $("#NewsDate").val(new Date().format("yyyy-MM-dd"));
+        // .on("touchend click", function () { $("#dateSelect").show(); });
 
         $("#actionSheet_wrap").insertAfter(".footer");
         $("#actionsheet_cancel").click(function (parameters) {
@@ -250,8 +254,8 @@
             if (!data.NewsDate) {
                 ShowError("拍摄日期必须填写");
                 return;
-                //$("input[name=NewsDate]").closed(".zqui-cell-bd")
             }
+
             if ($imgs.length == 0) {
                 ShowError("请至少上传一张照片");
                 return;
@@ -268,11 +272,11 @@
             $.Put(api.GetApi("Put"), { "": JSON.stringify(data) }, function (result) {
                 if (!result.IsSuccess) btn.prop("disabled", false);
 
-                MsgBox.Action(result, function() {
+                MsgBox.Action(result, function () {
                     $(".zqui-content").html($("#tipsTmpl").html());
-                    
+
                 });
-                
+
             });
 
         });
